@@ -1,0 +1,36 @@
+{
+  "workbench.colorTheme": "BeardedTheme Anthracite",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.iconTheme": "material-icon-theme",
+
+  "window.zoomLevel": 0,
+  "window.titleBarStyle": "custom",
+
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "node_modules/": true
+  },
+  "files.autoSave": "off",
+
+  "editor.rulers": [72, 79],
+  "editor.tabSize": 2,
+
+  "terminal.integrated.shell.linux": "/bin/zsh",
+  "terminal.integrated.fontFamily": "monospace",
+
+  "[python]": {
+    "editor.tabSize": 4
+  },
+
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
+  },
+
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+
+  "todo-tree.tree.showScanModeButton": false,
+  "tabnine.experimentalAutoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
