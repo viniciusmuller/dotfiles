@@ -1,1 +1,1 @@
-awesome
+dbus-launch awesome
