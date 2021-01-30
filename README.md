@@ -32,7 +32,6 @@
         - PostgreSQL
 
 - Others:
-    - Screenshots: `maim`
-    - Clipboard helper: `xclip`
-    - PDF reader: `mupdf`
+    - Screenshots: `flameshot`
+    - PDF reader: `foxitreader`
     - Image viewer: `feh`
