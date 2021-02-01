@@ -31,6 +31,12 @@
     - Databases:
         - PostgreSQL
 
+- Editing:
+    - Image manipulation: `gimp`
+        - Theme: https://github.com/doctormo/GimpPs
+    - Pixel art: `aseprite`
+        - Theme: https://github.com/Lyutria/aseprite-studio-theme
+
 - Others:
     - Screenshots: `flameshot`
     - PDF reader: `foxitreader`
