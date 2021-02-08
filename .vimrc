@@ -42,6 +42,5 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Cursor is line zero 
 set relativenumber
-
+set number
