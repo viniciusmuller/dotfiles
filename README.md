@@ -1,7 +1,7 @@
-<h1 align="center">My linux setup and dotfiles.</h1>
+<h1 align="center">My linux setup and dotfiles</h1>
 <br />
 
-- OS: `Arch`
+- OS: `Arch Linux`
 
 - Display server: `xorg`:
     - Start config: `~/.xinitrc`
@@ -18,7 +18,7 @@
         - Dotfiles path: `~/.config/kitty/`
     - Shell: `zsh`
         - Framework: `oh-my-zsh!`
-        - Theme: `spaceship`
+        - Theme: https://github.com/denysdovhan/spaceship-prompt
         - Dotfile path: `~/.zshrc`
 
 - Development:
@@ -31,6 +31,10 @@
     - Databases:
         - PostgreSQL
 
+    - Database client: `beekeeper-studio`
+    - API client: `insomnia`
+    - Containers: `docker[-compose]`
+
 - Editing:
     - Image manipulation: `gimp`
         - Theme: https://github.com/doctormo/GimpPs
@@ -41,3 +45,4 @@
     - Screenshots: `flameshot`
     - PDF reader: `foxitreader`
     - Image viewer: `feh`
+    - Browser: `chromium`
