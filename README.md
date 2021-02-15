@@ -3,8 +3,11 @@
 
 - OS: `Arch Linux`
 
-- Display server: `xorg`:
-    - Start config: `~/.xinitrc`
+- Display server: `xorg`
+
+- Display manager: `lightdm`
+    - Greeter: `lightdm-webkit2-greeter`
+        - Theme: https://github.com/NoiSek/Aether
 
 - WM: `AwesomeWM`
     - Theme: https://github.com/arcticlimer/UwU
@@ -43,6 +46,7 @@
 
 - Others:
     - Screenshots: `flameshot`
+    - Wallpaper manager: `nitrogen`
     - PDF reader: `foxitreader`
     - Image viewer: `feh`
     - Browser: `chromium`
