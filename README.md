@@ -54,6 +54,11 @@
     - Pixel art: `aseprite`
         - Theme: https://github.com/Lyutria/aseprite-studio-theme
 
+- Games:
+    - Dwarf Fortress:
+        - Theme: `kruggsmash`
+        - Configuration files path: `.dwarffortress`
+
 - Others:
     - Screenshots: `flameshot`
     - Wallpaper manager: `nitrogen`

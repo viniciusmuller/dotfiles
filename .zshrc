@@ -1,8 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+############################################################
+#                          PATHS                           #
+############################################################
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# asdf
+. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
 
 ############################################################
 #                    ZSH CONFIGURATION                     #
@@ -146,15 +154,6 @@ SPACESHIP_HOST_COLOR=#1cffd2
 
 # GIT BRANCH
 SPACESHIP_GIT_BRANCH_COLOR=#6ffcbf
-
-
-############################################################
-#                          PATHS                           #
-############################################################
-
-# asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 ############################################################
 #                           ENV                            #
