@@ -1,0 +1,61 @@
+[theme]
+file = "theme.toml"
+
+[icons]
+name = "awesome"
+
+[icons.overrides]
+music = " ♫ "
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "free: "
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "music"
+player = "spotify"
+buttons = ["play", "next", "prev"]
+dynamic_width = true
+marquee = true
+marquee_speed = 0.3
+marquee_interval = 5
+on_collapsed_click = "spotify"
+
+[[block]]
+block = "temperature"
+interval = 10
+format = "{min}° min, {max}° max, {average}° avg"
+chip = "*-isa-*"
+
+[[block]]
+block = "memory"
+format_mem = "{Mum}MB"
+display_type = "memory"
+clickable = false
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization} {frequency}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
+
+[[block]]
+block = "pacman"
+interval = 600
+format = "{pacman} updates available"
+format_singular = "{pacman} update available"
+format_up_to_date = "System up to date"
+critical_updates_regex = "(linux |linux-lts|linux-zen)"
