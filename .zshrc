@@ -12,6 +12,10 @@ export ZSH="$HOME/.oh-my-zsh"
 . $HOME/.asdf/asdf.sh
 # . $HOME/.asdf/completions/asdf.bash
 
+# add yarn globally installed packages to path
+export PATH="$PATH:$(yarn global bin)"
+export TERM=kitty
+
 ############################################################
 #                    ZSH CONFIGURATION                     #
 ############################################################
