@@ -176,6 +176,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym Print exec flameshot gui
 
+default_border none
+
 gaps inner 20
 
 # Start i3bar to display a workspace bar (plus the system information i3status
