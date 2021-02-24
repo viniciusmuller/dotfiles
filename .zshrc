@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ############################################################
-#                          PATHS                           #
+#                      PATHS/EXPORTS                       #
 ############################################################
 
 # Path to your oh-my-zsh installation.
@@ -10,11 +10,17 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # asdf
 . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
 
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
 export TERM=kitty
+
+############################################################
+#                         ALIASES                          #
+############################################################
+
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+alias gs="git status"
 
 ############################################################
 #                    ZSH CONFIGURATION                     #

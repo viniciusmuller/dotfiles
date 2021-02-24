@@ -174,7 +174,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
 bindsym Print exec flameshot gui
 
 gaps inner 20

@@ -85,5 +85,7 @@
   - PDF reader: `foxitreader`
   - Image viewer: `feh`
   - Browser: `chromium`
+  - File manager: `ranger`
+  - Note taking: `obsidian`
 
 <h2>👀 Preview:</h2>

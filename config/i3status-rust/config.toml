@@ -1,5 +1,5 @@
 [theme]
-file = "theme.toml"
+name = "plain"
 
 [icons]
 name = "awesome"
@@ -54,7 +54,7 @@ format = "%a %d/%m %R"
 
 [[block]]
 block = "pacman"
-interval = 600
+interval = 300
 format = "{pacman} updates available"
 format_singular = "{pacman} update available"
 format_up_to_date = "System up to date"
