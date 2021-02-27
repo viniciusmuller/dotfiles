@@ -29,6 +29,8 @@ set bg=dark
 noremap <silent> <C-S> :update<CR>
 " Exit insert mode on jj  
 inoremap jj <Esc>
+" Clear search highlight on pressing <esc>
+" noremap <esc> :noh<CR><esc> 
 
 "################################################################
 "#                            Misc             			            #
@@ -44,3 +46,17 @@ set expandtab
 
 set relativenumber
 set number
+
+set linebreak
+
+" Search options:
+set ignorecase 
+" Highlight matches
+set hlsearch
+
+" Remap identation to Tab/Shift+Tab
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv

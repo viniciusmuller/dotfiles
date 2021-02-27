@@ -13,7 +13,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
-export TERM=kitty
 
 ############################################################
 #                         ALIASES                          #
