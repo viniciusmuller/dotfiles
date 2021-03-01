@@ -1,3 +1,7 @@
+set nocompatible
+set showcmd
+filetype plugin on
+
 "################################################################
 "#                          Vim-Plug                            # 
 "################################################################
@@ -7,7 +11,15 @@ call plug#begin()
 " Gruvbox theme
 Plug 'morhetz/gruvbox'
 
-Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+
+Plug 'takac/vim-hardtime'
+
+Plug 'tpope/vim-surround'
+
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -25,16 +37,22 @@ set bg=dark
 "#                          Mappings         			              #
 "################################################################
 
-" Save on Ctrl+S
-noremap <silent> <C-S> :update<CR>
 " Exit insert mode on jj  
 inoremap jj <Esc>
-" Clear search highlight on pressing <esc>
-" noremap <esc> :noh<CR><esc> 
+
+"################################################################
+"#                        Vim-hardtime                          # 
+"################################################################
+
+let g:hardtime_default_on = 1
+let g:hardtime_allow_different_key = 1
 
 "################################################################
 "#                            Misc             			            #
 "################################################################
+
+set wildmode=longest,list
+set history=200
 
 " Kitty terminal helper
 let &t_ut=''
@@ -53,6 +71,7 @@ set linebreak
 set ignorecase 
 " Highlight matches
 set hlsearch
+set incsearch
 
 " Remap identation to Tab/Shift+Tab
 nnoremap <Tab> >>_
@@ -60,3 +79,4 @@ nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+
