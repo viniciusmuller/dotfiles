@@ -1,0 +1,107 @@
+set nocompatible
+set showcmd
+filetype plugin on
+syntax on
+set foldmethod=syntax
+
+"################################################################
+"#                          Vim-Plug                            # 
+"################################################################
+
+call plug#begin()
+
+" ###################################
+" # Useful general usage plugins    #
+" ###################################
+
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" Required options for numbertoggle
+set number relativenumber
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+
+" ###################################
+" # Vim-hardtime                    #
+" ###################################
+
+Plug 'takac/vim-hardtime'
+
+let g:hardtime_default_on = 1
+let g:hardtime_allow_different_key = 1
+
+" ###################################
+" # Language plugins                #
+" ###################################
+
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+" ###################################
+" # Themes                          #
+" ###################################
+
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+"################################################################
+"#                           Theme            			            #
+"################################################################
+
+" Improve colors on terminal
+set termguicolors
+
+colorscheme dracula
+set bg=dark
+
+"################################################################
+"#                          Mappings         			              #
+"################################################################
+
+" Mappings for the leader (space) key
+map <Space> <Leader>
+
+nnoremap <silent> <Leader>s :update<CR>
+nnoremap <silent> <Leader>x :exit<CR>
+nnoremap <Leader>r :nbuff<CR>
+
+" Other mappings 
+nnoremap <S-Enter> O<Esc>j
+nnoremap <CR> o<Esc>k
+
+" List buffers 
+nnoremap <F5> :buffers<CR>:buffer<Space>
+
+"################################################################
+"#                            Misc             			            #
+"################################################################
+
+set scrolloff=5
+
+set wildmode=longest,list
+set history=200
+
+" Kitty terminal helper
+let &t_ut=''
+
+" Set tabs to 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+
+set linebreak
+
+" Search options:
+set ignorecase 
+" Highlight matches
+set hlsearch
+set incsearch
+
+" Dont fold a file on open
+set foldlevel=99
+
