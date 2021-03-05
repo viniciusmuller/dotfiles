@@ -28,8 +28,14 @@ set number relativenumber
 Plug 'alvan/vim-closetag'
 let g:closetag_filenames = '*.html,*.tsx,*.jsx'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+let $FZF_DEFAULT_OPTS = '--exact'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 
@@ -71,7 +77,7 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 "################################################################
-"#                           Theme            			            #
+"#                           Theme                              #
 "################################################################
 
 " Improve colors on terminal
@@ -88,7 +94,7 @@ set bg=dark
 au BufWritePre * %s/\s\+$//e
 
 "################################################################
-"#                          Mappings         			              #
+"#                          Mappings                            #
 "################################################################
 
 " Mappings for the leader (space) 5ey
@@ -105,8 +111,10 @@ nnoremap <F5> :buffers<CR>:buffer<Space>
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
 
+nnoremap <C-P> :Files<CR>
+
 "################################################################
-"#                            Misc             			            #
+"#                            Misc                              #
 "################################################################
 
 set scrolloff=5
