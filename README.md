@@ -15,9 +15,9 @@
 
     - Dotfiles path: `~/.config/kitty/`
 
-  - Terminal multiplexer: `tmux`
+  - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
 
-    - Dotfiles path: `~/.tmux.conf/`
+    - Dotfile path: `~/.tmux.conf`
 
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
