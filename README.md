@@ -15,6 +15,10 @@
 
     - Dotfiles path: `~/.config/kitty/`
 
+  - Terminal multiplexer: `tmux`
+
+    - Dotfiles path: `~/.tmux.conf/`
+
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
       - Theme: [`spaceship`](https://github.com/denysdovhan/spaceship-prompt)
@@ -78,11 +82,14 @@
     - Theme: [`aseprite-studio-theme`](https://github.com/Lyutria/aseprite-studio-theme#usage)
 
 - Others:
+
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
   - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
   - PDF reader: [`foxitreader`](https://aur.archlinux.org/packages/foxitreader/)
   - Browser: [`chromium`](https://wiki.archlinux.org/index.php/chromium)
   - File manager: [`ranger`](https://wiki.archlinux.org/index.php/ranger)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
+  - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
+  - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
 
 <h2>👀 Preview:</h2>
