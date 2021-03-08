@@ -13,13 +13,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
-
-############################################################
-#                         ALIASES                          #
-############################################################
-
-alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
-alias gs="git status"
+export EDITOR='vim'
+[ -z "$TMUX" ] && export TERM=xterm-256color
 
 ############################################################
 #                    ZSH CONFIGURATION                     #
@@ -73,7 +68,7 @@ ZSH_THEME="spaceship"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -91,7 +86,11 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  zsh-vi-mode
+  zsh-syntax-highlighting
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -130,7 +129,7 @@ SPACESHIP_PROMPT_ORDER=(
   host          # Hostname section
   dir           # Current directory section
   git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
   exec_time     # Execution time
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
@@ -165,7 +164,16 @@ SPACESHIP_HOST_COLOR=#1cffd2
 SPACESHIP_GIT_BRANCH_COLOR=#6ffcbf
 
 ############################################################
-#                           ENV                            #
+#                         ALIASES                          #
 ############################################################
 
-export EDITOR='vim'
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+alias gs="git status"
+
+alias l="exa -lah --icons"
+alias ls="exa --icons"
+
+alias tl="tmux ls"
+alias ta="tmux attach -t"
+alias tn="tmux new -s"
+
