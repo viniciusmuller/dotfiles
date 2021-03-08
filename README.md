@@ -1,4 +1,5 @@
 <h1 align="center">My linux setup and dotfiles</h1>
+
 <br />
 
 <h2>⚙️ Setup:</h2>
@@ -22,7 +23,20 @@
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
       - Theme: [`spaceship`](https://github.com/denysdovhan/spaceship-prompt)
+    - Plugins:
+      - [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode#arch-linux-aur)
+      - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
     - Dotfile path: `~/.zshrc`
+
+- Font: [`Fira Code`](https://archlinux.org/packages/community/any/ttf-fira-code/)
+
+- Unix commands replacements:
+
+  - ls: [`exa`](https://github.com/ogham/exa#arch-linux)
+  - cat: [`bat`](https://github.com/sharkdp/bat#on-arch-linux)
+  - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
+  - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
+  - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
 
 - Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
 
@@ -91,5 +105,7 @@
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
   - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
+  - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
 
 <h2>👀 Preview:</h2>
+
