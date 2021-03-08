@@ -4,9 +4,6 @@ name = "plain"
 [icons]
 name = "awesome"
 
-[icons.overrides]
-music = " ♫ "
-
 [[block]]
 block = "disk_space"
 path = "/"
@@ -16,16 +13,6 @@ unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
-
-[[block]]
-block = "music"
-player = "spotify"
-buttons = ["play", "next", "prev"]
-dynamic_width = true
-marquee = true
-marquee_speed = 0.3
-marquee_interval = 5
-on_collapsed_click = "spotify"
 
 [[block]]
 block = "temperature"
