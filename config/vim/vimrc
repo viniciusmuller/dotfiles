@@ -15,6 +15,20 @@ call plug#begin()
 " # Useful general usage plugins    #
 " ###################################
 
+" Might need to install coc-snippets and set the snippets
+" directory using coc command `snippets.openSnippetFiles`
+Plug 'honza/vim-snippets'
+Plug 'mhinz/vim-startify'
+
+let g:startify_custom_header = [
+\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
+\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
+\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
+\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
+\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
+\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
+\ ]
+
 Plug 'itchyny/lightline.vim'
 let g:lightline = {'colorscheme': 'one'}
 set laststatus=2
@@ -33,7 +47,7 @@ let g:closetag_filenames = '*.html,*.tsx,*.jsx'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+let $FZF_DEFAULT_COMMAND = 'fd -H'
 let $FZF_DEFAULT_OPTS = '--exact'
 
 Plug 'tpope/vim-commentary'
@@ -100,20 +114,22 @@ au BufWritePre * %s/\s\+$//e
 "#                          Mappings                            #
 "################################################################
 
-" Mappings for the leader (space) 5ey
+" Mappings for the leader (space) key
 map <Space> <Leader>
 
 " Other mappings
 nnoremap <S-Enter> O<Esc>j
 nnoremap <CR> o<Esc>k
 
-" List buffers
-nnoremap <F5> :buffers<CR>:buffer<Space>
+" Move one character to left on insert mode
+" useful for getting out of (), for example.
+inoremap <C-e> <Esc>la
 
 " Swap buffers
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-K> :bnext<CR>
 
+" Search files with fzf.vim
 nnoremap <C-P> :Files<CR>
 
 "################################################################
