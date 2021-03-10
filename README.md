@@ -66,6 +66,8 @@
   - Mixer: `pulsemixer`
   - Dotfile path: `~/.config/pulse/client.conf`
 
+- Notifications daemon: [`dunst`](https://wiki.archlinux.org/index.php/Dunst#Installation)
+
 - Compositor: [`picom`](https://wiki.archlinux.org/index.php/Picom#Installation)
 
   - Dotfile path: `~/.config/picom/picom.conf`
@@ -108,4 +110,3 @@
   - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
 
 <h2>👀 Preview:</h2>
-
