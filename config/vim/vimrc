@@ -4,6 +4,8 @@ filetype plugin on
 syntax on
 set foldmethod=syntax
 set autoindent
+" Ruler
+set colorcolumn=80
 
 "################################################################
 "#                          Vim-Plug                            #
@@ -14,6 +16,8 @@ call plug#begin()
 " ###################################
 " # Useful general usage plugins    #
 " ###################################
+
+Plug 'tpope/vim-obsession'
 
 " Might need to install coc-snippets and set the snippets
 " directory using coc command `snippets.openSnippetFiles`
