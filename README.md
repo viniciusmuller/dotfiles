@@ -74,36 +74,46 @@
 
 - Development:
 
-  - Editor: [`vscode`](https://aur.archlinux.org/packages/visual-studio-code-bin/)
+  - Editors:
 
-    - Theme: `BeardedTheme Anthracite`
-    - Settings path: `~/.config/Code/User/settings.json`
+    - [`vim`](https://wiki.archlinux.org/index.php/vim#Installation):
 
-  - Languages version manager: [`asdf`](https://asdf-vm.com/#/core-manage-asdf?id=asdf)
+      - Dotfiles path: `~/.vim`
+      - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
 
-  - Databases:
+    - [`vscode`](https://aur.archlinux.org/packages/visual-studio-code-bin/):
 
-    - [`PostgreSQL`](https://wiki.archlinux.org/index.php/PostgreSQL)
-    - [`MariaDB`](https://wiki.archlinux.org/index.php/MariaDB)
+      - Theme: `BeardedTheme Anthracite`
+      - Settings path: `~/.config/Code/User/settings.json`
 
-  - Database client: [`beekeeper-studio`](https://aur.archlinux.org/packages/beekeeper-studio-bin/)
-  - REST client: [`insomnia`](https://aur.archlinux.org/packages/insomnia/)
-  - Containers: [`docker[-compose]`](https://wiki.archlinux.org/index.php/Docker)
+* Languages version manager: [`asdf`](https://asdf-vm.com/#/core-manage-asdf?id=asdf)
 
-- Editing:
+* Databases:
+
+  - [`PostgreSQL`](https://wiki.archlinux.org/index.php/PostgreSQL)
+  - [`MariaDB`](https://wiki.archlinux.org/index.php/MariaDB)
+
+* Database client: [`beekeeper-studio`](https://aur.archlinux.org/packages/beekeeper-studio-bin/)
+* REST client: [`insomnia`](https://aur.archlinux.org/packages/insomnia/)
+* Containers: [`docker[-compose]`](https://wiki.archlinux.org/index.php/Docker)
+
+- File manager: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
+  - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug/)
+  - Dotfiles path: `~/.config/ranger/`
+
+* Editing:
 
   - Image manipulation: [`gimp`](https://wiki.archlinux.org/index.php/GIMP#Installation)
     - Theme: [`GimpPs`](https://github.com/doctormo/GimpPs#basic-installation)
   - Pixel art: [`aseprite`](https://aur.archlinux.org/packages/aseprite/)
     - Theme: [`aseprite-studio-theme`](https://github.com/Lyutria/aseprite-studio-theme#usage)
 
-- Others:
+* Others:
 
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
   - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
   - PDF reader: [`foxitreader`](https://aur.archlinux.org/packages/foxitreader/)
   - Browser: [`chromium`](https://wiki.archlinux.org/index.php/chromium)
-  - File manager: [`ranger`](https://wiki.archlinux.org/index.php/ranger)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
   - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
