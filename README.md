@@ -28,7 +28,7 @@
       - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
     - Dotfile path: `~/.zshrc`
 
-- Font: [`Fira Code`](https://archlinux.org/packages/community/any/ttf-fira-code/)
+- Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
 
 - Unix commands replacements:
 
