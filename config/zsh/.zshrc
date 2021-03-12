@@ -14,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
 export EDITOR='vim'
-[ -z "$TMUX" ] && export TERM=xterm-256color
+[ -z "$TMUX" ] && export TERM=xterm-kitty
 
 ############################################################
 #                    ZSH CONFIGURATION                     #
@@ -177,4 +177,16 @@ alias tl="tmux ls"
 alias ta="tmux attach -t"
 alias tn="tmux new -s"
 alias tk="tmux kill-session -t"
+
+############################################################
+#                         MISC                             #
+############################################################
+
+TMUX_DEFAULT_SESSION="base"
+
+# Start shell within a tmux session if tmux is installed
+if command -v tmux &> /dev/null
+then
+  tmux new-session -A -s $TMUX_DEFAULT_SESSION
+fi
 
