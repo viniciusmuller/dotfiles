@@ -1,11 +1,3 @@
-set showcmd
-filetype plugin on
-syntax on
-set foldmethod=syntax
-set autoindent
-" Ruler
-set colorcolumn=80
-
 "################################################################
 "#                          Vim-Plug                            #
 "################################################################
@@ -13,25 +5,37 @@ set colorcolumn=80
 call plug#begin()
 
 " ###################################
-" # Session handling                #
+" # NerdTree                        #
 " ###################################
 
+Plug 'preservim/nerdtree'
+
+" ###################################
+" # Session handling                #
+" ###################################
+" Create sessions using the startify :SS command
+" vim-prossesion allows us to autosave sections
 
 Plug 'tpope/vim-obsession' | Plug 'dhruvasagar/vim-prosession'
-
 let g:prosession_on_startup = 0
 let g:prosession_last_session_dir = '~/.vim/session'
 
 Plug 'mhinz/vim-startify'
-
 let g:startify_session_dir = '~/.vim/session'
-
 let g:startify_lists = [
 \ { 'type': 'sessions',  'header': ['   Sessions']       },
 \ { 'type': 'files',     'header': ['   MRU']            },
 \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
 \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
 \ { 'type': 'commands',  'header': ['   Commands']       },
+\ ]
+let g:startify_custom_header = [
+\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
+\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
+\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
+\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
+\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
+\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
 \ ]
 
 cabbrev SClose call helpers#startify#stopsession()
@@ -44,21 +48,6 @@ cabbrev SDelete call helpers#startify#deletesession()
 " Might need to install coc-snippets and set the snippets
 " directory using coc command `snippets.openSnippetFiles`
 Plug 'honza/vim-snippets'
-
-let g:startify_custom_header = [
-\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
-\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
-\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
-\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
-\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
-\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
-\ ]
-
-Plug 'itchyny/lightline.vim'
-let g:lightline = {'colorscheme': 'one'}
-set laststatus=2
-set noshowmode
-set ttimeout ttimeoutlen=20
 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Required options for numbertoggle
@@ -76,6 +65,8 @@ let g:closetag_filenames = '*.html,*.tsx,*.jsx'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 let $FZF_DEFAULT_COMMAND = 'fd -H'
 let $FZF_DEFAULT_OPTS = '--exact'
 
@@ -90,15 +81,18 @@ Plug 'Yggdroot/indentLine'
 " ###################################
 
 Plug 'takac/vim-hardtime'
-
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_default_on = 1
-let g:hardtime_allow_different_key = 1
 
 " ###################################
 " # Language plugins                #
 " ###################################
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " ###################################
 " # Language plugins                #
@@ -107,14 +101,23 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-
 " ###################################
-" # Themes                          #
+" # Styling                         #
 " ###################################
+
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ 'colorscheme': 'one'
+      \ }
+
+set laststatus=2
+set noshowmode
+set ttimeout ttimeoutlen=20
+
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84'
@@ -137,7 +140,22 @@ set bg=dark
 "################################################################
 
 " Remove trailing whitespaces on write
-au BufWritePre * %s/\s\+$//e
+augroup my_autocommands
+  au BufWritePre * %s/\s\+$//e
+augroup end
+
+"################################################################
+"#                          Functions                           #
+"################################################################
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 "################################################################
 "#                          Mappings                            #
@@ -149,8 +167,8 @@ map <Space> <Leader>
 nnoremap <Leader>w <C-w><C-w>
 
 " Other mappings
-nnoremap <S-Enter> O<Esc>j
 nnoremap <CR> o<Esc>k
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
@@ -166,6 +184,9 @@ nnoremap <C-P> :Files<CR>
 "################################################################
 "#                            Misc                              #
 "################################################################
+
+filetype plugin on
+syntax on
 
 set scrolloff=5
 
@@ -190,6 +211,16 @@ set incsearch
 
 " Dont fold a file on open
 set foldlevel=99
+
+set showcmd
+set foldmethod=syntax
+set autoindent
+
+" Ruler
+set colorcolumn=80
+
+" Ignore case on completion
+set wildignorecase
 
 "################################################################
 "#                   Conquer of Completion                      #
@@ -262,9 +293,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -272,8 +300,10 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
+augroup coc_autocommands
   autocmd!
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
