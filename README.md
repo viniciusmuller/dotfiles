@@ -112,7 +112,7 @@
 
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
   - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
-  - PDF reader: [`foxitreader`](https://aur.archlinux.org/packages/foxitreader/)
+  - PDF reader: [`zathura`](https://wiki.archlinux.org/index.php/zathura#Installation)
   - Browser: [`chromium`](https://wiki.archlinux.org/index.php/chromium)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
