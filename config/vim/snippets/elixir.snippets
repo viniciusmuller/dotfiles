@@ -1,4 +1,14 @@
 snippet ok
 	{:ok, $1}
+
+snippet oke
+	{:ok, $1} = $2
+
 snippet err
 	{:error, $1}
+
+snippet erre
+	{:error, $1} = $2
+
+snippet ht
+	[${2:head} | ${3:tail}] = $1
