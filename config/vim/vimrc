@@ -164,7 +164,9 @@ endfunction
 " Mappings for the leader (space) key
 map <Space> <Leader>
 
+" Toggle windows
 nnoremap <Leader>w <C-w><C-w>
+nnoremap <Leader>f :call CocAction('format')<CR>
 
 " Other mappings
 nnoremap <CR> o<Esc>k
@@ -297,8 +299,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup coc_autocommands
   autocmd!
