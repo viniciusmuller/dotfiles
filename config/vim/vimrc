@@ -218,6 +218,9 @@ set showcmd
 set foldmethod=syntax
 set autoindent
 
+" Use mouse to scroll coc.nvim popups
+set mouse=a
+
 " Ruler
 set colorcolumn=80
 
