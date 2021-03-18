@@ -1,4 +1,10 @@
 "################################################################
+"#                          Variables                           #
+"################################################################
+
+let g:prettier_supported_extensions = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+
+"################################################################
 "#                          Vim-Plug                            #
 "################################################################
 
@@ -83,9 +89,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'takac/vim-hardtime'
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_default_on = 1
+let g:hardtime_maxcount = 2
 
 " ###################################
-" # Language plugins                #
+" # Language servers / others       #
 " ###################################
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -100,6 +107,7 @@ let g:prettier#autoformat_require_pragma = 0
 
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'purescript-contrib/purescript-vim'
 
 " ###################################
 " # Styling                         #
@@ -148,6 +156,15 @@ augroup end
 "#                          Functions                           #
 "################################################################
 
+function! Format()
+  let l:extension = expand('%:e')
+  if index(g:prettier_supported_extensions, l:extension) >= 0
+    execute ':Prettier'
+  else
+    call CocAction('format')
+  endif
+endfunction
+
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   let path = expand('%:p')
@@ -166,7 +183,7 @@ map <Space> <Leader>
 
 " Toggle windows
 nnoremap <Leader>w <C-w><C-w>
-nnoremap <Leader>f :call CocAction('format')<CR>
+nnoremap <Leader>f :call Format()<CR>
 
 " Other mappings
 nnoremap <CR> o<Esc>k
@@ -359,11 +376,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
