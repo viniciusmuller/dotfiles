@@ -36,13 +36,13 @@ let g:startify_lists = [
 \ { 'type': 'commands',  'header': ['   Commands']       },
 \ ]
 let g:startify_custom_header = [
-\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
-\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
-\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
-\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
-\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
-\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
-\ ]
+ \  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
+ \  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
+ \  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
+ \  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
+ \  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
+ \  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
+ \ ]
 
 cabbrev SClose call helpers#startify#stopsession()
 cabbrev SDelete call helpers#startify#deletesession()
@@ -51,13 +51,19 @@ cabbrev SDelete call helpers#startify#deletesession()
 " # Useful general usage plugins    #
 " ###################################
 
-" Might need to install coc-snippets and set the snippets
-" directory using coc command `snippets.openSnippetFiles`
-Plug 'honza/vim-snippets'
+" " Might need to install coc-snippets and set the snippets
+" " directory using coc command `snippets.openSnippetFiles`
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger = '<Nop>'
+imap <tab> <Plug>(coc-snippets-expand)
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<s-tab>'
 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Required options for numbertoggle
 set number relativenumber
+
+Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_git_executable = 'git'
@@ -65,9 +71,6 @@ let g:gitgutter_set_sign_backgrounds = 1
 let g:gitgutter_grep = 'rg'
 set signcolumn=yes
 set updatetime=100
-
-Plug 'alvan/vim-closetag'
-let g:closetag_filenames = '*.html,*.tsx,*.jsx'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -147,8 +150,8 @@ set bg=dark
 "#                        Autocommands                          #
 "################################################################
 
-" Remove trailing whitespaces on write
 augroup my_autocommands
+  " Remove trailing whitespaces on write
   au BufWritePre * %s/\s\+$//e
 augroup end
 
@@ -165,6 +168,7 @@ function! Format()
   endif
 endfunction
 
+" Add path to lightline filenames
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   let path = expand('%:p')
@@ -183,9 +187,9 @@ map <Space> <Leader>
 
 " Toggle windows
 nnoremap <Leader>w <C-w><C-w>
-nnoremap <Leader>f :call Format()<CR>
 
-" Other mappings
+nnoremap <Leader>f :call Format()<CR>
+nnoremap <Leader>k :bd<CR>
 nnoremap <CR> o<Esc>k
 nnoremap <C-n> :NERDTreeToggle<CR>
 
