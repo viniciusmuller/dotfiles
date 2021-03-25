@@ -61,10 +61,19 @@
 
       - Dotfiles path: `~/.config/i3status-rust/`
 
+- Screenlocking:
+
+  - Locker: [`i3lock-colors`](https://aur.archlinux.org/packages/i3lock-color/)
+    - Custom script: [`myi3lock`](bin/myi3lock)
+  - Helper: [`xautolock`](https://archlinux.org/packages/community/x86_64/xautolock)
+
 - Software mixer: [`pulseaudio`](https://wiki.archlinux.org/index.php/PulseAudio#Installation)
 
   - Mixer: `pulsemixer`
   - Dotfile path: `~/.config/pulse/client.conf`
+
+* Browser: [`firefox`](https://wiki.archlinux.org/index.php/Firefox#Installing):
+  - Theme: [`pywalfox`](https://github.com/frewacom/pywalfox)
 
 - Notifications daemon: [`dunst`](https://wiki.archlinux.org/index.php/Dunst#Installation)
 
@@ -108,15 +117,23 @@
   - Pixel art: [`aseprite`](https://aur.archlinux.org/packages/aseprite/)
     - Theme: [`aseprite-studio-theme`](https://github.com/Lyutria/aseprite-studio-theme#usage)
 
+* Ricing:
+
+  - [`pywal`](https://github.com/dylanaraps/pywal)
+  - [`cava`](https://aur.archlinux.org/packages/cava)
+  - [`tty-clock`](https://aur.archlinux.org/packages/tty-clock)
+
 * Others:
 
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
   - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
   - PDF reader: [`zathura`](https://wiki.archlinux.org/index.php/zathura#Installation)
-  - Browser: [`chromium`](https://wiki.archlinux.org/index.php/chromium)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
   - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
   - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
+  - Launcher: [`Luke Smith's dmenu fork`](https://github.com/LukeSmithxyz/dmenu)
 
 <h2>👀 Preview:</h2>
+<img src="https://i.imgur.com/9xersCi.png" alt="desktop preview">
+<img src="https://i.imgur.com/BYu2y6O.png" alt="desktop preview">
