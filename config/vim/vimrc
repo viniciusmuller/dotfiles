@@ -2,7 +2,7 @@
 "#                          Variables                           #
 "################################################################
 
-let g:prettier_supported_extensions = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+let g:prettier_supported_extensions = ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'md', 'vue', 'yaml', 'yml', 'html']
 
 "################################################################
 "#                          Vim-Plug                            #
@@ -36,13 +36,13 @@ let g:startify_lists = [
 \ { 'type': 'commands',  'header': ['   Commands']       },
 \ ]
 let g:startify_custom_header = [
- \  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
- \  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
- \  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
- \  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
- \  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
- \  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
- \ ]
+\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
+\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
+\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
+\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
+\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
+\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
+\ ]
 
 cabbrev SClose call helpers#startify#stopsession()
 cabbrev SDelete call helpers#startify#deletesession()
@@ -51,8 +51,8 @@ cabbrev SDelete call helpers#startify#deletesession()
 " # Useful general usage plugins    #
 " ###################################
 
-" " Might need to install coc-snippets and set the snippets
-" " directory using coc command `snippets.openSnippetFiles`
+" Might need to install coc-snippets and set the snippets
+" directory using coc command `snippets.openSnippetFiles`
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger = '<Nop>'
 imap <tab> <Plug>(coc-snippets-expand)
@@ -62,15 +62,6 @@ let g:coc_snippet_prev = '<s-tab>'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " Required options for numbertoggle
 set number relativenumber
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_git_executable = 'git'
-let g:gitgutter_set_sign_backgrounds = 1
-let g:gitgutter_grep = 'rg'
-set signcolumn=yes
-set updatetime=100
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -83,7 +74,19 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'Yggdroot/indentLine'
+
+" ###################################
+" # Git wrappers                    #
+" ###################################
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_git_executable = 'git'
+let g:gitgutter_set_sign_backgrounds = 1
+let g:gitgutter_grep = 'rg'
+set signcolumn=yes
+set updatetime=100
 
 " ###################################
 " # Vim-hardtime                    #
@@ -101,8 +104,6 @@ let g:hardtime_maxcount = 2
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
 
 " ###################################
 " # Language plugins                #
@@ -115,6 +116,8 @@ Plug 'purescript-contrib/purescript-vim'
 " ###################################
 " # Styling                         #
 " ###################################
+
+Plug 'Yggdroot/indentLine'
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -133,6 +136,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84'
 Plug 'sainnhe/gruvbox-material'
+
+" ###################################
+" # Others                          #
+" ###################################
+
+Plug 'parkr/vim-jekyll'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 call plug#end()
 
@@ -153,6 +163,8 @@ set bg=dark
 augroup my_autocommands
   " Remove trailing whitespaces on write
   au BufWritePre * %s/\s\+$//e
+  " Open windows in vertical split by default
+  au WinNew * wincmd L
 augroup end
 
 "################################################################
@@ -182,14 +194,24 @@ endfunction
 "#                          Mappings                            #
 "################################################################
 
-" Mappings for the leader (space) key
+" ###################################
+" # Leader mappings                 #
+" ###################################
+
 map <Space> <Leader>
 
 " Toggle windows
 nnoremap <Leader>w <C-w><C-w>
 
 nnoremap <Leader>f :call Format()<CR>
-nnoremap <Leader>k :bd<CR>
+
+" TODO: not working "
+" nnoremap <Leader>k :bd<CR>
+
+" ###################################
+" # Other mappings                  #
+" ###################################
+
 nnoremap <CR> o<Esc>k
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -198,11 +220,11 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 inoremap <C-e> <Esc>la
 
 " Swap buffers
-nnoremap <C-J> :bprev<CR>
-nnoremap <C-K> :bnext<CR>
+nnoremap <C-j> :bprev<CR>
+nnoremap <C-k> :bnext<CR>
 
-" Search files with fzf.vim
-nnoremap <C-P> :Files<CR>
+" Search files with fzf
+nnoremap <C-p> :Files<CR>
 
 "################################################################
 "#                            Misc                              #
@@ -321,10 +343,6 @@ endfunction
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup coc_autocommands
   autocmd!
