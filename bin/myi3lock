@@ -1,0 +1,34 @@
+#!/bin/sh
+
+B='#00000000'  # blank
+C='#ffffff22'  # clear ish
+D='#141414cc'  # default
+T='#ffffffee'  # text
+W='#880000bb'  # wrong
+V='#141414bb'  # verifying
+
+i3lock \
+--veriftext="..." \
+--wrongtext=":(" \
+--insidevercolor=$C   \
+--ringvercolor=$V     \
+\
+--insidewrongcolor=$C \
+--ringwrongcolor=$W   \
+\
+--insidecolor=$B      \
+--ringcolor=$D        \
+--linecolor=$B        \
+--separatorcolor=$D   \
+\
+--verifcolor=$T        \
+--wrongcolor=$T        \
+--timecolor=$T        \
+--datecolor=$T        \
+--layoutcolor=$T      \
+--keyhlcolor=$T       \
+--bshlcolor=$W        \
+\
+--screen 1            \
+--blur 5              \
+--clock               \

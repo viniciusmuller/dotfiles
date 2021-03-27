@@ -1,9 +1,16 @@
 <h1 align="center">My linux setup and dotfiles</h1>
 
-<br />
+## Installation
+- Nice mode: Take a look at the setup and dotfiles and symlink the files that you'd like to try
+- Hardcore mode: `ln -s config ~/.config`
 
-<h2>⚙️ Setup:</h2>
+> Not all the dotfiles here keeps at `~/.config`, check the setup below for info on where you should link the dotfiles.
 
+## Structure
+- `config`: Dotfiles directory
+- `bin`: Some useful scripts that I wrote and are used in the dotfiles
+
+## Setup
 - OS: `Arch Linux`
 
 - Bootloader: `grub`
@@ -39,6 +46,7 @@
   - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
 
 - Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
+  - Modify keyboard mappings: [`xmodmap`](https://wiki.archlinux.org/index.php/xmodmap#Installation)
 
 - Display manager: [`lightdm`](https://wiki.archlinux.org/index.php/LightDM#Installation)
 
@@ -54,6 +62,9 @@
     - Dotfiles path: `~/.config/awesome/`
 
   - [`i3`](https://wiki.archlinux.org/index.php/i3):
+    - Custom scripts:
+      - Lock Screen (Mod+m): `bin/myi3lock`
+      - Toggle layout (Mod+p): `bin/toggle_layout`
 
     - Dotfiles path: `~/.config/i3/`
 
