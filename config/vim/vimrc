@@ -119,6 +119,9 @@ Plug 'purescript-contrib/purescript-vim'
 
 Plug 'Yggdroot/indentLine'
 
+Plug 'bling/vim-bufferline'
+let g:bufferline_show_bufnr = 0
+
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'component_function': {
@@ -163,8 +166,6 @@ set bg=dark
 augroup my_autocommands
   " Remove trailing whitespaces on write
   au BufWritePre * %s/\s\+$//e
-  " Open windows in vertical split by default
-  au WinNew * wincmd L
 augroup end
 
 "################################################################
@@ -203,7 +204,7 @@ map <Space> <Leader>
 " Toggle windows
 nnoremap <Leader>w <C-w><C-w>
 
-nnoremap <Leader>f :call Format()<CR>
+nnoremap <Leader>call Format()
 
 " TODO: not working "
 " nnoremap <Leader>k :bd<CR>
