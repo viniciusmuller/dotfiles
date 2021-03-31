@@ -1,4 +1,3 @@
-
 ############################################################
 #                      PATHS/EXPORTS                       #
 ############################################################
@@ -10,6 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 . $HOME/.asdf/asdf.sh
 
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
@@ -87,7 +87,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-vi-mode
+  # zsh-vi-mode
   zsh-syntax-highlighting
   git
 )
@@ -168,6 +168,9 @@ SPACESHIP_GIT_BRANCH_COLOR=#6ffcbf
 ############################################################
 
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+
+alias v="vim"
+
 alias gs="git status"
 
 alias l="exa -lah --icons"
@@ -178,15 +181,26 @@ alias ta="tmux attach -t"
 alias tn="tmux new -s"
 alias tk="tmux kill-session -t"
 
+alias pacs="sudo pacman -S"
+alias pacup="sudo pacman -Syu"
+alias pacr="sudo sudo pacman -Rns"
+alias pacf="pacman -Ss"
+alias pacq="pacman -Q"
+
 ############################################################
 #                         MISC                             #
 ############################################################
 
-TMUX_DEFAULT_SESSION="base"
+# Reloads pywal colorscheme
+if command -v wal &> /dev/null
+then
+  (cat ~/.cache/wal/sequences &)
+fi
 
 # Start shell within a tmux session if tmux is installed
 if command -v tmux &> /dev/null
 then
+  TMUX_DEFAULT_SESSION="base"
   tmux new-session -A -s $TMUX_DEFAULT_SESSION
 fi
 
