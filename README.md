@@ -100,6 +100,11 @@
 
       - Dotfiles path: `~/.vim`
       - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
+      
+    - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
+      - Font: `Jetbrains Mono`
+      - Framework: [`Doom Emacs`](https://github.com/hlissner/doom-emacs#install)
+        - Settings path: `~/.config/doom`
 
     - [`vscode`](https://aur.archlinux.org/packages/visual-studio-code-bin/):
 
