@@ -1,5 +1,8 @@
-# Swap capslock and esc keys
-setxkbmap -option caps:swapescape
-# Restore the wallpapers
-nitrogen --restore
+setxkbmap -layout 'us(intl)'
+[[ command -v xmodmap ]] && xmodmap ~/.xmodmap
 
+if command -v wal &> /dev/null
+then
+  # Restore pywal colorscheme
+  wal -R
+fi
