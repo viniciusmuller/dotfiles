@@ -19,24 +19,6 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -48,11 +30,6 @@ bindsym $mod+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nb '#0d0d0d' -sf '#0d0d0d' -sb '#d080ff' -nf '#d080ff'
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -148,6 +125,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+r mode "resize"
+bindsym Print exec flameshot gui
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -173,12 +153,19 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
-bindsym Print exec flameshot gui
+client.focused #eeeeeee #ffffff #ffffff #2e9ef4
 
-default_border none
-
+# i3gaps
+for_window [class=".*"] border pixel 3
 gaps inner 20
+smart_borders on
+
+# This assumes that you have a script called myi3lock in your path
+# TODO: Fix hardcoded paths and figure out why xautolock path is broken #
+exec xautolock -time 15 -locker ~/bin/myi3lock -notify 15 -notifier "notify-send -u critical -t 14000 -- 'LOCKING screen in 15 seconds'"
+
+bindsym $mod+m exec ~/bin/myi3lock
+bindsym $mod+p exec ~/bin/toggle_layout
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -188,7 +175,7 @@ bar {
   status_command i3status-rs
 
   colors {
-    focused_workspace #141414 #d787ff #000000
+    focused_workspace #141414 #efefef #000000
     inactive_workspace #141414 #1c1c1c #ababab
   }
 }

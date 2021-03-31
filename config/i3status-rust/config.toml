@@ -15,6 +15,12 @@ warning = 20.0
 alert = 10.0
 
 [[block]]
+block = "keyboard_layout"
+driver = "setxkbmap"
+on_click = "~/bin/toggle_layout"
+interval = 1
+
+[[block]]
 block = "temperature"
 interval = 10
 format = "{min}° min, {max}° max, {average}° avg"
