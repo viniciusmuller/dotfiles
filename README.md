@@ -20,12 +20,8 @@
 - CLI:
 
   - Terminal: [`kitty`](https://wiki.archlinux.org/index.php/Kitty#Installation)
-
+    - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
     - Dotfiles path: `~/.config/kitty/`
-
-  - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
-
-    - Dotfile path: `~/.tmux.conf`
 
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
@@ -35,15 +31,22 @@
       - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
     - Dotfile path: `~/.zshrc`
 
-- Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
+  - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
+    - Dotfile path: `~/.tmux.conf`
+  
+  - Unix commands replacements:
 
-- Unix commands replacements:
+    - ls: [`exa`](https://github.com/ogham/exa#arch-linux)
+    - cat: [`bat`](https://github.com/sharkdp/bat#on-arch-linux)
+    - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
+    - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
+    - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
 
-  - ls: [`exa`](https://github.com/ogham/exa#arch-linux)
-  - cat: [`bat`](https://github.com/sharkdp/bat#on-arch-linux)
-  - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
-  - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
-  - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
+  - Useful programs:
+    - [`eg`](https://github.com/srsudar/eg)
+    - [`tig`](https://github.com/jonas/tig)
+    - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
+
 
 - Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
   - Modify keyboard mappings: [`xmodmap`](https://wiki.archlinux.org/index.php/xmodmap#Installation)
@@ -102,9 +105,9 @@
       - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
       
     - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
-      - Font: `Jetbrains Mono`
+      - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
       - Framework: [`Doom Emacs`](https://github.com/hlissner/doom-emacs#install)
-        - Settings path: `~/.config/doom`
+        - Dotfiles path: `~/.config/doom`
 
     - [`vscode`](https://aur.archlinux.org/packages/visual-studio-code-bin/):
 
