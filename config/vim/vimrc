@@ -126,20 +126,22 @@ Plug 'purescript-contrib/purescript-vim'
 
 Plug 'Yggdroot/indentLine'
 
-Plug 'bling/vim-bufferline'
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
-
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
       \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
       \   'filename': 'LightlineFilename',
       \ },
-      \ 'colorscheme': 'one'
       \ }
 
-set laststatus=2
 set noshowmode
+set laststatus=2
 set ttimeout ttimeoutlen=20
 
 Plug 'ryanoasis/vim-devicons'
@@ -279,11 +281,17 @@ nnoremap <Leader>pv :AV<cr>
 " Reload vimrc
 nnoremap <silent> <Leader>vr :source ~/.vim/vimrc<cr>
 
+" Exit vim
+nnoremap <silent> <Leader>vq :quitall<cr>
+
 " ###################################
 " # Other mappings                  #
 " ###################################
 
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+
+" Repeat last macro
+nnoremap Q @@
 
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
@@ -298,11 +306,14 @@ syntax on
 
 set noswapfile
 
-set relativenumber
-
 set undofile                " Save undos after file closes
-set undodir=$HOME/.vim/undo " where to save undo histories
+set undodir=$HOME/.vim/undo " Where to save undo histories
 set undolevels=1000         " How many undos
+
+set lazyredraw
+
+" Show relative numbers mantaining the current line number
+set number relativenumber
 
 " This might be slow on some terminal emulators
 set cursorline
@@ -336,16 +347,20 @@ set expandtab
 set linebreak
 
 " Search options:
-set ignorecase
+set smartcase ignorecase
 " Highlight matches
 set hlsearch
 set incsearch
 
 " Dont fold a file on open
 set foldlevel=99
+set foldmethod=syntax
+" TODO
+" set foldmethod=indent: Fold based on indention levels.
+" set foldnestmax=3: Only fold up to three nested levels.
+" set nofoldenable: Disable folding by default.
 
 set showcmd
-set foldmethod=syntax
 set autoindent
 
 " Use mouse to scroll coc.nvim popups
