@@ -15,22 +15,11 @@ let g:prettier_supported_extensions = [
 call plug#begin()
 
 " ###################################
-" # NerdTree                        #
-" ###################################
-
-Plug 'preservim/nerdtree'
-
-" ###################################
 " # Session handling                #
 " ###################################
-" Create sessions using the startify :SS command
-" vim-prossesion allows us to autosave sections
-
-Plug 'tpope/vim-obsession' | Plug 'dhruvasagar/vim-prosession'
-let g:prosession_on_startup = 0
-let g:prosession_last_session_dir = '~/.vim/session'
 
 Plug 'mhinz/vim-startify'
+let g:startify_session_persistence = 1
 let g:startify_session_dir = '~/.vim/session'
 let g:startify_lists = [
 \ { 'type': 'sessions',  'header': ['   Sessions'      ] },
@@ -39,17 +28,14 @@ let g:startify_lists = [
 \ { 'type': 'bookmarks', 'header': ['   Bookmarks'     ] },
 \ { 'type': 'commands',  'header': ['   Commands'      ] },
 \ ]
-let g:startify_custom_header = [
-\  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
-\  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
-\  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
-\  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
-\  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
-\  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
-\ ]
-
-cabbrev SClose call helpers#startify#stopsession()
-cabbrev SDelete call helpers#startify#deletesession()
+" let g:startify_custom_header = [
+" \  '      ██╗   ██╗██╗███╗   ███╗    ██████╗ ██╗███████╗███████╗███████╗██╗',
+" \  '      ██║   ██║██║████╗ ████║    ██╔══██╗██║██╔════╝██╔════╝██╔════╝██║',
+" \  '      ██║   ██║██║██╔████╔██║    ██║  ██║██║█████╗  ███████╗█████╗  ██║',
+" \  '      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║██╔══╝  ╚════██║██╔══╝  ██║',
+" \  '       ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝██║███████╗███████║███████╗███████╗',
+" \  '        ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝',
+" \ ]
 
 " ###################################
 " # Useful general usage plugins    #
@@ -69,7 +55,9 @@ let g:fzf_buffers_jump = 1
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let $FZF_DEFAULT_COMMAND = 'fd -H'
-let $FZF_DEFAULT_OPTS = '--exact'
+let $FZF_DEFAULT_OPTS = '--exact --reverse'
+Plug 'stsewd/fzf-checkout.vim'
+let g:fzf_checkout_git_options = '--sort=-committerdate'
 
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'
@@ -79,7 +67,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tommcdo/vim-lion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dahu/vim-fanfingtastic'
+Plug 'preservim/nerdtree'
+
 Plug 'moll/vim-bbye'
+Plug 'gcmt/taboo.vim'
+" Make sessions remember taboo tabs names
+set sessionoptions+=tabpages,globals
 
 " ###################################
 " # Git wrappers                    #
@@ -128,19 +121,21 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \   'filename': 'LightlineFilename',
-      \ },
-      \ }
+\ 'colorscheme': 'wombat',
+\   'active': {
+\     'right': [ [ 'lineinfo' ],
+\                [ 'percent' ],
+\                [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
+\   },
+\   'component_function': {
+\     'gitbranch': 'FugitiveHead',
+\     'filename': 'LightlineFilename',
+\   },
+\ }
 
+" Don't show the default vim statusline messages
 set noshowmode
+
 set laststatus=2
 set ttimeout ttimeoutlen=20
 
@@ -176,13 +171,15 @@ set bg=dark
 augroup my_autocommands
   " Remove trailing whitespaces on write
   au BufWritePre * %s/\s\+$//e
+  " Open help windows vertically splitted
+  au FileType help wincmd L
 augroup end
 
 "################################################################
 "#                          Functions                           #
 "################################################################
 
-function! Format()
+function Format()
   let l:extension = expand('%:e')
   if index(g:prettier_supported_extensions, l:extension) >= 0
     execute ':Prettier'
@@ -192,7 +189,7 @@ function! Format()
 endfunction
 
 " Add path to lightline filenames
-function! LightlineFilename()
+function LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   let path = expand('%:p')
   if path[:len(root)-1] ==# root
@@ -211,6 +208,18 @@ function! s:show_documentation()
   endif
 endfunction
 
+function CommandWithInput(command, prompt)
+  let user_input = input(a:prompt)
+  execute a:command . ' ' . user_input
+endfunction
+
+"################################################################
+"#                          Commands                            #
+"################################################################
+
+command TabOpen call CommandWithInput(':TabooOpen', 'Tab name: ')
+command TabRename call CommandWithInput(':TabooRename', 'Tab name: ')
+
 "################################################################
 "#                          Mappings                            #
 "################################################################
@@ -224,8 +233,6 @@ map <Space> <Leader>
 " # b - Buffer                      #
 " ###################################
 
-" TODO: Use a plugin to don't delete the window when a buffer is closed
-
 " Save and delete current buffer
 nnoremap <silent> <Leader>bs :update<cr>
 nnoremap <silent> <Leader>bd :Bdelete<cr>
@@ -238,41 +245,77 @@ nnoremap <silent> <Leader>bp :bprev<cr>
 " # w - Window                      #
 " ###################################
 
-" Toggle windows
-nnoremap <Leader>wn <C-w>w
-nnoremap <Leader>wp <C-w>W
+" Delegate vim's window namespace to <leader>w
+noremap <Leader>w <C-w>
 
-" Delete window
-nnoremap <silent> <Leader>wd :close<cr>
-" Vertically split window
-nnoremap <Leader>wv <C-w>v
-" Rotate windows
-nnoremap <Leader>wr <C-w>r
+" ###################################
+" # t - Tab                         #
+" ###################################
+
+nnoremap <Leader>to :TabOpen<cr>
+nnoremap <Leader>tr :TabRename<cr>
+nnoremap <Leader>tq :tabclose<cr>
 
 " ###################################
 " # c - Coc.nvim                    #
 " ###################################
 
+" Coc format
 nnoremap <silent> <Leader>cf :call Format()<cr>
 
 " ###################################
-" # s - Search                      #
+" # s - Session                     #
 " ###################################
-" TODO: Maybe use `f` for find and leave `s` for sessions
 
-" Search for filename
-nnoremap <silent> <Leader>sf :Files<cr>
-" Search for file contents
-" TODO: Search for commits on c and find another key to ripgrep
-nnoremap <silent> <Leader>sc :Rg<cr>
-" Search in open buffers
-nnoremap <silent> <Leader>sb :Buffers<cr>
+nnoremap <silent> <Leader>st :Startify<cr>
+nnoremap <silent> <Leader>ss :SSave<cr>
+nnoremap <silent> <Leader>sl :SLoad<cr>
+nnoremap <silent> <Leader>sd :SDelete<cr>
+nnoremap <silent> <Leader>sc :SClose<CR>
+
+" ###################################
+" # f - Find                        #
+" ###################################
+
+" Find files
+nnoremap <silent> <Leader>ff :Files<cr>
+" Find git files
+nnoremap <silent> <Leader>fg :GFiles<cr>
+" Find commits
+nnoremap <silent> <Leader>fc :Commits<cr>
+" Find buffers
+nnoremap <silent> <Leader>fb :Buffers<cr>
+" Find substring in files
+nnoremap <silent> <Leader>fs :Rg<cr>
+" Find windows
+nnoremap <silent> <Leader>fw :Windows<cr>
 
 " ###################################
 " # p - Project                     #
 " ###################################
 
-nnoremap <Leader>pv :AV<cr>
+" Open alternative projectionist file on vertical split
+nnoremap <silent> <Leader>pv :AV<cr>
+
+" ###################################
+" # g - Git                         #
+" ###################################
+
+" Git status
+nnoremap <silent> <Leader>gs :G<cr>
+
+" Git diff
+nnoremap <silent> <Leader>gd :Gdiff<cr>
+
+" Git commit
+nnoremap <silent> <Leader>gc :G commit<cr>
+
+nnoremap <silent> <Leader>gb :GBranches<cr>
+nnoremap <silent> <Leader>gt :GTags<cr>
+
+" Select sides when resolving branch conflicts
+nnoremap <silent> <Leader>gf :diffget //2<cr>
+nnoremap <silent> <Leader>gj :diffget //3<cr>
 
 " ###################################
 " # v - Vim utils                   #
@@ -293,6 +336,9 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 " Repeat last macro
 nnoremap Q @@
 
+" Go to first character in line
+nnoremap H ^
+
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
 inoremap <C-e> <Esc>la
@@ -303,8 +349,6 @@ inoremap <C-e> <Esc>la
 
 filetype plugin on
 syntax on
-
-set noswapfile
 
 set undofile                " Save undos after file closes
 set undodir=$HOME/.vim/undo " Where to save undo histories
@@ -424,11 +468,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
