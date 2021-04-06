@@ -56,8 +56,12 @@ let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let $FZF_DEFAULT_COMMAND = 'fd -H'
 let $FZF_DEFAULT_OPTS = '--exact --reverse'
+" TODO: Fzf checkout detaching head when trying to checkout
 Plug 'stsewd/fzf-checkout.vim'
 let g:fzf_checkout_git_options = '--sort=-committerdate'
+let g:fzf_tag_actions = {
+      \ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
+      \}
 
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'
@@ -65,10 +69,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 Plug 'tommcdo/vim-lion'
+Plug 'wellle/targets.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dahu/vim-fanfingtastic'
 Plug 'preservim/nerdtree'
 
+" Buffers and tabs managemenet
 Plug 'moll/vim-bbye'
 Plug 'gcmt/taboo.vim'
 " Make sessions remember taboo tabs names
@@ -91,7 +97,8 @@ set updatetime=100
 " ###################################
 
 Plug 'takac/vim-hardtime'
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*", ".git/*" ]
+let g:hardtime_ignore_quickfix = 1
 let g:hardtime_default_on = 1
 let g:hardtime_maxcount = 2
 
@@ -173,6 +180,8 @@ augroup my_autocommands
   au BufWritePre * %s/\s\+$//e
   " Open help windows vertically splitted
   au FileType help wincmd L
+  " Meaningful backup name, ex: filename@2015-04-05.14:59
+  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 augroup end
 
 "################################################################
@@ -245,6 +254,7 @@ nnoremap <silent> <Leader>bp :bprev<cr>
 " # w - Window                      #
 " ###################################
 
+" TODO: add window fullscreen mappings "
 " Delegate vim's window namespace to <leader>w
 noremap <Leader>w <C-w>
 
@@ -289,6 +299,8 @@ nnoremap <silent> <Leader>fb :Buffers<cr>
 nnoremap <silent> <Leader>fs :Rg<cr>
 " Find windows
 nnoremap <silent> <Leader>fw :Windows<cr>
+" Find mappings
+nnoremap <silent> <Leader>fm :Maps<cr>
 
 " ###################################
 " # p - Project                     #
@@ -303,19 +315,18 @@ nnoremap <silent> <Leader>pv :AV<cr>
 
 " Git status
 nnoremap <silent> <Leader>gs :G<cr>
-
 " Git diff
 nnoremap <silent> <Leader>gd :Gdiff<cr>
-
 " Git commit
-nnoremap <silent> <Leader>gC :G commit<cr>
-" Git push
-nnoremap <silent> <Leader>gP :G push<cr>
-
+nnoremap <silent> <Leader>gc :G commit<cr>
+" Git log
+nnoremap <silent> <Leader>gl :Glog<cr>
+" Search and manage git branches
 nnoremap <silent> <Leader>gb :GBranches<cr>
+" Search and manage git tags
 nnoremap <silent> <Leader>gt :GTags<cr>
 
-" Select sides when resolving branch conflicts
+" Select sides when resolving merge conflicts
 nnoremap <silent> <Leader>gf :diffget //2<cr>
 nnoremap <silent> <Leader>gj :diffget //3<cr>
 
@@ -326,6 +337,12 @@ nnoremap <silent> <Leader>gj :diffget //3<cr>
 " Reload vimrc
 nnoremap <silent> <Leader>vr :source ~/.vim/vimrc<cr>
 
+" Install plugins
+nnoremap <silent> <Leader>vi :PlugInstall<cr>
+
+" Clean unused
+nnoremap <silent> <Leader>vc :PlugClean<cr>
+
 " Exit vim
 nnoremap <silent> <Leader>vq :quitall<cr>
 
@@ -334,6 +351,8 @@ nnoremap <silent> <Leader>vq :quitall<cr>
 " ###################################
 
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+
+nnoremap <C-k> <C-u>
 
 " Repeat last macro
 nnoremap Q @@
@@ -352,9 +371,20 @@ inoremap <C-e> <Esc>la
 filetype plugin on
 syntax on
 
+set encoding=utf-8
+
 set undofile                " Save undos after file closes
 set undodir=$HOME/.vim/undo " Where to save undo histories
 set undolevels=1000         " How many undos
+
+" Some coc language servers have issues with backup files, see #649.
+set backup
+" Where to store backups
+set backupdir=~/.vim/backup
+" Make backup before overwriting the current buffer
+set writebackup
+" Overwrite the original backup file
+set backupcopy=yes
 
 set lazyredraw
 
@@ -398,13 +428,9 @@ set smartcase ignorecase
 set hlsearch
 set incsearch
 
-" Dont fold a file on open
-set foldlevel=99
-set foldmethod=syntax
-" TODO
-" set foldmethod=indent: Fold based on indention levels.
-" set foldnestmax=3: Only fold up to three nested levels.
-" set nofoldenable: Disable folding by default.
+set foldmethod=indent " Fold based on indention levels.
+set foldnestmax=3 " Only fold up to three nested levels.
+set nofoldenable " Disable folding by default.
 
 set showcmd
 set autoindent
@@ -418,20 +444,14 @@ set colorcolumn=80
 " Ignore case on completion
 set wildignorecase
 
+set autoread
+
 "################################################################
 "#                   Conquer of Completion                      #
 "################################################################
 
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-
 " TextEdit might fail if hidden is not set.
 set hidden
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
 
 " Give more space for displaying messages.
 set cmdheight=2
