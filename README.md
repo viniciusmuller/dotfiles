@@ -33,7 +33,7 @@
 
   - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
     - Dotfile path: `~/.tmux.conf`
-  
+
   - Unix commands replacements:
 
     - ls: [`exa`](https://github.com/ogham/exa#arch-linux)
@@ -41,15 +41,22 @@
     - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
     - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
     - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
+    - du [`dust`](https://github.com/bootandy/dust)
 
   - Useful programs:
-    - [`eg`](https://github.com/srsudar/eg)
+    - [`tealdeer`](https://github.com/dbrgn/tealdeer)
     - [`tig`](https://github.com/jonas/tig)
     - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
+    - [`grit`](https://github.com/climech/grit)
+    - [`bandwhich`](https://github.com/imsnif/bandwhich)
 
 
 - Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
   - Modify keyboard mappings: [`xmodmap`](https://wiki.archlinux.org/index.php/xmodmap#Installation)
+    ```bash
+    # In order to support cedilla on ´+c, use this:
+    sudo sed -i /usr/share/X11/locale/en_US.UTF-8/Compose -e 's/ć/ç/g' -e 's/Ć/Ç/g'
+    ```
 
 - Display manager: [`lightdm`](https://wiki.archlinux.org/index.php/LightDM#Installation)
 
@@ -103,7 +110,7 @@
 
       - Dotfiles path: `~/.vim`
       - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
-      
+
     - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
       - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
       - Framework: [`Doom Emacs`](https://github.com/hlissner/doom-emacs#install)

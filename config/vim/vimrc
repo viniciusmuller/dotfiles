@@ -308,7 +308,9 @@ nnoremap <silent> <Leader>gs :G<cr>
 nnoremap <silent> <Leader>gd :Gdiff<cr>
 
 " Git commit
-nnoremap <silent> <Leader>gc :G commit<cr>
+nnoremap <silent> <Leader>gC :G commit<cr>
+" Git push
+nnoremap <silent> <Leader>gP :G push<cr>
 
 nnoremap <silent> <Leader>gb :GBranches<cr>
 nnoremap <silent> <Leader>gt :GTags<cr>
