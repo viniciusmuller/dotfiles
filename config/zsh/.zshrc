@@ -16,6 +16,8 @@ export PATH="$PATH:$(yarn global bin)"
 export EDITOR='vim'
 [ -z "$TMUX" ] && export TERM=xterm-kitty
 
+export PATH=$PATH:$HOME/.elixir-ls
+
 ############################################################
 #                    ZSH CONFIGURATION                     #
 ############################################################
@@ -148,20 +150,14 @@ SPACESHIP_TIME_SHOW=false
 SPACESHIP_TIME_PREFIX="at "
 SPACESHIP_TIME_FORMAT=false
 SPACESHIP_TIME_12HR=true
-SPACESHIP_TIME_COLOR=#d1ff45
 
 # USER
 SPACESHIP_USER_SHOW=always
-SPACESHIP_USER_COLOR=#783cc7
 SPACESHIP_USER_SUFFIX=""
 
 # HOST
 SPACESHIP_HOST_SHOW=always
 SPACESHIP_HOST_PREFIX="@"
-SPACESHIP_HOST_COLOR=#1cffd2
-
-# GIT BRANCH
-SPACESHIP_GIT_BRANCH_COLOR=#6ffcbf
 
 ############################################################
 #                         ALIASES                          #
@@ -187,6 +183,10 @@ alias pacr="sudo sudo pacman -Rns"
 alias pacf="pacman -Ss"
 alias pacq="pacman -Q"
 
+alias yays="yay -S"
+alias yayf="yay -Ss"
+alias yayr="yay -Rns"
+
 ############################################################
 #                         MISC                             #
 ############################################################
@@ -195,12 +195,5 @@ alias pacq="pacman -Q"
 if command -v wal &> /dev/null
 then
   (cat ~/.cache/wal/sequences &)
-fi
-
-# Start shell within a tmux session if tmux is installed
-if command -v tmux &> /dev/null
-then
-  TMUX_DEFAULT_SESSION="base"
-  tmux new-session -A -s $TMUX_DEFAULT_SESSION
 fi
 

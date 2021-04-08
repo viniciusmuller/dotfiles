@@ -7,6 +7,3 @@ keysym Escape = Caps_Lock
 ! Swap right super key and control
 remove mod4 = Super_R
 add control = Super_R
-
-! TODO: map ć to ç
-keycode 54 = c C c C ccedilla Ccedilla

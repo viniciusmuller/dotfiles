@@ -157,7 +157,7 @@ client.focused #eeeeeee #ffffff #ffffff #2e9ef4
 
 # i3gaps
 for_window [class=".*"] border pixel 3
-gaps inner 20
+gaps inner 13
 smart_borders on
 
 # This assumes that you have a script called myi3lock in your path
