@@ -147,7 +147,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84'
 Plug 'sainnhe/gruvbox-material'
-Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -216,6 +215,16 @@ function CommandWithInput(command, prompt)
   execute a:command . ' ' . user_input
 endfunction
 
+function GoToDefinition()
+  " TODO: Suppress coc warning if the filetype doesn't have lsp support
+  if CocAction('jumpDefinition')
+    norm <Plug>(coc-definition)
+  else
+    norm! gd
+  endif
+endfunction
+
+
 "################################################################
 "#                          Commands                            #
 "################################################################
@@ -224,16 +233,13 @@ command TabOpen call CommandWithInput(':TabooOpen', 'Tab name: ')
 command TabRename call CommandWithInput(':TabooRename', 'Tab name: ')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 "################################################################
 "#                          Mappings                            #
 "################################################################
-
-" Clear search highlight
-nnoremap <silent> <c-l> <c-l>:noh<cr>
 
 map <Space> <Leader>
 
@@ -259,12 +265,18 @@ noremap <Leader>w <C-w>
 nnoremap <Leader>ww <nop>
 
 " ###################################
-" # t - Tab                         #
+" # t - Tabs / Testing              #
 " ###################################
 
 nnoremap <Leader>to :TabOpen<cr>
 nnoremap <Leader>tr :TabRename<cr>
 nnoremap <Leader>tq :tabclose<cr>
+
+nnoremap <Leader>ts :TestSuite<cr>
+nnoremap <Leader>tn :TestNearest<cr>
+nnoremap <Leader>tf :TestFile<cr>
+nnoremap <Leader>tv :TestVisit<cr>
+nnoremap <Leader>tl :TestLast<cr>
 
 " ###################################
 " # s - Session                     #
@@ -311,8 +323,6 @@ nnoremap <silent> <Leader>pv :AV<cr>
 nnoremap <silent> <Leader>gs :G<cr>
 " Git diff
 nnoremap <silent> <Leader>gd :Gdiff<cr>
-" Git commit
-nnoremap <silent> <Leader>gc :G commit<cr>
 " Git log
 nnoremap <silent> <Leader>gl :Glog<cr>
 " Search and manage git branches
@@ -329,7 +339,7 @@ nnoremap <silent> <Leader>gj :diffget //3<cr>
 " ###################################
 
 " GoTo code navigation.
-nmap <silent> gd          <Plug>(coc-definition)
+nmap <silent> gd :call GoToDefinition()<cr>
 nmap <silent> <Leader>cgy <Plug>(coc-type-definition)
 nmap <silent> <Leader>cgi <Plug>(coc-implementation)
 nmap <silent> <Leader>cgr <Plug>(coc-references)
@@ -367,7 +377,8 @@ nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
+" TODO: find mappings to those
+" nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 " ###################################
 " # v - Vim utils                   #
@@ -375,18 +386,14 @@ nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
 " Reload vimrc
 nnoremap <silent> <Leader>vr :source ~/.vim/vimrc<cr>
-
-" Install plugins
-nnoremap <silent> <Leader>vi :PlugInstall<cr>
-
-" Clean unused
-nnoremap <silent> <Leader>vc :PlugClean<cr>
-
-" Update plugins
-nnoremap <silent> <Leader>vu :PlugUpdate<cr>
-
 " Exit vim
 nnoremap <silent> <Leader>vq :quitall<cr>
+" Install plugins
+nnoremap <silent> <Leader>vi :PlugInstall<cr>
+" Clean unused
+nnoremap <silent> <Leader>vc :PlugClean<cr>
+" Update plugins
+nnoremap <silent> <Leader>vu :PlugUpdate<cr>
 
 " ###################################
 " # Other mappings                  #
@@ -402,6 +409,9 @@ nnoremap Q @@
 
 " Go to first character in line
 nnoremap H ^
+
+" Clear search highlight
+nnoremap <silent> <c-l> <c-l>:noh<cr>
 
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
@@ -565,10 +575,10 @@ augroup end
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  " inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  " inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  " vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  " vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.

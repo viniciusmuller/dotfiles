@@ -16,8 +16,6 @@ export PATH="$PATH:$(yarn global bin)"
 export EDITOR='vim'
 [ -z "$TMUX" ] && export TERM=xterm-kitty
 
-export PATH=$PATH:$HOME/.elixir-ls
-
 ############################################################
 #                    ZSH CONFIGURATION                     #
 ############################################################
