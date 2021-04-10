@@ -64,8 +64,8 @@ Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-swap'
 Plug 'jiangmiao/auto-pairs'
-Plug 'dahu/vim-fanfingtastic'
 Plug 'preservim/nerdtree'
+Plug 'justinmk/vim-sneak'
 
 Plug 'vim-test/vim-test'
 let test#strategy = "vimterminal"
@@ -112,9 +112,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " # Language plugins                #
 " ###################################
 
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'purescript-contrib/purescript-vim'
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['sensible']
 
 " ###################################
 " # Styling                         #
@@ -238,6 +237,12 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 "################################################################
+"#                           Macros                             #
+"################################################################
+
+let @s="iStoredMacroSample\<Esc>"
+
+"################################################################
 "#                          Mappings                            #
 "################################################################
 
@@ -271,6 +276,11 @@ nnoremap <Leader>ww <nop>
 nnoremap <Leader>to :TabOpen<cr>
 nnoremap <Leader>tr :TabRename<cr>
 nnoremap <Leader>tq :tabclose<cr>
+
+" Swap tabs
+" TODO: Add count support
+nnoremap <silent><Leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
+nnoremap <silent><Leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
 
 nnoremap <Leader>ts :TestSuite<cr>
 nnoremap <Leader>tn :TestNearest<cr>
@@ -399,6 +409,12 @@ nnoremap <silent> <Leader>vu :PlugUpdate<cr>
 " # Other mappings                  #
 " ###################################
 
+" Map vim default f and t to sneak.vim
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " Use K to show documentation in preview window.
@@ -448,6 +464,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 "################################################################
 
 filetype plugin on
+set nocompatible
 syntax on
 
 set encoding=utf-8
