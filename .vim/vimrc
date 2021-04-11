@@ -147,6 +147,11 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'artanikin/vim-synthwave84'
 Plug 'sainnhe/gruvbox-material'
 
+Plug 'arcticicestudio/nord-vim'
+
+Plug 'rakr/vim-one'
+let g:one_allow_italics = 1
+
 call plug#end()
 
 "################################################################
@@ -156,8 +161,8 @@ call plug#end()
 " Improve colors on terminal
 set termguicolors
 
-colorscheme gruvbox-material
-set bg=dark
+colorscheme one
+set background=dark
 
 "################################################################
 "#                        Autocommands                          #
@@ -259,15 +264,6 @@ nnoremap <silent> <Leader>bd :Bdelete<cr>
 " Change buffers
 nnoremap <silent> <Leader>bn :bnext<cr>
 nnoremap <silent> <Leader>bp :bprev<cr>
-
-" ###################################
-" # w - Window                      #
-" ###################################
-
-" Delegate vim's window namespace to <leader>w
-noremap <Leader>w <C-w>
-" Encourage <leader>w hjkl for window movement
-nnoremap <Leader>ww <nop>
 
 " ###################################
 " # t - Tabs / Testing              #
