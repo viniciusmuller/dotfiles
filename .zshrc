@@ -1,4 +1,14 @@
 ############################################################
+#                         MISC                             #
+############################################################
+
+# Reloads pywal colorscheme
+if command -v wal &> /dev/null
+then
+  (cat ~/.cache/wal/sequences &)
+fi
+
+############################################################
 #                      PATHS/EXPORTS                       #
 ############################################################
 
@@ -184,14 +194,4 @@ alias pacq="pacman -Q"
 alias yays="yay -S"
 alias yayf="yay -Ss"
 alias yayr="yay -Rns"
-
-############################################################
-#                         MISC                             #
-############################################################
-
-# Reloads pywal colorscheme
-if command -v wal &> /dev/null
-then
-  (cat ~/.cache/wal/sequences &)
-fi
 
