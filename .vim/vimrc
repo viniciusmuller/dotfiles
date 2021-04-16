@@ -121,22 +121,17 @@ let g:polyglot_disabled = ['sensible']
 
 Plug 'Yggdroot/indentLine'
 
-Plug 'itchyny/lightline.vim'
-let g:lightline = {
-\ 'colorscheme': 'wombat',
-\   'active': {
-\     'right': [ [ 'lineinfo' ],
-\                [ 'percent' ],
-\                [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
-\   },
-\   'component_function': {
-\     'gitbranch': 'GetBranch',
-\     'filename': 'LightlineFilename',
-\   },
-\ }
-
-" Don't show the default vim statusline messages
-set noshowmode
+set statusline=
+set statusline+=%f
+set statusline+=\ %r
+set statusline+=%<
+set statusline+=%=
+set statusline+=%{GetBranch()}\ \\|
+set statusline+=\ %{expand(&filetype)}\ \\|
+set statusline+=\ %{expand(&fileformat)}\ \\|
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\ \\|
+set statusline+=\ %p%%\ \\|
+set statusline+=\ %l:%v\ \\|
 
 set laststatus=2
 set ttimeout ttimeoutlen=20
