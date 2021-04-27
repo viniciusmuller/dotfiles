@@ -108,6 +108,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/.vimwiki', 'auto_diary_index': 1}]
+
 " ###################################
 " # Language plugins                #
 " ###################################
@@ -246,7 +249,7 @@ let @s="iStoredMacroSample\<Esc>"
 "#                          Mappings                            #
 "################################################################
 
-map <Space> <Leader>
+let mapleader=" "
 
 " ###################################
 " # b - Buffer                      #
@@ -308,6 +311,8 @@ nnoremap <silent> <Leader>fs :Rg<cr>
 nnoremap <silent> <Leader>fw :Windows<cr>
 " Find mappings
 nnoremap <silent> <Leader>fm :Maps<cr>
+" Find in help tags
+nnoremap <silent> <Leader>fh :Helptags<cr>
 
 " ###################################
 " # p - Project                     #
@@ -362,9 +367,9 @@ nmap <leader>cac  <Plug>(coc-codeaction)
 nmap <leader>cqf  <Plug>(coc-fix-current)
 
 " Show all diagnostics.
-nnoremap <silent><nowait> <Leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader>ca  :<C-u>CocList diagnostics<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <Leader>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <Leader>co  :<C-u>CocList outline<cr>
 
 " Manage extensions.
 nnoremap <silent><nowait> <Leader>ce :<C-u>CocList extensions<cr>
@@ -480,6 +485,8 @@ set number relativenumber
 
 " This might be slow on some terminal emulators
 set cursorline
+
+set splitright
 
 set scrolloff=5
 
