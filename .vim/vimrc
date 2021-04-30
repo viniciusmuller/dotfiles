@@ -141,14 +141,8 @@ set ttimeout ttimeoutlen=20
 
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'artanikin/vim-synthwave84'
 Plug 'sainnhe/gruvbox-material'
-
-Plug 'arcticicestudio/nord-vim'
-
-Plug 'rakr/vim-one'
-let g:one_allow_italics = 1
+let g:gruvbox_material_background = 'hard'
 
 call plug#end()
 
@@ -159,8 +153,15 @@ call plug#end()
 " Improve colors on terminal
 set termguicolors
 
-colorscheme one
+colorscheme gruvbox-material
 set background=dark
+
+" TODO: Fix gutters background color
+autocmd ColorScheme * highlight! link SignColumn LineNr
+highlight! link GitGutterAdd GreenSign
+highlight! link GitGutterChange YellowSign
+highlight! link GitGutterDelete RedSign
+highlight! link GitGutterChangeDelete PurpleSign
 
 "################################################################
 "#                        Autocommands                          #
