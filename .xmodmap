@@ -7,3 +7,7 @@ keysym Escape = Caps_Lock
 ! Swap right super key and control
 remove mod4 = Super_R
 add control = Super_R
+
+! Map altGr to alt
+clear mod5
+keycode 108 = Alt_L
