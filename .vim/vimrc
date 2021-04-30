@@ -120,6 +120,7 @@ set statusline+=\ %r
 set statusline+=%<
 set statusline+=%=
 set statusline+=%{GetBranch()}\ \\|
+set statusline+=\ %{GitStatus()}\ \\|
 set statusline+=\ %{expand(&filetype)}\ \\|
 set statusline+=\ %{expand(&fileformat)}\ \\|
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\ \\|
@@ -179,16 +180,6 @@ function Format()
   endif
 endfunction
 
-" Add path to lightline filenames
-function LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
-
 function ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -200,7 +191,14 @@ function ShowDocumentation()
 endfunction
 
 function GetBranch()
-  return 'git:(' . FugitiveHead() . ')'
+  let head = FugitiveHead()
+  return head != '' ? 'git:(' . head . ')' : ''
+endfunction
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  let head = FugitiveHead()
+  return head != '' ? printf('+%d ~%d -%d', a, m, r) : ''
 endfunction
 
 function CommandWithInput(command, prompt)
