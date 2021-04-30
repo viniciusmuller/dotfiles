@@ -89,16 +89,6 @@ set signcolumn=yes
 set updatetime=100
 
 " ###################################
-" # Vim-hardtime                    #
-" ###################################
-
-Plug 'takac/vim-hardtime'
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", ".git/*" ]
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_default_on = 1
-let g:hardtime_maxcount = 2
-
-" ###################################
 " # Language servers / others       #
 " ###################################
 
