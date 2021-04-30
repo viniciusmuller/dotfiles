@@ -2,11 +2,13 @@
 #                         MISC                             #
 ############################################################
 
-# Reloads pywal colorscheme
-if command -v wal &> /dev/null
-then
-  (cat ~/.cache/wal/sequences &)
-fi
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+export FZF_DEFAULT_OPTS='--prompt " λ "'
 
 ############################################################
 #                      PATHS/EXPORTS                       #
@@ -23,8 +25,9 @@ export PATH=$HOME/.local/bin:$PATH
 
 # add yarn globally installed packages to path
 export PATH="$PATH:$(yarn global bin)"
+
+export WALLPAPERS_DIR=~/wallpapers
 export EDITOR='vim'
-[ -z "$TMUX" ] && export TERM=xterm-kitty
 
 ############################################################
 #                    ZSH CONFIGURATION                     #
@@ -34,7 +37,7 @@ export EDITOR='vim'
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,8 +100,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # zsh-vi-mode
   zsh-syntax-highlighting
+  zsh-z
   git
 )
 
@@ -174,11 +177,17 @@ SPACESHIP_HOST_PREFIX="@"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
 alias v="vim"
+alias nv="nvim"
+
+alias se="sudoedit"
 
 alias gs="git status"
 
-alias l="exa -lah --icons"
-alias ls="exa --icons"
+alias ls="exa"
+
+alias rm="rmtrash"
+alias rmdir="rmdirtrash"
+alias restore="trash-restore"
 
 alias tl="tmux ls"
 alias ta="tmux attach -t"
@@ -187,11 +196,16 @@ alias tk="tmux kill-session -t"
 
 alias pacs="sudo pacman -S"
 alias pacup="sudo pacman -Syu"
-alias pacr="sudo sudo pacman -Rns"
+alias pacr="sudo pacman -Rns"
 alias pacf="pacman -Ss"
 alias pacq="pacman -Q"
 
 alias yays="yay -S"
 alias yayf="yay -Ss"
 alias yayr="yay -Rns"
+alias yayup="yay -Syu"
 
+if [[ -d /usr/share/fzf ]] then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
