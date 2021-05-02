@@ -6,36 +6,30 @@
 
 ## Structure
 
-This repository structure mirrors a \$HOME directory:
-
-- `.config`: Dotfiles directory
-- `.vim`: Vim configuration files
-- `bin`: Some useful scripts that I wrote and are used in the dotfiles
-
-> You can use [GNU Stow](https://www.gnu.org/software/stow/) for managing the symlinks
+This repository structure mirrors a `$HOME` directory:
+> The setup below contains details about the programs, themes and plugins that I use, each link with its installation guide, aur package or source code.
+> You might want to use [GNU Stow](https://www.gnu.org/software/stow/) for managing the symlinks
 
 ## Setup
 
-- OS: `Arch Linux`
+- OS: [`Arch Linux`](https://wiki.archlinux.org/title/Installation_guide)
 
-- Bootloader: `grub`
+- Bootloader: [`grub`](https://wiki.archlinux.org/title/GRUB)
 
   - Theme: [`fallout`](https://github.com/shvchk/fallout-grub-theme)
 
 - CLI:
 
-  - Terminal: [`kitty`](https://wiki.archlinux.org/index.php/Kitty#Installation)
+  - Terminal: [`st`](https://github.com/arcticlimer/suckless/tree/master/st)
 
     - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
 
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
 
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
-      - Theme: [`spaceship`](https://github.com/denysdovhan/spaceship-prompt)
     - Plugins:
-      - [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode#arch-linux-aur)
+      - [`zsh-z`](https://github.com/agkozak/zsh-z#for-oh-my-zsh-users)
       - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
-    - Dotfile path: `~/.zshrc`
 
   - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
 
@@ -46,7 +40,8 @@ This repository structure mirrors a \$HOME directory:
     - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
     - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
     - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
-    - du [`dust`](https://github.com/bootandy/dust)
+    - du: [`dust`](https://github.com/bootandy/dust)
+    - rm: [`rmtrash`](https://aur.archlinux.org/packages/rmtrash)
 
   - Useful programs:
     - [`tealdeer`](https://github.com/dbrgn/tealdeer)
@@ -68,43 +63,51 @@ This repository structure mirrors a \$HOME directory:
 
 * Display manager: [`lightdm`](https://wiki.archlinux.org/index.php/LightDM#Installation)
 
-  - Greeter: `lightdm-webkit2-greeter`
-
-    - Theme: [`Aether`](https://github.com/NoiSek/Aether#installation)
+  - Greeter: [`lightdm-webkit2-greeter`](https://archlinux.org/packages/community/x86_64/lightdm-webkit2-greeter)
 
 * Window managers:
 
-  - [`awesome`](https://wiki.archlinux.org/index.php/awesome#Installation):
+  - [`dwm`](https://github.com/arcticlimer/suckless/tree/master/dwm)
 
-    - Theme: https://github.com/arcticlimer/UwU
+    - Locker: [`slock`](https://github.com/arcticlimer/suckless/tree/master/slock)
+    - Status: [`slstatus`](https://github.com/arcticlimer/suckless/tree/master/slstatus)
+    - Launcher: [`dmenu`](https://github.com/arcticlimer/suckless/tree/master/dmenu)
 
-  - [`i3`](https://wiki.archlinux.org/index.php/i3):
+  - [`i3`](https://wiki.archlinux.org/title/i3#Installation):
 
-    - Custom scripts:
+    - Locker: [`i3lock-colors`](https://aur.archlinux.org/packages/i3lock-color/)
 
+      - Custom script: [`myi3lock`](bin/myi3lock)
+
+    - Launcher: [`dmenu`](https://github.com/arcticlimer/suckless/tree/master/dmenu)
+
+    - Custom keybindings:
+
+      - Quickswitch (Mod+n): [`quickswitch`](https://github.com/proxypoke/quickswitch-for-i3#installation)
       - Lock Screen (Mod+m): `bin/myi3lock`
       - Toggle layout (Mod+p): `bin/toggle_layout`
 
     - Status bar: [`i3status-rust`](https://github.com/greshake/i3status-rust):
 
-* Screenlocking:
+  - [`awesome`](https://wiki.archlinux.org/index.php/awesome#Installation):
+    - Theme: https://github.com/arcticlimer/UwU
 
-  - Locker: [`i3lock-colors`](https://aur.archlinux.org/packages/i3lock-color/)
-    - Custom script: [`myi3lock`](bin/myi3lock)
+- Screenlocking:
+
   - Helper: [`xautolock`](https://archlinux.org/packages/community/x86_64/xautolock)
 
-* Software mixer: [`pulseaudio`](https://wiki.archlinux.org/index.php/PulseAudio#Installation)
+- Software mixer: [`pulseaudio`](https://wiki.archlinux.org/index.php/PulseAudio#Installation)
 
   - Mixer: `pulsemixer`
 
-- Browser: [`firefox`](https://wiki.archlinux.org/index.php/Firefox#Installing):
+* Browser: [`firefox`](https://wiki.archlinux.org/index.php/Firefox#Installing):
   - Theme: [`pywalfox`](https://github.com/frewacom/pywalfox)
 
-* Notifications daemon: [`dunst`](https://wiki.archlinux.org/index.php/Dunst#Installation)
+- Notifications daemon: [`dunst`](https://wiki.archlinux.org/index.php/Dunst#Installation)
 
-* Compositor: [`picom`](https://wiki.archlinux.org/index.php/Picom#Installation)
+- Compositor: [`picom`](https://wiki.archlinux.org/index.php/Picom#Installation)
 
-* Development:
+- Development:
 
   - Editors:
 
@@ -123,43 +126,46 @@ This repository structure mirrors a \$HOME directory:
       - Theme: `BeardedTheme Anthracite`
       - Settings path: `~/.config/Code/User/settings.json`
 
-- Languages version manager: [`asdf`](https://asdf-vm.com/#/core-manage-asdf?id=asdf)
+* Languages version manager: [`asdf`](https://asdf-vm.com/#/core-manage-asdf?id=asdf)
 
-- Databases:
+* Databases:
 
   - [`PostgreSQL`](https://wiki.archlinux.org/index.php/PostgreSQL)
   - [`MariaDB`](https://wiki.archlinux.org/index.php/MariaDB)
 
-- Database client: [`beekeeper-studio`](https://aur.archlinux.org/packages/beekeeper-studio-bin/)
-- REST client: [`insomnia`](https://aur.archlinux.org/packages/insomnia/)
-- Containers: [`docker[-compose]`](https://wiki.archlinux.org/index.php/Docker)
+* Database client: [`beekeeper-studio`](https://aur.archlinux.org/packages/beekeeper-studio-bin)
+* REST client: [`insomnia`](https://aur.archlinux.org/packages/insomnia)
+* Containers: [`docker[-compose]`](https://wiki.archlinux.org/index.php/Docker)
 
-* File manager: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
-  - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug/)
+- File manager:
+  - XDG: [`thunar`](https://wiki.archlinux.org/index.php/thunar#Installation)
+  - CLI: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
+    - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug)
 
-- Editing:
+* Editing:
 
   - Image manipulation: [`gimp`](https://wiki.archlinux.org/index.php/GIMP#Installation)
     - Theme: [`GimpPs`](https://github.com/doctormo/GimpPs#basic-installation)
   - Pixel art: [`aseprite`](https://aur.archlinux.org/packages/aseprite/)
     - Theme: [`aseprite-studio-theme`](https://github.com/Lyutria/aseprite-studio-theme#usage)
 
-- Ricing:
+* Ricing:
 
-  - [`pywal`](https://github.com/dylanaraps/pywal)
   - [`cava`](https://aur.archlinux.org/packages/cava)
   - [`tty-clock`](https://aur.archlinux.org/packages/tty-clock)
+  - [`lolcat`](https://archlinux.org/packages/community/any/lolcat)
+  - [`cmatrix`](https://archlinux.org/packages/community/x86_64/cmatrix)
 
-- Others:
+* Others:
 
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
   - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
-  - PDF reader: [`zathura`](https://wiki.archlinux.org/index.php/zathura#Installation)
+  - PDF reader: [`mupdf`](https://wiki.archlinux.org/index.php/MuPDF#Installation)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
   - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
   - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
-  - Launcher: [`Luke Smith's dmenu fork`](https://github.com/LukeSmithxyz/dmenu)
 
 ## Preview:
+
 <img src="https://i.imgur.com/9xersCi.png" alt="desktop preview">
