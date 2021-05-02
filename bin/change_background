@@ -1,4 +1,11 @@
-# Uses the helper ./_fzfimg to preview images and set them as background
+# Uses the helper fzfimg to preview images and set them as background
 # This script depends on fzf, nitrogen and ueberzug being installed
-file=$(find $WALLPAPERS_DIR | _fzfimg -0 -1 -m)
+
+if ! command -v fzfimg &> /dev/null
+then
+  echo "fzfimg script not found! You can can find it here: https://raw.githubusercontent.com/seebye/ueberzug/master/examples/fzfimg.sh";
+  exit 1;
+fi
+
+file=$(find $WALLPAPERS_DIR | fzfimg -0 -1 -m)
 nitrogen --set-scaled --save $file
