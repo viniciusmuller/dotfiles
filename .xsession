@@ -8,6 +8,8 @@ check_command "xmodmap" && xmodmap ~/.xmodmap
 check_command "nitrogen" && nitrogen --restore
 # Start compositor
 check_command "picom" && picom &
+# Blue light filter
+check_command "blugon" && blugon &
 
 # If we are running dwm, launch slstatus
 [[ $XDG_SESSION_DESKTOP == "dwm" ]] && (slstatus &) && ls
