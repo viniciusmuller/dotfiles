@@ -7,6 +7,7 @@
 ## Structure
 
 This repository structure mirrors a `$HOME` directory:
+
 > The setup below contains details about the programs, themes and plugins that I use, each link with its installation guide, aur package or source code.
 > You might want to use [GNU Stow](https://www.gnu.org/software/stow/) for managing the symlinks
 
@@ -20,7 +21,7 @@ This repository structure mirrors a `$HOME` directory:
 
 - CLI:
 
-  - Terminal: [`st`](https://github.com/arcticlimer/suckless/tree/master/st)
+  - Terminal: [`kitty`](https://wiki.archlinux.org/title/Kitty#Installation)
 
     - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
 
@@ -44,11 +45,14 @@ This repository structure mirrors a `$HOME` directory:
     - rm: [`rmtrash`](https://aur.archlinux.org/packages/rmtrash)
 
   - Useful programs:
+
     - [`tealdeer`](https://github.com/dbrgn/tealdeer)
-    - [`tig`](https://github.com/jonas/tig)
     - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
     - [`grit`](https://github.com/climech/grit)
     - [`bandwhich`](https://github.com/imsnif/bandwhich)
+
+  - Git helpers:
+    - Diff viewer: [`delta`](https://github.com/dandavison/delta#installation)
 
 * Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
 
@@ -84,8 +88,8 @@ This repository structure mirrors a `$HOME` directory:
     - Custom keybindings:
 
       - Quickswitch (Mod+n): [`quickswitch`](https://github.com/proxypoke/quickswitch-for-i3#installation)
-      - Lock Screen (Mod+m): `bin/myi3lock`
-      - Toggle layout (Mod+p): `bin/toggle_layout`
+      - Lock Screen (Mod+m): [`myi3lock`](bin/myi3lock)
+      - Toggle layout (Mod+p): [`toggle_layout`](bin/toggle_layout)
 
     - Status bar: [`i3status-rust`](https://github.com/greshake/i3status-rust):
 
@@ -113,7 +117,6 @@ This repository structure mirrors a `$HOME` directory:
 
     - [`vim`](https://wiki.archlinux.org/index.php/vim#Installation):
 
-      - Dotfiles path: `~/.vim`
       - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
 
     - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
