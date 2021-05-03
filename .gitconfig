@@ -1,0 +1,20 @@
+[include]
+  ; Fill your [user] section in this file or inline it here
+  path = ~/.gituser
+
+[core]
+  editor = vim
+  quotepath = off
+  pager = delta
+
+[oh-my-zsh]
+  hide-dirty = 1
+
+[delta]
+  plus-style = "syntax #012800"
+  minus-style = "syntax #340001"
+  syntax-theme = gruvbox-dark
+  navigate = true
+
+[interactive]
+  diffFilter = delta --color-only
