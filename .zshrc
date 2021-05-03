@@ -134,43 +134,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ############################################################
-#                  SPACESHIP CONFIGURATION                 #
-############################################################
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  host          # Hostname section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  # hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-# PROMPT
-SPACESHIP_PROMPT_SYMBOL="➜ "
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_CHAR_COLOR_SUCCESS=#03fc41
-
-#TIME
-SPACESHIP_TIME_SHOW=false
-SPACESHIP_TIME_PREFIX="at "
-SPACESHIP_TIME_FORMAT=false
-SPACESHIP_TIME_12HR=true
-
-# USER
-SPACESHIP_USER_SHOW=always
-SPACESHIP_USER_SUFFIX=""
-
-# HOST
-SPACESHIP_HOST_SHOW=always
-SPACESHIP_HOST_PREFIX="@"
-
-############################################################
 #                         ALIASES                          #
 ############################################################
 
