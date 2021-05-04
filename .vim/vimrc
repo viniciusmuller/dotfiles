@@ -60,6 +60,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
+Plug 'thinca/vim-quickrun'
+
 Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-swap'
@@ -111,8 +113,6 @@ let g:polyglot_disabled = ['sensible']
 " ###################################
 " # Styling                         #
 " ###################################
-
-Plug 'Yggdroot/indentLine'
 
 set statusline=
 set statusline+=%f
@@ -391,6 +391,13 @@ nnoremap <silent> <Leader>vc :PlugClean<cr>
 nnoremap <silent> <Leader>vu :PlugUpdate<cr>
 
 " ###################################
+" # Others                          #
+" ###################################
+
+" Quick run
+noremap <Leader>qr :QuickRun<cr>
+
+" ###################################
 " # Other mappings                  #
 " ###################################
 
@@ -405,11 +412,14 @@ nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
+" Repeat last command
+noremap <C-p> @:
+
 " Repeat last macro
 nnoremap Q @@
 
 " Go to first character in line
-nnoremap H ^
+noremap H ^
 
 " Clear search highlight
 nnoremap <silent> <c-l> <c-l>:noh<cr>
