@@ -10,6 +10,7 @@ check_command "nitrogen" && nitrogen --restore
 check_command "picom" && picom &
 # Blue light filter
 check_command "blugon" && blugon &
+check_command "dunst" && dunst &
 
 # If we are running dwm, launch slstatus
 [[ $XDG_SESSION_DESKTOP == "dwm" ]] && (slstatus &) && ls
