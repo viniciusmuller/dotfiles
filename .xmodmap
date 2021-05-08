@@ -4,9 +4,13 @@ add Lock = Escape
 keysym Caps_Lock = Escape
 keysym Escape = Caps_Lock
 
-! Swap right super key and control
+! Map both super to ctrl
 remove mod4 = Super_R
 add control = Super_R
+remove mod4 = Super_L
+add control = Super_L
+
+! TODO: Map both ctrl to super
 
 ! Map altGr to alt
 clear mod5
