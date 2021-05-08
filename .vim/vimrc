@@ -38,8 +38,6 @@ let g:startify_lists = [
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger = '<Nop>'
 imap <tab> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<s-tab>'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -85,8 +83,9 @@ set sessionoptions+=tabpages,globals
 Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
-let g:gitgutter_set_sign_backgrounds = 1
+let g:gitgutter_preview_win_floating = 1
 let g:gitgutter_grep = 'rg'
+
 set signcolumn=yes
 set updatetime=100
 
@@ -119,8 +118,8 @@ set statusline+=%f
 set statusline+=\ %r
 set statusline+=%<
 set statusline+=%=
-set statusline+=%{GetBranch()}\ \\|
-set statusline+=\ %{GitStatus()}\ \\|
+set statusline+=%{GetBranch()}
+set statusline+=%{GitStatus()}
 set statusline+=\ %{expand(&filetype)}\ \\|
 set statusline+=\ %{expand(&fileformat)}\ \\|
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\ \\|
@@ -146,13 +145,6 @@ set termguicolors
 
 colorscheme gruvbox-material
 set background=dark
-
-" TODO: Fix gutters background color
-autocmd ColorScheme * highlight! link SignColumn LineNr
-highlight! link GitGutterAdd GreenSign
-highlight! link GitGutterChange YellowSign
-highlight! link GitGutterDelete RedSign
-highlight! link GitGutterChangeDelete PurpleSign
 
 "################################################################
 "#                        Autocommands                          #
@@ -192,17 +184,21 @@ endfunction
 
 function GetBranch()
   let head = FugitiveHead()
-  return head != '' ? 'git:(' . head . ')' : ''
+  return head != '' ? 'git:(' . head . ') ' : ''
 endfunction
 
 function! GitStatus()
   let [a,m,r] = GitGutterGetHunkSummary()
   let head = FugitiveHead()
-  return head != '' ? printf('+%d ~%d -%d', a, m, r) : ''
+  return head != '' ? printf('| +%d ~%d -%d |', a, m, r) : ''
 endfunction
 
 function CommandWithInput(command, prompt)
   let user_input = input(a:prompt)
+  " If the user cancelled the prompt, just return
+  if user_input == ''
+    return
+  endif
   execute a:command . ' ' . user_input
 endfunction
 
