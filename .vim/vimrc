@@ -1,6 +1,6 @@
-"################################################################
-"#                          Variables                           #
-"################################################################
+"--------------------------------------------------------------;
+"                          Variables                           ;
+"--------------------------------------------------------------;
 
 let g:prettier_supported_extensions = [
 \ 'js',   'ts',   'css',     'less',
@@ -8,15 +8,15 @@ let g:prettier_supported_extensions = [
 \ 'vue',  'yaml', 'yml',     'html'
 \ ]
 
-"################################################################
-"#                          Vim-Plug                            #
-"################################################################
+"--------------------------------------------------------------;
+"                          Vim-Plug                            ;
+"--------------------------------------------------------------;
 
 call plug#begin()
 
-" ###################################
-" # Session handling                #
-" ###################################
+"----------------------------------;
+" Session handling                 ;
+"----------------------------------;
 
 Plug 'mhinz/vim-startify'
 let g:startify_session_persistence = 1
@@ -29,9 +29,9 @@ let g:startify_lists = [
 \ { 'type': 'commands',  'header': ['   Commands'      ] },
 \ ]
 
-" ###################################
-" # Useful general usage plugins    #
-" ###################################
+"----------------------------------;
+" Useful general usage plugins     ;
+"----------------------------------;
 
 " Might need to install coc-snippets and set the snippets
 " directory using coc command `snippets.openSnippetFiles`
@@ -76,22 +76,21 @@ Plug 'gcmt/taboo.vim'
 " Make sessions remember taboo tabs names
 set sessionoptions+=tabpages,globals
 
-" ###################################
-" # Git wrappers                    #
-" ###################################
+"----------------------------------;
+" Git wrappers                     ;
+"----------------------------------;
 
 Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
-let g:gitgutter_preview_win_floating = 1
 let g:gitgutter_grep = 'rg'
 
 set signcolumn=yes
 set updatetime=100
 
-" ###################################
-" # Language servers / others       #
-" ###################################
+"----------------------------------;
+" Language servers / others        ;
+"----------------------------------;
 
 " Might need to install coc-marketplace and search
 " for extensions with :CocList marketplace
@@ -102,16 +101,16 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'auto_diary_index': 1}]
 
-" ###################################
-" # Language plugins                #
-" ###################################
+"----------------------------------;
+" Language plugins                 ;
+"----------------------------------;
 
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['sensible']
 
-" ###################################
-" # Styling                         #
-" ###################################
+"----------------------------------;
+" Styling                          ;
+"----------------------------------;
 
 set statusline=
 set statusline+=%f
@@ -136,9 +135,9 @@ let g:gruvbox_material_background = 'hard'
 
 call plug#end()
 
-"################################################################
-"#                           Theme                              #
-"################################################################
+"---------------------------------------------------------------;
+"                            Theme                              ;
+"---------------------------------------------------------------;
 
 " Improve colors on terminal
 set termguicolors
@@ -146,9 +145,9 @@ set termguicolors
 colorscheme gruvbox-material
 set background=dark
 
-"################################################################
-"#                        Autocommands                          #
-"################################################################
+"---------------------------------------------------------------;
+"                         Autocommands                          ;
+"---------------------------------------------------------------;
 
 augroup my_autocommands
   " Remove trailing whitespaces on write
@@ -159,9 +158,9 @@ augroup my_autocommands
   au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 augroup end
 
-"################################################################
-"#                          Functions                           #
-"################################################################
+"---------------------------------------------------------------;
+"                          Functions                            ;
+"---------------------------------------------------------------;
 
 function Format()
   let l:extension = expand('%:e')
@@ -212,9 +211,9 @@ function GoToDefinition()
 endfunction
 
 
-"################################################################
-"#                          Commands                            #
-"################################################################
+"--------------------------------------------------------------;
+"                          Commands                            ;
+"--------------------------------------------------------------;
 
 command TabOpen call CommandWithInput(':TabooOpen', 'Tab name: ')
 command TabRename call CommandWithInput(':TabooRename', 'Tab name: ')
@@ -224,21 +223,21 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
-"################################################################
-"#                           Macros                             #
-"################################################################
+"--------------------------------------------------------------;
+"                           Macros                             ;
+"--------------------------------------------------------------;
 
 let @s="iStoredMacroSample\<Esc>"
 
-"################################################################
-"#                          Mappings                            #
-"################################################################
+"--------------------------------------------------------------;
+"                          Mappings                            ;
+"--------------------------------------------------------------;
 
 let mapleader=" "
 
-" ###################################
-" # b - Buffer                      #
-" ###################################
+"----------------------------------;
+" b - Buffer                       ;
+"----------------------------------;
 
 " Save and delete current buffer
 nnoremap <silent> <Leader>bs :update<cr>
@@ -248,9 +247,9 @@ nnoremap <silent> <Leader>bd :Bdelete<cr>
 nnoremap <silent> <Leader>bn :bnext<cr>
 nnoremap <silent> <Leader>bp :bprev<cr>
 
-" ###################################
-" # t - Tabs / Testing              #
-" ###################################
+"----------------------------------;
+" t - Tabs / Testing               ;
+"----------------------------------;
 
 nnoremap <Leader>to :TabOpen<cr>
 nnoremap <Leader>tr :TabRename<cr>
@@ -267,9 +266,9 @@ nnoremap <Leader>tf :TestFile<cr>
 nnoremap <Leader>tv :TestVisit<cr>
 nnoremap <Leader>tl :TestLast<cr>
 
-" ###################################
-" # s - Session                     #
-" ###################################
+"----------------------------------;
+" s - Session                      ;
+"----------------------------------;
 " TODO: Restore terminals
 
 nnoremap <silent> <Leader>st :Startify<cr>
@@ -278,9 +277,9 @@ nnoremap <silent> <Leader>sl :SLoad<cr>
 nnoremap <silent> <Leader>sd :SDelete<cr>
 nnoremap <silent> <Leader>sc :SClose<CR>
 
-" ###################################
-" # f - Find                        #
-" ###################################
+"----------------------------------;
+" f - Find                         ;
+"----------------------------------;
 
 " Find files
 nnoremap <silent> <Leader>ff :Files<cr>
@@ -290,25 +289,27 @@ nnoremap <silent> <Leader>fg :GFiles<cr>
 nnoremap <silent> <Leader>fc :Commits<cr>
 " Find buffers
 nnoremap <silent> <Leader>fb :Buffers<cr>
-" Find substring in files
-nnoremap <silent> <Leader>fs :Rg<cr>
+" Find themes
+nnoremap <silent> <Leader>ft :Colors<cr>
 " Find windows
 nnoremap <silent> <Leader>fw :Windows<cr>
+" Find substring in files
+nnoremap <silent> <Leader>fs :Rg<cr>
 " Find mappings
 nnoremap <silent> <Leader>fm :Maps<cr>
 " Find in help tags
 nnoremap <silent> <Leader>fh :Helptags<cr>
 
-" ###################################
-" # p - Project                     #
-" ###################################
+"----------------------------------;
+" p - Project                      ;
+"----------------------------------;
 
 " Open alternative projectionist file on vertical split
-nnoremap <silent> <Leader>pv :AV<cr>
+nnoremap <silent> <Leader>pa :AV<cr>
 
-" ###################################
-" # g - Git                         #
-" ###################################
+"----------------------------------;
+" g - Git                          ;
+"----------------------------------;
 
 " Git status
 nnoremap <silent> <Leader>gs :G<cr>
@@ -325,9 +326,9 @@ nnoremap <silent> <Leader>gt :GTags<cr>
 nnoremap <silent> <Leader>gf :diffget //2<cr>
 nnoremap <silent> <Leader>gj :diffget //3<cr>
 
-" ###################################
-" # c - Conquer of completion       #
-" ###################################
+"----------------------------------;
+" c - Conquer of completion        ;
+"----------------------------------;
 
 " GoTo code navigation.
 nmap <silent> gd :call GoToDefinition()<cr>
@@ -339,7 +340,7 @@ nmap <silent> <Leader>cgr <Plug>(coc-references)
 nnoremap <silent> <Leader>cf :call Format()<cr>
 
 " Symbol renaming.
-nmap <leader>crn <Plug>(coc-rename)
+nmap <leader>cr  <Plug>(coc-rename)
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -424,9 +425,10 @@ nnoremap <silent> <c-l> <c-l>:noh<cr>
 " useful for getting out of (), for example.
 inoremap <C-e> <Esc>la
 
-"################################################################
-"#                        Text objects                          #
-"################################################################
+
+"--------------------------------------------------------------;
+"                        Text objects                          ;
+"--------------------------------------------------------------;
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -450,9 +452,9 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-"################################################################
-"#                            Misc                              #
-"################################################################
+"--------------------------------------------------------------;
+"                            Misc                              ;
+"--------------------------------------------------------------;
 
 filetype plugin on
 set nocompatible
@@ -532,9 +534,9 @@ set wildignorecase
 
 set autoread
 
-"################################################################
-"#                   Conquer of Completion                      #
-"################################################################
+"--------------------------------------------------------------;
+"                   Conquer of Completion                      ;
+"--------------------------------------------------------------;
 
 " TextEdit might fail if hidden is not set.
 set hidden
