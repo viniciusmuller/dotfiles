@@ -55,6 +55,7 @@ let g:fzf_tag_actions = {
 
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
@@ -106,7 +107,6 @@ let g:vimwiki_list = [{'path': '~/.vimwiki', 'auto_diary_index': 1}]
 "----------------------------------;
 
 Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['sensible']
 
 "----------------------------------;
 " Styling                          ;
@@ -124,9 +124,6 @@ set statusline+=\ %{expand(&fileformat)}\ \\|
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\ \\|
 set statusline+=\ %p%%\ \\|
 set statusline+=\ %l:%v\ \\|
-
-set laststatus=2
-set ttimeout ttimeoutlen=20
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -418,9 +415,6 @@ nnoremap Q @@
 " Go to first character in line
 noremap H ^
 
-" Clear search highlight
-nnoremap <silent> <c-l> <c-l>:noh<cr>
-
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
 inoremap <C-e> <Esc>la
@@ -456,16 +450,9 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 "                            Misc                              ;
 "--------------------------------------------------------------;
 
-filetype plugin on
-set nocompatible
-syntax on
-
-set encoding=utf-8
-
 set undofile                " Save undos after file closes
 set undodir=$HOME/.vim/undo " Where to save undo histories
 set undolevels=1000         " How many undos
-
 " Some coc language servers have issues with backup files, see #649.
 set backup
 " Where to store backups
@@ -474,23 +461,33 @@ set backupdir=~/.vim/backup
 set writebackup
 " Overwrite the original backup file
 set backupcopy=yes
-
 set lazyredraw
-
 " Show relative numbers mantaining the current line number
 set number relativenumber
-
 " This might be slow on some terminal emulators
 set cursorline
-
 set splitright
-
 set scrolloff=5
+set noswapfile
+set wildmode=longest:list,full
+set linebreak
+set tabstop=2 shiftwidth=2 expandtab " Set tabs to 2 spaces
+set smartcase ignorecase hlsearch " Search options
+set foldmethod=indent " Fold based on indention levels.
+set foldnestmax=3 " Only fold up to three nested levels.
+set nofoldenable " Disable folding by default
+set showcmd
+set colorcolumn=80 " 80 character ruler
+" Ignore case on wildmenu completion
+set wildignorecase
+" TextEdit might fail if hidden is not set.
+set hidden
+" Give more space for displaying messages.
+set cmdheight=2
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
-set wildmode=longest,list
-set history=200
-
-" Kitty terminal helper
+" Kitty helper (https://sw.kovidgoyal.net/kitty/faq.html#id3)
 let &t_ut=''
 
 "Mode Settings
@@ -506,46 +503,9 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-" Set tabs to 2 spaces
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
-set linebreak
-
-" Search options:
-set smartcase ignorecase
-" Highlight matches
-set hlsearch
-set incsearch
-
-set foldmethod=indent " Fold based on indention levels.
-set foldnestmax=3 " Only fold up to three nested levels.
-set nofoldenable " Disable folding by default.
-
-set showcmd
-set autoindent
-
-" Ruler
-set colorcolumn=80
-
-" Ignore case on completion
-set wildignorecase
-
-set autoread
-
 "--------------------------------------------------------------;
 "                   Conquer of Completion                      ;
 "--------------------------------------------------------------;
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
