@@ -372,9 +372,9 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 " TODO: find mappings to those
 " nnoremap <silent><nowait> <Leader>p  :<C-u>CocListResume<CR>
 
-" ###################################
-" # v - Vim utils                   #
-" ###################################
+"----------------------------------;
+" v - Vim utils                    ;
+"----------------------------------;
 
 " Reload vimrc
 nnoremap <silent> <Leader>vr :source ~/.vim/vimrc<cr>
@@ -387,16 +387,16 @@ nnoremap <silent> <Leader>vc :PlugClean<cr>
 " Update plugins
 nnoremap <silent> <Leader>vu :PlugUpdate<cr>
 
-" ###################################
-" # Others                          #
-" ###################################
+"----------------------------------;
+" Others                           ;
+"----------------------------------;
 
 " Quick run
 noremap <Leader>qr :QuickRun<cr>
 
-" ###################################
-" # Other mappings                  #
-" ###################################
+"----------------------------------;
+" Other mappings                   ;
+"----------------------------------;
 
 " Map vim default f and t to sneak.vim
 map f <Plug>Sneak_f
