@@ -86,11 +86,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   colored-man-pages
   zsh-syntax-highlighting
+  zsh-vi-mode
   zsh-z
   git
 )
 
 source $ZSH/oh-my-zsh.sh
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 
 # User configuration
 
@@ -118,9 +120,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-############################################################
-#                         ALIASES                          #
-############################################################
+#----------------------------------------------------------;
+#                         ALIASES                          ;
+#----------------------------------------------------------;
 
 alias v="vim"
 alias vf="vifm"
@@ -152,7 +154,12 @@ alias yayf="yay -Ss"
 alias yayr="yay -Rns"
 alias yayup="yay -Syu"
 
-if [[ -d /usr/share/fzf ]] then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi
+function my_init() {
+  if [[ -d /usr/share/fzf ]] then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+  fi
+}
+
+# This is needed when using zsh-vi-mode
+zvm_after_init_commands+=(my_init)
