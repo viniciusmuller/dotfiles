@@ -1,6 +1,6 @@
-############################################################
-#                         MISC                             #
-############################################################
+#----------------------------------------------------------;
+#                         MISC                             ;
+#----------------------------------------------------------;
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -9,29 +9,13 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 export FZF_DEFAULT_OPTS='--prompt " λ "'
-
-############################################################
-#                      PATHS/EXPORTS                       #
-############################################################
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-# asdf
 . $HOME/.asdf/asdf.sh
 
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-
-# add yarn globally installed packages to path
-export PATH="$PATH:$(yarn global bin)"
-
-export WALLPAPERS_DIR=~/wallpapers
-export EDITOR='vim'
-
-############################################################
-#                    ZSH CONFIGURATION                     #
-############################################################
+#----------------------------------------------------------;
+#                    ZSH CONFIGURATION                     ;
+#----------------------------------------------------------;
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,6 +84,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  colored-man-pages
   zsh-syntax-highlighting
   zsh-z
   git
