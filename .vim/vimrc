@@ -1,14 +1,4 @@
 "--------------------------------------------------------------;
-"                          Variables                           ;
-"--------------------------------------------------------------;
-
-let g:prettier_supported_extensions = [
-\ 'js',   'ts',   'css',     'less',
-\ 'scss', 'json', 'graphql', 'md',
-\ 'vue',  'yaml', 'yml',     'html'
-\ ]
-
-"--------------------------------------------------------------;
 "                          Vim-Plug                            ;
 "--------------------------------------------------------------;
 
@@ -46,27 +36,27 @@ let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let $FZF_DEFAULT_COMMAND = 'fd -H'
 let $FZF_DEFAULT_OPTS = '--exact --reverse'
-" TODO: Fzf checkout detaching head when trying to checkout
 Plug 'stsewd/fzf-checkout.vim'
 let g:fzf_checkout_git_options = '--sort=-committerdate'
 let g:fzf_tag_actions = {
-      \ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
-      \}
+\ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
+\}
 
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
 
-Plug 'thinca/vim-quickrun'
-
-Plug 'tommcdo/vim-lion'
-Plug 'wellle/targets.vim'
-Plug 'machakann/vim-swap'
 Plug 'jiangmiao/auto-pairs'
+Plug 'thinca/vim-quickrun'
+Plug 'wellle/targets.vim'
 Plug 'preservim/nerdtree'
-Plug 'justinmk/vim-sneak'
+Plug 'mbbill/undotree'
+
+Plug 'easymotion/vim-easymotion'
+map s <Plug>(easymotion-s)
 
 Plug 'vim-test/vim-test'
 let test#strategy = "vimterminal"
@@ -86,7 +76,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_grep = 'rg'
 
-set signcolumn=yes
 set updatetime=100
 
 "----------------------------------;
@@ -97,9 +86,8 @@ set updatetime=100
 " for extensions with :CocList marketplace
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
 Plug 'vimwiki/vimwiki'
+let g:vimwiki_global_ext = 0
 let g:vimwiki_list = [{'path': '~/.vimwiki', 'auto_diary_index': 1}]
 
 "----------------------------------;
@@ -159,15 +147,6 @@ augroup end
 "                          Functions                            ;
 "---------------------------------------------------------------;
 
-function Format()
-  let l:extension = expand('%:e')
-  if index(g:prettier_supported_extensions, l:extension) >= 0
-    execute ':Prettier'
-  else
-    call CocAction('format')
-  endif
-endfunction
-
 function ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -198,6 +177,14 @@ function CommandWithInput(command, prompt)
   execute a:command . ' ' . user_input
 endfunction
 
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
 function GoToDefinition()
   " TODO: Suppress coc warning if the filetype doesn't have lsp support
   if CocAction('jumpDefinition')
@@ -206,7 +193,6 @@ function GoToDefinition()
     norm! gd
   endif
 endfunction
-
 
 "--------------------------------------------------------------;
 "                          Commands                            ;
@@ -219,6 +205,7 @@ command TabRename call CommandWithInput(':TabooRename', 'Tab name: ')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "--------------------------------------------------------------;
 "                           Macros                             ;
@@ -237,12 +224,12 @@ let mapleader=" "
 "----------------------------------;
 
 " Save and delete current buffer
-nnoremap <silent> <Leader>bs :update<cr>
 nnoremap <silent> <Leader>bd :Bdelete<cr>
 
 " Change buffers
 nnoremap <silent> <Leader>bn :bnext<cr>
 nnoremap <silent> <Leader>bp :bprev<cr>
+nnoremap <silent> <Leader>bu :UndotreeToggle<cr>
 
 "----------------------------------;
 " t - Tabs / Testing               ;
@@ -286,7 +273,7 @@ nnoremap <silent> <Leader>fg :GFiles<cr>
 nnoremap <silent> <Leader>fc :Commits<cr>
 " Find buffers
 nnoremap <silent> <Leader>fb :Buffers<cr>
-" Find themes
+" Find theme
 nnoremap <silent> <Leader>ft :Colors<cr>
 " Find windows
 nnoremap <silent> <Leader>fw :Windows<cr>
@@ -294,6 +281,8 @@ nnoremap <silent> <Leader>fw :Windows<cr>
 nnoremap <silent> <Leader>fs :Rg<cr>
 " Find mappings
 nnoremap <silent> <Leader>fm :Maps<cr>
+" Find marks
+nnoremap <silent> <Leader>fM :Marks<cr>
 " Find in help tags
 nnoremap <silent> <Leader>fh :Helptags<cr>
 
@@ -311,9 +300,9 @@ nnoremap <silent> <Leader>pa :AV<cr>
 " Git status
 nnoremap <silent> <Leader>gs :G<cr>
 " Git diff
-nnoremap <silent> <Leader>gd :Gdiff<cr>
+nnoremap <silent> <Leader>gd :Gvdiffsplit<cr>
 " Git log
-nnoremap <silent> <Leader>gl :Glog<cr>
+nnoremap <silent> <Leader>gl :Gclog<cr>
 " Search and manage git branches
 nnoremap <silent> <Leader>gb :GBranches<cr>
 " Search and manage git tags
@@ -334,7 +323,8 @@ nmap <silent> <Leader>cgi <Plug>(coc-implementation)
 nmap <silent> <Leader>cgr <Plug>(coc-references)
 
 " Coc format
-nnoremap <silent> <Leader>cf :call Format()<cr>
+vmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf :call CocAction('format')<cr>
 
 " Symbol renaming.
 nmap <leader>cr  <Plug>(coc-rename)
@@ -346,8 +336,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>cac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>cqf  <Plug>(coc-fix-current)
+" Coc fix
+nmap <leader>cq  <Plug>(coc-fix-current)
 
 " Show all diagnostics.
 nnoremap <silent><nowait> <Leader>cd  :<C-u>CocList diagnostics<cr>
@@ -375,8 +365,6 @@ nnoremap <silent><nowait> <Leader>k  :<C-u>CocPrev<CR>
 
 " Reload vimrc
 nnoremap <silent> <Leader>vr :source ~/.vim/vimrc<cr>
-" quit vim
-nnoremap <silent> <Leader>vq :quitall<cr>
 " QUIT vim
 nnoremap <silent> <Leader>vQ :quitall!<cr>
 " Install plugins
@@ -402,11 +390,7 @@ nnoremap ]q :cn<cr>
 " Other mappings                   ;
 "----------------------------------;
 
-" Map vim default f and t to sneak.vim
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+nnoremap <silent> zs :update<cr>
 
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
@@ -426,6 +410,12 @@ noremap H ^
 " useful for getting out of (), for example.
 inoremap <C-e> <Esc>la
 
+" TODO: Don't wait after pressing <c-w> on fzf buffers
+" Open a terminal in a vertical split
+" nnoremap <C-w>t :vert term ++kill=kill<cr>
+
+" Shorthand for runnning ctrl-w in the vim terminal
+" tnoremap <C-w>n <C-\><C-w>
 
 "--------------------------------------------------------------;
 "                        Text objects                          ;
@@ -458,7 +448,7 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 "--------------------------------------------------------------;
 
 set undofile                " Save undos after file closes
-set undodir=$HOME/.vim/undo " Where to save undo histories
+set undodir=~/.vim/undo     " Where to save undo histories
 set undolevels=1000         " How many undos
 " Some coc language servers have issues with backup files, see #649.
 set backup
@@ -493,6 +483,11 @@ set hidden
 set cmdheight=2
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+set spelllang=pt,en
+" Show indent line on code with tabs
+set listchars=tab:\|\ "
+set list
+set textwidth=80
 
 " Kitty helper (https://sw.kovidgoyal.net/kitty/faq.html#id3)
 let &t_ut=''
