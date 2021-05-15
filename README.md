@@ -41,7 +41,7 @@ This repository structure mirrors a `$HOME` directory:
     - grep: [`rg`](https://github.com/BurntSushi/ripgrep#installation)
     - top: [`ytop`](https://github.com/cjbassi/ytop#installation)
     - find: [`fd`](https://github.com/sharkdp/fd#on-arch-linux)
-    - du: [`dust`](https://github.com/bootandy/dust)
+    - du: [`ncdu`](https://archlinux.org/packages/community/x86_64/ncdu)
     - rm: [`rmtrash`](https://aur.archlinux.org/packages/rmtrash)
 
   - Useful programs:
@@ -141,7 +141,8 @@ This repository structure mirrors a `$HOME` directory:
 * REST client: [`insomnia`](https://aur.archlinux.org/packages/insomnia)
 * Containers: [`docker[-compose]`](https://wiki.archlinux.org/index.php/Docker)
 
-- File manager:
+- File management:
+
   - XDG: [`thunar`](https://wiki.archlinux.org/index.php/thunar#Installation)
   - CLI: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
     - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug)
