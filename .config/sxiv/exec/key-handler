@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+# where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
+# keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
+
+while read file
+do
+  case "$1" in
+    "C-w")      set_bg "$file" ;;
+  esac
+done

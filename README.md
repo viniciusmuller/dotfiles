@@ -145,6 +145,11 @@ This repository structure mirrors a `$HOME` directory:
   - CLI: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
     - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug)
 
+* Wallpaper management:
+
+  - [`wallpapers (require sxiv)`](bin/wallpapers)
+  - [`set_bg (requires feh)`](bin/set_bg)
+
 * Editing:
 
   - Image manipulation: [`gimp`](https://wiki.archlinux.org/index.php/GIMP#Installation)
@@ -162,7 +167,6 @@ This repository structure mirrors a `$HOME` directory:
 * Others:
 
   - Screenshots: [`flameshot`](https://wiki.archlinux.org/index.php/Flameshot)
-  - Wallpaper manager: [`nitrogen`](https://wiki.archlinux.org/index.php/nitrogen)
   - PDF reader: [`mupdf`](https://wiki.archlinux.org/index.php/MuPDF#Installation)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
