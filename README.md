@@ -103,7 +103,6 @@ This repository structure mirrors a `$HOME` directory:
   - Mixer: `pulsemixer`
 
 * Browser: [`firefox`](https://wiki.archlinux.org/index.php/Firefox#Installing):
-  - Theme: [`pywalfox`](https://github.com/frewacom/pywalfox)
 
 - Notifications daemon: [`dunst`](https://wiki.archlinux.org/index.php/Dunst#Installation)
 
@@ -116,6 +115,10 @@ This repository structure mirrors a `$HOME` directory:
     - [`vim`](https://wiki.archlinux.org/index.php/vim#Installation):
 
       - Plugin manager: [`vim-plug`](https://github.com/junegunn/vim-plug#installation)
+
+    - [`neovim`](https://aur.archlinux.org/packages/neovim-nightly-bin):
+
+      - Plugin manager: [`packer.nvim`](https://github.com/wbthomason/packer.nvim)
 
     - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
 
