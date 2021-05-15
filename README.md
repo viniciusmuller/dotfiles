@@ -65,9 +65,7 @@ This repository structure mirrors a `$HOME` directory:
     QT_IM_MODULE=cedilla
     ```
 
-* Display manager: [`lightdm`](https://wiki.archlinux.org/index.php/LightDM#Installation)
-
-  - Greeter: [`lightdm-webkit2-greeter`](https://archlinux.org/packages/community/x86_64/lightdm-webkit2-greeter)
+* Display manager: [`ly`](https://aur.archlinux.org/packages/ly)
 
 * Window managers:
 

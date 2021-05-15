@@ -1,9 +1,7 @@
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
-# add yarn globally installed packages to path
-export PATH="$PATH:$(yarn global bin)"
-
 export WALLPAPERS_DIR=~/wallpapers
 export EDITOR='vim'
 
+export XDG_CONFIG_HOME=$HOME/.config
