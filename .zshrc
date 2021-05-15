@@ -138,6 +138,10 @@ alias rm="rmtrash"
 alias rmdir="rmdirtrash"
 alias restore="trash-restore"
 
+alias mc="make clean"
+
+alias pd="popd"
+
 alias tl="tmux ls"
 alias ta="tmux attach -t"
 alias tn="tmux new -s"
