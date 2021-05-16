@@ -2,101 +2,99 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
-	PromptPackerInstall()
+  PromptPackerInstall()
 end
 
 function PromptPackerInstall()
-	if vim.fn.input("Install packer.nvim? (y/n)") ~= "y" then
-		return
-	end
+  if vim.fn.input("Install packer.nvim? (y/n)") ~= "y" then
+    return
+  end
 
-	local directory = string.format(
-	'%s/site/pack/packer/opt/',
-	vim.fn.stdpath('data')
-	)
+  local directory = string.format(
+    '%s/site/pack/packer/opt/',
+    vim.fn.stdpath('data')
+  )
 
-	vim.fn.mkdir(directory, 'p')
+  vim.fn.mkdir(directory, 'p')
 
-	local git_clone_cmd = vim.fn.system(string.format(
-		'git clone %s %s',
-		'https://github.com/wbthomason/packer.nvim',
-		directory .. '/packer.nvim'
-	))
+  local git_clone_cmd = vim.fn.system(string.format(
+    'git clone %s %s',
+    'https://github.com/wbthomason/packer.nvim',
+    directory .. '/packer.nvim'
+  ))
 
-	print(git_clone_cmd)
-	print("packer.nvim installed!")
+  print(git_clone_cmd)
+  print("packer.nvim installed!")
 
-	return
+  return
 end
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself as an optional plugin
-	use {'wbthomason/packer.nvim', opt = true}
+  -- Packer can manage itself as an optional plugin
+  use {'wbthomason/packer.nvim', opt = true}
 
-	use 'tpope/vim-surround'
-	use 'tpope/vim-commentary'
-	use 'tpope/vim-repeat'
-	use 'tpope/vim-sensible'
+  -- Lsp
+  use 'neovim/nvim-lspconfig'
+  use {
+    'nvim-lua/completion-nvim',
+    config = function ()
+      vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
+      vim.g.completion_matching_ignore_case = 1
+      vim.g.completion_trigger_character = {".", "::"}
+      vim.g.completion_timer_cycle = 50
+    end
+  }
+  use 'kabouzeid/nvim-lspinstall'
 
-	-- Git
-	-- TODO: use gitsigns.nvim
-  use 'airblade/vim-gitgutter'
-  -- use {
-  -- 'lewis6991/gitsigns.nvim',
-  -- requires = { 'nvim-lua/plenary.nvim' },
-  -- config = function()
-  --   require('gitsigns').setup()
-  -- end
--- }
-	use 'tpope/vim-fugitive'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-	use 'SirVer/ultisnips'
-
-	use {
-  'nvim-telescope/telescope.nvim',
-  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-}
-
-	use 'kyazdani42/nvim-web-devicons'
-	-- Multi cursor
-	-- use {'mg979/vim-visual-multi', branch = 'master'}
-
-	-- Clap
-	-- use 'liuchengxu/vim-clap'
-
-	-- Close tags
-	-- use 'alvan/vim-closetag'
-
-	-- Auto pairs
-	-- !! -> breaks visual-multi (multi-cursor)
-	use 'jiangmiao/auto-pairs'
-
-	-- Indentline
-	use 'vim-scripts/indentLine.vim'
-
-	-- Neoformat
-	-- use 'sbdchd/neoformat'
-
-	-- Easymotion
-	-- use 'easymotion/vim-easymotion'
-
-	-- Galaxyline
-	-- use {
-	-- 	'glepnir/galaxyline.nvim',
-	-- 	-- some optional icons baby
-	-- 	requires = {'kyazdani42/nvim-web-devicons', opt = true}
-	-- }
-
-	-- Colorizer
-	-- use 'norcalli/nvim-colorizer.lua'
-
-	-- Color schemes
-  -- use {
-  --   'sainnhe/gruvbox-material',
-  --   config = 'vim.cmd[[let g:gruvbox_material_background = \'hard\']]'
-  -- }
+  -- Aesthetics
+  use {
+    "folke/todo-comments.nvim",
+    config = function()
+	require('todo-comments').setup{}
+    end
+  }
+  use 'hoob3rt/lualine.nvim'
+  use 'mhinz/vim-startify'
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup{}
+    end
+  }
+  use 'simrat39/symbols-outline.nvim'
+  use 'kyazdani42/nvim-web-devicons'
   use {
     'folke/tokyonight.nvim',
     config = 'vim.cmd[[colorscheme tokyonight]]'
   }
+
+  -- Utils
+  use 'easymotion/vim-easymotion'
+  use 'tpope/vim-projectionist'
+  use 'jiangmiao/auto-pairs'
+  use 'tpope/vim-commentary'
+  use 'thinca/vim-quickrun'
+  use 'wellle/targets.vim'
+  use 'tpope/vim-sensible'
+  use 'tpope/vim-surround'
+  use 'vim-test/vim-test'
+  use 'tpope/vim-repeat'
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
+
+  -- Git
+  use 'lewis6991/gitsigns.nvim'
+  use 'tpope/vim-fugitive'
+
+  -- Language specific
+  use 'elixir-editors/vim-elixir'
 end)
