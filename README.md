@@ -28,6 +28,7 @@ This repository structure mirrors a `$HOME` directory:
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
 
     - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
+    - Colors: [`base16-shell`](https://github.com/chriskempson/base16-shell)
     - Plugins:
       - [`zsh-z`](https://github.com/agkozak/zsh-z#for-oh-my-zsh-users)
       - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
