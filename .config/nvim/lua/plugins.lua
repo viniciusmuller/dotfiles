@@ -54,28 +54,62 @@ return require('packer').startup(function(use)
 
   -- Aesthetics
   use {
-    "folke/todo-comments.nvim",
-    config = function()
-	require('todo-comments').setup{}
-    end
-  }
-  use 'hoob3rt/lualine.nvim'
-  use 'mhinz/vim-startify'
+		"folke/todo-comments.nvim",
+		config = function()
+			 require("todo-comments").setup{}
+		end
+	}
+
   use {
-    'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup{}
-    end
-  }
-  use 'simrat39/symbols-outline.nvim'
-  use 'kyazdani42/nvim-web-devicons'
-  use {
-    'folke/tokyonight.nvim',
-    config = 'vim.cmd[[colorscheme tokyonight]]'
+    'glepnir/galaxyline.nvim',
+    config = function() require('statusline') end
   }
 
+	use {
+		'mhinz/vim-startify',
+		config = function ()
+			vim.g.startify_session_persistence = 1
+			vim.g.startify_session_dir = '~/.config/nvim/session'
+			vim.g.startify_lists = {
+				{
+					type = 'sessions',
+					header = {'   Sessions'}
+				},
+				{
+					type = 'files',
+					header = {'   Files'}
+				}, {
+					type = 'dir',
+					header = {'   Files ' .. vim.fn.getcwd()}
+				}, {
+					type = 'bookmarks',
+					header = {'   Bookmarks'}
+				}, {
+					type = 'commands',
+					header = {'   Commands'}
+				}
+			}
+		end
+	}
+	use {
+		'folke/trouble.nvim',
+		config = function()
+			require('trouble').setup{}
+		end
+	}
+	use 'simrat39/symbols-outline.nvim'
+	use 'kyazdani42/nvim-web-devicons'
+	use {
+		'folke/tokyonight.nvim',
+		config = 'vim.cmd[[colorscheme tokyonight]]'
+	}
+
   -- Utils
-  use 'easymotion/vim-easymotion'
+  use {'easymotion/vim-easymotion',
+	  config = function()
+			vim.api.nvim_set_keymap('n', 's', '<Plug>(easymotion-overwin-f2)', {})
+		end
+	}
   use 'tpope/vim-projectionist'
   use 'jiangmiao/auto-pairs'
   use 'tpope/vim-commentary'
@@ -86,14 +120,20 @@ return require('packer').startup(function(use)
   use 'vim-test/vim-test'
   use 'tpope/vim-repeat'
 
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+  use 'SirVer/ultisnips'
+  use 'honza/vim-snippets'
 
-  -- Git
-  use 'lewis6991/gitsigns.nvim'
-  use 'tpope/vim-fugitive'
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
+
+	-- Git
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = function() require('gitsigns').setup() end
+	}
+	use 'tpope/vim-fugitive'
 
   -- Language specific
   use 'elixir-editors/vim-elixir'
