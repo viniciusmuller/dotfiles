@@ -158,14 +158,18 @@ function ShowDocumentation()
 endfunction
 
 function GetBranch()
-  let head = FugitiveHead()
-  return head != '' ? 'git:(' . head . ') ' : ''
+  if exists('FugitiveHead') 
+    let head = FugitiveHead()
+    return head != '' ? 'git:(' . head . ') ' : ''
+  endif
 endfunction
 
 function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  let head = FugitiveHead()
-  return head != '' ? printf('| +%d ~%d -%d |', a, m, r) : ''
+  if exists('GitGutterGetHunkSummary')
+    let [a,m,r] = GitGutterGetHunkSummary()
+    let head = FugitiveHead()
+    return head != '' ? printf('| +%d ~%d -%d |', a, m, r) : ''
+  endif
 endfunction
 
 function CommandWithInput(command, prompt)
