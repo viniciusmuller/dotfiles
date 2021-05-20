@@ -27,11 +27,8 @@ This repository structure mirrors a `$HOME` directory:
 
   - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
 
-    - Framework: [`oh-my-zsh!`](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
     - Colors: [`base16-shell`](https://github.com/chriskempson/base16-shell)
-    - Plugins:
-      - [`zsh-z`](https://github.com/agkozak/zsh-z#for-oh-my-zsh-users)
-      - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
+    - Plugin manager: [`antigen`](https://aur.archlinux.org/packages/antigen)
 
   - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
 
@@ -51,6 +48,7 @@ This repository structure mirrors a `$HOME` directory:
     - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
     - [`grit`](https://github.com/climech/grit)
     - [`bandwhich`](https://github.com/imsnif/bandwhich)
+    - [`zoxide`](https://aur.archlinux.org/packages/zoxide-bin)
 
   - Git helpers:
     - Diff viewer: [`delta`](https://github.com/dandavison/delta#installation)
