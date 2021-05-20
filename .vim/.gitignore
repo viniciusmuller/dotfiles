@@ -4,5 +4,3 @@ colors/
 
 .netrwhist
 autoload/plug.vim
-coc-settings.json
-

@@ -1,0 +1,29 @@
+{
+  "java.home": "~/.asdf/installs/java/openjdk-14.0.1",
+
+  "elixirLS.dialyzerEnabled": false,
+
+  "python.pythonPath":"python",
+
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"]
+    },
+    "purescript": {
+      "command": "purescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["purescript"],
+      "trace.server": "off",
+      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"],
+      "settings": {
+        "purescript": {
+          "addSpagoSources": true,
+          "addNpmPath": true // Set to true if using a local purty install for formatting
+          // etc
+        }
+      }
+    }
+  }
+}
