@@ -24,9 +24,10 @@ in {
       delta     # Diff viewer
       git
 
-      # Utils 
+      # Utils
       zoxide    # Directory jumper
       xsv       # Work with csv
+      jq        # Work with json
       bat       # File viewer
 
       lolcat
@@ -36,6 +37,8 @@ in {
       vifm      # File manager
     ];
     gui = [
+      # TODO: Find out why apparently there are OpenGL related
+      # drivers errors on home-manager installed GUI programs
       nerdfonts # Patched fonts
       firefox   # Browser
       kitty     # Terminal
@@ -57,7 +60,7 @@ in {
   programs = {
     vim = with pkgs.vimPlugins; {
       enable = true;
-      plugins = [ 
+      plugins = [
         vim-plug
       ];
       /* TODO Make vim-plug work */
@@ -92,6 +95,7 @@ in {
       ];
       oh-my-zsh = {
         enable = true;
+        theme = "af-magic";
       };
     };
   };
