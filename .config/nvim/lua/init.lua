@@ -3,35 +3,9 @@ require('settings')
 require('mappings')
 require('lsp')
 
-require('lualine').setup{
-	options = {
-		theme = 'nightfly',
-		component_separators = {},
-		section_separators = {},
-	},
-	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'filename'},
-		lualine_c = {''},
-		lualine_x = {'filetype', 'fileformat', 'encoding'},
-		lualine_y = {'branch'},
-		lualine_z = {'location'}
-	},
-}
-
-require('gitsigns').setup()
-
 require('nvim-treesitter.configs').setup {
-	highlight = {
-		enable = true,
-		custom_captures = {
-			-- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-			["foo.bar"] = "Identifier",
-		},
-	},
-	indent = {
-		enable = true
-	},
+	highlight = { enable = true },
+	indent = { enable = true },
 	textobjects = {
 		select = {
 			enable = true,
@@ -43,14 +17,6 @@ require('nvim-treesitter.configs').setup {
 				["ic"] = "@class.inner",
 				["ab"] = "@block.outer",
 				["ib"] = "@block.inner",
-
-				-- Or you can define your own textobjects like this
-				["iF"] = {
-					python = "(function_definition) @function",
-					cpp = "(function_definition) @function",
-					c = "(function_definition) @function",
-					java = "(method_declaration) @function",
-				},
 			},
 		},
 		move = {
