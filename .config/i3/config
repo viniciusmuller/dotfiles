@@ -29,7 +29,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#0d0d0d' -sf '#0d0d0d' -sb '#d080ff' -nf '#d080ff'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000' -sf '#000' -sb '#aaa' -nf '#aaa'
+bindsym $mod+n exec --no-startup-id quickswitch
 
 # change focus
 bindsym $mod+j focus left
@@ -153,7 +154,8 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-client.focused #eeeeeee #ffffff #ffffff #2e9ef4
+#              border background text indicator
+client.focused #eeeeeee #333333 #ffffff #2e9ef4
 
 # i3gaps
 for_window [class=".*"] border pixel 3
@@ -162,10 +164,14 @@ smart_borders on
 
 # This assumes that you have a script called myi3lock in your path
 # TODO: Fix hardcoded paths and figure out why xautolock path is broken #
-exec xautolock -time 15 -locker ~/bin/myi3lock -notify 15 -notifier "notify-send -u critical -t 14000 -- 'LOCKING screen in 15 seconds'"
+# Place mouse on the bottom right corner of the screen to prevent screen locking
+exec xautolock -corners 000- -time 15 -locker ~/bin/myi3lock -notify 15 -notifier "notify-send -u critical -t 14000 -- 'LOCKING screen in 15 seconds'"
 
 bindsym $mod+m exec ~/bin/myi3lock
 bindsym $mod+p exec ~/bin/toggle_layout
+
+bindsym $mod+minus exec --no-startup-id picom-trans -c -5
+bindsym $mod+equal exec --no-startup-id picom-trans -c +5
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
