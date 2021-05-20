@@ -4,14 +4,18 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
 
-function nmap(mapping, command, opts)
+local function nmap(mapping, command, opts)
   map('n', mapping, command, opts)
 end
 
-function tmap(mapping, command, opts)
+local function tmap(mapping, command, opts)
   map('t', mapping, command, opts)
 end
 
+-- Lsp
+local function lsp_mappings()
+
+end
 
 -- Set the leader key
 vim.g.mapleader = " "
@@ -22,20 +26,28 @@ nmap('<Leader>ff',  '<cmd>Telescope find_files<cr>', {})
 nmap('<Leader>fh',  '<cmd>Telescope help_tags<cr>', {})
 nmap('<Leader>fs',  '<cmd>Telescope live_grep<cr>', {})
 nmap('<Leader>fb',  '<cmd>Telescope buffers<cr>', {})
+nmap('<Leader>fm',  '<cmd>Telescope man_pages<cr>', {})
 
-map('', '<Leader>qr', ':QuickRun<cr>', {})
+nmap('<Leader>qr', ':QuickRun<cr>', {})
+nmap('<Leader>qf', ':Trouble quickfix<cr>', {})
 
 -- Project
 nmap('<Leader>pt',  ':TodoTrouble<cr>', {})
 nmap('<Leader>pa',  ':AV<cr>', {})
 
--- Lsp
+-- Git
+nmap('<Leader>G',  ':tab G<cr>', {})
 
 -- Others
 -- TODO: Make this works without nnoremap
 nmap('H', '^', {})
 nmap('zs', ':update<cr>', { silent = true })
+nmap('<c-w>z', ':ZenMode<cr>', { silent = true })
+nmap('<c-w>t', ':term<cr>', { silent = true })
+-- TODO: make this work
+nmap('Y', '"*y', {})
+
+nmap('<c-p>', '@:', {})
 
 -- Neovim terminal
 tmap('<Esc>', '<C-\\><C-n>', {})
-
