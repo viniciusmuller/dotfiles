@@ -1,17 +1,54 @@
 #----------------------------------------------------------;
-#                         MISC                             ;
+#                         ANTIGEN                          ;
 #----------------------------------------------------------;
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+# TODO: Figure out why completion plugins doesn't work sometimes
+
+antigen_path=$HOME/.antigen
+if [ ! -d $antigen_path ]; then
+    git clone --branch master https://github.com/zsh-users/antigen.git $antigen_path
+fi
+
+source $antigen_path/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle colored-man-pages
+antigen bundle command-not-found
+
+# Load the theme.
+antigen theme af-magic
+
+# Other plugins
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle chriskempson/base16-shell
+antigen bundle hlissner/zsh-autopair
+antigen bundle zsh-users/zsh-completions
+antigen bundle Aloxaf/fzf-tab
+
+# Tell Antigen that you're done.
+antigen apply
+
+#----------------------------------------------------------;
+#                            FZF                           ;
+#----------------------------------------------------------;
 
 export FZF_DEFAULT_OPTS='--prompt " λ "'
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-. $HOME/.asdf/asdf.sh
+
+fzf_path=/usr/share/fzf
+if [ -d "$fzf_path" ]; then
+  source "$fzf_path/key-bindings.zsh"
+  source "$fzf_path/completion.zsh"
+fi
+
+#----------------------------------------------------------;
+#                           ASDF                           ;
+#----------------------------------------------------------;
+
+asdf_path=$HOME/.asdf/asdf.sh
+[ -f $asdf_path ] && . $asdf_path
 
 #----------------------------------------------------------;
 #                    ZSH CONFIGURATION                     ;
@@ -21,7 +58,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="af-magic"
+# ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,7 +102,7 @@ ZSH_THEME="af-magic"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -83,16 +120,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  colored-man-pages
-  zsh-syntax-highlighting
-  zsh-vi-mode
-  zsh-z
-  git
-)
+# plugins=(
+#   git
+# )
 
-source $ZSH/oh-my-zsh.sh
-zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+# [ -f $ZSH ] && source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -139,8 +171,12 @@ alias rmdir="rmdirtrash"
 alias restore="trash-restore"
 
 alias mc="make clean"
+alias mk="make"
 
 alias pd="popd"
+
+alias hm="home-manager"
+alias hms="home-manager switch"
 
 alias tl="tmux ls"
 alias ta="tmux attach -t"
@@ -150,20 +186,16 @@ alias tk="tmux kill-session -t"
 alias pacs="sudo pacman -S"
 alias pacup="sudo pacman -Syu"
 alias pacr="sudo pacman -Rns"
-alias pacf="pacman -Ss"
+alias pacf="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias pacq="pacman -Q"
 
 alias yays="yay -S"
-alias yayf="yay -Ss"
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 alias yayr="yay -Rns"
 alias yayup="yay -Syu"
 
-function my_init() {
-  if [[ -d /usr/share/fzf ]] then
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
-  fi
-}
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
 
-# This is needed when using zsh-vi-mode
-zvm_after_init_commands+=(my_init)
+alias luamake=/home/vini/language_servers/lua-language-server/3rd/luamake/luamake
