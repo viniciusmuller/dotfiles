@@ -18,3 +18,10 @@
 
 [interactive]
   diffFilter = delta --color-only
+
+[gpg]
+	program = gpg
+
+[commit]
+	gpgsign = true
+
