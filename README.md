@@ -143,8 +143,7 @@ This repository structure mirrors a `$HOME` directory:
 - File management:
 
   - XDG: [`thunar`](https://wiki.archlinux.org/index.php/thunar#Installation)
-  - CLI: [`ranger`](https://wiki.archlinux.org/index.php/ranger):
-    - Images previewer: [`ueberzug`](https://archlinux.org/packages/community/x86_64/ueberzug)
+  - CLI: [`vifm`](https://wiki.archlinux.org/title/Vifm#Installation)
 
 * Wallpaper management:
 
