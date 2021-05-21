@@ -1,3 +1,5 @@
+alias l='ls -lah'
+
 alias v="vim"
 alias vf="vifm"
 alias nv="nvim"

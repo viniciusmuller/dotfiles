@@ -1,7 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 parse_git_branch() {
@@ -9,8 +8,6 @@ parse_git_branch() {
 }
 
 export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
-
-export GPG_TTY=$(tty)
 
 # autocd
 shopt -s autocd
