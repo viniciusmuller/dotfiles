@@ -1,4 +1,5 @@
 alias l='ls -lah'
+alias c='clear'
 
 alias v="vim"
 alias vf="vifm"
@@ -11,8 +12,7 @@ alias gc="git commit"
 
 alias ls="exa"
 
-alias rm="rmtrash"
-alias rmdir="rmdirtrash"
+alias rm="trash-put"
 alias restore="trash-restore"
 
 alias mc="make clean"

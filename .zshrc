@@ -152,7 +152,7 @@ asdf_path=$HOME/.asdf/asdf.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.aliases.sh
+source ~/.utils/aliases.sh
 
 if command -v zoxide &>/dev/null; then
   eval "$(zoxide init zsh)"
