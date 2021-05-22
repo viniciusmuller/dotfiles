@@ -1,13 +1,30 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
-
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+PROMPT_COMMAND=__prompt_command # Func to gen PS1 after CMDs
+
+__prompt_command() {
+    local EXIT="$?"             # This needs to be first
+    PS1=""
+
+    local reset='\[\e[0m\]'
+
+    local red='\[\e[0;31m\]'
+    local gre='\[\e[0;32m\]'
+    local yel='\[\e[0;33m\]'
+
+    if [ $EXIT != 0 ]; then
+        PS1+="${red}\$? ${reset}"      # Add red if exit code non 0
+    else
+        PS1+="${gre}\$? ${reset}"
+    fi
+
+    PS1+="\u@\h ${yel}\w ${red}$(parse_git_branch)${reset}$ "
+}
 
 # autocd
 shopt -s autocd
