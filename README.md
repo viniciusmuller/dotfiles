@@ -25,10 +25,7 @@ This repository structure mirrors a `$HOME` directory:
 
     - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
 
-  - Shell: [`zsh`](https://wiki.archlinux.org/index.php/zsh#Installation)
-
-    - Colors: [`base16-shell`](https://github.com/chriskempson/base16-shell)
-    - Plugin manager: [`antigen`](https://aur.archlinux.org/packages/antigen)
+  - Shell: [`bash`](https://wiki.archlinux.org/title/Bash#Invocation)
 
   - Terminal multiplexer: [`tmux`](https://wiki.archlinux.org/index.php/Tmux#Installation)
 
@@ -44,9 +41,7 @@ This repository structure mirrors a `$HOME` directory:
 
   - Useful programs:
 
-    - [`tealdeer`](https://github.com/dbrgn/tealdeer)
     - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
-    - [`grit`](https://github.com/climech/grit)
     - [`bandwhich`](https://github.com/imsnif/bandwhich)
     - [`zoxide`](https://aur.archlinux.org/packages/zoxide-bin)
 
@@ -64,8 +59,6 @@ This repository structure mirrors a `$HOME` directory:
     QT_IM_MODULE=cedilla
     ```
 
-* Display manager: [`ly`](https://aur.archlinux.org/packages/ly)
-
 * Window managers:
 
   - [`dwm`](https://github.com/arcticlimer/suckless/tree/master/dwm)
@@ -74,32 +67,13 @@ This repository structure mirrors a `$HOME` directory:
     - Status: [`slstatus`](https://github.com/arcticlimer/suckless/tree/master/slstatus)
     - Launcher: [`dmenu`](https://github.com/arcticlimer/suckless/tree/master/dmenu)
 
-  - [`i3`](https://wiki.archlinux.org/title/i3#Installation):
-
-    - Locker: [`i3lock-colors`](https://aur.archlinux.org/packages/i3lock-color/)
-
-      - Custom script: [`myi3lock`](bin/myi3lock)
-
-    - Launcher: [`dmenu`](https://github.com/arcticlimer/suckless/tree/master/dmenu)
-
-    - Custom keybindings:
-
-      - Quickswitch (Mod+n): [`quickswitch`](https://github.com/proxypoke/quickswitch-for-i3#installation)
-      - Lock Screen (Mod+m): [`myi3lock`](bin/myi3lock)
-      - Toggle layout (Mod+p): [`toggle_layout`](bin/toggle_layout)
-
-    - Status bar: [`i3status-rust`](https://github.com/greshake/i3status-rust):
-
-  - [`awesome`](https://wiki.archlinux.org/index.php/awesome#Installation):
-    - Theme: https://github.com/arcticlimer/UwU
-
 - Screenlocking:
 
   - Helper: [`xautolock`](https://archlinux.org/packages/community/x86_64/xautolock)
 
 - Software mixer: [`pulseaudio`](https://wiki.archlinux.org/index.php/PulseAudio#Installation)
 
-  - Mixer: `pulsemixer`
+  - Mixer: [`pulsemixer`](https://archlinux.org/packages/community/any/pulsemixer)
 
 * Browser: [`firefox`](https://wiki.archlinux.org/index.php/Firefox#Installing):
 
@@ -118,16 +92,6 @@ This repository structure mirrors a `$HOME` directory:
     - [`neovim`](https://aur.archlinux.org/packages/neovim-nightly-bin):
 
       - Plugin manager: [`packer.nvim`](https://github.com/wbthomason/packer.nvim)
-
-    - [`Emacs 28+ natively compiled`](https://aur.archlinux.org/packages/emacs-native-comp-git)
-
-      - Font: [`Jetbrains Mono`](https://archlinux.org/packages/community/any/ttf-jetbrains-mono)
-      - Framework: [`Doom Emacs`](https://github.com/hlissner/doom-emacs#install)
-
-    - [`vscode`](https://aur.archlinux.org/packages/visual-studio-code-bin/):
-
-      - Theme: `BeardedTheme Anthracite`
-      - Settings path: `~/.config/Code/User/settings.json`
 
 * Languages version manager: [`asdf`](https://asdf-vm.com/#/core-manage-asdf?id=asdf)
 
@@ -149,13 +113,6 @@ This repository structure mirrors a `$HOME` directory:
 
   - [`wallpapers (require sxiv)`](bin/wallpapers)
   - [`set_bg (requires feh)`](bin/set_bg)
-
-* Editing:
-
-  - Image manipulation: [`gimp`](https://wiki.archlinux.org/index.php/GIMP#Installation)
-    - Theme: [`GimpPs`](https://github.com/doctormo/GimpPs#basic-installation)
-  - Pixel art: [`aseprite`](https://aur.archlinux.org/packages/aseprite/)
-    - Theme: [`aseprite-studio-theme`](https://github.com/Lyutria/aseprite-studio-theme#usage)
 
 * Ricing:
 
