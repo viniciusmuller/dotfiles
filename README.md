@@ -129,7 +129,6 @@ This repository structure mirrors a `$HOME` directory:
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
   - Hide cursor: [`xbanish`](https://aur.archlinux.org/packages/xbanish)
-  - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
   - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
 
 ## Preview:
