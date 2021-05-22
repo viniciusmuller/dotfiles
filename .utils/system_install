@@ -8,7 +8,7 @@ username=vini
 hostname=arch
 lang=en_US.UTF-8
 localtime=America/Sao_Paulo
-pacman_pkgs="sudo nectl network-manager-applet networkmanager dialog"
+pacman_pkgs="sudo netctl network-manager-applet networkmanager dialog"
 bootloader_id=arch_grub
 
 locale-gen && export LANG="$lang"
@@ -54,8 +54,8 @@ cat <<EOF > /mnt/part2.sh
   passwd
 
   useradd -m -g users -G wheel "$username"
-  echo "$user password:"
-  passwd "$user"
+  echo "$username password:"
+  passwd "$username"
 
   pacman -S $pacman_pkgs
 
@@ -72,6 +72,7 @@ cat <<EOF > /mnt/part2.sh
   exit
 EOF
 
+chmod +x /mnt/part2.sh
 arch-chroot /mnt /part2.sh
 
 # Unmount disks and reboot

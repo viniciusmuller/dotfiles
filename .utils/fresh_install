@@ -6,8 +6,9 @@ install_suckless() {
 }
 
 install_yay() {
-  git clone https://aur.archlinux.org/yay.git
-  (cd yay && makepkg -si)
+  yay_tmp=/tmp/yay
+  git clone https://aur.archlinux.org/yay.git "$yay_tmp"
+  (cd "$yay_tmp" && makepkg -si && rm -rf "$yay_tmp")
 }
 
 core="base-devel alsa-utils pulseaudio"
