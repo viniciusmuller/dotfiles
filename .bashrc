@@ -50,7 +50,7 @@ fi
 
 source $SKINNY_PATH/skinny.sh
 
-skinny src ~/.aliases.sh
+skinny src ~/.utils/aliases.sh
 
 skinny github lincheney/fzf-tab-completion/master/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
