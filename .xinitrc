@@ -22,3 +22,4 @@ notifier="notify-send -u critical -t 14000 -- 'LOCKING screen in 15 seconds'"
 xautolock_parameters="-corners 000- -time 15 -locker slock -notify 15 -notifier $notifier"
 check_command "xautolock" && xautolock $autolock_parameters &
 
+exec dwm
