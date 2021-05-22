@@ -13,7 +13,8 @@ cli="stow man tmux vim exa bat fzf fd ripgrep ncdu trash-cli bandwhich vifm lolc
 gui="xorg-server xorg-xinit dunst picom feh sxiv mupdf xautolock firefox kitty
 ttf-jetbrains-mono ttf-dejavu"
 
-aur="zoxide ytop lazydocker git-delta-bin blugon nerd-fonts-jetbrains-mono"
+aur="zoxide ytop lazydocker git-delta-bin blugon nerd-fonts-jetbrains-mono
+xbanish"
 
 sudo pacman -S --needed $core $cli $gui
 

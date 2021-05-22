@@ -44,6 +44,7 @@ This repository structure mirrors a `$HOME` directory:
     - [`lazydocker`](https://github.com/jesseduffield/lazydocker)
     - [`bandwhich`](https://github.com/imsnif/bandwhich)
     - [`zoxide`](https://aur.archlinux.org/packages/zoxide-bin)
+    - [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
 
   - Git helpers:
     - Diff viewer: [`delta`](https://github.com/dandavison/delta#installation)
@@ -127,6 +128,7 @@ This repository structure mirrors a `$HOME` directory:
   - PDF reader: [`mupdf`](https://wiki.archlinux.org/index.php/MuPDF#Installation)
   - Note taking: [`obsidian`](https://aur.archlinux.org/packages/obsidian-insider/)
   - Blue light filter: [`blugon`](https://aur.archlinux.org/packages/blugon)
+  - Hide cursor: [`xbanish`](https://aur.archlinux.org/packages/xbanish)
   - File finder: [`fzf`](https://wiki.archlinux.org/index.php/fzf#Installation)
   - Color picker: [`xcolor`](https://github.com/Soft/xcolor#arch-linux)
 
