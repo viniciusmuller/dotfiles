@@ -14,7 +14,7 @@ install_yay() {
 core="base-devel alsa-utils pulseaudio"
 cli="stow man tmux vim exa bat fzf fd ripgrep ncdu trash-cli bandwhich vifm"
 xorg="xorg-server xorg-xinit libx11 libxinerama libxft webkit2gtk"
-gui="dunst picom feh sxiv mupdf xautolock firefox kitty ttf-jetbrains-mono ttf-dejavu"
+gui="dunst picom feh sxiv mupdf xautolock wmctrl firefox kitty ttf-jetbrains-mono ttf-dejavu noto-fonts-emoji"
 aur="zoxide ytop lazydocker git-delta-bin blugon nerd-fonts-jetbrains-mono xbanish"
 
 sudo pacman -S --needed $core $cli $xorg $gui
