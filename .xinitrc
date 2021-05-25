@@ -16,6 +16,8 @@ check_command "dunst" && dunst &
 check_command "xbanish" && xbanish &
 # Restore background
 check_command "restore_bg" && restore_bg &
+# Print screen
+check_command "flameshot" && flameshot &
 
 # X screen locking daemon
 notifier="notify-send -u critical -t 14000 -- 'LOCKING screen in 15 seconds'"
