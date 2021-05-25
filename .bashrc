@@ -29,6 +29,11 @@ __prompt_command() {
 # autocd
 shopt -s autocd
 
+# Vi mode
+set -o vi
+bind -m vi-insert 'Control-l: clear-screen'
+bind -m vi-insert 'Control-p: previous-history'
+
 # Colored man pages on less
 export LESS_TERMCAP_mb=$'\e[1;32m'       # begin blinking
 export LESS_TERMCAP_md=$'\e[1;32m'       # begin bold
@@ -50,10 +55,22 @@ fi
 
 source $SKINNY_PATH/skinny.sh
 
+skinny src $HOME/.asdf/asdf.sh
+skinny src $HOME/.asdf/completions/asdf.bash
+
 skinny src ~/.utils/aliases.sh
 
+skinny github imomaliev/tmux-bash-completion/master/completions/tmux
+
+skinny github cykerway/complete-alias/master/complete_alias
+complete -F _complete_alias $( alias | perl -lne 'print "$1" if /^alias ([^=]*)=/' )
+
+# TODO: Find nice completions
 skinny github lincheney/fzf-tab-completion/master/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
+
+source_bash_completion() { . ./bash_completion ; }
+skinny git https://github.com/scop/bash-completion source_bash_completion
 
 base16_load() { eval "$(./profile_helper.sh)" ; }
 skinny git https://github.com/chriskempson/base16-shell base16_load
