@@ -1,6 +1,8 @@
 alias l='ls -lah'
 alias c='clear'
 
+alias b="cd -"
+
 alias v="vim"
 alias vf="vifm"
 alias nv="nvim"
@@ -20,6 +22,7 @@ alias gds="git diff --staged"
 alias ga="git add"
 alias gr="git remote"
 alias gp="git push"
+alias gb="git branch"
 alias grv="git remote -v"
 alias gsh="git show"
 
