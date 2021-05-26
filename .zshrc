@@ -25,8 +25,8 @@ antigen theme af-magic
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle chriskempson/base16-shell
 antigen bundle hlissner/zsh-autopair
-antigen bundle zsh-users/zsh-completions
 antigen bundle Aloxaf/fzf-tab
+antigen bundle zsh-users/zsh-completions
 
 # Tell Antigen that you're done.
 antigen apply
@@ -34,8 +34,6 @@ antigen apply
 #----------------------------------------------------------;
 #                            FZF                           ;
 #----------------------------------------------------------;
-
-export FZF_DEFAULT_OPTS='--prompt " λ "'
 
 fzf_path=/usr/share/fzf
 if [ -d "$fzf_path" ]; then
