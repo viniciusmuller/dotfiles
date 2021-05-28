@@ -10,7 +10,7 @@ call plug#begin()
 
 Plug 'mhinz/vim-startify'
 let g:startify_session_persistence = 1
-let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_dir = '~/.local/share/vim/session'
 let g:startify_lists = [
 \ { 'type': 'sessions',  'header': ['   Sessions'      ] },
 \ { 'type': 'files',     'header': ['   MRU'           ] },
@@ -453,12 +453,12 @@ nmap <leader>ca  <Plug>(coc-codeaction-selected)
 "--------------------------------------------------------------;
 
 set undofile                " Save undos after file closes
-set undodir=~/.vim/undo     " Where to save undo histories
+set undodir=~/.local/share/vim/undo     " Where to save undo histories
 set undolevels=1000         " How many undos
 " Some coc language servers have issues with backup files, see #649.
 set backup
 " Where to store backups
-set backupdir=~/.vim/backup
+set backupdir=~/.local/share/vim/backup
 " Make backup before overwriting the current buffer
 set writebackup
 " Overwrite the original backup file
