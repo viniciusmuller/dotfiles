@@ -24,6 +24,7 @@ alias gr="git remote"
 alias gp="git push"
 alias gb="git branch"
 alias grv="git remote -v"
+alias grs="git restore"
 alias gsh="git show"
 
 # asdf

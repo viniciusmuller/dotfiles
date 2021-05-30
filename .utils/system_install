@@ -89,6 +89,7 @@ EOF
 
 chmod +x /mnt/part2.sh
 arch-chroot /mnt /part2.sh
+rm /mnt/part2.sh
 
 # Unmount disks and reboot
 umount -Rl /mnt
