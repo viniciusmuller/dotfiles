@@ -2,22 +2,18 @@
 "                          Vim-Plug                            ;
 "--------------------------------------------------------------;
 
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 call plug#begin()
-
-"----------------------------------;
-" Session handling                 ;
-"----------------------------------;
-
-Plug 'mhinz/vim-startify'
-let g:startify_session_persistence = 1
-let g:startify_session_dir = '~/.local/share/vim/session'
-let g:startify_lists = [
-\ { 'type': 'sessions',  'header': ['   Sessions'      ] },
-\ { 'type': 'files',     'header': ['   MRU'           ] },
-\ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-\ { 'type': 'bookmarks', 'header': ['   Bookmarks'     ] },
-\ { 'type': 'commands',  'header': ['   Commands'      ] },
-\ ]
 
 "----------------------------------;
 " Useful general usage plugins     ;
@@ -41,6 +37,8 @@ let g:fzf_checkout_git_options = '--sort=-committerdate'
 let g:fzf_tag_actions = {
 \ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
 \}
+Plug 'dominickng/fzf-session.vim'
+let g:fzf_session_path = $HOME . '/.local/share/vim/session'
 
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-commentary'
@@ -52,21 +50,24 @@ Plug 'tpope/vim-eunuch'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jiangmiao/auto-pairs'
 Plug 'thinca/vim-quickrun'
+Plug 'pbrisbin/vim-mkdir'
 Plug 'wellle/targets.vim'
-Plug 'preservim/nerdtree'
-Plug 'mbbill/undotree'
+Plug 'junegunn/goyo.vim'
+Plug 'vim-utils/vim-man'
+Plug 'mattn/emmet-vim'
 
 Plug 'easymotion/vim-easymotion'
-map s <Plug>(easymotion-s)
+map s <Plug>(easymotion-overwin-f2)
+
+Plug 'mg979/vim-visual-multi'
+let g:VM_reselect_first = 1
+let g:EasyMotion_smartcase = 1
 
 Plug 'vim-test/vim-test'
 let test#strategy = "vimterminal"
 
-" Buffers and tabs managemenet
+" Buffers managemenet
 Plug 'moll/vim-bbye'
-Plug 'gcmt/taboo.vim'
-" Make sessions remember taboo tabs names
-set sessionoptions+=tabpages,globals
 
 "----------------------------------;
 " Git wrappers                     ;
@@ -125,10 +126,6 @@ call plug#end()
 "                            Theme                              ;
 "---------------------------------------------------------------;
 
-" Improve colors on terminal
-set termguicolors
-
-colorscheme gruvbox-material
 set background=dark
 
 "---------------------------------------------------------------;
@@ -173,15 +170,6 @@ function! GitStatus()
   endif
 endfunction
 
-function CommandWithInput(command, prompt)
-  let user_input = input(a:prompt)
-  " If the user cancelled the prompt, just return
-  if user_input == ''
-    return
-  endif
-  execute a:command . ' ' . user_input
-endfunction
-
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
         copen
@@ -202,9 +190,6 @@ endfunction
 "--------------------------------------------------------------;
 "                          Commands                            ;
 "--------------------------------------------------------------;
-
-command TabOpen call CommandWithInput(':TabooOpen', 'Tab name: ')
-command TabRename call CommandWithInput(':TabooRename', 'Tab name: ')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
@@ -234,14 +219,12 @@ nnoremap <silent> <Leader>bd :Bdelete<cr>
 " Change buffers
 nnoremap <silent> <Leader>bn :bnext<cr>
 nnoremap <silent> <Leader>bp :bprev<cr>
-nnoremap <silent> <Leader>bu :UndotreeToggle<cr>
 
 "----------------------------------;
 " t - Tabs / Testing               ;
 "----------------------------------;
 
-nnoremap <Leader>to :TabOpen<cr>
-nnoremap <Leader>tr :TabRename<cr>
+nnoremap <Leader>to :tabnew<space>
 nnoremap <Leader>tq :tabclose<cr>
 
 " Swap tabs
@@ -258,13 +241,14 @@ nnoremap <Leader>tl :TestLast<cr>
 "----------------------------------;
 " s - Session                      ;
 "----------------------------------;
-" TODO: Restore terminals
 
-nnoremap <silent> <Leader>st :Startify<cr>
-nnoremap <silent> <Leader>ss :SSave<cr>
-nnoremap <silent> <Leader>sl :SLoad<cr>
-nnoremap <silent> <Leader>sd :SDelete<cr>
-nnoremap <silent> <Leader>sc :SClose<CR>
+nnoremap <leader>sl :Sessions<cr>
+" Session new
+nnoremap <leader>sn :Session<space>
+" Session delete
+nnoremap <Leader>sd :SDelete<space>
+
+nnoremap <silent> <Leader>sc :setlocal spell!<cr>
 
 "----------------------------------;
 " f - Find                         ;
@@ -284,6 +268,8 @@ nnoremap <silent> <Leader>ft :Colors<cr>
 nnoremap <silent> <Leader>fw :Windows<cr>
 " Find substring in files
 nnoremap <silent> <Leader>fs :Rg<cr>
+" Find lines in current buffer
+nnoremap <leader>fl :Lines<CR>
 " Find mappings
 nnoremap <silent> <Leader>fm :Maps<cr>
 " Find marks
@@ -303,9 +289,11 @@ nnoremap <silent> <Leader>pa :AV<cr>
 "----------------------------------;
 
 " Git status
-nnoremap <silent> <Leader>gs :G<cr>
+nnoremap <silent> <Leader>G :tab G<cr>
 " Git diff
 nnoremap <silent> <Leader>gd :Gvdiffsplit<cr>
+" Git DIFF
+nnoremap <silent> <Leader>gD :!git diff<cr>
 " Git log
 nnoremap <silent> <Leader>gl :Gclog<cr>
 " Search and manage git branches
@@ -318,7 +306,7 @@ nnoremap <silent> <Leader>gf :diffget //2<cr>
 nnoremap <silent> <Leader>gj :diffget //3<cr>
 
 "----------------------------------;
-" c - Conquer of completion        ;
+" l - Language server client       ;
 "----------------------------------;
 
 " GoTo code navigation.
@@ -327,12 +315,12 @@ nmap <silent> <Leader>cgy <Plug>(coc-type-definition)
 nmap <silent> <Leader>cgi <Plug>(coc-implementation)
 nmap <silent> <Leader>cgr <Plug>(coc-references)
 
-" Coc format
-vmap <leader>cf <Plug>(coc-format-selected)
-nmap <leader>cf :call CocAction('format')<cr>
+" Format
+vmap <leader>lf <Plug>(coc-format-selected)
+nmap <leader>lf :call CocAction('format')<cr>
 
 " Symbol renaming.
-nmap <leader>cr  <Plug>(coc-rename)
+nmap <leader>lr  <Plug>(coc-rename)
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -340,22 +328,20 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>cac  <Plug>(coc-codeaction)
+nmap <leader>la <Plug>(coc-codeaction)
 " Coc fix
-nmap <leader>cq  <Plug>(coc-fix-current)
+nmap <leader>lq  <Plug>(coc-fix-current)
 
 " Show all diagnostics.
-nnoremap <silent><nowait> <Leader>cd  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader>ld  :<C-u>CocList diagnostics<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <Leader>co  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <Leader>lo  :<C-u>CocList outline<cr>
 
-" Manage extensions.
-nnoremap <silent><nowait> <Leader>ce :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <Leader>cc :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <Leader>lc :<C-u>CocList commands<cr>
 
 " Search workspace symbols.
-nnoremap <silent><nowait> <Leader>cs :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <Leader>ls :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <Leader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -378,6 +364,8 @@ nnoremap <silent> <Leader>vi :PlugInstall<cr>
 nnoremap <silent> <Leader>vc :PlugClean<cr>
 " Update plugins
 nnoremap <silent> <Leader>vu :PlugUpdate<cr>
+" Vim quit
+nnoremap <silent> <Leader>vq :qa<cr>
 
 "----------------------------------;
 " Others                           ;
@@ -395,9 +383,19 @@ nnoremap ]q :cn<cr>
 " Other mappings                   ;
 "----------------------------------;
 
-nnoremap <silent> zs :update<cr>
+" Reselect last cursors
+nmap gl <Plug>(VM-Reselect-Last)
 
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+" Toggle zen mode
+nmap <C-z> :Goyo<cr>
+let g:goyo_linenr = 1
+
+" Marks
+nnoremap <C-g> `
+nnoremap <C-g><C-g>  `"
+noremap Y "+y
+
+nnoremap <silent> zs :update<cr>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -414,13 +412,6 @@ noremap H ^
 " Move one character to left on insert mode
 " useful for getting out of (), for example.
 inoremap <C-e> <Esc>la
-
-" TODO: Don't wait after pressing <c-w> on fzf buffers
-" Open a terminal in a vertical split
-" nnoremap <C-w>t :vert term ++kill=kill<cr>
-
-" Shorthand for runnning ctrl-w in the vim terminal
-" tnoremap <C-w>n <C-\><C-w>
 
 "--------------------------------------------------------------;
 "                        Text objects                          ;
@@ -489,10 +480,13 @@ set cmdheight=2
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 set spelllang=pt,en
+" Don't auto line break when inserting text
+set formatoptions-=t
 " Show indent line on code with tabs
-set listchars=tab:\|\ "
+set listchars=tab:\|\ ,space:·
 set list
 set textwidth=80
+set sessionoptions+=globals
 
 " Kitty helper (https://sw.kovidgoyal.net/kitty/faq.html#id3)
 let &t_ut=''
@@ -509,6 +503,15 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
+
+if empty($DISPLAY)
+  set listchars=
+  colorscheme elflord
+else
+  " Improve colors on terminal
+  set termguicolors
+  colorscheme gruvbox-material
+endif
 
 "--------------------------------------------------------------;
 "                   Conquer of Completion                      ;
@@ -559,9 +562,4 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 
