@@ -6,6 +6,7 @@ parse_git_branch() {
 }
 
 PROMPT_COMMAND=__prompt_command # Func to gen PS1 after CMDs
+PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 __prompt_command() {
     local EXIT="$?"             # This needs to be first
@@ -17,17 +18,19 @@ __prompt_command() {
     local gre='\[\e[0;32m\]'
     local yel='\[\e[0;33m\]'
 
-    if [ $EXIT != 0 ]; then
-        PS1+="${red}\$? ${reset}"      # Add red if exit code non 0
-    else
-        PS1+="${gre}\$? ${reset}"
-    fi
-
-    PS1+="\u@\h ${yel}\w ${red}$(parse_git_branch)${reset}$ "
+    PS1+="${yel}\$?${reset} \u@\h ${yel}\w ${red}$(parse_git_branch)${reset}$ "
 }
 
 # autocd
 shopt -s autocd
+
+# History
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+HISTCONTROL=ignoredups:erasedups
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+# Save and reload the history after each command finishes
 
 # Vi mode
 set -o vi
@@ -82,3 +85,4 @@ skinny src $fzf_path/completion.bash
 skinny src $fzf_path/completion.bash
 
 skinny cmd zoxide && eval "$(zoxide init bash)"
+skinny cmd deno && eval "$(deno completions bash)"
