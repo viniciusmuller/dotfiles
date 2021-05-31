@@ -1,0 +1,12 @@
+editMode: Vi
+
+# TODO: Map these to <c-j> and <c-k>
+bind: f1 left
+bind: f2 right
+
+bind: { { } left
+bind: ( ( ) left
+bind: [ [ ] left
+
+keyseq: "\ESC[P" f1
+keyseq: "\ESC[Q" f2
