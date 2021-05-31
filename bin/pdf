@@ -1,0 +1,25 @@
+#!/bin/sh
+
+CACHE="$HOME/.cache/pdfcache"
+[ ! -f "$CACHE" ] && touch "$CACHE"
+
+if [ -f "$1" ]; then
+    pageline="$(realpath "$1")"
+    fored="$(printf "%b" "$pageline" | sed 's,/,\\/,g')"
+    if grep -q -F "$pageline" "$CACHE"; then
+        page=$(grep "$pageline" "$CACHE" | cut -f 2)
+        printf "%b\n" "/$fored/d\nw" | ed -s "$CACHE"
+    else
+        page=1
+    fi
+    mupdf "$1" $page
+    read -e -p "Page number: " input
+
+    case $input in
+        ''|*[!0-9]*) page=$page;;
+        *) page=$input;;
+    esac
+    printf "%b\n" "0a\n$pageline\t$page\n.\nw" > "$CACHE"
+else
+    exit 1
+fi
