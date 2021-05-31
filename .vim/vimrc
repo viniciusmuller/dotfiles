@@ -15,6 +15,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 
+
 "----------------------------------;
 " Useful general usage plugins     ;
 "----------------------------------;
