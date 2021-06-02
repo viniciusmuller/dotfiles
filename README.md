@@ -51,7 +51,7 @@ This repository structure mirrors a `$HOME` directory:
 
 * Display server: [`xorg`](https://wiki.archlinux.org/index.php/xorg#Installation)
 
-  - Modify keyboard mappings: [`xmodmap`](https://wiki.archlinux.org/index.php/xmodmap#Installation)
+  - Modify keyboard mappings: [`kmonad`](https://aur.archlinux.org/packages/kmonad-bin)
     ```bash
     # In order to support cedilla on ´+c, use this:
     sudo sed -i /usr/share/X11/locale/en_US.UTF-8/Compose -e 's/ć/ç/g' -e 's/Ć/Ç/g'
