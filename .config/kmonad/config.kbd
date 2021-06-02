@@ -1,3 +1,16 @@
+#| Template
+
+(deflayer name
+       _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+|#
+
 (defcfg
   ;; For Linux (set your device input file here)
   input  (device-file "/dev/input/by-id/usb-BY_Tech_Usb_Gaming_Keyboard-event-kbd")
@@ -19,17 +32,19 @@
 )
 
 (defsrc
-  esc   1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps  a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt            spc                 ralt cmp  rctl
+       f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt cmp  rctl
 )
 
 (deflayer base
+        _    _    _    _    _    _    _    _    _    _    _    _
   grv   _    _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   esc   _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _
-  lmet  lctl _              _              lalt    rctrl cmp
+  lmet  lctl _              _              lalt rctl cmp
 )

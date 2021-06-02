@@ -8,5 +8,3 @@ case $layout in
     setxkbmap -layout 'us(intl)'
   ;;
 esac
-
-xmodmap ~/.xmodmap
