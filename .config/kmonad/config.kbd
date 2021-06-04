@@ -1,7 +1,6 @@
 #| Template
 
 (deflayer name
-       _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -32,7 +31,6 @@
 )
 
 (defsrc
-       f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
@@ -41,10 +39,23 @@
 )
 
 (deflayer base
-        _    _    _    _    _    _    _    _    _    _    _    _
   grv   _    _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   esc   _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _
-  lmet  lctl _              _              lalt rctl cmp
+  lmet  lctl _              _              lalt rctl @ext
+)
+
+(deflayer extra
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _    _    up   _    _    _    _    _    _    _    _    ssrq @pau _
+  _    left down rght _    _    _    _    ins  home pgup pgdn _
+  _    _    _    _    _    _    _    _    del  end  _    _
+  _    _    _              _              _    _    @bas
+)
+
+(defalias
+  pau pause
+  bas (layer-toggle base)
+  ext (layer-toggle extra)
 )
