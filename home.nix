@@ -7,6 +7,10 @@ let base16 = pkgs.fetchFromGitHub {
     sha256 = "1yj36k64zz65lxh28bb5rb5skwlinixxz6qwkwaf845ajvm45j1q";
 };
 in {
+  imports = [
+    ./bash.nix
+  ];
+
   home.packages = with pkgs; let
     cli = [
       lazydocker # Docker TUI
@@ -24,22 +28,21 @@ in {
       delta     # Diff viewer
       git
 
+      # Editors
+      vim       # Modal text editor
+
       # Utils
       zoxide    # Directory jumper
       xsv       # Work with csv
       jq        # Work with json
       bat       # File viewer
-
-      lolcat
       stow      # Symlinks manager
       ncdu      # Curses interface for `du`
       tmux      # Terminal multiplexer
       vifm      # File manager
     ];
     gui = [
-      # TODO: Find out why apparently there are OpenGL related
-      # drivers errors on home-manager installed GUI programs
-      nerdfonts # Patched fonts
+      dmenu     # Launcher
       firefox   # Browser
       kitty     # Terminal
       picom     # Compostior
@@ -58,46 +61,52 @@ in {
   };
 
   programs = {
-    vim = with pkgs.vimPlugins; {
-      enable = true;
-      plugins = [
-        vim-plug
-      ];
-      /* TODO Make vim-plug work */
-      extraConfig = builtins.readFile ../../.vim/vimrc;
-    };
+    # vim = with pkgs.vimPlugins; {
+      # enable = true;
+      # plugins = [
+        # vim-plug
+      # ];
+      # /* TODO Make vim-plug work */
+      # extraConfig = builtins.readFile ../../.vim/vimrc;
+    # };
     firefox = {
 
     };
-    zsh = let
-      mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
-        name = pkg.pname;
-        src = pkg.src;
-        inherit file;
-      };
-    in {
-      enable = true;
-      initExtra = builtins.readFile ../../.zshrc;
-
-      plugins = with pkgs; [
-        (mkZshPlugin { pkg = zsh-autopair; })
-        (mkZshPlugin { pkg = zsh-completions; })
-        (mkZshPlugin {
-          pkg = zsh-fzf-tab;
-          file = "fzf-tab.plugin.zsh";
-        })
-        (mkZshPlugin { pkg = zsh-autosuggestions; })
-        (mkZshPlugin {
-          pkg = zsh-fast-syntax-highlighting;
-          file = "fast-syntax-highlighting.plugin.zsh";
-        })
-        (mkZshPlugin { pkg = zsh-history-substring-search; })
-      ];
-      oh-my-zsh = {
-        enable = true;
-        theme = "af-magic";
-      };
+    fzf = {
+      enableZshIntegration = true;
     };
+    #  zsh = let
+      #  mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
+        #  name = pkg.pname;
+        #  src = pkg.src;
+        #  inherit file;
+      #  };
+    #  in {
+      #  enable = true;
+       #  plugins = with pkgs; [
+         #  (mkZshPlugin { pkg = zsh-autopair; })
+         #  (mkZshPlugin { pkg = zsh-completions; })
+         #  (mkZshPlugin {
+           #  pkg = zsh-fzf-tab;
+           #  file = "fzf-tab.plugin.zsh";
+         #  })
+         #  (mkZshPlugin { pkg = zsh-autosuggestions; })
+         #  (mkZshPlugin {
+           #  pkg = zsh-fast-syntax-highlighting;
+           #  file = "fast-syntax-highlighting.plugin.zsh";
+         #  })
+         #  (mkZshPlugin { pkg = zsh-history-substring-search; })
+       #  ];
+       #  oh-my-zsh = {
+         #  enable = true;
+         #  theme = "af-magic";
+         #  plugins = [
+           #  "git"
+           #  "vi-mode"
+           #  "colored-man-pages"
+         #  ];
+      #  };
+    #  };
   };
 
   # Let Home Manager install and manage itself.
