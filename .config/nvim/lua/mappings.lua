@@ -8,6 +8,10 @@ local function nmap(mapping, command, opts)
   map('n', mapping, command, opts)
 end
 
+local function vmap(mapping, command, opts)
+  map('v', mapping, command, opts)
+end
+
 local function tmap(mapping, command, opts)
   map('t', mapping, command, opts)
 end
@@ -34,18 +38,20 @@ nmap('<Leader>qf', ':Trouble quickfix<cr>', {})
 -- Project
 nmap('<Leader>pt',  ':TodoTrouble<cr>', {})
 nmap('<Leader>pa',  ':AV<cr>', {})
+nmap('<Leader>ps',  '<cmd>Telescope session_manager load<cr>', {})
 
 -- Git
 nmap('<Leader>G',  ':tab G<cr>', {})
+nmap('<Leader>gm',  '<cmd>lua require"gitsigns".blame_line(true)<cr>', {})
 
 -- Others
 -- TODO: Make this works without nnoremap
 nmap('H', '^', {})
 nmap('zs', ':update<cr>', { silent = true })
-nmap('<c-w>z', ':ZenMode<cr>', { silent = true })
-nmap('<c-w>t', ':term<cr>', { silent = true })
+nmap('<c-z>', ':ZenMode<cr>', { silent = true })
 -- TODO: make this work
-nmap('Y', '"*y', {})
+nmap('Y', '"+y', {})
+vmap('Y', '"+y', {})
 
 nmap('<c-p>', '@:', {})
 

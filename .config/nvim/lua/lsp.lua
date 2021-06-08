@@ -1,11 +1,15 @@
-local lspconfig = require'lspconfig'
+local lspconfig = require('lspconfig')
+
+lspconfig.hls.setup{
+  cmd = { "haskell-language-server-wrapper", "--lsp" }
+}
 
 lspconfig.sumneko_lua.setup{
   settings = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-	-- TODO: Figure out why this is not working
+        -- TODO: Figure out why this is not working
         globals = { 'vim' },
       },
       runtime = {
@@ -85,11 +89,11 @@ local on_attach = function(client, bufnr)
   end
 end
 
-require'lspinstall'.setup() -- important
+require('lspinstall').setup() -- important
 
-local servers = require'lspinstall'.installed_servers()
+local servers = require('lspinstall').installed_servers()
 for _, server in pairs(servers) do
-	require'lspconfig'[server].setup{
+	require('lspconfig')[server].setup{
 		on_attach = on_attach
 	}
 end

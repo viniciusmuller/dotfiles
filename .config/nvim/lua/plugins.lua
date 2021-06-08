@@ -1,32 +1,30 @@
---let  check if packer is installed (~/local/share/nvim/site/pack)
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 if not packer_exists then
-  PromptPackerInstall()
-end
+	if vim.fn.input("Hent packer.nvim? (y for yada)") ~= "y" then
+		return
+	end
 
-function PromptPackerInstall()
-  if vim.fn.input("Install packer.nvim? (y/n)") ~= "y" then
-    return
-  end
+	local directory = string.format(
+	'%s/site/pack/packer/opt/',
+	vim.fn.stdpath('data')
+	)
 
-  local directory = string.format(
-    '%s/site/pack/packer/opt/',
-    vim.fn.stdpath('data')
-  )
+	vim.fn.mkdir(directory, 'p')
 
-  vim.fn.mkdir(directory, 'p')
+	local git_clone_cmd = vim.fn.system(string.format(
+	'git clone %s %s',
+	'https://github.com/wbthomason/packer.nvim',
+	directory .. '/packer.nvim'
+	))
 
-  local git_clone_cmd = vim.fn.system(string.format(
-    'git clone %s %s',
-    'https://github.com/wbthomason/packer.nvim',
-    directory .. '/packer.nvim'
-  ))
+	print(git_clone_cmd)
+	print("Henter packer.nvim...")
 
-  print(git_clone_cmd)
-  print("packer.nvim installed!")
-
-  return
+	return
 end
 
 return require('packer').startup(function(use)
@@ -36,12 +34,32 @@ return require('packer').startup(function(use)
   -- Lsp
   use 'neovim/nvim-lspconfig'
   use {
-    'nvim-lua/completion-nvim',
-    config = function ()
-      vim.g.completion_matching_strategy_list = {"exact", "substring", "fuzzy"}
-      vim.g.completion_matching_ignore_case = 1
-      vim.g.completion_trigger_character = {".", "::"}
-      vim.g.completion_timer_cycle = 50
+    'hrsh7th/nvim-compe',
+    config = function()
+      require('compe').setup({
+        enabled = true;
+        autocomplete = true;
+        debug = false;
+        min_length = 1;
+        preselect = 'always';
+        throttle_time = 80;
+        source_timeout = 200;
+        incomplete_delay = 400;
+        max_abbr_width = 100;
+        max_kind_width = 100;
+        max_menu_width = 100;
+        documentation = true;
+
+        source = {
+          path = true;
+          buffer = true;
+          calc = true;
+          nvim_lsp = true;
+          nvim_lua = true;
+          vsnip = true;
+          ultisnips = true;
+        };
+      })
     end
   }
   use 'kabouzeid/nvim-lspinstall'
@@ -61,35 +79,39 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'glepnir/galaxyline.nvim',
-    config = function() require('statusline') end
-  }
-
-  use {
-    'mhinz/vim-startify',
+    'hoob3rt/lualine.nvim',
     config = function ()
-      vim.g.startify_session_persistence = 1
-      vim.g.startify_session_dir = '~/.config/nvim/session'
-      vim.g.startify_lists = {
-        {
-          type = 'sessions',
-          header = {'   Sessions'}
+      require('lualine').setup{
+
+        sections = {
+          lualine_c = {
+            {
+              -- TODO: Statusline is being overwritten when writing to a file
+              'diagnostics',
+              sources = {'nvim_lsp'},
+            },
+            lualine_d = {
+              {
+                'filename',
+                file_status = true, -- displays file status (readonly status, modified status)
+                path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
+              }
+            }
+          }
         },
-        {
-          type = 'files',
-          header = {'   Files'}
-        }, 
-        {
-          type = 'dir',
-          header = {'   Files ' .. vim.fn.getcwd()}
-        }, 
-        {
-          type = 'bookmarks',
-          header = {'   Bookmarks'}
-        }, 
-        {
-          type = 'commands',
-          header = {'   Commands'}
+
+        -- sections = {
+        --   lualine_a = {
+        --     'diagnostics',
+        --     sources = {'nvim_lsp'},
+        --     sections = {'error', 'warn', 'info', 'hint'},
+        --     -- color_error = colors.red,
+        --     -- color_warn = colors.yellow,
+        --     -- color_info = colors.cyan
+        --   }
+        -- },
+        options = {
+          theme = 'tokyonight'
         }
       }
     end
@@ -101,7 +123,8 @@ return require('packer').startup(function(use)
     end
   }
   use 'simrat39/symbols-outline.nvim'
-  use {'kyazdani42/nvim-web-devicons',
+  use {
+    'kyazdani42/nvim-web-devicons',
     config = function()
       -- Add nvim-web-devicons to startify
       function _G.webDevIcons(path)
@@ -173,6 +196,7 @@ return require('packer').startup(function(use)
   use 'vim-test/vim-test'
   use 'tpope/vim-repeat'
 
+  -- TODO: Make snippets work
   use 'SirVer/ultisnips'
   use 'honza/vim-snippets'
 
@@ -181,11 +205,18 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
+  use {
+    'Shatur95/neovim-session-manager',
+    config = function ()
+      vim.g.autoload_last_session = false
+      require('telescope').load_extension('session_manager')
+    end
+  }
 
   -- Git
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require('gitsigns').setup() end
+    config = function() require('gitsigns').setup{} end
   }
   use 'tpope/vim-fugitive'
 end)
