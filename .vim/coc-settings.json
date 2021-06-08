@@ -1,9 +1,16 @@
 {
-  "java.home": "~/.asdf/installs/java/openjdk-14.0.1",
-
   "elixirLS.dialyzerEnabled": false,
 
   "python.pythonPath":"python",
+
+  "diagnostic.refreshOnInsertMode": true,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "haskell",
+    "elixir",
+    "typescriptreact",
+    "javascript"
+  ],
 
   "languageserver": {
     "elmLS": {
@@ -43,5 +50,6 @@
         "haskell"
       ]
     }
-  }
+  },
+  "java.home": "~/.asdf/installs/java/openjdk-16",
 }

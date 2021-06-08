@@ -1,16 +1,13 @@
 " TODO: convert to Lua
 
-" completion-nvim
-" Use <Tab> and <S-Tab> to navigate through popup menu
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
-imap <silent> <cr> <Plug>(completion_trigger)
-
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
 " Compile packer packages on plugins file change
 autocmd BufWritePost plugins.lua PackerCompile
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=
 sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=

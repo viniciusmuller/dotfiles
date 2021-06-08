@@ -133,4 +133,8 @@ This repository structure mirrors a `$HOME` directory:
 
 ## Preview:
 
-<img src="https://i.imgur.com/9xersCi.png" alt="desktop preview">
+### dwm
+<img src="https://i.imgur.com/kNLqk1p.png" alt="dwm desktop preview">
+
+### i3
+<img src="https://i.imgur.com/9xersCi.png" alt="i3wm desktop preview">

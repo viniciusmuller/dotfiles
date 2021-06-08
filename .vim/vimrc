@@ -15,10 +15,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 
-
 "----------------------------------;
 " Useful general usage plugins     ;
 "----------------------------------;
+
+Plug 'kana/vim-textobj-user'
+Plug 'andyl/vim-textobj-elixir'
 
 " Might need to install coc-snippets and set the snippets
 " directory using coc command `snippets.openSnippetFiles`
@@ -54,7 +56,6 @@ Plug 'thinca/vim-quickrun'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'vim-utils/vim-man'
 Plug 'mattn/emmet-vim'
 
 Plug 'easymotion/vim-easymotion'
@@ -197,6 +198,12 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Rg with --hidden
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 "--------------------------------------------------------------;
 "                           Macros                             ;
@@ -387,6 +394,8 @@ nnoremap ]q :cn<cr>
 " Reselect last cursors
 nmap gl <Plug>(VM-Reselect-Last)
 
+nnoremap <c-e> :GitFiles<cr>
+
 " Toggle zen mode
 nmap <C-z> :Goyo<cr>
 let g:goyo_linenr = 1
@@ -394,6 +403,7 @@ let g:goyo_linenr = 1
 " Marks
 nnoremap <C-g> `
 nnoremap <C-g><C-g>  `"
+
 noremap Y "+y
 
 nnoremap <silent> zs :update<cr>
