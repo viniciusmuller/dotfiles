@@ -13,10 +13,6 @@
 
   home-manager.users.vini = import ./home.nix;
 
-  #  users.extraUsers.vini = {
-    #  shell = pkgs.zsh;
-  #  };
-
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;

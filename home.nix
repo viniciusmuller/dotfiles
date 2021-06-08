@@ -8,7 +8,8 @@ let base16 = pkgs.fetchFromGitHub {
 };
 in {
   imports = [
-    ./bash.nix
+    ./pkgs/bash.nix
+    ./pkgs/vscode.nix
   ];
 
   home.packages = with pkgs; let
@@ -54,6 +55,8 @@ in {
     ];
   in gui ++ cli;
 
+  nixpkgs.config.allowUnfree = true;
+
   /* TODO: Use XDG variables */
   home.file = {
     ".config/base16-shell".source = base16;
@@ -71,9 +74,6 @@ in {
     # };
     firefox = {
 
-    };
-    fzf = {
-      enableZshIntegration = true;
     };
     #  zsh = let
       #  mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
