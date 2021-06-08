@@ -18,7 +18,7 @@ __prompt_command() {
     local gre='\[\e[0;32m\]'
     local yel='\[\e[0;33m\]'
 
-    PS1+="${yel}\$?${reset} \u@\h ${yel}\w ${red}$(parse_git_branch)${reset}$ "
+    PS1+="${yel}\$?${reset} \u@\h ${yel}\w ${red}$(parse_git_branch)${reset}λ "
 }
 
 # autocd
