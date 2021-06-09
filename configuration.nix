@@ -67,6 +67,7 @@
   users.users.vini = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    # TODO: Add default password
   };
 
   # List packages installed in system profile. To search, run:

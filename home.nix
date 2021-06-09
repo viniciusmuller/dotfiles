@@ -8,55 +8,9 @@ let base16 = pkgs.fetchFromGitHub {
 };
 in {
   imports = [
-    ./pkgs/bash.nix
-    ./pkgs/vscode.nix
+    ./machines/personal.nix
   ];
-
-  home.packages = with pkgs; let
-    cli = [
-      lazydocker # Docker TUI
-      bandwhich  # Network inspector
-      neofetch   # Display system info
-      tealdeer   # TLDR of man pages
-      rmtrash    # Safer /bin/rm
-
-      # Finders
-      fzf       # Fuzzy finder
-      ripgrep   # File content finder
-      fd        # File finder
-
-      # Git related
-      delta     # Diff viewer
-      git
-
-      # Editors
-      vim       # Modal text editor
-
-      # Utils
-      zoxide    # Directory jumper
-      xsv       # Work with csv
-      jq        # Work with json
-      bat       # File viewer
-      stow      # Symlinks manager
-      ncdu      # Curses interface for `du`
-      tmux      # Terminal multiplexer
-      vifm      # File manager
-    ];
-    gui = [
-      dmenu     # Launcher
-      firefox   # Browser
-      kitty     # Terminal
-      picom     # Compostior
-      dunst     # Desktop notifications daemon
-      sxiv      # Simple X image viewer
-      flameshot # Screenshots
-      mupdf     # Pdf viewer
-      feh       # Background setter
-    ];
-  in gui ++ cli;
-
-  nixpkgs.config.allowUnfree = true;
-
+  
   /* TODO: Use XDG variables */
   home.file = {
     ".config/base16-shell".source = base16;
@@ -72,9 +26,6 @@ in {
       # /* TODO Make vim-plug work */
       # extraConfig = builtins.readFile ../../.vim/vimrc;
     # };
-    firefox = {
-
-    };
     #  zsh = let
       #  mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
         #  name = pkg.pname;
