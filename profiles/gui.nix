@@ -2,9 +2,9 @@
 
 {
     imports = [
-        ../pkgs/vscode.nix
+        ../pkgs/vscodium.nix
     ];
-    
+
     home.packages = with pkgs; [
       dmenu     # Launcher
       firefox   # Browser
