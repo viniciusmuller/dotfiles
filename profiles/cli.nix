@@ -12,6 +12,7 @@
       neofetch   # Display system info
       tealdeer   # TLDR of man pages
       rmtrash    # Safer /bin/rm
+      exa        # ls alternative
 
       # Finders
       fzf       # Fuzzy finder

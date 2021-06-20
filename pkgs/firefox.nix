@@ -3,7 +3,7 @@
 {
     programs.firefox = {
         enable = true;
-        profiles.arcticlimer {
+        profiles.arcticlimer = {
           "ui.key.menuAccessKeyFocuses" = false;
         };
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [

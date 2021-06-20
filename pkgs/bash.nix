@@ -6,6 +6,9 @@
       enable = true;
       historySize = 10000;
       shellOptions = [
+        # Auto cd to directories
+        "autocd"
+
         # Append to history file rather than replacing it.
         "histappend"
 
@@ -21,6 +24,14 @@
         "checkjobs"
       ];
 
+      bashrcExtra = "
+      # Vi mode
+      set -o vi
+      bind -m vi-insert 'Control-l: clear-screen'
+      bind -m vi-insert 'Control-p: previous-history'
+      bind -m vi-insert 'Control-n: next-history'
+      ";
+
       historyControl = [
         "erasedups"
         "ignoredups"
@@ -28,11 +39,9 @@
       ];
 
       shellAliases = {
-        ls = "ls --color=auto";
-        ll = "ls -l";
-        la = "ls -A";
-        lt = "ls --human-readable --size -1 -S --classify";
-        l = "ls -CF";
+        ls = "exa";
+        c  = "clear";
+        rb = "sudo nixos-rebuild switch";
       };
 
       sessionVariables = {
