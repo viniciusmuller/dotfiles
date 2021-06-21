@@ -4,10 +4,8 @@
     imports = [
         ../profiles/cli.nix
         ../profiles/gui.nix
-        ../profiles/programming/haskell.nix
-        ../profiles/programming/rust.nix
-        ../profiles/programming/elixir.nix
+        ../profiles/programming
     ];
-    
+
     nixpkgs.config.allowUnfree = true;
 }

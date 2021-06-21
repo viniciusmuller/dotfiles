@@ -8,9 +8,9 @@
         };
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          dark-reader
           bitwarden
-          vimium-ff
+          # dark-reader
+          # vimium-ff
         ];
     };
 }

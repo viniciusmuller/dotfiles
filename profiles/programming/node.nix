@@ -2,14 +2,11 @@
 
 {
     home.packages = with pkgs; [
-        rustfmt
-        clippy
-        rustc
-        cargo 
-        gcc
+      nodejs
+      deno
     ];
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [
-        matklad.rust-analyzer
+
     ];
 }

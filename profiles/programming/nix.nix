@@ -2,14 +2,12 @@
 
 {
     home.packages = with pkgs; [
-        rustfmt
-        clippy
-        rustc
-        cargo 
-        gcc
+        ghc
+        nixfmt
     ];
 
     programs.vscode.extensions = with pkgs.vscode-extensions; [
-        matklad.rust-analyzer
+        jnoortheen.nix-ide
+        brettm12345.nixfmt-vscode
     ];
 }

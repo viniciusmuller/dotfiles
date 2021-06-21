@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ../pkgs/vscodium.nix
+        ../pkgs/vscodium
     ];
 
     home.packages = with pkgs; [

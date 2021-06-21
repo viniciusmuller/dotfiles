@@ -4,6 +4,7 @@
     imports = [
         ../pkgs/bash.nix
         ../pkgs/nvim.nix
+        ../pkgs/git.nix
     ];
     
     home.packages = with pkgs; [
@@ -18,10 +19,6 @@
       fzf       # Fuzzy finder
       ripgrep   # File content finder
       fd        # File finder
-
-      # Git related
-      delta     # Diff viewer
-      git
 
       # Editors
       vim       # Modal text editor
