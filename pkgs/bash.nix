@@ -27,8 +27,6 @@
     # Vi mode
     set -o vi
     bind -m vi-insert 'Control-l: clear-screen'
-    bind -m vi-insert 'Control-p: previous-history'
-    bind -m vi-insert 'Control-n: next-history'
     ";
 
     historyControl = [
@@ -40,7 +38,6 @@
     shellAliases = {
       ls = "exa";
       c  = "clear";
-      rb = "sudo nixos-rebuild switch";
     };
 
     sessionVariables = {

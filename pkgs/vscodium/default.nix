@@ -8,9 +8,9 @@
         keybindings = import ./keybindings.nix;
         extensions = with pkgs.vscode-extensions; [
             # Aesthetics
-            coenraads.bracket-pair-colorizer-2 
+            coenraads.bracket-pair-colorizer-2
             zhuangtongfa.material-theme
-            pkief.material-icon-theme 
+            pkief.material-icon-theme
 
             # Some vim keybindings
             vscodevim.vim

@@ -2,11 +2,19 @@
 
 {
   imports = [
-    ./machines/personal.nix
+      ../../profiles/cli.nix
+      ../../profiles/gui.nix
+      ../../profiles/programming
   ];
 
+
+  # TODO: Find a better place for this
+  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#desktop";
+
+  nixpkgs.config.allowUnfree = true;
+
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

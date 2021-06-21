@@ -8,15 +8,23 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
     ];
 
-  # nixpkgs.config.packageOverrides = pkgs: {
-  #   nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-  #     inherit pkgs;
-  #   };
-  # };
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
 
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 2d";
+    };
+
+    autoOptimiseStore = true;
+  };
+
+  # home-manager.users.vini.programs.home-manager.enable = true;
   home-manager.users.vini = import ./home.nix;
 
   # Use the GRUB 2 boot loader.
