@@ -11,6 +11,7 @@
       coenraads.bracket-pair-colorizer-2
       zhuangtongfa.material-theme
       pkief.material-icon-theme
+      usernamehw.errorlens
 
       # Some vim keybindings
       vscodevim.vim

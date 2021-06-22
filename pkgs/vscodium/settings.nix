@@ -14,6 +14,11 @@ let
       "before" = [ "H" ];
       "after" = [ "^" ];
     };
+  hover =
+    {
+      "before" = [ "K" ];
+      "after" = [ "g" "h" ];
+    };
   switchSplits = [
     {
       "before" = [ "<c-h>" ];
@@ -62,8 +67,6 @@ in
   # ---- Aesthetics/workbench ----
   "workbench.colorTheme" = "One Dark Pro";
   "workbench.iconTheme" = "material-icon-theme";
-
-
   "workbench.startupEditor" = "newUntitledFile";
 
   # ---- VsVim ----
@@ -74,6 +77,7 @@ in
     multiCursor
     lineStart
     lineEnd
+    hover
   ] ++ switchSplits;
 
   "vim.visualModeKeyBindings" = [
