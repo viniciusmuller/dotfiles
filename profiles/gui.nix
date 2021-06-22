@@ -4,7 +4,7 @@
   imports = [
     ../pkgs/vscodium
     ../services/dunst.nix # Notification daemon
-    ../pkgs/firefox.nix
+    ../pkgs/chromium.nix
   ];
 
   home.packages = with pkgs; [

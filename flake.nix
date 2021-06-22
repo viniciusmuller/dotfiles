@@ -8,22 +8,26 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @inputs: {
-    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
-      modules = [
-        {
-          nixpkgs.overlays = with inputs; [
-            nur.overlay
-            neovim-nightly-overlay.overlay
-          ];
-        }
-        home-manager.nixosModules.home-manager
-        ./machines/personal
+  outputs = { self, nixpkgs, home-manager, ... } @inputs:
+    let
+      overlays = with inputs; [
+        # TODO: Overlays doesn't seem to be working
+        nur.overlay
+        neovim-nightly-overlay.overlay
       ];
-      specialArgs = {
-        inherit inputs system;
-      };
+    in
+    {
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem
+        rec {
+          system = "x86_64-linux";
+          modules = [
+            { nixpkgs.overlays = overlays; }
+            home-manager.nixosModules.home-manager
+            ./machines/personal
+          ];
+          specialArgs = {
+            inherit inputs system;
+          };
+        };
     };
-  };
 }
