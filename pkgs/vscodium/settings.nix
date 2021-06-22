@@ -90,12 +90,14 @@ in
   "vim.timeout" = 50;
   "vim.sneakUseIgnorecaseAndSmartcase" = true;
   "vim.sneak" = true;
+  "vim.leader" = "<space>";
 
   "vim.normalModeKeyBindingsNonRecursive" = [
     visualBlock
   ];
 
   "vim.normalModeKeyBindings" = [
+    # CodeAction quickfix = <c-.>
     multiCursor
     closeSplit
     lineStart
@@ -107,3 +109,4 @@ in
     multiCursor
   ];
 }
+

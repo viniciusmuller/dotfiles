@@ -33,4 +33,23 @@
       };
     };
   };
+
+  programs.bash.shellAliases = {
+    gs = "git status";
+    gc = "git commit";
+    gl = "git log";
+    gcl = "git clone";
+    gco = "git checkout";
+    glog = "git log --oneline";
+    gd = "git diff";
+    gds = "git diff --staged";
+    ga = "git add";
+    gr = "git remote";
+    grv = "git remote -v";
+    gra = "git remote add";
+    gp = "git push";
+    gb = "git branch";
+    grs = "git restore";
+    gsh = "git show";
+  };
 }

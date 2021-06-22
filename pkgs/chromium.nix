@@ -6,8 +6,12 @@
     extensions = [
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock origin
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
-      "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
+      "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
+      {
+        id = "miljekjnhkpkelpomeehcbhlanppjegn"; # Material dark theme
+        version = "1.0";
+      }
     ];
   };
 }

@@ -9,6 +9,8 @@
     ../pkgs/git.nix
     ../pkgs/tmux # Terminal multiplexer
     ../pkgs/fzf.nix # Fuzzy finder
+    ../pkgs/exa.nix # ls alternative
+    ../pkgs/trash-cli.nix # Safer rm
   ];
 
   home.packages = with pkgs; [
@@ -16,8 +18,6 @@
     bandwhich # Network inspector
     neofetch # Display system info
     tealdeer # TLDR of man pages
-    rmtrash # Safer /bin/rm
-    exa # ls alternative
 
     # Finders
     ripgrep # File content finder

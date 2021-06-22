@@ -36,9 +36,9 @@
     ];
 
     shellAliases = {
-      rm = "rmtrash";
-      ls = "exa";
       c = "clear";
+      b = "cd -";
+      se = "sudoedit";
     };
 
     sessionVariables = {

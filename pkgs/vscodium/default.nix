@@ -13,6 +13,7 @@
       pkief.material-icon-theme
       gruntfuggly.todo-tree
       usernamehw.errorlens
+      eamodio.gitlens
 
       # Some vim keybindings
       vscodevim.vim
