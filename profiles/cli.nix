@@ -5,6 +5,7 @@
     ../pkgs/bash.nix
     ../pkgs/nvim.nix
     ../pkgs/git.nix
+    ../pkgs/tmux
   ];
 
   home.packages = with pkgs; [
@@ -30,7 +31,6 @@
     bat # File viewer
     stow # Symlinks manager
     ncdu # Curses interface for `du`
-    tmux # Terminal multiplexer
     vifm # File manager
   ];
 }

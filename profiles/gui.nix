@@ -3,6 +3,7 @@
 {
   imports = [
     ../pkgs/vscodium
+    ../services/dunst.nix
   ];
 
   home.packages = with pkgs; [
