@@ -16,5 +16,6 @@
     flameshot # Screenshots
     mupdf # Pdf viewer
     feh # Background setter
+    bitwarden # Password manager
   ];
 }

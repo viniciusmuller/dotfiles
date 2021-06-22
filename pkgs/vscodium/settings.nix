@@ -41,9 +41,22 @@ let
       "after" = [ "<c-w>" "l" ];
     }
   ];
+  closeSplit =
+    {
+      "before" = [ "<c-q>" ];
+      "commands" = [
+        "workbench.action.closeEditorsInGroup"
+      ];
+    };
+  visualBlock =
+    {
+      "before" = [ "<c-b>" ];
+      "after" = [ "<c-q>" ];
+    };
 in
 {
   "editor.rulers" = [ 80 120 ];
+  "editor.wordWrap" = "on";
   "editor.minimap.enabled" = false;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
@@ -70,11 +83,21 @@ in
   "workbench.startupEditor" = "newUntitledFile";
 
   # ---- VsVim ----
-  "editor.lineNumbers" = "relative";
   "editor.cursorSurroundingLines" = 5;
+  "editor.lineNumbers" = "relative";
+  "vim.enableNeovim" = true;
+  "vim.neovimPath" = "nvim";
+  "vim.timeout" = 50;
+  "vim.sneakUseIgnorecaseAndSmartcase" = true;
+  "vim.sneak" = true;
+
+  "vim.normalModeKeyBindingsNonRecursive" = [
+    visualBlock
+  ];
 
   "vim.normalModeKeyBindings" = [
     multiCursor
+    closeSplit
     lineStart
     lineEnd
     hover
