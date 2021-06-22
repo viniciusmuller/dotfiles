@@ -1,36 +1,36 @@
 { config, pkgs, ... }:
 
 {
-    imports = [
-        ../pkgs/bash.nix
-        ../pkgs/nvim.nix
-        ../pkgs/git.nix
-    ];
-    
-    home.packages = with pkgs; [
-      lazydocker # Docker TUI
-      bandwhich  # Network inspector
-      neofetch   # Display system info
-      tealdeer   # TLDR of man pages
-      rmtrash    # Safer /bin/rm
-      exa        # ls alternative
+  imports = [
+    ../pkgs/bash.nix
+    ../pkgs/nvim.nix
+    ../pkgs/git.nix
+  ];
 
-      # Finders
-      fzf       # Fuzzy finder
-      ripgrep   # File content finder
-      fd        # File finder
+  home.packages = with pkgs; [
+    lazydocker # Docker TUI
+    bandwhich # Network inspector
+    neofetch # Display system info
+    tealdeer # TLDR of man pages
+    rmtrash # Safer /bin/rm
+    exa # ls alternative
 
-      # Editors
-      vim       # Modal text editor
+    # Finders
+    fzf # Fuzzy finder
+    ripgrep # File content finder
+    fd # File finder
 
-      # Utils
-      zoxide    # Directory jumper
-      xsv       # Work with csv
-      jq        # Work with json
-      bat       # File viewer
-      stow      # Symlinks manager
-      ncdu      # Curses interface for `du`
-      tmux      # Terminal multiplexer
-      vifm      # File manager
-    ];
+    # Editors
+    vim # Modal text editor
+
+    # Utils
+    zoxide # Directory jumper
+    xsv # Work with csv
+    jq # Work with json
+    bat # File viewer
+    stow # Symlinks manager
+    ncdu # Curses interface for `du`
+    tmux # Terminal multiplexer
+    vifm # File manager
+  ];
 }

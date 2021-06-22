@@ -37,7 +37,7 @@
 
     shellAliases = {
       ls = "exa";
-      c  = "clear";
+      c = "clear";
     };
 
     sessionVariables = {

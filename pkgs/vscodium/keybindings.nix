@@ -20,4 +20,14 @@
     "command" = "selectPrevSuggestion";
     "when" = "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible";
   }
+  # Quick open project files
+  {
+    "key" = "ctrl+e";
+    "command" = "workbench.action.quickOpen";
+  }
+  # Search project files content
+  {
+    "key" = "ctrl+f";
+    "command" = "workbench.view.search";
+  }
 ]

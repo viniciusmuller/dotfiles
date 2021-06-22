@@ -1,44 +1,50 @@
 let
-    multiCursor =
-      {
-          "before" = ["<c-n>"];
-          "after" = ["g" "b"];
-      };
-    saveFile =
-      {
-          "before" = ["z" "s"];
-          "after" = [":" "w" "<cr>"];
-      };
-    switchSplits = [
-      {
-          "before" = ["<c-h>"];
-          "after" = ["<c-w>" "h"];
-      }
-      {
-          "before" = ["<c-j>"];
-          "after" = ["<c-w>" "j"];
-      }
-      {
-          "before" = ["<c-k>"];
-          "after" = ["<c-w>" "k"];
-      }
-      {
-          "before" = ["<c-l>"];
-          "after" = ["<c-w>" "l"];
-      }
-      {
-          "before" = ["<c-l>"];
-          "after" = ["<c-w>" "l"];
-      }
-    ];
+  multiCursor =
+    {
+      "before" = [ "<c-n>" ];
+      "after" = [ "g" "b" ];
+    };
+  lineStart =
+    {
+      "before" = [ "L" ];
+      "after" = [ "$" ];
+    };
+  lineEnd =
+    {
+      "before" = [ "H" ];
+      "after" = [ "^" ];
+    };
+  switchSplits = [
+    {
+      "before" = [ "<c-h>" ];
+      "after" = [ "<c-w>" "h" ];
+    }
+    {
+      "before" = [ "<c-j>" ];
+      "after" = [ "<c-w>" "j" ];
+    }
+    {
+      "before" = [ "<c-k>" ];
+      "after" = [ "<c-w>" "k" ];
+    }
+    {
+      "before" = [ "<c-l>" ];
+      "after" = [ "<c-w>" "l" ];
+    }
+    {
+      "before" = [ "<c-l>" ];
+      "after" = [ "<c-w>" "l" ];
+    }
+  ];
 in
 {
   "editor.rulers" = [ 80 120 ];
   "editor.minimap.enabled" = false;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
+  "editor.formatOnSave" = true;
 
-   # ---- Files ----
+  # ---- Files ----
   "files.trimTrailingWhitespace" = true;
 
   # ---- Window ----
@@ -56,6 +62,8 @@ in
   # ---- Aesthetics/workbench ----
   "workbench.colorTheme" = "One Dark Pro";
   "workbench.iconTheme" = "material-icon-theme";
+
+
   "workbench.startupEditor" = "newUntitledFile";
 
   # ---- VsVim ----
@@ -63,10 +71,12 @@ in
   "editor.cursorSurroundingLines" = 5;
 
   "vim.normalModeKeyBindings" = [
-      multiCursor
-      saveFile
+    multiCursor
+    lineStart
+    lineEnd
   ] ++ switchSplits;
+
   "vim.visualModeKeyBindings" = [
-      multiCursor
+    multiCursor
   ];
 }

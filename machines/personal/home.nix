@@ -2,9 +2,9 @@
 
 {
   imports = [
-      ../../profiles/cli.nix
-      ../../profiles/gui.nix
-      ../../profiles/programming
+    ../../profiles/cli.nix
+    ../../profiles/gui.nix
+    ../../profiles/programming
   ];
 
 
