@@ -23,7 +23,7 @@
       "checkjobs"
     ];
 
-    bashrcExtra = "
+    initExtra = "
     # Vi mode
     set -o vi
     bind -m vi-insert 'Control-l: clear-screen'
@@ -36,6 +36,7 @@
     ];
 
     shellAliases = {
+      rm = "rmtrash";
       ls = "exa";
       c = "clear";
     };
@@ -45,4 +46,3 @@
     };
   };
 }
-

@@ -3,12 +3,12 @@
 {
   imports = [
     ../pkgs/vscodium
-    ../services/dunst.nix
+    ../services/dunst.nix # Notification daemon
+    ../pkgs/firefox.nix
   ];
 
   home.packages = with pkgs; [
     dmenu # Launcher
-    firefox # Browser
     kitty # Terminal
     st # Terminal
     picom # Compostior

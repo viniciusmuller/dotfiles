@@ -1,9 +1,0 @@
-nodejs 14.17.0
-erlang 24.0
-elixir ref:cc44527f67015652f214518b8e097e057acc3116
-haskell 8.10.4
-rust stable
-deno 1.10.2
-java openjdk-16
-yarn 1.22.5
-elm 0.19.1

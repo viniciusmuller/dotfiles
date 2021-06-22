@@ -1,4 +1,3 @@
-set enable-keypad on
 set completion-ignore-case on
 set keyseq-timeout 50
 

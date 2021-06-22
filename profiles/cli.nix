@@ -2,10 +2,13 @@
 
 {
   imports = [
+    ../pkgs/zoxide.nix # Jump directories
     ../pkgs/bash.nix
     ../pkgs/nvim.nix
+    ../pkgs/readline # GNU readline input
     ../pkgs/git.nix
-    ../pkgs/tmux
+    ../pkgs/tmux # Terminal multiplexer
+    ../pkgs/fzf.nix # Fuzzy finder
   ];
 
   home.packages = with pkgs; [
@@ -17,7 +20,6 @@
     exa # ls alternative
 
     # Finders
-    fzf # Fuzzy finder
     ripgrep # File content finder
     fd # File finder
 
@@ -25,7 +27,6 @@
     vim # Modal text editor
 
     # Utils
-    zoxide # Directory jumper
     xsv # Work with csv
     jq # Work with json
     bat # File viewer
