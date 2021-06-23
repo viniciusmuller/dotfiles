@@ -66,6 +66,10 @@
   services.xserver.enable = true;
   services.xserver.windowManager.dwm.enable = true;
 
+  # TODO: Tie this with ../pkgs/suckless/slock
+  # TODO: Maybe use another screen locker on non-nixos system
+  security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";
+
   # Configure keymap in X11
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";

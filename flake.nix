@@ -15,6 +15,7 @@
         # TODO: Overlays doesn't seem to be working
         nur.overlay
         neovim-nightly-overlay.overlay
+        suckless.overlays
       ];
     in
     {

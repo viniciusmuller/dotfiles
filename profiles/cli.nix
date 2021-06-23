@@ -14,6 +14,7 @@
     ../pkgs/trash-cli.nix # Safer rm
     ../pkgs/direnv.nix
     ../pkgs/keychain.nix
+    ../pkgs/kmonad.nix
   ];
 
   home.packages = with pkgs; [

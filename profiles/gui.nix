@@ -7,11 +7,13 @@
     ../services/picom.nix # Compositor
     ../pkgs/chromium.nix
     ../pkgs/kitty.nix # Terminal
+    ../pkgs/suckless/dmenu.nix # Launcher
+    ../pkgs/suckless/slock.nix # Screen locker
+    ../pkgs/suckless/slstatus.nix # dwm statusbar
   ];
 
   home.packages = with pkgs; [
-    dmenu # Launcher
-    st # Terminal
+    wmctrl # Helper for window managers
     picom # Compostior
     dunst # Desktop notifications daemon
     sxiv # Simple X image viewer
@@ -21,6 +23,7 @@
     bitwarden # Password manager
     anki # Spaced repetition
     libnotify # notify-send
-    wmctrl # Helper for window managers
+
+    discord
   ];
 }
