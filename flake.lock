@@ -138,6 +138,20 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1624470504,
+        "narHash": "sha256-kfGPDT0J+x82CMZlIvIkGUC+yUl4XJSlz+BSVCZJUzI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "920113a6e5e34e317c910b8477dd6cde88fcd202",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1624294736,
@@ -158,7 +172,42 @@
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
-        "nur": "nur"
+        "nur": "nur",
+        "suckless": "suckless"
+      }
+    },
+    "suckless": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4",
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1624472865,
+        "narHash": "sha256-k7qIqXEz+JGGIASlnnT6X6PNX82PzHKI09hw7VLGxF4=",
+        "owner": "arcticlimer",
+        "repo": "suckless",
+        "rev": "3790fca9146d4147960dce029da79f6b65fe433e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arcticlimer",
+        "repo": "suckless",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     }
   },

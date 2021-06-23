@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../pkgs/base16-shell.nix # Different shell themes
     ../pkgs/zoxide.nix # Jump directories
     ../pkgs/bash.nix
     ../pkgs/nvim.nix
@@ -11,6 +12,8 @@
     ../pkgs/fzf.nix # Fuzzy finder
     ../pkgs/exa.nix # ls alternative
     ../pkgs/trash-cli.nix # Safer rm
+    ../pkgs/direnv.nix
+    ../pkgs/keychain.nix
   ];
 
   home.packages = with pkgs; [
@@ -18,6 +21,7 @@
     bandwhich # Network inspector
     neofetch # Display system info
     tealdeer # TLDR of man pages
+    lazygit # Git TUI
 
     # Finders
     ripgrep # File content finder

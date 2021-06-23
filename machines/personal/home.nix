@@ -5,11 +5,12 @@
     ../../profiles/cli.nix
     ../../profiles/gui.nix
     ../../profiles/programming
+    ../../utils/scripts
   ];
 
 
   # TODO: Find a better place for this
-  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#desktop";
+  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#personal";
 
   nixpkgs.config.allowUnfree = true;
 

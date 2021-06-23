@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -12,10 +12,10 @@
     ];
 
   nix = {
+    # TODO: Find better place for this
     package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes";
 
     gc = {
       automatic = true;
@@ -64,7 +64,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.windowManager.xmonad.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";

@@ -6,6 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    suckless.url = "github:arcticlimer/suckless";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @inputs:
@@ -17,7 +18,7 @@
       ];
     in
     {
-      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem
+      nixosConfigurations.personal = nixpkgs.lib.nixosSystem
         rec {
           system = "x86_64-linux";
           modules = [

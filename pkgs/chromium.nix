@@ -9,6 +9,10 @@
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
       {
+        id = "cjnmckjndlpiamhfimnnjmnckgghkjbl"; # Competitive companion
+        version = "2.25.2";
+      }
+      {
         id = "miljekjnhkpkelpomeehcbhlanppjegn"; # Material dark theme
         version = "1.0";
       }

@@ -8,7 +8,7 @@ if [ -f "$1" ]; then
     fored="$(printf "%b" "$pageline" | sed 's,/,\\/,g')"
     if grep -q -F "$pageline" "$CACHE"; then
         page=$(grep "$pageline" "$CACHE" | cut -f 2)
-        printf "%b\n" "/$fored/d\nw" | ed -s "$CACHE"
+        printf "%b\n" "/$fored/d\nw" > "$CACHE"
     else
         page=1
     fi

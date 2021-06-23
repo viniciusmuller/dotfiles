@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo $1 > ~/.last_x_bg
-feh --bg-scale $1

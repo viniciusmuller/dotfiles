@@ -1,4 +1,0 @@
-#!/bin/sh
-
-read -r bg < ~/.last_x_bg
-set_bg $bg

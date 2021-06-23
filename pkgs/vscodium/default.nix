@@ -11,6 +11,8 @@
       coenraads.bracket-pair-colorizer-2
       zhuangtongfa.material-theme
       pkief.material-icon-theme
+
+      # Utils
       gruntfuggly.todo-tree
       usernamehw.errorlens
       eamodio.gitlens

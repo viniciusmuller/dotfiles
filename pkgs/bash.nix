@@ -39,10 +39,12 @@
       c = "clear";
       b = "cd -";
       se = "sudoedit";
+      ns = "nix-shell";
     };
 
     sessionVariables = {
       EDITOR = "vim";
+      FZF_DEFAULT_OPTS = ''--prompt \" λ \"'';
     };
   };
 }

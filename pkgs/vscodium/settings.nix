@@ -61,6 +61,7 @@ in
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
   "editor.formatOnSave" = true;
+  "editor.suggest.localityBonus" = true;
 
   # ---- Files ----
   "files.trimTrailingWhitespace" = true;
@@ -89,7 +90,6 @@ in
   "vim.neovimPath" = "nvim";
   "vim.timeout" = 50;
   "vim.sneakUseIgnorecaseAndSmartcase" = true;
-  "vim.sneak" = true;
   "vim.leader" = "<space>";
 
   "vim.normalModeKeyBindingsNonRecursive" = [

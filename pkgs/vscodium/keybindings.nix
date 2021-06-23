@@ -22,6 +22,16 @@ let
     "command" = "closeDirtyDiff";
     "when" = "dirtyDiffVisible";
   };
+  revertChange = {
+    # TODO: Find better keybind
+    # TODO: Maybe map those on vscodeVim side with leader
+    "key" = "ctrl+,";
+    "command" = "git.revertSelectedRanges";
+  };
+  runTestCases = {
+    "key" = "ctrl+shift+f";
+    "command" = "cph.runTestCases";
+  };
 in
 [
   # TODO: Name these expressions using `let`
@@ -51,4 +61,6 @@ in
   inlineNextDiff
   inlinePreviousDiff
   closeInlinedDiff
+  revertChange
+  runTestCases
 ]

@@ -9,6 +9,8 @@
     ./python.nix
     ./haskell.nix
     ./node.nix
+    ./toml.nix
+    ./markdown.nix
   ];
 
   home.packages = with pkgs; [
