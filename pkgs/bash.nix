@@ -1,5 +1,11 @@
 { pkgs, config, ... }:
 
+let
+  complete-alias = builtins.fetchGit {
+    url = "https://github.com/cykerway/complete-alias";
+    rev = "b16b183f6bf0029b9714b0e0178b6bd28eda52f3";
+  };
+in
 {
   programs.bash = {
     enable = true;
@@ -23,11 +29,16 @@
       "checkjobs"
     ];
 
-    initExtra = "
-    # Vi mode
-    set -o vi
-    bind -m vi-insert 'Control-l: clear-screen'
-    ";
+    initExtra = ''
+      # Vi mode
+      set -o vi
+      bind -m vi-insert 'Control-l: clear-screen'
+
+      # Complete aliases
+      . ${complete-alias}/complete_alias
+      complete -F _complete_alias $( \
+        alias | perl -lne 'print "$1 " if /^alias ([^=]*)=/' )
+    '';
 
     historyControl = [
       "erasedups"
