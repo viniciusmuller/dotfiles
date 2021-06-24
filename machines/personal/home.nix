@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     obsidian
     discord
+    spotify
     teams
   ];
 

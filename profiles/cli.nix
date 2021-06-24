@@ -14,6 +14,8 @@
     ../pkgs/trash-cli.nix # Safer rm
     ../pkgs/direnv.nix
     ../pkgs/keychain.nix
+    ../services/gpg-agent.nix
+    ../pkgs/gpg.nix
     ../pkgs/kmonad.nix
   ];
 
@@ -39,5 +41,6 @@
     ncdu # Curses interface for `du`
     vifm # File manager
     tokei # Show lines of code of a project
+    file # Show info about files
   ];
 }

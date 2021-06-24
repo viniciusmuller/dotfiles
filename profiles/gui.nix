@@ -5,12 +5,12 @@
   imports = [
     ../pkgs/vscodium
     ../pkgs/chromium.nix # Browser
+    ../pkgs/bitwarden.nix # Password manager
   ];
 
   home.packages = with pkgs; [
     sxiv # Simple X image viewer
     mupdf # Pdf viewer
-    bitwarden # Password manager
     anki # Spaced repetition
     libnotify # notify-send
   ];

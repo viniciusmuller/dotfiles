@@ -34,20 +34,23 @@ in
     ];
 
     initExtra = ''
-      # Vi mode
+      # --- GPG ---
+      export GPG_TTY=$(tty)
+
+      # --- Vi mode ---
       set -o vi
       bind -m vi-insert 'Control-l: clear-screen'
 
-      # Complete aliases
+      # --- Complete aliases ---
       . ${complete-alias}/complete_alias
       complete -F _complete_alias $( \
         alias | perl -lne 'print "$1 " if /^alias ([^=]*)=/' )
 
-      # Tab completion
+      # --- Tab completion ---
       . ${tab-completion}/bash/fzf-bash-completion.sh
       bind -x '"\t": fzf_bash_completion'
 
-      # ------ Set bash prompt ------
+      # --- Set bash prompt ---
 
       git_branch() {
         git branch 2>/dev/null | grep '^*' | colrm 1 2
