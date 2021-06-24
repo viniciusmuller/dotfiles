@@ -11,6 +11,7 @@
     ./node.nix
     ./toml.nix
     ./markdown.nix
+    ./bash.nix
   ];
 
   home.packages = with pkgs; [
