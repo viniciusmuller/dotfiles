@@ -6,10 +6,12 @@
     ../../profiles/gui.nix
     ../../profiles/cli.nix
     ../../profiles/programming
+    ../../profiles/gaming.nix
     ../../utils/scripts
   ];
 
   home.packages = with pkgs; [
+    aseprite-unfree
     obsidian
     discord
     spotify

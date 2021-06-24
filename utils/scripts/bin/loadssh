@@ -8,3 +8,5 @@ bw get item --session "$key" SSH_PRIV | jq -r '.notes' > "$private"
 bw get item --session "$key" SSH_PUB | jq -r '.notes' > "$public"
 
 bw lock
+
+chmod 600 "$private" "$public"

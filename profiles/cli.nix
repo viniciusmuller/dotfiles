@@ -25,6 +25,8 @@
     neofetch # Display system info
     tealdeer # TLDR of man pages
     lazygit # Git TUI
+    docker-compose
+    docker
 
     # Finders
     ripgrep # File content finder

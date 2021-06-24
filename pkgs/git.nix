@@ -42,6 +42,7 @@
   };
 
   programs.bash.shellAliases = {
+    gw = "git worktree";
     gs = "git status";
     gc = "git commit";
     gl = "git log";

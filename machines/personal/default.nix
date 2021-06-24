@@ -84,10 +84,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable virtualsation for docker
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vini = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ];
     # TODO: Add default password
   };
 
