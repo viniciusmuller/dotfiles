@@ -2,12 +2,17 @@
 
 {
   imports = [
-    ../../profiles/cli.nix
+    ../../desktop/dwm.nix
     ../../profiles/gui.nix
+    ../../profiles/cli.nix
     ../../profiles/programming
     ../../utils/scripts
   ];
 
+  home.packages = with pkgs; [
+    discord
+    teams
+  ];
 
   # TODO: Find a better place for this
   programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#personal";
