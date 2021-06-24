@@ -27,6 +27,7 @@
     lazygit # Git TUI
     docker-compose
     docker
+    htop # Process viewer
 
     # Finders
     ripgrep # File content finder

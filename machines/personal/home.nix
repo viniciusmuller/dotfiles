@@ -5,13 +5,12 @@
     ../../desktop/dwm.nix
     ../../profiles/gui.nix
     ../../profiles/cli.nix
-    ../../profiles/programming
+    ../../profiles/development
     ../../profiles/gaming.nix
     ../../utils/scripts
   ];
 
   home.packages = with pkgs; [
-    aseprite-unfree
     obsidian
     discord
     spotify
