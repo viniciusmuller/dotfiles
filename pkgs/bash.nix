@@ -5,6 +5,10 @@ let
     url = "https://github.com/cykerway/complete-alias";
     rev = "b16b183f6bf0029b9714b0e0178b6bd28eda52f3";
   };
+  tab-completion = builtins.fetchGit {
+    url = "https://github.com/lincheney/fzf-tab-completion";
+    rev = "53eb325f573265a6105c9bd0aa56cd865c4e14b7";
+  };
 in
 {
   programs.bash = {
@@ -38,6 +42,10 @@ in
       . ${complete-alias}/complete_alias
       complete -F _complete_alias $( \
         alias | perl -lne 'print "$1 " if /^alias ([^=]*)=/' )
+
+      # Tab completion
+      . ${tab-completion}/bash/fzf-bash-completion.sh
+      bind -x '"\t": fzf_bash_completion'
     '';
 
     historyControl = [

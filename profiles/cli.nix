@@ -38,5 +38,6 @@
     stow # Symlinks manager
     ncdu # Curses interface for `du`
     vifm # File manager
+    tokei # Show lines of code of a project
   ];
 }
