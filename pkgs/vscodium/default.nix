@@ -19,6 +19,13 @@
 
       # Some vim keybindings
       vscodevim.vim
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "path-autocomplete";
+        publisher = "ionutvmi";
+        version = "1.17.1";
+        sha256 = "Qxnlf9Jrd0/qLB9gXilIDGbEXAshjuHncAxpcDndnlo=";
+      }
     ];
   };
 }

@@ -40,6 +40,7 @@
       colorscheme gruvbox
 
       set cursorline
+      set termguicolors
     '';
   };
 }
