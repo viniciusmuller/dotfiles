@@ -6,6 +6,7 @@
     ../pkgs/vscodium
     ../pkgs/chromium.nix # Browser
     ../pkgs/bitwarden.nix # Password manager
+    ../pkgs/blugon # Screen temperature manager
   ];
 
   home.packages = with pkgs; [
