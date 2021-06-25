@@ -12,6 +12,8 @@
     ../pkgs/fzf.nix # Fuzzy finder
     ../pkgs/exa.nix # ls alternative
     ../pkgs/trash-cli.nix # Safer rm
+    ../pkgs/htop.nix # Process viewer
+    ../pkgs/vim # Modal text editor
     ../pkgs/direnv.nix
     ../pkgs/keychain.nix
     ../services/gpg-agent.nix
@@ -27,14 +29,10 @@
     lazygit # Git TUI
     docker-compose
     docker
-    htop # Process viewer
 
     # Finders
     ripgrep # File content finder
     fd # File finder
-
-    # Editors
-    vim # Modal text editor
 
     # Utils
     xsv # Work with csv

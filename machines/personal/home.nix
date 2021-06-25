@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../desktop/dwm.nix
+    ../../desktop/dwm
     ../../profiles/gui.nix
     ../../profiles/cli.nix
     ../../profiles/development

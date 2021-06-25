@@ -15,8 +15,4 @@
     ./bash.nix
     ./latex.nix
   ];
-
-  home.packages = with pkgs; [
-    jetbrains-mono # Jetbrains Mono font
-  ];
 }

@@ -37,7 +37,11 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  # TODO: Maybe use it only in user environment?
   fonts.fontconfig.enable = true;
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

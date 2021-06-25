@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    dwarf-fortress-packages.dwarf-fortress-full
     steam
+    # TODO: Figure out how to customize this package (maybe overlay?)
+    dwarf-fortress-packages.dwarf-fortress-full
   ];
 }
