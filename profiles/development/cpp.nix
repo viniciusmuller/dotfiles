@@ -17,7 +17,13 @@ in
       gnumake
     ];
 
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
-    ms-vscode.cpptools
-  ] ++ customVscodeExtensions;
+  programs.vscode = {
+    extensions = with pkgs.vscode-extensions; [
+      ms-vscode.cpptools
+    ] ++ customVscodeExtensions;
+
+    userSettings = {
+      "C_Cpp.clang_format_fallbackStyle" = "{BasedOnStyle: Google, IndentWidth: 4}";
+    };
+  };
 }

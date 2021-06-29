@@ -4,6 +4,7 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy badger
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock origin
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
