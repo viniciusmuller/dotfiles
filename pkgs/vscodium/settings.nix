@@ -83,6 +83,28 @@ in
   "workbench.iconTheme" = "material-icon-theme";
   "workbench.startupEditor" = "newUntitledFile";
 
+  # ---- TODO Tree ----
+  "todo-tree.customHighlight" = {
+    "TODO" = {
+      "foreground" = "magenta";
+    };
+    "FIXME" = {
+      "foreground" = "red";
+    };
+    "TEST" = {
+      "foreground" = "cyan";
+    };
+    ">" = {
+      "foreground" = "yellow";
+    };
+    ">>" = {
+      "foreground" = "blue";
+    };
+    ">>>" = {
+      "foreground" = "grey";
+    };
+  };
+
   # ---- VsVim ----
   "editor.cursorSurroundingLines" = 5;
   "editor.lineNumbers" = "relative";
