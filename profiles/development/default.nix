@@ -14,5 +14,6 @@
     ./games.nix
     ./bash.nix
     ./latex.nix
+    ./fsharp.nix
   ];
 }

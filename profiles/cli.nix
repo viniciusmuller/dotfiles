@@ -18,7 +18,6 @@
     ../pkgs/keychain.nix
     ../services/gpg-agent.nix
     ../pkgs/gpg.nix
-    ../pkgs/kmonad.nix
   ];
 
   home.packages = with pkgs; [
