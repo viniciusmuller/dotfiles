@@ -11,9 +11,9 @@
     ./node.nix
     ./toml.nix
     ./markdown.nix
-    ./games.nix
+    ./gamedev.nix
     ./bash.nix
-    ./latex.nix
+    # ./latex.nix
     # ./fsharp.nix
   ];
 }

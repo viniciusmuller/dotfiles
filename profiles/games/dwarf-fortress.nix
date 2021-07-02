@@ -9,9 +9,5 @@ let
       });
 in
 {
-  home.packages = with pkgs; [
-    steam
-    dwarf-fortress
-    nethack
-  ];
+  home.packages = [ dwarf-fortress ];
 }

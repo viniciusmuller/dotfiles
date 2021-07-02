@@ -12,13 +12,11 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/7012841b-19e7-4f95-bcc6-fdcc3f9beceb";
+    { device = "/dev/disk/by-uuid/c783d4e1-d8a7-49ae-bcf9-23166f11a31e";
       fsType = "ext4";
     };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/ea618b8b-d0a5-4b45-b435-ce20a1604385"; }];
+  swapDevices = [ ];
 
   virtualisation.virtualbox.guest.enable = true;
 }
