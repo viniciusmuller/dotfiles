@@ -12,5 +12,6 @@ in
   home.packages = with pkgs; [
     steam
     dwarf-fortress
+    nethack
   ];
 }
