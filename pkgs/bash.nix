@@ -76,6 +76,15 @@ in
         PS1+='$(echo -ne " $BLUE\w $RED$(git_branch) $YELLOW>$GREEN>$RED> $RESET")'
       }
       PROMPT_COMMAND=prompt_command
+
+      # Colored man pages
+      export LESS_TERMCAP_mb=$'\e[1;32m'
+      export LESS_TERMCAP_md=$'\e[1;32m'
+      export LESS_TERMCAP_me=$'\e[0m'
+      export LESS_TERMCAP_se=$'\e[0m'
+      export LESS_TERMCAP_so=$'\e[01;33m'
+      export LESS_TERMCAP_ue=$'\e[0m'
+      export LESS_TERMCAP_us=$'\e[1;4;31m'
     '';
 
     historyControl = [
@@ -91,6 +100,9 @@ in
       ns = "nix-shell";
     };
 
+    # TODO: These don't get loaded when using a display manager.
+    # workaround: Copy ~/.profile to ~/.xprofile
+    # TODO: Remove display managers and use only startx
     sessionVariables = {
       EDITOR = "vim";
       FZF_DEFAULT_OPTS = ''--prompt \" λ \"'';

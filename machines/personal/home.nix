@@ -18,7 +18,8 @@
   ];
 
   # TODO: Find a better place for this
-  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#personal";
+  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#nixos";
+
 
   nixpkgs.config.allowUnfree = true;
 

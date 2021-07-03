@@ -7,10 +7,6 @@
     shellInit = "
     set fish_greeting
     ";
-
-    shellAliases = {
-      "rb" = "sudo nixos-rebuild switch";
-    };
   };
 }
 

@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  programs.bash.initExtra = ''
-    export PATH=$PATH:${./bin}
-  '';
+  home.sessionPath = [ "${./bin}" ];
 }
