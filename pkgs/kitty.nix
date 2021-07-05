@@ -10,6 +10,7 @@
 
     settings = {
       window_padding_width = 6;
+      enable_audio_bell = false;
     };
   };
 }

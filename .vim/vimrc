@@ -79,7 +79,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_grep = 'rg'
-
 set updatetime=100
 
 "----------------------------------;

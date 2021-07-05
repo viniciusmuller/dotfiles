@@ -7,9 +7,10 @@
     # nur.url = "github:nix-community/nur";
     # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     suckless.url = "github:arcticlimer/suckless";
+    nix-doom-emacs.url = "github:vlaci/nix-doom-emacs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, ... } @inputs:
     let
       overlays = with inputs; [
         # TODO: Overlays doesn't seem to be working
@@ -24,8 +25,14 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-            home-manager.nixosModules.home-manager
+            # home-manager.nixosModules.home-manager
             ./machines/personal
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.vini = { ... }: {
+                imports = [ nix-doom-emacs.hmModule ];
+              };
+            }
           ];
           specialArgs = {
             inherit inputs system;

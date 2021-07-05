@@ -5,7 +5,7 @@
     ../pkgs/base16-shell.nix # Different shell themes
     ../pkgs/zoxide.nix # Jump directories
     ../pkgs/bash.nix
-    ../pkgs/nvim.nix
+    ../pkgs/nvim
     ../pkgs/readline # GNU readline input
     ../pkgs/git.nix
     ../pkgs/tmux # Terminal multiplexer

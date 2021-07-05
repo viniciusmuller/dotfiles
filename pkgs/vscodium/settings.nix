@@ -74,6 +74,7 @@ in
 
   # ---- Font ----
   "editor.fontFamily" = "Jetbrains Mono";
+  "editor.cursorSmoothCaretAnimation" = true;
   "editor.fontSize" = 14;
   "terminal.integrated.gpuAcceleration" = "off";
   "editor.fontLigatures" = true;

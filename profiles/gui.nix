@@ -4,7 +4,7 @@
 {
   imports = [
     ../pkgs/vscodium
-    ../pkgs/emacs.nix
+    ../pkgs/emacs
     ../pkgs/chromium.nix # Browser
     ../pkgs/bitwarden.nix # Password manager
     ../pkgs/blugon # Screen temperature manager
