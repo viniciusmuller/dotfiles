@@ -74,6 +74,7 @@ let
       inoremap <silent><expr> <C-e>     compe#close('<C-e>')
       inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
       inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
       inoremap <silent><expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
       inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -96,7 +97,6 @@ let
             calc = true;
             nvim_lsp = true;
             nvim_lua = true;
-            vsnip = true;
             ultisnips = true;
             luasnip = true;
           };
@@ -123,26 +123,6 @@ let
               ["ab"] = "@block.outer",
               ["ib"] = "@block.inner",
             },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]f"] = "@function.outer",
-              ["]e"] = "@class.outer",
-            },
-            -- goto_next_end = {
-            --  ["]M"] = "@function.outer",
-            --  ["]["] = "@class.outer",
-            -- },
-            goto_previous_start = {
-              ["[f"] = "@function.outer",
-              ["[e"] = "@class.outer",
-            },
-            -- goto_previous_end = {
-            --  ["[M"] = "@function.outer",
-            --  ["[]"] = "@class.outer",
-            -- },
           },
         }
       }
@@ -209,7 +189,7 @@ let
     '';
   };
 
-  my-telescope-nvim = {
+  my-telescope = {
     plugin = telescope-nvim;
     config = ''
       nnoremap <C-e>       <cmd>Telescope git_files<cr>
@@ -311,8 +291,50 @@ let
   my-ultisnips = {
     plugin = ultisnips;
     config = ''
+      let g:UltiSnipsExpandTrigger="<M-j>"
       let g:UltiSnipsJumpForwardTrigger="<C-j>"
       let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+    '';
+  };
+
+  my-indentline = {
+    plugin = indent-blankline-nvim-lua;
+    config = "let g:indent_blankline_char = '│'";
+  };
+
+  my-fzf = {
+    plugin = fzf-vim;
+    config = ''
+      let $FZF_DEFAULT_COMMAND = 'fd -H'
+      let $FZF_DEFAULT_OPTS = '--exact --reverse'
+      let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
+      nnoremap <C-e>       <cmd>GFiles<cr>
+      nnoremap <leader>ff  <cmd>Files<cr>
+      nnoremap <leader>fs  <cmd>Rg<cr>
+      nnoremap <leader>fh  <cmd>Helptags<cr>
+      nnoremap <leader>fm  <cmd>Maps<cr>
+
+      " Rg with --hidden
+      command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+        \   fzf#vim#with_preview(), <bang>0)
+    '';
+  };
+
+  my-nvim-tree = {
+    plugin = nvim-tree-lua;
+    config = ''
+      let g:nvim_tree_follow = 1
+      nnoremap <leader>pw <cmd>NvimTreeToggle<cr>
+    '';
+  };
+
+  my-multiple-cursors = {
+    plugin = vim-visual-multi;
+    config = ''
+      let g:VM_reselect_first = 1
     '';
   };
 in
@@ -323,13 +345,16 @@ in
     ./lsp/node.nix
     ./lsp/rnix.nix
     ./lsp/rust.nix
+    ./lsp/lua.nix
   ];
 
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
       # Language specific
-      vim-nix
+      vim-nix # Used mainly for filetype detection
+      # Current elixir tree-sitter parses is very laggy when opening files
+      vim-elixir
 
       # Utils
       my-vim-tmux-navigator
@@ -339,9 +364,11 @@ in
       vim-surround
       vim-repeat
       auto-pairs
-      # vim-mkdir
       targets-vim
       my-quickrun
+
+      my-multiple-cursors
+      my-fzf
 
       # Snippets
       vim-snippets
@@ -351,7 +378,8 @@ in
       plenary-nvim
       my-treesitter
       nvim-treesitter-textobjects
-      my-telescope-nvim
+      my-nvim-tree
+      # my-telescope
       my-lspconfig
       my-compe
       # my-trouble
@@ -366,11 +394,14 @@ in
       nvim-web-devicons
       my-tokyonight-nvim
       my-lualine
+      my-indentline
     ];
 
     extraConfig = ''
       map <space> \
 
+      set undofile
+      set undolevels=1000
       set number relativenumber
       set expandtab tabstop=2 shiftwidth=2
       set cursorline
@@ -379,8 +410,6 @@ in
       set nofoldenable
       set showcmd
       set ignorecase smartcase
-      set listchars=tab:\|\ ,space:·
-      set list
       set textwidth=80
       set sessionoptions+=globals
       set hidden
@@ -394,12 +423,22 @@ in
       set lazyredraw
       set noswapfile
       set autoread
+      " Some plugin is removing `-` from the separators, for now lets just get it back.
+      set iskeyword+=^-
 
       noremap Y "+y
-      nnoremap <C-s> :update<cr>
-      nnoremap H ^
-      nnoremap L $
+      noremap H ^
+      noremap L $
+      nnoremap <C-s> <cmd>update<cr>
       nnoremap <C-q> <C-w>q
+
+      " Quickfix lists
+      nnoremap [q <cmd>cprev<cr>
+      nnoremap ]q <cmd>cnext<cr>
+
+      " Location lists
+      nnoremap [w <cmd>lprev<cr>
+      nnoremap ]w <cmd>lnext<cr>
 
       " Marks
       nnoremap <C-g> `
