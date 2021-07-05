@@ -12,8 +12,8 @@ in
 {
   home.packages = [ pkgs.haskell-language-server ];
   programs.neovim.extraConfig = mkLuaCode ''
-  require'lspconfig'.hls.setup{
-    on_attach = on_attach
-  }
+    require'lspconfig'.hls.setup{
+      on_attach = on_attach
+    }
   '';
 }
