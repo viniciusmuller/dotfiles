@@ -8,6 +8,8 @@ git clone https://github.com/arcticlimer/dotfiles
 sudo nixos-rebuild switch --flake dotfiles#nixos
 ```
 
+You can check the Neovim keybindings [here](./pkgs/nvim/README.md)
+
 # Structure
 - `.vim` -> Old dotfiles that will be translated into nix.
 - `.config` -> Old dotfiles that will be translated into nix.

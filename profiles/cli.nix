@@ -23,7 +23,6 @@
   home.packages = with pkgs; [
     lazydocker # Docker TUI
     bandwhich # Network inspector
-    neofetch # Display system info
     tealdeer # TLDR of man pages
     lazygit # Git TUI
     docker-compose

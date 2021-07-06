@@ -3,6 +3,7 @@
 {
   imports = [
     ../../desktop/dwm
+    ../../profiles/ricing.nix
     ../../profiles/gui.nix
     ../../profiles/cli.nix
     ../../profiles/development

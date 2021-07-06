@@ -16,7 +16,7 @@ let
       nnoremap <leader>gm <cmd>lua require('gitsigns').blame_line(true)<cr>
 
       ${mkLuaCode ''
-          require('gitsigns').setup{}
+        require('gitsigns').setup{}
       ''}
     '';
   };
@@ -35,7 +35,7 @@ let
   my-fugitive = {
     plugin = vim-fugitive;
     config = ''
-      nnoremap <silent> <Leader>G :tab G<cr>
+      nnoremap <silent> <Leader>gg :tab G<cr>
       nnoremap <silent> <Leader>gd :Gvdiffsplit<cr>
       nnoremap <silent> <Leader>gD :!git diff<cr>
       nnoremap <silent> <Leader>gl :Gclog<cr>
@@ -44,7 +44,7 @@ let
 
   my-projectionist = {
     plugin = vim-projectionist;
-    config = "nnoremap <silent> <leader>pa :AV<cr>";
+    config = "nnoremap <silent> <leader>pa :A<cr>";
   };
 
   my-quickrun = {
@@ -220,9 +220,6 @@ let
           local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
           local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-          -- Enable completion triggered by <c-x><c-o>
-          -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
           -- Mappings.
           local opts = { noremap=true, silent=true }
 
@@ -242,13 +239,34 @@ let
           buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
           buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
-          buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
+          buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
           buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
           buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
           buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
         end
       ''}
+    '';
+  };
+
+  my-listtoggle = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "listtoggle.vim";
+      version = "2021-07-06";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "Valloric";
+        repo = "ListToggle";
+        rev = "63fb8acb57d57380b2e30e7a831247140559c95f";
+        sha256 = "1fbshc3pjm0d1nnig2wnbj9yf39iagva44k2qhl85zfz1pv7sv57";
+      };
+
+      meta.homepage = "https://github.com/Valloric/ListToggle";
+    };
+
+    config = ''
+      let g:lt_location_list_toggle_map = 'tl'
+      let g:lt_quickfix_list_toggle_map = 'tq'
     '';
   };
 
@@ -311,9 +329,11 @@ let
 
       nnoremap <C-e>       <cmd>GFiles<cr>
       nnoremap <leader>ff  <cmd>Files<cr>
+      nnoremap <leader>fc  <cmd>Commits<cr>
       nnoremap <leader>fs  <cmd>Rg<cr>
       nnoremap <leader>fh  <cmd>Helptags<cr>
       nnoremap <leader>fm  <cmd>Maps<cr>
+      nnoremap <leader>fb  <cmd>Buffers<cr>
 
       " Rg with --hidden
       command! -bang -nargs=* Rg
@@ -327,7 +347,7 @@ let
     plugin = nvim-tree-lua;
     config = ''
       let g:nvim_tree_follow = 1
-      nnoremap <leader>pw <cmd>NvimTreeToggle<cr>
+      nnoremap tn <cmd>NvimTreeToggle<cr>
     '';
   };
 
@@ -335,6 +355,48 @@ let
     plugin = vim-visual-multi;
     config = ''
       let g:VM_reselect_first = 1
+    '';
+  };
+
+  my-vim-prettier = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-prettier";
+      version = "2021-07-06";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "prettier";
+        repo = "vim-prettier";
+        rev = "0e61e4a5b55d2740aa118db91a6671dcb11307e8";
+        sha256 = "0d83lx6kfpsi3d4q9wz8zwsgdn0vn16psqyngml6wspjyibh6pnf";
+      };
+
+      # The plugin has a makefile which tries to run a docker container. This
+      # fixes it.
+      prePatch = ''
+        rm Makefile
+      '';
+
+      meta.homepage = "https://github.com/prettier/vim-prettier";
+    };
+  };
+
+  my-symbols-outline = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "symbols-outline.nvim";
+      version = "2021-07-06";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "simrat39";
+        repo = "symbols-outline.nvim";
+        rev = "631a8880deccf97bfea44d02d70afc8084f49c24";
+        sha256 = "06l1i31p04f8cgwsp0vgnjjjbav4jjvv88qx80svfkh6zz5hrbzy";
+      };
+
+      meta.homepage = "https://github.com/prettier/vim-prettier";
+    };
+
+    config = ''
+      nnoremap ts <cmd>SymbolsOutline<cr>
     '';
   };
 in
@@ -353,19 +415,23 @@ in
     plugins = with pkgs.vimPlugins; [
       # Language specific
       vim-nix # Used mainly for filetype detection
-      # Current elixir tree-sitter parses is very laggy when opening files
+      # Current elixir tree-sitter parser is very laggy when opening files
       vim-elixir
+      my-vim-prettier
 
       # Utils
       my-vim-tmux-navigator
       my-projectionist
       vim-commentary
+      my-listtoggle
       vim-sensible
       vim-surround
       vim-repeat
       auto-pairs
       targets-vim
       my-quickrun
+      vim-lion # Alignment
+      vim-swap
 
       my-multiple-cursors
       my-fzf
@@ -391,8 +457,9 @@ in
       my-blamer
 
       # Aesthetic
-      nvim-web-devicons
+      my-symbols-outline
       my-tokyonight-nvim
+      nvim-web-devicons
       my-lualine
       my-indentline
     ];
@@ -429,20 +496,34 @@ in
       noremap Y "+y
       noremap H ^
       noremap L $
-      nnoremap <C-s> <cmd>update<cr>
+      nnoremap Q @@
       nnoremap <C-q> <C-w>q
+      nnoremap <C-s> <cmd>update<cr>
 
       " Quickfix lists
       nnoremap [q <cmd>cprev<cr>
       nnoremap ]q <cmd>cnext<cr>
+      nnoremap [Q <cmd>cfirst<cr>
+      nnoremap ]Q <cmd>clast<cr>
 
       " Location lists
       nnoremap [w <cmd>lprev<cr>
       nnoremap ]w <cmd>lnext<cr>
+      nnoremap [W <cmd>lfirst<cr>
+      nnoremap ]W <cmd>llast<cr>
 
       " Marks
       nnoremap <C-g> `
       nnoremap <C-g><C-g>  `"
+
+      " Tabs
+      nnoremap <leader>to :tabnew<space>
+      nnoremap <leader>tq :tabclose<cr>
+      nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
+      nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
+
+      nnoremap <silent> <leader>vQ :quitall!<cr>
+      nnoremap <silent> <leader>vq :quitall<cr>
 
       augroup my_autocommands
         " Remove trailing whitespaces on write
@@ -460,6 +541,7 @@ in
 
   programs.bash.shellAliases = {
     v = "nvim";
+    nv = "nvim";
   };
 }
 
