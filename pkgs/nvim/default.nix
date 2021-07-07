@@ -452,24 +452,6 @@ let
     };
   };
 
-  my-vimspector = {
-    # TODO: Maybe use nvim-dap
-    plugin = vimspector;
-    config = ''
-      nnoremap <leader>dr <Plug>VimpectorRestart
-      nnoremap <leader>dt <Plug>VimpectorToggleBreakpoint
-      nnoremap <leader>dc <Plug>VimpectorContinue
-
-      nnoremap <leader>dj <Plug>VimpectorStepOut
-      nnoremap <leader>dk <Plug>VimpectorStepOver
-
-      " for normal mode - the word under the cursor
-      nmap <Leader>di <Plug>VimspectorBalloonEval
-      " for visual mode, the visually selected text
-      xmap <Leader>di <Plug>VimspectorBalloonEval
-    '';
-  };
-
   my-nvim-dap = {
     plugin = nvim-dap;
     config = ''
@@ -487,22 +469,8 @@ let
           vim.fn.sign_define('DapBreakpoint', {text="🔴", texthl="", linehl="", numhl=""})
           vim.fn.sign_define('DapStopped', {text="🟢", texthl="", linehl="", numhl=""})
 
-          local dap = require('dap')
-
-          dap.configurations.python = {
-            {
-              type = 'python';
-              request = 'launch';
-              name = 'python';
-              program = "''${file}";
-            },
-          }
-
-          dap.adapters.python = {
-            type = 'executable';
-            command = 'python';
-            args = { '-m', 'debugpy.adapter' };
-          }
+          -- TOOD: Maybe use nvim-dap-ui
+          -- TODO: Configure adapters
       ''}
     '';
   };
@@ -654,8 +622,6 @@ in
   home.packages = with pkgs; [
     neovide
     tree-sitter
-    # TODO: Remove later
-    python39Packages.debugpy
   ];
 
   programs.bash.shellAliases = {
