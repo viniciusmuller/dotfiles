@@ -86,6 +86,8 @@
     - `m`: Shows git commit message of the current line
     - `d`: Opens split diff of the current file
     - `l`: Shows git commit log
+    - `b`: Open git branches fuzzy menu
+    - `t`: Open git tags fuzzy menu
 
   - `v`: Vim
     - `r`: Reload the configuration

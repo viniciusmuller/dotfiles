@@ -24,6 +24,8 @@ let
   my-vim-test = {
     plugin = vim-test;
     config = ''
+      let test#strategy = "neovim"
+
       nnoremap <leader>ts :TestSuite<cr>
       nnoremap <leader>tn :TestNearest<cr>
       nnoremap <leader>tf :TestFile<cr>
@@ -343,6 +345,38 @@ let
     '';
   };
 
+  my-fzf-checkout = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "fzf-checkout.vim";
+      version = "2021-07-07";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "stsewd";
+        repo = "fzf-checkout.vim";
+        rev = "4d5ecae74460de8fed4f743f6bd53c4c31d32797";
+        sha256 = "0mia7p2z8l3lrid0v8ml4i8y190gh4ll9898yyg4gcghhxp83zpm";
+      };
+
+      # The plugin has a makefile which tries to run a docker container. This
+      # fixes it.
+      prePatch = ''
+        rm Makefile
+      '';
+
+      meta.homepage = "https://github.com/stsewd/fzf-checkout.vim";
+    };
+
+    config = ''
+      let g:fzf_checkout_git_options = '--sort=-committerdate'
+      let g:fzf_tag_actions = {
+      \ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
+      \}
+
+      nnoremap <leader>gb <cmd>GBranches<cr>
+      nnoremap <leader>gt <cmd>GTags<cr>
+    '';
+  };
+
   my-nvim-tree = {
     plugin = nvim-tree-lua;
     config = ''
@@ -380,6 +414,8 @@ let
     };
   };
 
+
+  # TODO: Remove highlight when hovering
   my-symbols-outline = {
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "symbols-outline.nvim";
@@ -397,6 +433,77 @@ let
 
     config = ''
       nnoremap ts <cmd>SymbolsOutline<cr>
+    '';
+  };
+
+  my-styled-components = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-styled-components";
+      version = "2021-07-06";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "styled-components";
+        repo = "vim-styled-components";
+        rev = "75e178916fc3e61385350933a23055927f5f60b7";
+        sha256 = "0rq34sbw58na3y68rrf1b2wbrxpzfg7sk2952plxjmwgbc2zgxkj";
+      };
+
+      meta.homepage = "https://github.com/styled-components/vim-styled-components";
+    };
+  };
+
+  my-vimspector = {
+    # TODO: Maybe use nvim-dap
+    plugin = vimspector;
+    config = ''
+      nnoremap <leader>dr <Plug>VimpectorRestart
+      nnoremap <leader>dt <Plug>VimpectorToggleBreakpoint
+      nnoremap <leader>dc <Plug>VimpectorContinue
+
+      nnoremap <leader>dj <Plug>VimpectorStepOut
+      nnoremap <leader>dk <Plug>VimpectorStepOver
+
+      " for normal mode - the word under the cursor
+      nmap <Leader>di <Plug>VimspectorBalloonEval
+      " for visual mode, the visually selected text
+      xmap <Leader>di <Plug>VimspectorBalloonEval
+    '';
+  };
+
+  my-nvim-dap = {
+    plugin = nvim-dap;
+    config = ''
+      nnoremap <leader>db <cmd>lua require('dap').toggle_breakpoint()<cr>
+      nnoremap <leader>dB <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
+      nnoremap <leader>dc <cmd>lua require('dap').continue()<cr>
+      nnoremap <leader>dj <cmd>lua require('dap').step_out()<cr>
+      nnoremap <leader>dk <cmd>lua require('dap').step_into()<cr>
+      nnoremap <leader>dl <cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
+      nnoremap <leader>dr <cmd>lua require('dap').repl.open()<cr>
+
+      ${mkLuaCode ''
+          require('dap.ext.vscode').load_launchjs()
+
+          vim.fn.sign_define('DapBreakpoint', {text="🔴", texthl="", linehl="", numhl=""})
+          vim.fn.sign_define('DapStopped', {text="🟢", texthl="", linehl="", numhl=""})
+
+          local dap = require('dap')
+
+          dap.configurations.python = {
+            {
+              type = 'python';
+              request = 'launch';
+              name = 'python';
+              program = "''${file}";
+            },
+          }
+
+          dap.adapters.python = {
+            type = 'executable';
+            command = 'python';
+            args = { '-m', 'debugpy.adapter' };
+          }
+      ''}
     '';
   };
 in
@@ -417,7 +524,10 @@ in
       vim-nix # Used mainly for filetype detection
       # Current elixir tree-sitter parser is very laggy when opening files
       vim-elixir
+
+      # React / ts
       my-vim-prettier
+      my-styled-components
 
       # Utils
       my-vim-tmux-navigator
@@ -426,15 +536,20 @@ in
       my-listtoggle
       vim-sensible
       vim-surround
-      vim-repeat
-      auto-pairs
       targets-vim
       my-quickrun
+      my-vim-test
+      vim-repeat
+      auto-pairs
       vim-lion # Alignment
       vim-swap
 
       my-multiple-cursors
+      my-fzf-checkout
       my-fzf
+
+      # my-vimspector
+      my-nvim-dap
 
       # Snippets
       vim-snippets
@@ -492,6 +607,7 @@ in
       set autoread
       " Some plugin is removing `-` from the separators, for now lets just get it back.
       set iskeyword+=^-
+      set completeopt=menu,menuone,noselect
 
       noremap Y "+y
       noremap H ^
@@ -522,8 +638,9 @@ in
       nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
       nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
 
-      nnoremap <silent> <leader>vQ :quitall!<cr>
-      nnoremap <silent> <leader>vq :quitall<cr>
+      nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
+      nnoremap <silent> <leader>vq <cmd>quitall<cr>
+      nnoremap <silent> <leader>vr <cmd>source ~/.config/nvim/init.vim<cr>
 
       augroup my_autocommands
         " Remove trailing whitespaces on write
@@ -537,6 +654,8 @@ in
   home.packages = with pkgs; [
     neovide
     tree-sitter
+    # TODO: Remove later
+    python39Packages.debugpy
   ];
 
   programs.bash.shellAliases = {

@@ -18,6 +18,7 @@
     ../pkgs/keychain.nix
     ../services/gpg-agent.nix
     ../pkgs/gpg.nix
+    ../pkgs/irssi.nix
   ];
 
   home.packages = with pkgs; [
