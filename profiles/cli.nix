@@ -22,12 +22,8 @@
   ];
 
   home.packages = with pkgs; [
-    lazydocker # Docker TUI
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
-    lazygit # Git TUI
-    docker-compose
-    docker
 
     # Finders
     ripgrep # File content finder

@@ -37,7 +37,7 @@
 - `gd`: Go to definition
 - `gi`: Go to implementation
 - `gD`: Go to declaration
-- `<C-k>`: Show type signature help
+- `gs`: Show type signature help
 - `[d:` Go to previous diagnostic
 - `]d`: Go to next diagnostic
 
@@ -93,3 +93,6 @@
     - `r`: Reload the configuration
     - `q`: Quit vim, stopping if there are unsaved buffers
     - `Q`: QUIT vim, ignoring any unsaved buffers
+
+  - `q`:
+    - `r`: Runs code in the file outputting it in a new window. If in visual mode, runs the current selection, otherwise runs the whole file.

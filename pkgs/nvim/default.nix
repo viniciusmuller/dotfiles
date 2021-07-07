@@ -50,8 +50,22 @@ let
   };
 
   my-quickrun = {
-    plugin = vim-quickrun;
-    config = "nnoremap <leader>qr :QuickRun<cr>";
+    # plugin = vim-quickrun;
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "vim-quickrun";
+      version = "2021-07-07";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "thinca";
+        repo = "vim-quickrun";
+        rev = "581b44800dddd01b69669257787e05ccbb6a21cc";
+        sha256 = "LZMJhJ0A3tLn1g8SbCePWbiwqHtafLvDPvMGkhzYvzQ=";
+      };
+
+      meta.homepage = "https://github.com/thinca/vim-quickrun";
+    };
+
+    config = "nnoremap <leader>qr <cmd>QuickRun<cr>";
   };
 
   my-trouble = {
@@ -239,7 +253,7 @@ let
           buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<cr>', opts)
           buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
           buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-          buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+          buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
           buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
           buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
@@ -342,6 +356,8 @@ let
         \ call fzf#vim#grep(
         \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
         \   fzf#vim#with_preview(), <bang>0)
+
+      command! -nargs=? Apropos call fzf#run(fzf#wrap({'source': 'apropos .'.shellescape(<q-args>).' | cut -d " " -f 1', 'sink': 'tab Man', 'options': ['--preview', 'MANPAGER=cat MANWIDTH='.(&columns/2-4).' man {}']}))
     '';
   };
 

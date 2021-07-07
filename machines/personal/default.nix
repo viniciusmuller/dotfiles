@@ -9,6 +9,9 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../nixos-pkgs/manpages.nix
+      ../../nixos-pkgs/docker.nix
+      ../../nixos-pkgs/steam.nix
       ../../services/kmonad
     ];
 
@@ -74,9 +77,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Steam needs this
-  hardware.opengl.driSupport32Bit = true;
-
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {
@@ -95,19 +95,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Enable virtualsation for docker
-  virtualisation.docker.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vini = {
     isNormalUser = true;
     # Enable ‘sudo’ for the user.
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" ];
     # TODO: Add default password
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
   environment.systemPackages = with pkgs; [
     wget
   ];
