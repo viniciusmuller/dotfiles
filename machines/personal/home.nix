@@ -16,6 +16,11 @@
     discord
     spotify
     teams
+
+
+    # TODO: required by https://github.com/arcticlimer/helpepper
+    # Turn this repository into a flake and use it here
+    sox
   ];
 
   # TODO: Find a better place for this

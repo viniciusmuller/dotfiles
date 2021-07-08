@@ -4,14 +4,17 @@
   programs.vim = {
     enable = true;
 
-    settings = { };
+    settings = {
+      number = true;
+      relativenumber = true;
+      hidden = true;
+      expandtab = true;
+      smartcase = true;
+    };
 
     plugins = with pkgs.vimPlugins; [
       fzf-vim
-      # fzf-checkout
-      # fzf-session
 
-      vim-projectionist
       vim-commentary
       vim-sensible
       vim-surround
@@ -19,19 +22,8 @@
 
       vim-tmux-navigator
       auto-pairs
-      vim-quickrun
-      # vim-mkdir
       targets-vim
-      vim-test
 
-      vim-bbye
-
-      # Git
-      vim-gitgutter
-      vim-fugitive
-
-      vim-devicons
-      vim-airline
       gruvbox-community
     ];
 
@@ -41,6 +33,8 @@
 
       set cursorline
       set termguicolors
+
+      nnoremap <space>ff :Files<cr>
     '';
   };
 }
