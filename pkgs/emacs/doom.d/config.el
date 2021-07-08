@@ -87,45 +87,45 @@
   (setq which-key-idle-delay 0.2
         which-key-idle-secondary-delay 0.2))
 
-(use-package! ligatures
-  :config
-  ;; Add ligatures on the programming modes
-  ;; with `set-ligatures!` and use them here
-  (plist-put! +ligatures-extra-symbols
-        ;; org
-        :name          "»"
-        :src_block     "»"
-        :src_block_end "«"
-        :quote         "“"
-        :quote_end     "”"
-        ;; Functional
-        :lambda        "λ"
-        :def           "ƒ"
-        :map           "↦"
-        ;; Type
-        :null          "∅"
-        :int           "ℤ"
-        :float         "ℝ"
-        :str           "𝕊"
-        :bool          "𝔹"
-        :list          "𝕃"
-        :true          "𝕋"
-        :false         "𝔽"
-        ;; Flow
-        :not           "￢"
-        :in            "∈"
-        :not-in        "∉"
-        :and           "∧"
-        :or            "∨"
-        :for           "∀"
-        :some          "∃"
-        :return        "⟼"
-        :yield         "⟻"
-        ;; Other
-        :union         "∪"
-        :intersect     "∩"
-        :tuple         "⨂"
-        :dot           "•"))
+; (use-package! ligatures
+;   :config
+;   ;; Add ligatures on the programming modes
+;   ;; with `set-ligatures!` and use them here
+;   (plist-put! +ligatures-extra-symbols
+;         ;; org
+;         :name          "»"
+;         :src_block     "»"
+;         :src_block_end "«"
+;         :quote         "“"
+;         :quote_end     "”"
+;         ;; Functional
+;         :lambda        "λ"
+;         :def           "ƒ"
+;         :map           "↦"
+;         ;; Type
+;         :null          "∅"
+;         :int           "ℤ"
+;         :float         "ℝ"
+;         :str           "𝕊"
+;         :bool          "𝔹"
+;         :list          "𝕃"
+;         :true          "𝕋"
+;         :false         "𝔽"
+;         ;; Flow
+;         :not           "￢"
+;         :in            "∈"
+;         :not-in        "∉"
+;         :and           "∧"
+;         :or            "∨"
+;         :for           "∀"
+;         :some          "∃"
+;         :return        "⟼"
+;         :yield         "⟻"
+;         ;; Other
+;         :union         "∪"
+;         :intersect     "∩"
+;         :tuple         "⨂"
+;         :dot           "•"))
 
 ;-----------------------------------------------------;
 ; Modes configuration                                 ;

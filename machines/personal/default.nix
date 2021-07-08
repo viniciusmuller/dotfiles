@@ -38,6 +38,7 @@
   fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.emacs-all-the-icons-fonts
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -137,4 +138,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 }
-
