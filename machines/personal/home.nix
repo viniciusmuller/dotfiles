@@ -21,8 +21,12 @@
   # TODO: Find a better place for this
   programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#nixos";
 
-
   nixpkgs.config.allowUnfree = true;
+
+  home.sessionVariables = {
+    GTK_IM_MODULE = "cedilla";
+    QT_IM_MODULE = "cedilla";
+  };
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;

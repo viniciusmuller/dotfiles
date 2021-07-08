@@ -490,6 +490,14 @@ let
       ''}
     '';
   };
+
+  my-closetag = {
+    plugin = vim-closetag;
+    config = ''
+     " https://github.com/alvan/vim-closetag#usage
+      let g:closetag_filenames = '*.html,*.tsx,*.jsx'
+    '';
+  };
 in
 {
   imports = [
@@ -499,6 +507,7 @@ in
     ./lsp/rnix.nix
     ./lsp/rust.nix
     ./lsp/lua.nix
+    ./lsp/python.nix
   ];
 
   programs.neovim = {
@@ -520,6 +529,7 @@ in
       my-listtoggle
       vim-sensible
       vim-surround
+      my-closetag
       targets-vim
       my-quickrun
       my-vim-test
