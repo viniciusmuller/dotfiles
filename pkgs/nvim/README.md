@@ -3,9 +3,8 @@
 ## Normal keys rebindings
 - `t`:
   - `n`: Toggle nvim-tree
-  - `q`: Toggle quickfix list
-  - `l`: Toggle location list
   - `l`: Toggle code symbols tree
+  - `t`: Toggle trouble-nvim
 
 - `[`:
   - `q`: Go to previous element on the quickfix list
@@ -66,6 +65,9 @@
     - `s`: Substring in files
     - `m`: Mappings
     - `h`: Vim help tags
+
+  - `o`: Open
+    - `t`: Terminal
 
   - `l`: Language server
     > These keybindings are only avaiable when there is a language server attached

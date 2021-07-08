@@ -70,7 +70,10 @@ let
 
   my-trouble = {
     plugin = trouble-nvim;
-    config = "lua require('trouble').setup{}";
+    config = ''
+      nnoremap tt <cmd>TroubleToggle<cr>
+      lua require('trouble').setup{}
+    '';
   };
 
   my-todo-comments = {
@@ -226,10 +229,26 @@ let
       sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=
       sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
-      " TODO: Not working
-      " autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
-
       ${mkLuaCode ''
+
+        -- Disable virtual text diagnostics
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+          vim.lsp.diagnostic.on_publish_diagnostics,
+          {
+            virtual_text = false,
+            signs = true,
+            update_in_insert = true,
+            underline = true,
+          }
+        )
+
+        vim.cmd[[
+          augroup lsp
+            " TODO: Make this autocommand only run in <buffer>
+            autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+          augroup end
+        ]]
+
         -- This function needs to be global, so that other lsp configs inside
         -- ./lsp will be able to reference it in their setup.
         _G.on_attach = function(client, bufnr)
@@ -256,7 +275,8 @@ let
           buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
           buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
-          buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
+          -- This line requires trouble-nvim
+          buf_set_keymap('n', '<leader>lq', '<cmd>LspTrouble<cr>', opts)
           buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
           buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
@@ -332,7 +352,7 @@ let
   };
 
   my-indentline = {
-    plugin = indent-blankline-nvim-lua;
+    plugin = indent-blankline-nvim;
     config = "let g:indent_blankline_char = '│'";
   };
 
@@ -557,7 +577,7 @@ in
       # my-telescope
       my-lspconfig
       my-compe
-      # my-trouble
+      my-trouble
       my-todo-comments
 
       # Git
@@ -599,9 +619,10 @@ in
       set lazyredraw
       set noswapfile
       set autoread
+      set completeopt=menu,menuone,noselect
+      set updatetime=400
       " Some plugin is removing `-` from the separators, for now lets just get it back.
       set iskeyword+=^-
-      set completeopt=menu,menuone,noselect
 
       noremap Y "+y
       noremap H ^
@@ -631,6 +652,9 @@ in
       nnoremap <leader>tq :tabclose<cr>
       nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
       nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
+
+      " TODO: Open in split
+      nnoremap <leader>ot <cmd>term<cr>
 
       nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
       nnoremap <silent> <leader>vq <cmd>quitall<cr>

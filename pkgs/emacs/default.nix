@@ -27,4 +27,10 @@ in
     # TODO: Use emacsGcc here
     # emacsPackage = pkgs.emacsGcc;
   };
+
+  # TODO: Enable emacs service
+  # services.emacs = {
+  #   enable = true;
+  #   package = programs.emacs.package;
+  # };
 }
