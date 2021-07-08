@@ -363,13 +363,14 @@ let
       let $FZF_DEFAULT_OPTS = '--exact --reverse'
       let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
-      nnoremap <C-e>       <cmd>GFiles<cr>
+      " TODO: Create other keybindings like `<leader>;` for very used commands
+      nnoremap <leader>.   <cmd>GFiles<cr>
+      nnoremap <leader>,   <cmd>Buffers<cr>
       nnoremap <leader>ff  <cmd>Files<cr>
       nnoremap <leader>fc  <cmd>Commits<cr>
       nnoremap <leader>fs  <cmd>Rg<cr>
       nnoremap <leader>fh  <cmd>Helptags<cr>
-      nnoremap <leader>fm  <cmd>Maps<cr>
-      nnoremap <leader>fb  <cmd>Buffers<cr>
+      nnoremap <leader>fm  <cmd>Apropos<cr>
 
       " Rg with --hidden
       command! -bang -nargs=* Rg

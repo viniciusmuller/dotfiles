@@ -42,6 +42,10 @@
 
 ## Leader key keybindings
 - Leader: `<space>`
+
+  - `.`: Find git tracked project files
+  - `,`: Find buffers
+
   - `t`: Tabs and testing
 
     > Tests
@@ -60,10 +64,9 @@
 
   - `f`: Find
     - `f`: Files
-    - `b`: Buffers
     - `c`: Commits
     - `s`: Substring in files
-    - `m`: Mappings
+    - `m`: Man pages
     - `h`: Vim help tags
 
   - `o`: Open
