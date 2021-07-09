@@ -10,10 +10,14 @@
     ];
   };
 
-  programs.bash.shellAliases = {
-    tl = "tmux ls";
-    ta = "tmux attach -t";
-    tn = "tmux new -s";
-    tk = "tmux kill-session -t";
+  programs.bash = {
+    initExtra = ". ${./tmux-session-fzf}";
+
+    shellAliases = {
+      tl = "tmux ls";
+      ta = "tmux attach -t";
+      tn = "tmux new -s";
+      tk = "tmux kill-session -t";
+    };
   };
 }

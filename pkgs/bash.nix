@@ -65,11 +65,18 @@ in
 
       # Use PROMPT_COMMAND to get Return Status
       function prompt_command {
+
         RET=$?
         if [[ $RET -ne 0 ]]; then
           PS1=$RED$RET
         else
           PS1=$GREEN$RET
+        fi
+
+        # Add to prompt if in IN_NIX_SHELL
+        NIX_SHELL_PROMPT=' ns'
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+          PS1+=$YELLOW$NIX_SHELL_PROMPT
         fi
 
         # TODO: Don't output nothing on the branch slot if not in a branch

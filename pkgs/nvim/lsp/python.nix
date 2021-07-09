@@ -3,20 +3,23 @@
 
 let
   mkLuaCode =
-    (code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      '');
+    (
+      code:
+        ''
+          lua << EOF
+            ${code}
+          EOF
+        ''
+    );
 in
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with python39Packages; [
+    python39
     python38Packages.python-language-server
-    python38Packages.rope
-    python38Packages.pyflakes
-    python38Packages.pycodestyle
-    yapf
+    rope
+    pyflakes
+    pycodestyle # Style linter
+    yapf # Formatter
   ];
 
   # TODO: Make a prelude with these helper functions

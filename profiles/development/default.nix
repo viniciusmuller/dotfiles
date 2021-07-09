@@ -6,7 +6,7 @@
     ./nix.nix
     ./elixir.nix
     ./rust.nix
-    ./python.nix
+    # ./python.nix
     ./haskell.nix
     ./node.nix
     ./toml.nix

@@ -13,7 +13,7 @@
     ../pkgs/exa.nix # ls alternative
     ../pkgs/trash-cli.nix # Safer rm
     ../pkgs/htop.nix # Process viewer
-    ../pkgs/vim # Modal text editor
+    # ../pkgs/vim # Modal text editor
     ../pkgs/direnv.nix
     ../pkgs/keychain.nix
     ../services/gpg-agent.nix

@@ -34,17 +34,17 @@
       }
     },
     "emacs-overlay": {
-      "flake": false,
       "locked": {
-        "lastModified": 1622746372,
-        "narHash": "sha256-WullphFBQyETCt/GXR7GvxgQjTO1GX89j2JGr6Z7wdM=",
+        "lastModified": 1625765437,
+        "narHash": "sha256-mjKOzTb1KZjflr8kzDE9PZ2p1o6Y8yxprdmvUSDteIQ=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "be94f53e845cc80edceb6d0fdf24c523038446c6",
+        "rev": "d32822d54963d1d610176f4a0b0a747aee0adcc2",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "master",
         "repo": "emacs-overlay",
         "type": "github"
       }
@@ -166,7 +166,9 @@
       "inputs": {
         "doom-emacs": "doom-emacs",
         "doom-snippets": "doom-snippets",
-        "emacs-overlay": "emacs-overlay",
+        "emacs-overlay": [
+          "emacs-overlay"
+        ],
         "emacs-so-long": "emacs-so-long",
         "evil-markdown": "evil-markdown",
         "evil-org-mode": "evil-org-mode",
@@ -193,6 +195,7 @@
       },
       "original": {
         "owner": "vlaci",
+        "ref": "master",
         "repo": "nix-doom-emacs",
         "type": "github"
       }
@@ -371,6 +374,7 @@
     },
     "root": {
       "inputs": {
+        "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixpkgs": "nixpkgs_3",

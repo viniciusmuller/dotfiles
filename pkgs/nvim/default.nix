@@ -3,12 +3,14 @@
 with pkgs.vimPlugins;
 let
   mkLuaCode =
-    (code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      '');
+    (
+      code:
+        ''
+          lua << EOF
+            ${code}
+          EOF
+        ''
+    );
 
   my-gitsigns = {
     plugin = gitsigns-nvim;
@@ -16,8 +18,8 @@ let
       nnoremap <leader>gm <cmd>lua require('gitsigns').blame_line(true)<cr>
 
       ${mkLuaCode ''
-        require('gitsigns').setup{}
-      ''}
+      require('gitsigns').setup{}
+    ''}
     '';
   };
 
@@ -98,29 +100,29 @@ let
       inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 
       ${mkLuaCode ''
-        require('compe').setup {
-          enabled = true;
-          autocomplete = true;
-          debug = false;
-          min_length = 1;
-          preselect = 'always';
-          throttle_time = 80;
-          max_abbr_width = 100;
-          max_kind_width = 100;
-          max_menu_width = 100;
-          documentation = true;
+      require('compe').setup {
+        enabled = true;
+        autocomplete = true;
+        debug = false;
+        min_length = 1;
+        preselect = 'always';
+        throttle_time = 80;
+        max_abbr_width = 100;
+        max_kind_width = 100;
+        max_menu_width = 100;
+        documentation = true;
 
-          source = {
-            path = true;
-            buffer = true;
-            calc = true;
-            nvim_lsp = true;
-            nvim_lua = true;
-            ultisnips = true;
-            luasnip = true;
-          };
-        }
-      ''}
+        source = {
+          path = true;
+          buffer = true;
+          calc = true;
+          nvim_lsp = true;
+          nvim_lua = true;
+          ultisnips = true;
+          luasnip = true;
+        };
+      }
+    ''}
     '';
   };
 
@@ -165,7 +167,9 @@ let
         meta.homepage = "https://github.com/folke/tokyonight.nvim";
       };
 
-      config = "colorscheme tokyonight";
+      config = ''
+        colorscheme tokyonight
+      '';
     };
 
   my-vim-tmux-navigator =
@@ -501,22 +505,118 @@ let
       nnoremap <leader>dr <cmd>lua require('dap').repl.open()<cr>
 
       ${mkLuaCode ''
-          require('dap.ext.vscode').load_launchjs()
+      -- require('dap.ext.vscode').load_launchjs()
 
-          vim.fn.sign_define('DapBreakpoint', {text="🔴", texthl="", linehl="", numhl=""})
-          vim.fn.sign_define('DapStopped', {text="🟢", texthl="", linehl="", numhl=""})
+      local dap = require('dap')
 
-          -- TOOD: Maybe use nvim-dap-ui
-          -- TODO: Configure adapters
-      ''}
+      dap.configurations.python = {
+        {
+          type = 'python';
+          request = 'launch';
+          name = "Launch file";
+          program = "''${fileDirname}";
+        },
+      }
+
+      dap.adapters.python = {
+        type = 'executable';
+        command = 'python';
+        args = { '-m', 'debugpy.adapter' };
+      }
+
+      -- vim.fn.sign_define('DapBreakpoint', {text="🔴", texthl="", linehl="", numhl=""})
+      -- vim.fn.sign_define('DapStopped', {text="🟢", texthl="", linehl="", numhl=""})
+    ''}
+    '';
+  };
+
+  my-dap-ui = {
+    plugin = nvim-dap-ui;
+    config = ''
+      nnoremap <leader>du <cmd>lua require('dapui').toggle()<cr>
+
+      augroup dap_ui
+        au FileType dap-repl lua require('dap.ext.autocompl').attach()
+        au BufEnter * :call SetDAPColors()
+      augroup end
+
+      function! SetDAPColors()
+        hi default link DapUIVariable Normal
+        hi default link DapUIScope Function
+        hi default link DapUIDecoration Function
+        hi default link DapUIType Type
+        hi default link DapUISource Statement
+        hi default link DapUILineNumber Constant
+        hi default link DapUIFrameName Normal
+        hi default link DapUIBreakpointsPath Function
+
+        " Highlights below might change
+
+        hi default link DapUIStoppedThread Function
+        hi default link DapUIThread Function
+        hi default link DapUIWatchesFrame Function
+        hi default link DapUIWatchesHeader Function
+
+        " hi default DapUIWatchesError guifg=#F70067
+        hi default link DapUIWatchesError Error
+        " hi default DapUIWatchesEmpty guifg=#F70067
+        hi default link DapUIWatchesEmpty Error
+
+        hi default DapUIFloatBorder guifg=#00F1F5
+        hi default DapUIWatchesValue guifg=#A9FF68
+        hi default DapUIBreakpointsInfo guifg=#A9FF68
+        hi default DapUIBreakpointsCurrentLine guifg=#A9FF68 gui=bold
+
+        hi default link DapUIBreakpointsLine DapUILineNumber
+      endfunction
+
+      ${mkLuaCode ''
+      require('dapui').setup({
+        icons = {
+          expanded = "▾",
+          collapsed = "▸"
+        },
+        mappings = {
+          -- Use a table to apply multiple mappings
+          expand = { "<CR>" },
+          open = "o",
+          remove = "d",
+          edit = "e",
+        },
+        sidebar = {
+          open_on_start = true,
+          elements = {
+            -- You can change the order of elements in the sidebar
+            "scopes",
+            "breakpoints",
+            "stacks",
+            "watches"
+          },
+          width = 40,
+          position = "left" -- Can be "left" or "right"
+        },
+        tray = {
+          open_on_start = true,
+          elements = {
+            "repl"
+          },
+          height = 10,
+          position = "bottom" -- Can be "bottom" or "top"
+        },
+        floating = {
+          max_height = nil, -- These can be integers or a float between 0 and 1.
+          max_width = nil   -- Floats will be treated as percentage of your screen.
+        }
+      })
+    ''}
     '';
   };
 
   my-closetag = {
     plugin = vim-closetag;
     config = ''
-     " https://github.com/alvan/vim-closetag#usage
-      let g:closetag_filenames = '*.html,*.tsx,*.jsx'
+      " https://github.com/alvan/vim-closetag#usage
+       let g:closetag_filenames = '*.html,*.tsx,*.jsx'
     '';
   };
 
@@ -553,6 +653,7 @@ in
 
   programs.neovim = {
     enable = true;
+    vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       # Language specific
       vim-nix # Used mainly for filetype detection
@@ -583,8 +684,9 @@ in
       my-fzf-checkout
       my-fzf
 
-      # my-vimspector
+      # Debugging
       my-nvim-dap
+      my-dap-ui
 
       # Snippets
       vim-snippets
@@ -675,8 +777,7 @@ in
       nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
       nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
 
-      " TODO: Open in split
-      nnoremap <leader>ot <cmd>term<cr>
+      nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
 
       nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
       nnoremap <silent> <leader>vq <cmd>quitall<cr>
@@ -701,4 +802,3 @@ in
     nv = "nvim";
   };
 }
-
