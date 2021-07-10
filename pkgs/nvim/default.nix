@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 with pkgs.vimPlugins;
 let
@@ -116,6 +116,7 @@ let
           path = true;
           buffer = true;
           calc = true;
+          spell = true;
           nvim_lsp = true;
           nvim_lua = true;
           ultisnips = true;
@@ -639,6 +640,12 @@ let
       })
     '';
   };
+
+  nvim-spell-pt = builtins.fetchurl {
+    url =
+      "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
+    sha256 = "01zqss1fsc2rhaqhi10364qxyc64n2ndkn9d6rql20j3jvzbrlmd";
+  };
 in
 {
   imports = [
@@ -649,7 +656,12 @@ in
     ./lsp/rust.nix
     ./lsp/lua.nix
     ./lsp/python.nix
+    ./lsp/latex.nix
   ];
+
+  home.file = {
+    "${config.xdg.configHome}/nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
+  };
 
   programs.neovim = {
     enable = true;

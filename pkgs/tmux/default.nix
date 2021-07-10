@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
@@ -20,4 +20,6 @@
       tk = "tmux kill-session -t";
     };
   };
+
+  home.packages = with pkgs; [ xsel ];
 }
