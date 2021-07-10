@@ -99,5 +99,15 @@
     - `q`: Quit vim, stopping if there are unsaved buffers
     - `Q`: QUIT vim, ignoring any unsaved buffers
 
+  - `d`: Debug
+    - `d`: Toggle breakpoint on the current line
+    - `D`: Set conditional breakpoint on the current line
+    - `l`: Set log point on the current line
+    - `f`: Continue until next breakpoint
+    - `u`: Toggle debugging UI
+    - `r`: Open nvim-dap REPL
+    - `j`: Step out
+    - `k`: Step into
+
   - `q`:
     - `r`: Runs code in the file outputting it in a new window. If in visual mode, runs the current selection, otherwise runs the whole file.

@@ -496,9 +496,9 @@ let
   my-nvim-dap = {
     plugin = nvim-dap;
     config = ''
-      nnoremap <leader>db <cmd>lua require('dap').toggle_breakpoint()<cr>
-      nnoremap <leader>dB <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
-      nnoremap <leader>dc <cmd>lua require('dap').continue()<cr>
+      nnoremap <leader>dd <cmd>lua require('dap').toggle_breakpoint()<cr>
+      nnoremap <leader>dD <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
+      nnoremap <leader>df <cmd>lua require('dap').continue()<cr>
       nnoremap <leader>dj <cmd>lua require('dap').step_out()<cr>
       nnoremap <leader>dk <cmd>lua require('dap').step_into()<cr>
       nnoremap <leader>dl <cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
