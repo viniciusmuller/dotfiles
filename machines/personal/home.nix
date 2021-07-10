@@ -16,7 +16,7 @@
     discord
     spotify
     teams
-
+    slack
 
     # TODO: required by https://github.com/arcticlimer/helpepper
     # Turn this repository into a flake and use it here

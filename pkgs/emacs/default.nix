@@ -7,8 +7,4 @@
     # TODO: Use emacsGcc here
     # emacsPackage = pkgs.emacsGcc;
   };
-
-  services.emacs = {
-    enable = true;
-  };
 }

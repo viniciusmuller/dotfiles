@@ -29,7 +29,6 @@
     autoOptimiseStore = true;
   };
 
-  # home-manager.users.vini.programs.home-manager.enable = true;
   home-manager.users.vini = import ./home.nix;
 
   boot.loader.systemd-boot.enable = true;
@@ -61,6 +60,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager.dwm.enable = true;
 
   # TODO: Tie this with ../pkgs/suckless/slock
