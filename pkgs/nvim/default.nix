@@ -91,7 +91,8 @@ let
     config = ''
       " Keybindings
       inoremap <silent><expr> <C-space> compe#complete()
-      inoremap <silent><expr> <cr>      compe#confirm('<CR>')
+      " inoremap <silent><expr> <cr>      compe#confirm('<CR>')
+      " inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
       inoremap <silent><expr> <C-e>     compe#close('<C-e>')
       inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
       inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
@@ -642,6 +643,17 @@ let
     '';
   };
 
+  my-autopairs = {
+    plugin = nvim-autopairs;
+    config = mkLuaCode ''
+      require('nvim-autopairs').setup()
+      require("nvim-autopairs.completion.compe").setup({
+        map_cr = true, --  map <CR> on insert mode
+        map_complete = true -- it will auto insert `(` after select function or method item
+      })
+    '';
+  };
+
   nvim-spell-pt = builtins.fetchurl {
     url =
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
@@ -690,7 +702,6 @@ in
       my-quickrun
       my-vim-test
       vim-repeat
-      auto-pairs
       vim-lion # Alignment
       vim-swap
 
@@ -708,6 +719,7 @@ in
 
       # Neovim lua things
       plenary-nvim
+      my-autopairs
       my-treesitter
       nvim-treesitter-textobjects
       my-nvim-tree
