@@ -113,6 +113,7 @@ let
         documentation = true;
 
         source = {
+          emoji = true;
           path = true;
           buffer = true;
           calc = true;
@@ -657,6 +658,7 @@ in
     ./lsp/lua.nix
     ./lsp/python.nix
     ./lsp/latex.nix
+    ./lsp/godot.nix
   ];
 
   home.file = {
@@ -755,7 +757,8 @@ in
       set lazyredraw
       set noswapfile
       set autoread
-      set completeopt=menu,menuone,noselect
+      set completeopt=menuone,noselect
+      set pumheight=10 " Max number of items in autocompletion popup
       set updatetime=400
       " Some plugin is removing `-` from the separators, for now lets just get it back.
       set iskeyword+=^-
