@@ -14,7 +14,7 @@ You can check the Neovim keybindings [here](./pkgs/nvim/README.md)
 - `.vim` -> Old dotfiles that will be translated into nix.
 - `.config` -> Old dotfiles that will be translated into nix.
 - `pkgs` -> Packages for home-manager.
-- `nixos-pkgs` -> Packages from the `pkgs` wrapped to work with nixos (E.g: Adds the "docker" group to an user)
+- `nixos-pkgs` -> Packages from the `pkgs` directory wrapped to work with nixos (E.g: Adds the "docker" group to an user)
 - `desktop` -> Wrappers around `pkgs` to build different desktop environments.
 - `services` -> Home-manager services.
 - `profiles` -> Things such as different development environments.

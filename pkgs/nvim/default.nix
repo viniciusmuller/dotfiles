@@ -670,6 +670,7 @@ in
     ./lsp/python.nix
     ./lsp/latex.nix
     ./lsp/godot.nix
+    ./lsp/ccls.nix
   ];
 
   home.file = {
