@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  kmonad = (import ./derivation.nix) pkgs;
+  kmonad = (import ../../pkgs/kmonad/derivation.nix) pkgs;
 in
 {
   imports = [
@@ -10,7 +10,7 @@ in
 
   services.kmonad = {
     enable = true;
-    configfiles = [ ./config.kbd ];
+    configfiles = [ ../../pkgs/kmonad/configs/ck61.kbd ];
     package = kmonad;
   };
 

@@ -12,7 +12,7 @@
       ../../nixos-pkgs/manpages.nix
       ../../nixos-pkgs/docker.nix
       ../../nixos-pkgs/steam.nix
-      ../../services/kmonad
+      ../../nixos-pkgs/kmonad
     ];
 
   nix = {
