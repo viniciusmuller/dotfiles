@@ -16,6 +16,4 @@ in
 {
   nixpkgs.overlays = [ slock-overlay ];
   home.packages = with pkgs; [ slock ];
-  # TODO: Find a way to make this in user space
-  # security.setuidPrograms = [ "slock" ];
 }
