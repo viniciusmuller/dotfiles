@@ -262,6 +262,8 @@ let
           local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
           local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+          vim.wo.signcolumn = 'yes'
+
           -- Mappings.
           local opts = { noremap=true, silent=true }
 
@@ -501,7 +503,7 @@ let
     config = ''
       nnoremap <leader>dd <cmd>lua require('dap').toggle_breakpoint()<cr>
       nnoremap <leader>dD <cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>
-      nnoremap <leader>df <cmd>lua require('dap').continue()<cr>
+      nnoremap <leader>df :lua require('dap').continue()<cr>
       nnoremap <leader>dj <cmd>lua require('dap').step_out()<cr>
       nnoremap <leader>dk <cmd>lua require('dap').step_into()<cr>
       nnoremap <leader>dl <cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
@@ -526,9 +528,6 @@ let
         command = 'python';
         args = { '-m', 'debugpy.adapter' };
       }
-
-      -- vim.fn.sign_define('DapBreakpoint', {text="🔴", texthl="", linehl="", numhl=""})
-      -- vim.fn.sign_define('DapStopped', {text="🟢", texthl="", linehl="", numhl=""})
     ''}
     '';
   };
@@ -771,6 +770,7 @@ in
       set autoread
       set completeopt=menuone,noselect
       set pumheight=10 " Max number of items in autocompletion popup
+      set pumwidth=25
       set updatetime=400
       " Some plugin is removing `-` from the separators, for now lets just get it back.
       set iskeyword+=^-
