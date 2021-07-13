@@ -26,7 +26,7 @@
             system = "x86_64-linux";
             modules = [
               { nixpkgs.overlays = overlays; }
-              ./machines/personal
+              ./machines/nixos
               home-manager.nixosModules.home-manager
               {
                 home-manager.users.vini = { ... }: {
@@ -38,5 +38,14 @@
               inherit inputs system;
             };
           };
+
+        homeManagerConfigurations = {
+          darwin = inputs.home-manager.lib.homeManagerConfiguration {
+            configuration = ../non-nixos;
+            system = "x86_64-darwin";
+            homeDirectory = "/home/vini";
+            username = "vini";
+          };
+        };
       };
 }

@@ -13,7 +13,6 @@
     ../pkgs/exa.nix # ls alternative
     ../pkgs/trash-cli.nix # Safer rm
     ../pkgs/htop.nix # Process viewer
-    # ../pkgs/vim # Modal text editor
     ../pkgs/direnv.nix
     ../pkgs/keychain.nix
     ../services/gpg-agent.nix
@@ -35,7 +34,6 @@
     bat # File viewer
     stow # Symlinks manager
     ncdu # Curses interface for `du`
-    vifm # File manager
     tokei # Show lines of code of a project
     file # Show info about files
   ];

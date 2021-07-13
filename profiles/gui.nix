@@ -13,10 +13,9 @@
   ];
 
   home.packages = with pkgs; [
-    sxiv # Simple X image viewer
     mupdf # Pdf viewer
-    anki # Spaced repetition
     libnotify # notify-send
+    anki # Spaced repetition
     insomnia
   ];
 }
