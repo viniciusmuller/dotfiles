@@ -23,6 +23,13 @@
     sox
   ];
 
+  # TODO: Maybe use it only in user environment?
+  fonts.fontconfig.enable = true;
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.emacs-all-the-icons-fonts
+  ];
+
   # TODO: Find a better place for this
   programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake .#nixos";
 

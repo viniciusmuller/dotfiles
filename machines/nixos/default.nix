@@ -35,13 +35,6 @@
 
   boot.loader.systemd-boot.enable = true;
 
-  # TODO: Maybe use it only in user environment?
-  fonts.fontconfig.enable = true;
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    pkgs.emacs-all-the-icons-fonts
-  ];
-
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

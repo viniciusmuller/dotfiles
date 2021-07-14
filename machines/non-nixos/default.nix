@@ -16,9 +16,18 @@
   home.packages = with pkgs; [
     discord
     spotify
+
+    # Fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.emacs-all-the-icons-fonts
   ];
 
   # TODO: Create `rb` alias
+  programs.bash = {
+    # Source nix
+    initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
+    shellAliases.rb = "home-manager switch --flake .#linux";
+  };
 
   nixpkgs.config.allowUnfree = true;
 
