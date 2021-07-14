@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -32,7 +32,6 @@
     xsv # Work with csv
     jq # Work with json
     bat # File viewer
-    stow # Symlinks manager
     ncdu # Curses interface for `du`
     tokei # Show lines of code of a project
     file # Show info about files

@@ -39,8 +39,8 @@
             };
           };
 
-        homeManagerConfigurations = {
-          darwin = inputs.home-manager.lib.homeManagerConfiguration {
+        homeConfigurations = {
+          darwin = home-manager.lib.homeManagerConfiguration {
             configuration = ../non-nixos;
             system = "x86_64-darwin";
             homeDirectory = "/home/vini";
