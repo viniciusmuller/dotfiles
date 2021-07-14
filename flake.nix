@@ -40,9 +40,9 @@
           };
 
         homeConfigurations = {
-          darwin = home-manager.lib.homeManagerConfiguration {
+          linux = home-manager.lib.homeManagerConfiguration {
             configuration = ../non-nixos;
-            system = "x86_64-darwin";
+            system = "x86_64-linux";
             homeDirectory = "/home/vini";
             username = "vini";
           };
