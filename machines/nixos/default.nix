@@ -40,7 +40,20 @@
 
   home-manager.users.vini = import ./home.nix;
 
-  boot.loader.systemd-boot.enable = true;
+  # Boot
+  boot.loader = {
+    grub = {
+      enable = true;
+      useOSProber = true;
+      efiSupport = true;
+      device = "nodev";
+    };
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    systemd-boot.enable = true;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
