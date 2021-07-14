@@ -12,6 +12,8 @@
   ];
 
   home.packages = with pkgs; [
+    element-desktop
+
     obsidian
     discord
     spotify

@@ -43,8 +43,9 @@
   home.file = {
     ".config/dwm/autostart.sh".source = ./autostart.sh;
     ".xinitrc".text = ''
-      # TODO: Figure out why flameshot and dunst are not being started
       dunst &
+      blugon &
+      xbanish &
       flameshot &
       exec dwm
       '';
