@@ -9,7 +9,8 @@
     ../pkgs/bitwarden.nix # Password manager
     ../pkgs/blugon # Screen temperature manager
     ../pkgs/xbanish.nix # Hides the mouse when using the keyboard
-    # ../pkgs/beekeeper-studio.nix
+    ../pkgs/beekeeper-studio.nix
+    # ../pkgs/pomotroid.nix
   ];
 
   home.packages = with pkgs; [
