@@ -31,6 +31,13 @@
     autoOptimiseStore = true;
   };
 
+  fonts.fontconfig.enable = true;
+  fonts.fonts = with pkgs; [
+    # TODO: Create file for fonts #
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.emacs-all-the-icons-fonts
+  ];
+
   home-manager.users.vini = import ./home.nix;
 
   boot.loader.systemd-boot.enable = true;

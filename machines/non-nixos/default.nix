@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../../desktop/dwm
     ../../profiles/ricing.nix
     ../../profiles/cli.nix
     ../../utils/scripts
