@@ -775,6 +775,8 @@ in
       set updatetime=400
       " Some plugin is removing `-` from the separators, for now lets just get it back.
       set iskeyword+=^-
+      " Don't auto line break when inserting text
+      set formatoptions-=t
 
       noremap Y "+y
       noremap H ^
