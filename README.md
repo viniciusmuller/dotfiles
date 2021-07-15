@@ -5,13 +5,13 @@
 ## Nixos
 ```bash
 git clone https://github.com/arcticlimer/dotfiles
-sudo nixos-rebuild switch --flake dotfiles#nixos
+sudo nixos-rebuild switch --flake ./dotfiles#nixos
 ```
 ## Non-nixos using home-manager
 ```bash
 # Note: It requires nixUnstable and `experimental-features = nix-command flakes`
 git clone https://github.com/arcticlimer/dotfiles
-home-manager switch --flake dotfiles#linux
+home-manager switch --flake ./dotfiles#linux
 ```
 
 You can check the Neovim keybindings [here](./pkgs/nvim/README.md)

@@ -52,7 +52,6 @@
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
-    systemd-boot.enable = true;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
