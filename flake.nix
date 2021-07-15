@@ -41,7 +41,7 @@
 
         homeConfigurations = {
           linux = home-manager.lib.homeManagerConfiguration {
-            configuration = ./machines/non-nixos;
+            configuration = ./machines/arch;
             system = "x86_64-linux";
             homeDirectory = "/home/vini";
             username = "vini";

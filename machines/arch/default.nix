@@ -25,7 +25,7 @@
   programs.bash = {
     # Source nix
     initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
-    shellAliases.rb = "home-manager switch --flake .#linux";
+    shellAliases.rb = "home-manager switch --flake .#arch";
   };
 
   nixpkgs.config.allowUnfree = true;
