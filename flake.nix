@@ -40,7 +40,7 @@
           };
 
         homeConfigurations = {
-          linux = home-manager.lib.homeManagerConfiguration {
+          arch = home-manager.lib.homeManagerConfiguration {
             configuration = ./machines/arch;
             system = "x86_64-linux";
             homeDirectory = "/home/vini";

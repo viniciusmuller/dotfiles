@@ -2,30 +2,61 @@
 
 {
   imports = [
-    ../../profiles/ricing.nix
-    ../../profiles/cli.nix
-    ../../utils/scripts
+    # CLI
+    ../../pkgs/base16-shell.nix # Different shell themes
+    ../../pkgs/zoxide.nix # Jump directories
+    ../../pkgs/bash.nix
+    ../../pkgs/nvim
+    ../../pkgs/readline # GNU readline input
+    ../../pkgs/git.nix
+    ../../pkgs/tmux # Terminal multiplexer
+    ../../pkgs/fzf.nix # Fuzzy finder
+    ../../pkgs/exa.nix # ls alternative
+    ../../pkgs/trash-cli.nix # Safer rm
+    ../../pkgs/htop.nix # Process viewer
+    ../../pkgs/keychain.nix
+    ../../pkgs/gpg.nix
+    ../../pkgs/jq.nix # Work with json
+    ../../pkgs/bat.nix # File previewer
 
-    ../../pkgs/chromium.nix # Browser
+    # Services
+    ../../services/gpg-agent.nix
+    ../../services/dunst.nix
+
+    # GUI
+    ../../pkgs/chromium.nix
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/blugon # Screen temperature manager
-    ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
   ];
 
   home.packages = with pkgs; [
+    # GUI
     discord
     spotify
 
-    # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    pkgs.emacs-all-the-icons-fonts
+    # CLI
+    bandwhich # Network inspector
+    tealdeer # TLDR of man pages
+    ripgrep # File content finder
+    fd # File finder
+    ncdu # Curses interface for `du`
+    file # Shows info about files
+    neofetch # Shows system information
+    pfetch # Smaller neofetch
+
+    # TODO: required by https://github.com/arcticlimer/helpepper
+    # Turn this repository into a flake and use it here
+    sox
   ];
 
-  # TODO: Create `rb` alias
   programs.bash = {
     # Source nix
     initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
-    shellAliases.rb = "home-manager switch --flake .#arch";
+    shellAliases = {
+      pacs = "sudo pacman -S";
+      pacr = "sudo pacman -Rns";
+      rb = "home-manager switch --flake .#arch";
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -18,6 +18,8 @@
     ../services/gpg-agent.nix
     ../pkgs/gpg.nix
     ../pkgs/irssi.nix
+    ../pkgs/jq.nix # Work with json
+    ../pkgs/bat.nix # File previewer
   ];
 
   home.packages = with pkgs; [
@@ -29,11 +31,7 @@
     fd # File finder
 
     # Utils
-    xsv # Work with csv
-    jq # Work with json
-    bat # File viewer
     ncdu # Curses interface for `du`
-    tokei # Show lines of code of a project
     file # Show info about files
   ];
 }

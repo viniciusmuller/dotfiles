@@ -825,6 +825,8 @@ in
   home.packages = with pkgs; [
     neovide
     tree-sitter
+    ripgrep
+    fd
   ];
 
   programs.bash.shellAliases = {
