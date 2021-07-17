@@ -24,7 +24,7 @@
     ../../services/dunst.nix
 
     # GUI
-    ../../pkgs/chromium.nix
+    ../../pkgs/chromium.nix # Web browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/blugon # Screen temperature manager
   ];

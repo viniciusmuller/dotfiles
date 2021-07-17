@@ -734,6 +734,8 @@ in
       my-fugitive
       my-blamer
 
+      lazygit-nvim
+
       # Aesthetic
       # my-presence
       my-symbols-outline
@@ -827,6 +829,7 @@ in
     tree-sitter
     ripgrep
     fd
+    lazygit
   ];
 
   programs.bash.shellAliases = {
