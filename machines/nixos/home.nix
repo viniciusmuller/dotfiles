@@ -6,7 +6,7 @@
     ../../profiles/ricing.nix
     ../../profiles/gui.nix
     ../../profiles/cli.nix
-    ../../profiles/development
+    # ../../profiles/development
     ../../profiles/games
     ../../utils/scripts
   ];

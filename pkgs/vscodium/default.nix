@@ -1,6 +1,18 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  imports = [
+    ./extensions/bash.nix
+    ./extensions/rust.nix
+    ./extensions/elixir.nix
+    ./extensions/fsharp.nix
+    ./extensions/latex.nix
+    ./extensions/haskell.nix
+    ./extensions/nix.nix
+    ./extensions/markdown.nix
+    ./extensions/toml.nix
+  ];
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;

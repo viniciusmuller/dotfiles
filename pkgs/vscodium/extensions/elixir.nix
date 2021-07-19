@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 with pkgs;
 let
@@ -9,14 +9,9 @@ let
   };
 in
 {
-  home.packages = [
-    glibcLocales
-    elixir
-  ];
-
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+  programs.vscode.extensions = with vscode-extensions; [
     jakebecker.elixir-ls
-  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+  ] ++ vscode-utils.extensionsFromVscodeMarketplace [
     {
       name = "vscode-elixir-snippets";
       publisher = "florinpatrascu";

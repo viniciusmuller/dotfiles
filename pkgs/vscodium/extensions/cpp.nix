@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   customVscodeExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
@@ -11,12 +11,6 @@ let
   ];
 in
 {
-  home.packages = with pkgs;
-    [
-      gcc
-      gnumake
-    ];
-
   programs.vscode = {
     extensions = with pkgs.vscode-extensions; [
       ms-vscode.cpptools

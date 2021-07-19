@@ -11,10 +11,6 @@ let
   ];
 in
 {
-  home.packages = with pkgs; [
-    dotnet-sdk_5
-  ];
-
   programs.vscode = {
     extensions = customVscodeExtensions;
   };
