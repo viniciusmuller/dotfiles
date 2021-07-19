@@ -4,21 +4,68 @@
   imports = [
     ../../desktop/dwm
     ../../profiles/ricing.nix
-    ../../profiles/gui.nix
-    ../../profiles/cli.nix
-    # ../../profiles/development
-    ../../profiles/games
     ../../utils/scripts
+
+    # CLI
+    ../../pkgs/base16-shell.nix # Different shell themes
+    ../../pkgs/zoxide.nix # Jump directories
+    ../../pkgs/bash.nix # Good old bash
+    ../../pkgs/nvim # Modal text editor
+    ../../pkgs/readline # GNU readline input
+    ../../pkgs/git.nix
+    ../../pkgs/tmux # Terminal multiplexer
+    ../../pkgs/fzf.nix # Fuzzy finder
+    ../../pkgs/exa.nix # ls alternative
+    ../../pkgs/trash-cli.nix # Safer rm
+    ../../pkgs/htop.nix # Process viewer
+    ../../pkgs/direnv.nix
+    ../../pkgs/keychain.nix
+    ../../services/gpg-agent.nix
+    ../../pkgs/gpg.nix
+    ../../pkgs/irssi.nix # IRC Client
+    ../../pkgs/jq.nix # Work with json
+    ../../pkgs/bat.nix # File previewer
+
+    # GUI
+    ../../pkgs/vscodium # Text editor
+    ../../pkgs/emacs # Another text
+    ../../pkgs/chromium.nix # Browser
+    ../../pkgs/bitwarden.nix # Password manager
+    ../../pkgs/blugon # Screen temperature manager
+    ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
+    ../../pkgs/beekeeper-studio.nix # Database manager
+
+    # Games
+    ../../pkgs/games/dwarf-fortress.nix
   ];
 
   home.packages = with pkgs; [
-    element-desktop
+    # CLI
+    bandwhich # Network inspector
+    tealdeer # TLDR of man pages
+    ripgrep # File content finder
+    ncdu # Curses interface for `du`
+    file # Show info about files
+    fd # File finder
 
+    # GUI
+    element-desktop # Matrix client
+    libnotify # notify-send
+    insomnia # Request testing
+    mupdf # Pdf viewer
+    anki # Spaced repetition
+
+    # Unfree
     obsidian
     discord
     spotify
     teams
     slack
+
+    # Games
+    cataclysm-dda
+    nethack
+    brogue
 
     # TODO: required by https://github.com/arcticlimer/helpepper
     # Turn this repository into a flake and use it here
