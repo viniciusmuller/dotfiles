@@ -44,6 +44,7 @@
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
+    nmap # Network scanner
     ncdu # Curses interface for `du`
     file # Show info about files
     fd # File finder

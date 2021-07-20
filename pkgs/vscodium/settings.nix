@@ -75,7 +75,7 @@ in
   # ---- Font ----
   "editor.fontFamily" = "Jetbrains Mono";
   "editor.cursorSmoothCaretAnimation" = true;
-  "editor.fontSize" = 14;
+  "editor.fontSize" = 15;
   "terminal.integrated.gpuAcceleration" = "off";
   "editor.fontLigatures" = true;
 
@@ -107,13 +107,13 @@ in
   };
 
   # ---- VsVim ----
+  # TODO: Move this to vspacecode directory #
   "editor.cursorSurroundingLines" = 5;
   "editor.lineNumbers" = "relative";
   "vim.enableNeovim" = true;
   "vim.neovimPath" = "nvim";
   "vim.timeout" = 50;
   "vim.sneakUseIgnorecaseAndSmartcase" = true;
-  "vim.leader" = "<space>";
 
   "vim.normalModeKeyBindingsNonRecursive" = [
     visualBlock
@@ -132,4 +132,3 @@ in
     multiCursor
   ];
 }
-
