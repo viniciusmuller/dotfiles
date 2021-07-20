@@ -175,6 +175,29 @@ let
       '';
     };
 
+  my-gruvbox-material = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "tokyonight.nvim";
+      version = "2021-07-04";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "sainnhe";
+        repo = "gruvbox-material";
+        rev = "5cf1ae0742a24c73f29cbffc308c6f5576404e60";
+        sha256 = "0qr9xdvh79wzr00zhqd6zdir1j0xdxw3qq0pqm9d8vxb1k1brzhs";
+      };
+
+      meta.homepage = "https://github.com/sainnhe/gruvbox-material";
+    };
+
+    config = ''
+      colorscheme gruvbox-material
+      set bg=dark
+      let g:gruvbox_material_background = 'hard'
+      let g:gruvbox_material_enable_italic = 1
+    '';
+  };
+
   my-vim-tmux-navigator =
     {
       plugin = pkgs.vimUtils.buildVimPlugin {
@@ -321,7 +344,7 @@ let
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          theme = 'tokyonight',
+          -- theme = 'tokyonight',
           component_separators = {'', ''},
           section_separators = {'', ''},
           disabled_filetypes = {}
@@ -739,7 +762,8 @@ in
       # Aesthetic
       # my-presence
       my-symbols-outline
-      my-tokyonight-nvim
+      # my-tokyonight-nvim
+      my-gruvbox-material
       nvim-web-devicons
       my-lualine
       my-indentline
