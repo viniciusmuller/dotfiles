@@ -29,6 +29,9 @@
       usernamehw.errorlens
       eamodio.gitlens
 
+      # Pair programming
+      ms-vsliveshare.vsliveshare
+
       # Some vim keybindings
       vscodevim.vim
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
