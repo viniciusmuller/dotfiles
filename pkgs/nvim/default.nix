@@ -153,27 +153,12 @@ let
     '';
   };
 
-  # TODO: Figure out how to make this work
-  my-tokyonight-nvim =
-    {
-      plugin = pkgs.vimUtils.buildVimPlugin {
-        name = "tokyonight.nvim";
-        version = "2021-07-04";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "folke";
-          repo = "tokyonight.nvim";
-          rev = "0ead86afe390603f9bd688103d7a5fc6724a828e";
-          sha256 = "1l6hscamapmqjn1kc2hrpynwwrljdlp84g27282wfvc2i0kpj884";
-        };
-
-        meta.homepage = "https://github.com/folke/tokyonight.nvim";
-      };
-
-      config = ''
-        colorscheme tokyonight
-      '';
-    };
+  my-tokyonight-nvim = {
+    plugin = tokyonight-nvim;
+    config = ''
+      colorscheme tokyonight
+    '';
+  };
 
   my-gruvbox-material = {
     plugin = pkgs.vimUtils.buildVimPlugin {
@@ -197,23 +182,6 @@ let
       let g:gruvbox_material_enable_italic = 1
     '';
   };
-
-  my-vim-tmux-navigator =
-    {
-      plugin = pkgs.vimUtils.buildVimPlugin {
-        name = "vim-tmux-navigator";
-        version = "2021-07-04";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "christoomey";
-          repo = "vim-tmux-navigator";
-          rev = "0xxc5wpyfqv7f7sfy6xncy7ipj0cvshw28s12ld3jfgyimjllr62";
-          sha256 = "0xxc5wpyfqv7f7sfy6xncy7ipj0cvshw28s12ld3jfgyimjllr62";
-        };
-
-        meta.homepage = "https://github.com/christoomey/vim-tmux-navigator";
-      };
-    };
 
   my-blamer = {
     plugin = pkgs.vimUtils.buildVimPlugin {
@@ -317,24 +285,12 @@ let
     '';
   };
 
-  my-listtoggle = {
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "listtoggle.vim";
-      version = "2021-07-06";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "Valloric";
-        repo = "ListToggle";
-        rev = "63fb8acb57d57380b2e30e7a831247140559c95f";
-        sha256 = "1fbshc3pjm0d1nnig2wnbj9yf39iagva44k2qhl85zfz1pv7sv57";
-      };
-
-      meta.homepage = "https://github.com/Valloric/ListToggle";
-    };
-
+  my-togglelist = {
+    plugin = vim-togglelist;
     config = ''
-      let g:lt_location_list_toggle_map = 'tl'
-      let g:lt_quickfix_list_toggle_map = 'tq'
+      let g:toggle_list_no_mappings = 1
+      nnoremap <script> <silent> tl :call ToggleLocationList()<cr>
+      nnoremap <script> <silent> tq :call ToggleQuickfixList()<cr>
     '';
   };
 
@@ -415,6 +371,7 @@ let
   };
 
   my-fzf-checkout = {
+    # TODO: Use nixpkgs's fzf-checkout-vim when it gets merged #
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "fzf-checkout.vim";
       version = "2021-07-07";
@@ -481,28 +438,6 @@ let
 
       meta.homepage = "https://github.com/prettier/vim-prettier";
     };
-  };
-
-
-  # TODO: Remove highlight when hovering
-  my-symbols-outline = {
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "symbols-outline.nvim";
-      version = "2021-07-06";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "simrat39";
-        repo = "symbols-outline.nvim";
-        rev = "631a8880deccf97bfea44d02d70afc8084f49c24";
-        sha256 = "06l1i31p04f8cgwsp0vgnjjjbav4jjvv88qx80svfkh6zz5hrbzy";
-      };
-
-      meta.homepage = "https://github.com/prettier/vim-prettier";
-    };
-
-    config = ''
-      nnoremap ts <cmd>SymbolsOutline<cr>
-    '';
   };
 
   my-styled-components = {
@@ -676,6 +611,14 @@ let
     '';
   };
 
+  my-colorizer = {
+    plugin = nvim-colorizer-lua;
+    config = ''
+      set termguicolors
+      lua require('colorizer').setup()
+    '';
+  };
+
   nvim-spell-pt = builtins.fetchurl {
     url =
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
@@ -714,10 +657,10 @@ in
       my-styled-components
 
       # Utils
-      my-vim-tmux-navigator
+      vim-tmux-navigator
       my-projectionist
       vim-commentary
-      my-listtoggle
+      my-togglelist
       vim-sensible
       vim-surround
       my-closetag
@@ -761,8 +704,8 @@ in
 
       # Aesthetic
       # my-presence
-      my-symbols-outline
       # my-tokyonight-nvim
+      my-colorizer
       my-gruvbox-material
       nvim-web-devicons
       my-lualine

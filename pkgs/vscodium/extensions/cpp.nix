@@ -5,8 +5,8 @@ let
     {
       name = "competitive-programming-helper";
       publisher = "DivyanshuAgrawal";
-      version = "5.7.1";
-      sha256 = "0sxx9iznfayai9jdcsm9i4844lagx3k1879fnddvy5qpalrf6nrz";
+      version = "5.8.5";
+      sha256 = "25v2tdAX7fVl2B5nvOIKN9vP1G5rA0G67CiDQn9n9Uc=";
     }
   ];
 in

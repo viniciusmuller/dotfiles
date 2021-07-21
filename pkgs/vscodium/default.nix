@@ -13,6 +13,7 @@ in
 {
   imports = [
     ./extensions/bash.nix
+    ./extensions/cpp.nix
     ./extensions/rust.nix
     ./extensions/elixir.nix
     ./extensions/fsharp.nix

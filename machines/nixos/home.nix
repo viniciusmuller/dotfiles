@@ -55,6 +55,8 @@
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
+    # TODO: Use ../../pkgs/pomotroid.nix #
+    gnome.pomodoro # Pomodoro app
 
     # Unfree
     obsidian
