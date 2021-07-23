@@ -21,23 +21,22 @@
       ];
     in
       {
-        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem
-          rec {
-            system = "x86_64-linux";
-            modules = [
-              { nixpkgs.overlays = overlays; }
-              ./machines/nixos
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.users.vini = { ... }: {
-                  imports = [ nix-doom-emacs.hmModule ];
-                };
-              }
-            ];
-            specialArgs = {
-              inherit inputs system;
-            };
+        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          modules = [
+            { nixpkgs.overlays = overlays; }
+            ./machines/nixos
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.vini = { ... }: {
+                imports = [ nix-doom-emacs.hmModule ];
+              };
+            }
+          ];
+          specialArgs = {
+            inherit inputs system;
           };
+        };
 
         homeConfigurations = {
           arch = home-manager.lib.homeManagerConfiguration {

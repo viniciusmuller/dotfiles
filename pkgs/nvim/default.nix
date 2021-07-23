@@ -619,6 +619,16 @@ let
     '';
   };
 
+  my-gruvbox = {
+    plugin = gruvbox-nvim;
+    config = ''
+      set bg=dark
+      let g:gruvbox_italic = 1
+      let g:gruvbox_contrast_dark = "medium"
+      colorscheme gruvbox
+    '';
+  };
+
   nvim-spell-pt = builtins.fetchurl {
     url =
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
@@ -710,8 +720,9 @@ in
       # Aesthetic
       # my-presence
       # my-tokyonight-nvim
+      # my-gruvbox-material
+      my-gruvbox
       my-colorizer
-      my-gruvbox-material
       nvim-web-devicons
       my-lualine
       my-indentline
@@ -797,7 +808,6 @@ in
   };
 
   home.packages = with pkgs; [
-    neovide
     tree-sitter
     ripgrep
     fd
