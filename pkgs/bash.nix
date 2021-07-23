@@ -104,7 +104,7 @@ in
       c = "clear";
       b = "cd -";
       se = "sudoedit";
-      ns = "nix-shell";
+      ns = "nix-shell -p";
     };
 
     # TODO: These don't get loaded when using a display manager.

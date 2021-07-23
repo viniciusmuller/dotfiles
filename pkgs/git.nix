@@ -19,7 +19,7 @@
       enable = true;
       options = {
         features = "side-by-side line-numbers decorations";
-        syntax-theme = "Dracula";
+        syntax-theme = "gruvbox-dark";
         plus-style = ''syntax "#003800"'';
         minus-style = ''syntax "#3f0001"'';
         decorations = {
@@ -30,12 +30,6 @@
         };
         delta = {
           navigate = true;
-        };
-        line-numbers = {
-          line-numbers-left-style = "cyan";
-          line-numbers-right-style = "cyan";
-          line-numbers-minus-style = 124;
-          line-numbers-plus-style = 28;
         };
       };
     };

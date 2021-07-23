@@ -41,17 +41,43 @@
   home-manager.users.vini = import ./home.nix;
 
   # Boot
-  boot.loader = {
-    grub = {
-      enable = true;
-      useOSProber = true;
-      efiSupport = true;
-      device = "nodev";
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        useOSProber = true;
+        efiSupport = true;
+        devices = [ "nodev" ];
+        # set $FS_UUID to the UUID of the EFI partition
+        extraEntries = ''
+          menuentry "Windows" {
+            insmod part_gpt
+            insmod fat
+            insmod search_fs_uuid
+            insmod chain
+
+            # drivemap -s (hd0) (hd1)
+            # search.fs_uuid --no-floppy --set=root 61a6db12-f49f-4537-834a-d1caf5326f55
+
+            set root='(hd1,0)'
+            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+          }
+
+          # menuentry "Windows 10 (on /dev/sdb2)" {
+          #    insmod ntfs
+          #    set root='(hd1,1)'
+          #    search --no-floppy --fs-uuid --set 61a6db12-f49f-4537-834a-d1caf5326f55
+          #    chainloader /Windows/System32/winload.efi
+          # }
+        '';
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
     };
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
+
+    supportedFilesystems = [ "ntfs" ];
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -73,9 +99,11 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.startx.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.startx.enable = true;
+    windowManager.dwm.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us";
