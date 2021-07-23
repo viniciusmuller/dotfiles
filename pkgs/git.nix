@@ -37,6 +37,10 @@ in
     signing.key = "0x297A9768C8CA96AB";
     signing.signByDefault = true;
 
+    extraConfig = {
+      core.editor = "vim";
+    };
+
     delta = {
       enable = true;
       options = {
