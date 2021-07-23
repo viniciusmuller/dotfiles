@@ -1,5 +1,27 @@
 { pkgs, ... }:
 
+let
+  # TODO: Create helper function to add settings to all shells #
+  aliases = {
+    gw = "git worktree";
+    gs = "git status";
+    gc = "git commit";
+    gl = "git log";
+    gcl = "git clone";
+    gco = "git checkout";
+    glog = "git log --oneline";
+    gd = "git diff";
+    gds = "git diff --staged";
+    ga = "git add";
+    gr = "git remote";
+    grv = "git remote -v";
+    gra = "git remote add";
+    gp = "git push";
+    gb = "git branch";
+    grs = "git restore";
+    gsh = "git show";
+  };
+in
 {
   home.packages = with pkgs; [
     pkgs.git-crypt
@@ -35,23 +57,6 @@
     };
   };
 
-  programs.bash.shellAliases = {
-    gw = "git worktree";
-    gs = "git status";
-    gc = "git commit";
-    gl = "git log";
-    gcl = "git clone";
-    gco = "git checkout";
-    glog = "git log --oneline";
-    gd = "git diff";
-    gds = "git diff --staged";
-    ga = "git add";
-    gr = "git remote";
-    grv = "git remote -v";
-    gra = "git remote add";
-    gp = "git push";
-    gb = "git branch";
-    grs = "git restore";
-    gsh = "git show";
-  };
+  programs.bash.shellAliases = aliases;
+  programs.zsh.shellAliases = aliases;
 }

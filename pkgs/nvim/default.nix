@@ -624,6 +624,11 @@ let
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
     sha256 = "01zqss1fsc2rhaqhi10364qxyc64n2ndkn9d6rql20j3jvzbrlmd";
   };
+
+  aliases = {
+    v = "nvim";
+    nv = "nvim";
+  };
 in
 {
   imports = [
@@ -799,8 +804,6 @@ in
     lazygit
   ];
 
-  programs.bash.shellAliases = {
-    v = "nvim";
-    nv = "nvim";
-  };
+  programs.bash.shellAliases = aliases;
+  programs.zsh.shellAliases = aliases;
 }

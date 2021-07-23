@@ -14,6 +14,7 @@
       ../../nixos-pkgs/docker.nix
       ../../nixos-pkgs/steam.nix
       ../../nixos-pkgs/slock.nix
+      ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
     ];
 

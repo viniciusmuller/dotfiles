@@ -108,8 +108,7 @@ in
     };
 
     # TODO: These don't get loaded when using a display manager.
-    # workaround: Copy ~/.profile to ~/.xprofile
-    # TODO: Remove display managers and use only startx
+    # workaround: Link ~/.profile to ~/.xprofile
     sessionVariables = {
       EDITOR = "vim";
       FZF_DEFAULT_OPTS = ''--prompt \" λ \"'';
