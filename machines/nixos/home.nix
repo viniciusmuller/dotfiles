@@ -28,7 +28,7 @@
 
     # GUI
     ../../pkgs/vscodium # Text editor
-    ../../pkgs/emacs # Another text
+    # ../../pkgs/emacs # Another text editor
     # TODO: Last update made chromium font rendering completely bonkers,
     # currently unusable. #
     # ../../pkgs/chromium.nix # Browser
@@ -38,7 +38,7 @@
     ../../pkgs/beekeeper-studio.nix # Database manager
 
     # Games
-    ../../pkgs/games/dwarf-fortress.nix
+    # ../../pkgs/games/dwarf-fortress.nix
   ];
 
   home.packages = with pkgs; [
@@ -55,6 +55,7 @@
     # GUI
     element-desktop # Matrix client
     libnotify # notify-send
+    neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition

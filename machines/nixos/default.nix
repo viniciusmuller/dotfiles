@@ -9,7 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../nixos-pkgs/virtualbox.nix
+      # ../../nixos-pkgs/virtualbox.nix
       ../../nixos-pkgs/manpages.nix
       ../../nixos-pkgs/docker.nix
       ../../nixos-pkgs/steam.nix
@@ -56,13 +56,23 @@
             insmod fat
             insmod search_fs_uuid
             insmod chain
-
-            # drivemap -s (hd0) (hd1)
-            # search.fs_uuid --no-floppy --set=root 61a6db12-f49f-4537-834a-d1caf5326f55
-
-            set root='(hd1,0)'
-            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+            search --fs-uuid --set=root 8244F75D44F75301
+            # chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+            chainloader /Windows/System32/bootmgfw.efi
           }
+
+          # menuentry "Windows" {
+          #   insmod part_gpt
+          #   insmod fat
+          #   insmod search_fs_uuid
+          #   insmod chain
+
+          #   # drivemap -s (hd0) (hd1)
+          #   # search.fs_uuid --no-floppy --set=root 61a6db12-f49f-4537-834a-d1caf5326f55
+
+          #   set root='(hd1,0)'
+          #   chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+          # }
 
           # menuentry "Windows 10 (on /dev/sdb2)" {
           #    insmod ntfs
