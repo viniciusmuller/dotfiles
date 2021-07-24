@@ -2,9 +2,12 @@
 
 {
   services.gpg-agent = {
-    # Caches gpg passphrase
+    # Caches gpg passphrase for 5 hours
     enable = true;
     defaultCacheTtl = 5 * 60 * 60;
+
+    enableSshSupport = true;
+    defaultCacheTtlSsh = 5 * 60 * 60;
   };
 
   home.packages = with pkgs; [

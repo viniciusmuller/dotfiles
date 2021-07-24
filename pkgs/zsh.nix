@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 let
+  # TODO: Try to improve plugin performance #
+  # TODO: Install plugins directly in zsh
   fzf-tab = pkgs.fetchFromGitHub {
     owner = "Aloxaf";
     repo = "fzf-tab";

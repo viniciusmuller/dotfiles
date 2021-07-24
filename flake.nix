@@ -45,6 +45,13 @@
             homeDirectory = "/home/vini";
             username = "vini";
           };
+
+          wsl = home-manager.lib.homeManagerConfiguration {
+            configuration = ./machines/wsl;
+            system = "x86_64-linux";
+            homeDirectory = "/home/vini";
+            username = "vini";
+          };
         };
       };
 }
