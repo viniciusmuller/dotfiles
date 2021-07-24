@@ -1,20 +1,14 @@
 { pkgs, ... }:
 
 let
-  # TODO: Try to improve plugin performance #
-  # TODO: Install plugins directly in zsh
-  fzf-tab = pkgs.fetchFromGitHub {
-    owner = "Aloxaf";
-    repo = "fzf-tab";
-    rev = "bc086fc38cfd680a90c694210fa5c5d88e3d1691";
-    sha256 = "sha256-44xYKTF5xduTMrd6NUhRlYuYaSP0OjC2Mg3xjv0KNp4=";
+  fzf-tab-completion = pkgs.fetchFromGitHub {
+    owner = "lincheney";
+    repo = "fzf-tab-completion";
+    rev = "53eb325f573265a6105c9bd0aa56cd865c4e14b7";
+    sha256 = "sha256-hvlz8/mdg9spKy2RLhqPukqdawd9+MEvW31smCsuUhA=";
   };
 in
 {
-  home.file = {
-    ".config/.zprezto-contrib/fzf-tab".source = fzf-tab;
-  };
-
   programs.zsh = {
     enable = true;
     enableSyntaxHighlighting = true;
@@ -23,7 +17,6 @@ in
     prezto = {
       enable = true;
 
-      pmoduleDirs = [ (builtins.toPath "/home/vini/.config/.zprezto-contrib") ];
       pmodules = [
         "environment"
         "terminal"
@@ -37,17 +30,12 @@ in
         "prompt"
         "tmux"
         "git"
-        "fzf-tab"
       ];
 
       editor = {
         dotExpansion = true;
         keymap = "vi";
       };
-      # prompt = {
-      # TODO: Aparently this is broken #
-      #   showReturnVal = true;
-      # };
       tmux = {
         autoStartRemote = true;
         defaultSessionName = "default";
@@ -58,6 +46,9 @@ in
 
       extraConfig = ''
         zstyle ':prezto:module:git:alias' skip 'yes'
+
+        . ${fzf-tab-completion}/zsh/fzf-zsh-completion.sh
+        bindkey '^I' fzf_completion
       '';
     };
 

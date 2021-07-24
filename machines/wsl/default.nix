@@ -16,7 +16,6 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
-    # ../../pkgs/bash.nix
     ../../pkgs/zsh.nix
     ../../pkgs/nvim
     ../../pkgs/readline # GNU readline input
@@ -26,13 +25,12 @@ in
     ../../pkgs/exa.nix # ls alternative
     ../../pkgs/trash-cli.nix # Safer rm
     ../../pkgs/htop.nix # Process viewer
-    ../../pkgs/keychain.nix
+    ../../pkgs/keychain.nix # Ssh key caching
     ../../pkgs/gpg.nix
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/bat.nix # File previewer
 
-    # TODO: Can't run gpg-agent since in wsl there is no easy systemd #
-    # ../../services/gpg-agent.nix
+    ../../services/gpg-agent.nix
   ];
 
   home.packages = with pkgs; [
