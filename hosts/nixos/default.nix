@@ -49,46 +49,23 @@
         useOSProber = true;
         efiSupport = true;
         devices = [ "nodev" ];
-        # set $FS_UUID to the UUID of the EFI partition
-        extraEntries = ''
-          menuentry "Windows" {
-            insmod part_gpt
-            insmod fat
-            insmod search_fs_uuid
-            insmod chain
-            search --fs-uuid --set=root 8244F75D44F75301
-            # chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-            chainloader /Windows/System32/bootmgfw.efi
-          }
-
-          # menuentry "Windows" {
-          #   insmod part_gpt
-          #   insmod fat
-          #   insmod search_fs_uuid
-          #   insmod chain
-
-          #   # drivemap -s (hd0) (hd1)
-          #   # search.fs_uuid --no-floppy --set=root 61a6db12-f49f-4537-834a-d1caf5326f55
-
-          #   set root='(hd1,0)'
-          #   chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-          # }
-
-          # menuentry "Windows 10 (on /dev/sdb2)" {
-          #    insmod ntfs
-          #    set root='(hd1,1)'
-          #    search --no-floppy --fs-uuid --set 61a6db12-f49f-4537-834a-d1caf5326f55
-          #    chainloader /Windows/System32/winload.efi
-          # }
-        '';
+        # If it doesn't get windows automatically, set $FS_UUID to the UUID of the *Windows* EFI partition
+        # extraEntries = ''
+        #   menuentry "Windows" {
+        #     insmod part_gpt
+        #     insmod fat
+        #     insmod search_fs_uuid
+        #     insmod chain
+        #     search --fs-uuid --set=root $FS_UUID
+        #     chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        #   }
+        # '';
       };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
     };
-
-    supportedFilesystems = [ "ntfs" ];
   };
 
   networking.hostName = "nixos"; # Define your hostname.
