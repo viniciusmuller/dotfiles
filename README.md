@@ -24,5 +24,5 @@ You can check the Neovim keybindings [here](./pkgs/nvim/README.md)
 - `desktop` -> Wrappers around `pkgs` to build different desktop environments.
 - `services` -> Home-manager services.
 - `profiles` -> Things such as different development environments.
-- `machines` -> My configurations for different machines
+- `hosts` -> My configurations for different machines
 - `utils` -> Useful scripts.

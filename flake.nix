@@ -25,7 +25,7 @@
           system = "x86_64-linux";
           modules = [
             { nixpkgs.overlays = overlays; }
-            ./machines/nixos
+            ./hosts/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager.users.vini = { ... }: {
@@ -40,14 +40,14 @@
 
         homeConfigurations = {
           arch = home-manager.lib.homeManagerConfiguration {
-            configuration = ./machines/arch;
+            configuration = ./hosts/arch;
             system = "x86_64-linux";
             homeDirectory = "/home/vini";
             username = "vini";
           };
 
           wsl = home-manager.lib.homeManagerConfiguration {
-            configuration = ./machines/wsl;
+            configuration = ./hosts/wsl;
             system = "x86_64-linux";
             homeDirectory = "/home/vini";
             username = "vini";
