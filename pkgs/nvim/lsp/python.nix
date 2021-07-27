@@ -25,6 +25,7 @@ in
   # TODO: Make a prelude with these helper functions
   programs.neovim.extraConfig = mkLuaCode ''
     require('lspconfig').pylsp.setup{
+      cmd = {'pyls'},
       on_attach = on_attach
     }
   '';
