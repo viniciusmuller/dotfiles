@@ -29,9 +29,7 @@
     # GUI
     ../../pkgs/vscodium # Text editor
     # ../../pkgs/emacs # Another text editor
-    # TODO: Last update made chromium font rendering completely bonkers,
-    # currently unusable. #
-    # ../../pkgs/chromium.nix # Browser
+    ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/blugon # Screen temperature manager
     ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
@@ -63,7 +61,6 @@
     gnome.pomodoro # Pomodoro app
 
     # Unfree
-    google-chrome
     obsidian
     discord
     spotify
