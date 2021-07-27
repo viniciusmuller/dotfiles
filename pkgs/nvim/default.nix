@@ -699,7 +699,7 @@ in
       my-ultisnips
 
       # Neovim lua things
-      plenary-nvim
+      # plenary-nvim
       my-autopairs
       my-treesitter
       nvim-treesitter-textobjects

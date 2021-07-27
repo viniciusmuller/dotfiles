@@ -16,6 +16,7 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
+    ../../pkgs/direnv.nix
     ../../pkgs/zsh.nix
     ../../pkgs/nvim
     ../../pkgs/readline # GNU readline input
