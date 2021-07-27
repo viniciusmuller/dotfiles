@@ -2,10 +2,9 @@
 
 {
   imports = [
+    # Sets up things such as .haskeline and .ghci files
     ../../ghc
   ];
-
-  home.packages = with pkgs; [ stack ];
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [
     haskell.haskell

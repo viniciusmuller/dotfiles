@@ -60,6 +60,7 @@ in
 
       extraConfig = ''
         zstyle ':prezto:module:git:alias' skip 'yes'
+        zstyle ':prezto:module:utility' safe-ops 'no'
       '';
     };
 

@@ -66,6 +66,7 @@
         efiSysMountPoint = "/boot";
       };
     };
+    supportedFilesystems = [ "ntfs" ];
   };
 
   networking.hostName = "nixos"; # Define your hostname.

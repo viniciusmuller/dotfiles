@@ -300,7 +300,7 @@ let
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          -- theme = 'tokyonight',
+          theme = 'tokyonight',
           component_separators = {'', ''},
           section_separators = {'', ''},
           disabled_filetypes = {}
@@ -629,6 +629,28 @@ let
     '';
   };
 
+  my-github-colors = {
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      name = "github-colors";
+      version = "2021-07-07";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "lourenci";
+        repo = "github-colors";
+        rev = "fd04c2b41c981dc28b60d21818d0b23ab0629150";
+        sha256 = "0jjwzd07x4kc8xc2d1ygaiyygmn7hlimjj5341pspz2ph2bh46q9";
+      };
+
+      meta.homepage = "https://github.com/thinca/vim-quickrun";
+    };
+
+    config = ''
+      set termguicolors
+      set background=dark
+      colorscheme github-colors
+    '';
+  };
+
   nvim-spell-pt = builtins.fetchurl {
     url =
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/master/spell/pt.utf-8.spl";
@@ -719,9 +741,11 @@ in
 
       # Aesthetic
       # my-presence
-      # my-tokyonight-nvim
+      my-tokyonight-nvim
       # my-gruvbox-material
-      my-gruvbox
+      # my-gruvbox
+      # Github colors theme seems currently broken
+      # my-github-colors
       my-colorizer
       nvim-web-devicons
       my-lualine
