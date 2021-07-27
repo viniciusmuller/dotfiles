@@ -52,6 +52,7 @@ let
   };
 
   my-quickrun = {
+    # TODO: Upgrade nixpkgs's vim-quickrun, current version is broken #
     # plugin = vim-quickrun;
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "vim-quickrun";
@@ -206,6 +207,11 @@ let
     '';
   };
 
+  my-git-blame-nvim = {
+    plugin = git-blame-nvim;
+    config = "let g:gitblame_date_format = '%r'";
+  };
+
   my-telescope = {
     plugin = telescope-nvim;
     config = ''
@@ -222,10 +228,10 @@ let
     plugin = nvim-lspconfig;
     config = ''
       " Prettier LSP diagnostic symbols
-      sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=
-      sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
-      sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=
-      sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
+      " sign define LspDiagnosticsSignError text= texthl=LspDiagnosticsSignError linehl= numhl=
+      " sign define LspDiagnosticsSignWarning text= texthl=LspDiagnosticsSignWarning linehl= numhl=
+      " sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=
+      " sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
       ${mkLuaCode ''
 
@@ -329,6 +335,15 @@ let
       }
     '';
   };
+
+  my-noplugin-statusline = ''
+    set statusline=
+    set statusline+=\ %f " Relative path to file in current buffer
+    set statusline+=\ %m%r%w " Readonly, modified and preview tags
+    set statusline+=%= " Left and right separator
+    set statusline+=%y\ " Filetype
+    set statusline+=%l:%c\ " Line and column
+  '';
 
   my-ultisnips = {
     plugin = ultisnips;
@@ -735,9 +750,9 @@ in
       # Git
       my-gitsigns
       my-fugitive
-      my-blamer
+      my-git-blame-nvim
 
-      lazygit-nvim
+      # lazygit-nvim
 
       # Aesthetic
       # my-presence
@@ -748,11 +763,13 @@ in
       # my-github-colors
       my-colorizer
       nvim-web-devicons
-      my-lualine
+      # my-lualine
       my-indentline
     ];
 
     extraConfig = ''
+      ${my-noplugin-statusline}
+
       map <space> \
 
       set undofile
