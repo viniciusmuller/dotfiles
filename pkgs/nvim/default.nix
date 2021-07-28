@@ -12,45 +12,6 @@ let
         ''
     );
 
-  my-gitsigns = {
-    plugin = gitsigns-nvim;
-    config = ''
-      nnoremap <leader>gm <cmd>lua require('gitsigns').blame_line(true)<cr>
-
-      ${mkLuaCode ''
-      require('gitsigns').setup{}
-    ''}
-    '';
-  };
-
-  my-vim-test = {
-    plugin = vim-test;
-    config = ''
-      let test#strategy = "neovim"
-
-      nnoremap <leader>ts :TestSuite<cr>
-      nnoremap <leader>tn :TestNearest<cr>
-      nnoremap <leader>tf :TestFile<cr>
-      nnoremap <leader>tv :TestVisit<cr>
-      nnoremap <leader>tl :TestLast<cr>
-    '';
-  };
-
-  my-fugitive = {
-    plugin = vim-fugitive;
-    config = ''
-      nnoremap <silent> <Leader>gg :tab G<cr>
-      nnoremap <silent> <Leader>gd :Gvdiffsplit<cr>
-      nnoremap <silent> <Leader>gD :!git diff<cr>
-      nnoremap <silent> <Leader>gl :Gclog<cr>
-    '';
-  };
-
-  my-projectionist = {
-    plugin = vim-projectionist;
-    config = "nnoremap <silent> <leader>pa :A<cr>";
-  };
-
   my-quickrun = {
     # TODO: Upgrade nixpkgs's vim-quickrun, current version is broken #
     # plugin = vim-quickrun;
@@ -84,73 +45,6 @@ let
     config = ''
       nnoremap <leader>pt <cmd>TodoQuickFix<cr>
       ${mkLuaCode "require('todo-comments').setup{}"}
-    '';
-  };
-
-  my-compe = {
-    plugin = nvim-compe;
-    config = ''
-      " Keybindings
-      inoremap <silent><expr> <C-space> compe#complete()
-      " inoremap <silent><expr> <cr>      compe#confirm('<CR>')
-      " inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
-      inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-      inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-      inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-      inoremap <silent><expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
-      inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-      ${mkLuaCode ''
-      require('compe').setup {
-        enabled = true;
-        autocomplete = true;
-        debug = false;
-        min_length = 1;
-        preselect = 'always';
-        throttle_time = 80;
-        max_abbr_width = 100;
-        max_kind_width = 100;
-        max_menu_width = 100;
-        documentation = true;
-
-        source = {
-          emoji = true;
-          path = true;
-          buffer = true;
-          calc = true;
-          spell = true;
-          nvim_lsp = true;
-          nvim_lua = true;
-          ultisnips = true;
-          luasnip = true;
-        };
-      }
-    ''}
-    '';
-  };
-
-  my-treesitter = {
-    plugin = nvim-treesitter;
-    config = mkLuaCode ''
-      require('nvim-treesitter.configs').setup {
-        highlight = { enable = true },
-        indent = { enable = true },
-        textobjects = {
-          select = {
-            enable = true,
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["ab"] = "@block.outer",
-              ["ib"] = "@block.inner",
-            },
-          },
-        }
-      }
     '';
   };
 
@@ -205,11 +99,6 @@ let
       let g:blamer_show_in_visual_modes = 0
       let g:blamer_relative_time = 1
     '';
-  };
-
-  my-git-blame-nvim = {
-    plugin = git-blame-nvim;
-    config = "let g:gitblame_date_format = '%r'";
   };
 
   my-telescope = {
@@ -345,79 +234,6 @@ let
     set statusline+=%l:%c\ " Line and column
   '';
 
-  my-ultisnips = {
-    plugin = ultisnips;
-    config = ''
-      let g:UltiSnipsExpandTrigger="<M-j>"
-      let g:UltiSnipsJumpForwardTrigger="<C-j>"
-      let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-    '';
-  };
-
-  my-indentline = {
-    plugin = indent-blankline-nvim;
-    config = "let g:indent_blankline_char = '│'";
-  };
-
-  my-fzf = {
-    plugin = fzf-vim;
-    config = ''
-      let $FZF_DEFAULT_COMMAND = 'fd -H'
-      let $FZF_DEFAULT_OPTS = '--exact --reverse'
-      let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-
-      " TODO: Create other keybindings like `<leader>;` for very used commands
-      nnoremap <leader>.   <cmd>GFiles<cr>
-      nnoremap <leader>,   <cmd>Buffers<cr>
-      nnoremap <leader>ff  <cmd>Files<cr>
-      nnoremap <leader>fc  <cmd>Commits<cr>
-      nnoremap <leader>fs  <cmd>Rg<cr>
-      nnoremap <leader>fh  <cmd>Helptags<cr>
-      nnoremap <leader>fm  <cmd>Apropos<cr>
-
-      " Rg with --hidden
-      command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-        \   fzf#vim#with_preview(), <bang>0)
-
-      command! -nargs=? Apropos call fzf#run(fzf#wrap({'source': 'apropos .'.shellescape(<q-args>).' | cut -d " " -f 1', 'sink': 'tab Man', 'options': ['--preview', 'MANPAGER=cat MANWIDTH='.(&columns/2-4).' man {}']}))
-    '';
-  };
-
-  my-fzf-checkout = {
-    # TODO: Use nixpkgs's fzf-checkout-vim when it gets merged #
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "fzf-checkout.vim";
-      version = "2021-07-07";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "stsewd";
-        repo = "fzf-checkout.vim";
-        rev = "4d5ecae74460de8fed4f743f6bd53c4c31d32797";
-        sha256 = "0mia7p2z8l3lrid0v8ml4i8y190gh4ll9898yyg4gcghhxp83zpm";
-      };
-
-      # The plugin has a makefile which tries to run a docker container. This
-      # fixes it.
-      prePatch = ''
-        rm Makefile
-      '';
-
-      meta.homepage = "https://github.com/stsewd/fzf-checkout.vim";
-    };
-
-    config = ''
-      let g:fzf_checkout_git_options = '--sort=-committerdate'
-      let g:fzf_tag_actions = {
-      \ 'checkout': {'execute': '!{git} -C {cwd} checkout {branch}'},
-      \}
-
-      nnoremap <leader>gb <cmd>GBranches<cr>
-      nnoremap <leader>gt <cmd>GTags<cr>
-    '';
-  };
-
   my-nvim-tree = {
     plugin = nvim-tree-lua;
     config = ''
@@ -434,25 +250,7 @@ let
   };
 
   my-vim-prettier = {
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "vim-prettier";
-      version = "2021-07-06";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "prettier";
-        repo = "vim-prettier";
-        rev = "0e61e4a5b55d2740aa118db91a6671dcb11307e8";
-        sha256 = "0d83lx6kfpsi3d4q9wz8zwsgdn0vn16psqyngml6wspjyibh6pnf";
-      };
-
-      # The plugin has a makefile which tries to run a docker container. This
-      # fixes it.
-      prePatch = ''
-        rm Makefile
-      '';
-
-      meta.homepage = "https://github.com/prettier/vim-prettier";
-    };
+    plugin = vim-prettier;
   };
 
   my-styled-components = {
@@ -634,16 +432,6 @@ let
     '';
   };
 
-  my-gruvbox = {
-    plugin = gruvbox-nvim;
-    config = ''
-      set bg=dark
-      let g:gruvbox_italic = 1
-      let g:gruvbox_contrast_dark = "medium"
-      colorscheme gruvbox
-    '';
-  };
-
   my-github-colors = {
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "github-colors";
@@ -679,6 +467,7 @@ let
 in
 {
   imports = [
+    # Language specific language server support
     ./lsp/elixir.nix
     ./lsp/haskell.nix
     ./lsp/node.nix
@@ -689,6 +478,27 @@ in
     ./lsp/latex.nix
     ./lsp/godot.nix
     ./lsp/ccls.nix
+
+    # Plugins
+    ./plugins/tree-sitter.nix
+
+    ./plugins/compe.nix
+    ./plugins/ultisnips.nix
+
+    ./plugins/fzf.nix
+    ./plugins/fzf-checkout.nix
+
+    ./plugins/projectionist.nix
+    ./plugins/indentline.nix
+    ./plugins/vim-test.nix
+
+    # Git
+    ./plugins/gitsigns.nix
+    ./plugins/fugitive.nix
+    ./plugins/git-blame.nix
+
+    # Aesthetic
+    ./plugins/gruvbox.nix
   ];
 
   home.file = {
@@ -710,22 +520,19 @@ in
 
       # Utils
       vim-tmux-navigator
-      my-projectionist
       vim-commentary
-      my-togglelist
       vim-sensible
       vim-surround
-      my-closetag
       targets-vim
-      my-quickrun
-      my-vim-test
       vim-repeat
-      vim-lion # Alignment
-      vim-swap
+
+      nvim-web-devicons
+
+      my-togglelist
+      my-closetag
+      my-quickrun
 
       my-multiple-cursors
-      my-fzf-checkout
-      my-fzf
 
       # Debugging
       my-nvim-dap
@@ -733,38 +540,29 @@ in
 
       # Snippets
       vim-snippets
-      my-ultisnips
 
       # Neovim lua things
-      # plenary-nvim
       my-autopairs
-      my-treesitter
-      nvim-treesitter-textobjects
       my-nvim-tree
+
       # my-telescope
       my-lspconfig
-      my-compe
       my-trouble
       my-todo-comments
 
       # Git
-      my-gitsigns
-      my-fugitive
-      my-git-blame-nvim
+      # my-gitsigns
 
-      # lazygit-nvim
+      # # lazygit-nvim
 
-      # Aesthetic
+      # # Aesthetic
       # my-presence
-      my-tokyonight-nvim
-      # my-gruvbox-material
-      # my-gruvbox
-      # Github colors theme seems currently broken
-      # my-github-colors
+      # my-tokyonight-nvim
+      # # my-gruvbox-material
+      # # Github colors theme seems currently broken
+      # # my-github-colors
       my-colorizer
-      nvim-web-devicons
-      # my-lualine
-      my-indentline
+      # # my-lualine
     ];
 
     extraConfig = ''
