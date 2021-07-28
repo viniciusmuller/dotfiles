@@ -231,7 +231,7 @@ let
     set statusline+=\ %m%r%w " Readonly, modified and preview tags
     set statusline+=%= " Left and right separator
     set statusline+=%y\ " Filetype
-    set statusline+=%l:%c\ " Line and column
+    set statusline+=%l:%c\ %p%%\ " Line and column
   '';
 
   my-nvim-tree = {
@@ -622,8 +622,8 @@ in
       nnoremap ]W <cmd>llast<cr>
 
       " Marks
-      nnoremap <C-g> `
-      nnoremap <C-g><C-g>  `"
+      " nnoremap <C-g> `
+      " nnoremap <C-g><C-g>  `"
 
       " Tabs
       nnoremap <leader>to :tabnew<space>

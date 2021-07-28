@@ -1,23 +1,25 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 
-# Config for the dynamic window manager
 {
-  # Enable the X11 windowing system.
-  # TODO: Improve dwm configuration, move its xorg things to one file #
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
-    windowManager.dwm.enable = true;
+    windowManager.xmonad = {
+      enable = true;
+      config = ./config.hs;
+      extraPackages = hp: [
+        hp.xmonad-contrib
+      ];
+    };
   };
 
   home-manager.users.vini = {
     imports = [
-      ../../pkgs/suckless/slstatus.nix # dwm statusbar
-      ../../pkgs/suckless/dmenu.nix # Launcher
-      ../../pkgs/suckless/slock.nix # Screen locker
+      ../../pkgs/suckless/dmenu.nix
       ../../services/dunst.nix # Notification daemon
       # ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
+      ../../pkgs/xmobar # Status bar
     ];
 
     home.packages = with pkgs; [
@@ -26,8 +28,13 @@
     ];
 
     home.file = {
-      ".config/dwm/autostart.sh".source = ./autostart.sh;
       ".xinitrc".text = builtins.readFile ./.xinitrc;
+    };
+
+    # TODO: Move to `services` folder #
+    services.stalonetray = {
+      enable = true;
+      config = {};
     };
   };
 }

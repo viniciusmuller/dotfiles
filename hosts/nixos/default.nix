@@ -7,6 +7,8 @@
 {
   imports =
     [
+      ../../desktop/xmonad
+
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ../../nixos-pkgs/virtualbox.nix
@@ -85,13 +87,6 @@
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    displayManager.startx.enable = true;
-    windowManager.dwm.enable = true;
   };
 
   # Configure keymap in X11
