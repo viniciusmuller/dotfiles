@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   services.xserver = {
@@ -19,22 +19,20 @@
       ../../services/dunst.nix # Notification daemon
       # ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
-      ../../pkgs/xmobar # Status bar
+      ../../pkgs/blugon # Screen temperature manager
+      ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
     ];
 
     home.packages = with pkgs; [
       flameshot # Screenshots
       wmctrl # Helper for window managers
+      xorg.xmessage # Xmonad uses this to show help
+      xmobar
     ];
 
     home.file = {
-      ".xinitrc".text = builtins.readFile ./.xinitrc;
-    };
-
-    # TODO: Move to `services` folder #
-    services.stalonetray = {
-      enable = true;
-      config = {};
+      ".xinitrc".source = ./.xinitrc;
+      ".xmobarrc".source = ./xmobar.hs;
     };
   };
 }

@@ -18,6 +18,8 @@
       ../../services/dunst.nix # Notification daemon
       # ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
+      ../../pkgs/blugon # Screen temperature manager
+      ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
     ];
 
     home.packages = with pkgs; [

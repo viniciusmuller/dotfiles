@@ -80,7 +80,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_s), spawn $ "switch " ++ dmenuConfig)
 
     -- Launch flameshot
-    , ((modm, xK_Print), spawn "flameshot gui")
+    , ((modm,               xK_d), spawn "flameshot gui")
 
     -- close focused window
     , ((modm,               xK_x     ), kill)
@@ -271,6 +271,8 @@ myLogHook h = dynamicLogWithPP $ def
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "blugon &"
+  spawnOnce "dunst &"
+  spawnOnce "flameshot &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -310,7 +312,7 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "mod-a            Launch xterminal",
     "mod-p            Launch dmenu",
     "mod-s            Open window switcher dmenu",
-    "mod-PrintScreen  Launch flameshot gui",
+    "mod-d            Launch flameshot gui",
     "mod-x            Close/kill the focused window",
     "mod-Space        Rotate through the available layout algorithms",
     "mod-Shift-Space  Reset the layouts on the current workSpace to default",

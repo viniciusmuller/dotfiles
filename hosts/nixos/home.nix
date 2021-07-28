@@ -30,8 +30,6 @@
     # ../../pkgs/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
-    ../../pkgs/blugon # Screen temperature manager
-    ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
     ../../pkgs/beekeeper-studio.nix # Database manager
 
     # Games
