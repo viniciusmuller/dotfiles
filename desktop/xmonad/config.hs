@@ -63,6 +63,9 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
+myWindowSpacing :: Integer
+myWindowSpacing = 2
+
 dmenuConfig :: String
 dmenuConfig = "-m 0 -fn JetbrainsMono:size=9 -nb '#000000' -nf '#aaaaaa' -sb '#aaaaaa' -sf '#000000'"
 
@@ -208,7 +211,7 @@ mySpacing i = spacingRaw False (Border 0 i 0 i) True (Border i 0 i 0) True
 myLayout = avoidStruts (smartBorders tiled ||| smartBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled = mySpacing 5 $ Tall nmaster delta ratio
+     tiled = mySpacing myWindowSpacing $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
