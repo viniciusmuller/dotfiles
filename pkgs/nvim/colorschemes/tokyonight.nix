@@ -2,7 +2,7 @@
 
 let
   tokyonight = {
-    plugin = tokyonight-nvim;
+    plugin = pkgs.vimPlugins.tokyonight-nvim;
     config = ''
       colorscheme tokyonight
     '';

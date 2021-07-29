@@ -36,16 +36,21 @@ in
     ./lsp/godot.nix
     ./lsp/ccls.nix
 
-    # Plugins
+    # ---- Plugins ----
+
+    # Language server protocol
     ./plugins/lspconfig.nix
+
+    # Utils
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/compe.nix
     ./plugins/trouble.nix
     ./plugins/autopairs.nix
     ./plugins/ultisnips.nix
-    ./plugins/fzf.nix
-    ./plugins/fzf-checkout.nix
+    ./plugins/telescope.nix
+    # ./plugins/fzf.nix
+    # ./plugins/fzf-checkout.nix
     ./plugins/projectionist.nix
     ./plugins/indentline.nix
     ./plugins/vim-test.nix
@@ -53,15 +58,18 @@ in
     ./plugins/togglelist.nix
     ./plugins/closetag.nix
     ./plugins/visual-multi.nix
+
     # Debugging
     ./plugins/dap.nix
     ./plugins/dap-ui.nix
+
     # Git
     ./plugins/gitsigns.nix
     ./plugins/fugitive.nix
     ./plugins/git-blame.nix
+
     # Aesthetic
-    ./colorschemes/gruvbox-material.nix
+    ./colorschemes/onedark.nix
     ./plugins/colorizer.nix
     ./plugins/todo-comments.nix
   ];
@@ -152,11 +160,11 @@ in
       nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
       nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
 
-      nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
+      " nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
 
       nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
       nnoremap <silent> <leader>vq <cmd>quitall<cr>
-      nnoremap <silent> <leader>vr <cmd>source ~/.config/nvim/init.vim<cr>
+      nnoremap <silent> <leader>vr <cmd>source $MYVIMRC<cr>
 
       augroup my_autocommands
         " Remove trailing whitespaces on write
