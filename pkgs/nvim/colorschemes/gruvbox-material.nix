@@ -17,10 +17,10 @@ let
     };
 
     config = ''
-      colorscheme gruvbox-material
       set bg=dark
       let g:gruvbox_material_background = 'hard'
       let g:gruvbox_material_enable_italic = 1
+      colorscheme gruvbox-material
     '';
   };
 in

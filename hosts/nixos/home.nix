@@ -8,7 +8,6 @@
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
-    ../../pkgs/bash.nix # Good old bash
     ../../pkgs/nvim # Modal text editor
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix

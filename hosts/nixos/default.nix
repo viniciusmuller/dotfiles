@@ -93,6 +93,10 @@
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
+  # TODO: Make gnome-keyring work atleast in nixos #
+  # services.gnome.gnome-keyring.enable = true;
+  # programs.seahorse.enable = true;
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
