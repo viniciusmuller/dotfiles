@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-
   gruvbox = {
     plugin = pkgs.vimPlugins.gruvbox-nvim;
     config = ''

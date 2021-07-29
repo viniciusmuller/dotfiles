@@ -41,4 +41,6 @@ in
     treesitter
     treesitter-textobjects
   ];
+
+  home.packages = with pkgs; [ tree-sitter gcc ];
 }

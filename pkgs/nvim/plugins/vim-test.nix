@@ -1,15 +1,19 @@
 { pkgs, ... }:
 
 let
-  ultisnips = {
+  vim-test = {
     plugin = pkgs.vimPlugins.vim-test;
     config = ''
-      let g:UltiSnipsExpandTrigger="<M-j>"
-      let g:UltiSnipsJumpForwardTrigger="<C-j>"
-      let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+      let test#strategy = "neovim"
+
+      nnoremap <leader>ts :TestSuite<cr>
+      nnoremap <leader>tn :TestNearest<cr>
+      nnoremap <leader>tf :TestFile<cr>
+      nnoremap <leader>tv :TestVisit<cr>
+      nnoremap <leader>tl :TestLast<cr>
     '';
   };
 in
 {
-  programs.neovim.plugins = [ ultisnips ];
+  programs.neovim.plugins = [ vim-test ];
 }

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  fzf = {
+  fzf-vim = {
     plugin = pkgs.vimPlugins.fzf-vim;
     config = ''
       let $FZF_DEFAULT_COMMAND = 'fd -H'
@@ -28,5 +28,6 @@ let
   };
 in
 {
-  programs.neovim.plugins = [ fzf ];
+  programs.neovim.plugins = [ fzf-vim ];
+  home.packages = with pkgs; [ fzf fd ripgrep ];
 }
