@@ -16,20 +16,20 @@
       ../../pkgs/suckless/dmenu.nix # Launcher
       ../../pkgs/suckless/slock.nix # Screen locker
       ../../services/dunst.nix # Notification daemon
-      # ../../services/picom.nix # Compositor
+      ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
       ../../pkgs/blugon # Screen temperature manager
-      ../../pkgs/xbanish.nix # Hides the mouse when using the keyboard
     ];
 
     home.packages = with pkgs; [
       flameshot # Screenshots
       wmctrl # Helper for window managers
+      xbanish # Hides the mouse when using the keyboard
     ];
 
     home.file = {
       ".config/dwm/autostart.sh".source = ./autostart.sh;
-      ".xinitrc".text = builtins.readFile ./.xinitrc;
+      ".xinitrc".source = ./.xinitrc;
     };
   };
 }

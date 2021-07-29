@@ -13,6 +13,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
@@ -78,6 +79,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Launch the `utils/scripts/bin/switch` script,
     , ((modm, xK_s), spawn $ "switch " ++ dmenuConfig)
+
+    -- Picom opacity
+    , ((modm,               xK_equal     ), spawn "picom-trans -c +5")
+    , ((modm,               xK_minus     ), spawn "picom-trans -c -5")
 
     -- Launch flameshot
     , ((modm,               xK_d), spawn "flameshot gui")
@@ -200,7 +205,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 mySpacing i = spacingRaw False (Border 0 i 0 i) True (Border i 0 i 0) True
 
 -- TODO: Try adding gaps between windows --
-myLayout = avoidStruts (tiled ||| Full)
+myLayout = avoidStruts (smartBorders tiled ||| smartBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled = mySpacing 5 $ Tall nmaster delta ratio
@@ -272,7 +277,10 @@ myLogHook h = dynamicLogWithPP $ def
 myStartupHook = do
   spawnOnce "blugon &"
   spawnOnce "dunst &"
+  spawnOnce "picom &"
   spawnOnce "flameshot &"
+  spawnOnce "xbanish &"
+  spawnOnce "nitrogen --restore"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -314,6 +322,9 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "mod-s            Open window switcher dmenu",
     "mod-d            Launch flameshot gui",
     "mod-x            Close/kill the focused window",
+    "mod-x            Close/kill the focused window",
+    "mod-=            Increase current window opacity",
+    "mod--            Decrease current window opacity",
     "mod-Space        Rotate through the available layout algorithms",
     "mod-Shift-Space  Reset the layouts on the current workSpace to default",
     "mod-n            Resize/refresh viewed windows to the correct size",
