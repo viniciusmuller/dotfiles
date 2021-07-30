@@ -36,6 +36,9 @@ in
     ./lsp/godot.nix
     ./lsp/ccls.nix
 
+    # Language specific plugins
+    ./plugins/lfe.nix
+
     # ---- Plugins ----
 
     # Language server protocol
@@ -70,6 +73,7 @@ in
 
     # Aesthetic
     ./colorschemes/onedark.nix
+    ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     ./plugins/todo-comments.nix
   ];
