@@ -60,7 +60,7 @@
     obsidian
     discord
     spotify
-    teams
+    # teams
     slack
 
     # Games

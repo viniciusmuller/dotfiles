@@ -12,8 +12,11 @@ Config { font = "xft:JetBrains Mono:pixelsize=11:antialias=true:hinting=true"
                         , Run DiskU [("/", "<used>/<size>")]
                           ["-L", "20", "-H", "50", "-m", "1", "-p", "3",
                           "--normal", "lightgreen", "--high", "red" ] 20
+                        , Run Kbd [ ("us(intl)", "<fc=#5ffa8d>INTL</fc>")
+                                  , ("us"      , "<fc=#5ffaea>US</fc>")
+                          ]
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% } <fc=#ee9a00>%date%</fc>  { %cpu% | %memory% | Disk: %disku% | SBPA: %SBPA% "
+        , template = "%StdinReader% } <fc=#ee9a00>%date%</fc>  { %kbd% | %cpu% | %memory% | Disk: %disku% | SBPA: %SBPA% "
         }

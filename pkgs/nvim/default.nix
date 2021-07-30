@@ -25,16 +25,17 @@ in
 {
   imports = [
     # Language specific language server support
+    ./lsp/ccls.nix
+    ./lsp/clojure.nix
     ./lsp/elixir.nix
+    ./lsp/godot.nix
     ./lsp/haskell.nix
+    ./lsp/latex.nix
+    ./lsp/lua.nix
     ./lsp/node.nix
+    ./lsp/python.nix
     ./lsp/rnix.nix
     ./lsp/rust.nix
-    ./lsp/lua.nix
-    ./lsp/python.nix
-    ./lsp/latex.nix
-    ./lsp/godot.nix
-    ./lsp/ccls.nix
 
     # Language specific plugins
     ./plugins/lfe.nix
@@ -52,8 +53,6 @@ in
     ./plugins/autopairs.nix
     ./plugins/ultisnips.nix
     ./plugins/telescope.nix
-    # ./plugins/fzf.nix
-    # ./plugins/fzf-checkout.nix
     ./plugins/projectionist.nix
     ./plugins/indentline.nix
     ./plugins/vim-test.nix
@@ -61,6 +60,8 @@ in
     ./plugins/togglelist.nix
     ./plugins/closetag.nix
     ./plugins/visual-multi.nix
+
+    ./plugins/conjure.nix
 
     # Debugging
     ./plugins/dap.nix

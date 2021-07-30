@@ -29,6 +29,7 @@
       xmobar # Status bar for xmonad
       nitrogen # Wallpaper setter
       xbanish # Hides the mouse when using the keyboard
+      betterlockscreen # Screen locker
     ];
 
     home.file = {

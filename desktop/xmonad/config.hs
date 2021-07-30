@@ -69,6 +69,12 @@ myWindowSpacing = 2
 dmenuConfig :: String
 dmenuConfig = "-m 0 -fn JetbrainsMono:size=9 -nb '#000000' -nf '#aaaaaa' -sb '#aaaaaa' -sf '#000000'"
 
+screenLockCommand :: String
+screenLockCommand = "betterlockscreen -l 'blur'"
+
+screenshotCommand :: String
+screenshotCommand = "flameshot gui"
+
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
@@ -87,8 +93,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_equal     ), spawn "picom-trans -c +5")
     , ((modm,               xK_minus     ), spawn "picom-trans -c -5")
 
-    -- Launch flameshot
-    , ((modm,               xK_d), spawn "flameshot gui")
+    -- Launch screenshotter
+    , ((modm,               xK_d), spawn screenshotCommand)
+
+    -- Launch `utils/scripts/bin/toggle_layout` script
+    , ((modm,               xK_g), spawn "toggle_layout")
+
+    -- Launch screen locker
+    , ((modm .|. shiftMask, xK_g), spawn screenLockCommand)
 
     -- close focused window
     , ((modm,               xK_x     ), kill)
@@ -323,6 +335,8 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "mod-a            Launch xterminal",
     "mod-p            Launch dmenu",
     "mod-s            Open window switcher dmenu",
+    "mod-g            Toggle layout between us and us(intl)",
+    "mod-Shift-g      Lock screen",
     "mod-d            Launch flameshot gui",
     "mod-x            Close/kill the focused window",
     "mod-x            Close/kill the focused window",
