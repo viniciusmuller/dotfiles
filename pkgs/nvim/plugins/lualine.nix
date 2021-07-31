@@ -19,10 +19,10 @@ let
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          -- theme = 'tokyonight',
+          theme = 'auto',
           component_separators = {'', ''},
           section_separators = {'', ''},
-          disabled_filetypes = {'NvimTree'}
+          disabled_filetypes = {}
         },
         sections = {
           lualine_a = {'mode'},
@@ -44,7 +44,7 @@ let
           lualine_z = {}
         },
         tabline = {},
-        extensions = {}
+        extensions = {'nvim-tree'}
       }
     '';
   };

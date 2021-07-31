@@ -150,8 +150,8 @@ in
     ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/gruvbox-material.nix
-    # ./plugins/lualine.nix
+    ./colorschemes/onedark.nix
+    ./plugins/lualine.nix
     ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     ./plugins/todo-comments.nix
@@ -161,7 +161,6 @@ in
 
   xdg.configFile."nvim/init.vim".text = ''
     ${initVimBefore}
-    ${config.programs.neovim.generatedConfigViml}
     ${initVimAfter}
   '';
 
