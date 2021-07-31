@@ -11,17 +11,18 @@ let
         ''
     );
 
+  # Lualine is currently broken (status bar shows blank even without any other
+  # plugins active)
   lualine = {
-
     plugin = pkgs.vimPlugins.lualine-nvim;
     config = mkLuaCode ''
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          theme = 'tokyonight',
+          -- theme = 'tokyonight',
           component_separators = {'', ''},
           section_separators = {'', ''},
-          disabled_filetypes = {}
+          disabled_filetypes = {'NvimTree'}
         },
         sections = {
           lualine_a = {'mode'},

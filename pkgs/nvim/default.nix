@@ -21,6 +21,83 @@ let
     v = "nvim";
     nv = "nvim";
   };
+
+  initVimBefore = ''
+    let mapleader = " "
+    let maplocalleader = ","
+  '';
+
+  initVimAfter = ''
+    set undofile
+    set undolevels=1000
+    set number relativenumber
+    set expandtab tabstop=2 shiftwidth=2
+    set cursorline
+    set termguicolors
+    set colorcolumn=80 " Ruler
+    set nofoldenable
+    set showcmd
+    set ignorecase smartcase
+    set textwidth=80
+    set sessionoptions+=globals
+    set hidden
+    set guifont=JetBrains\ Mono:h12
+    set wildignorecase
+    set linebreak
+    set autoindent
+    set smartindent
+    set splitright
+    set scrolloff=5
+    set lazyredraw
+    set noswapfile
+    set autoread
+    set completeopt=menuone,noselect
+    set pumheight=10 " Max number of items in autocompletion popup
+    set pumwidth=25
+    set updatetime=400
+    " Some plugin is removing `-` from the separators, for now lets just get it back.
+    set iskeyword+=^-
+    " Don't auto line break when inserting text
+    set formatoptions-=t
+
+    noremap Y "+y
+    noremap H ^
+    noremap L $
+    nnoremap Q @@
+    nnoremap <C-q> <C-w>q
+    nnoremap <C-s> <cmd>update<cr>
+
+    " Quickfix lists
+    nnoremap [q <cmd>cprev<cr>
+    nnoremap ]q <cmd>cnext<cr>
+    nnoremap [Q <cmd>cfirst<cr>
+    nnoremap ]Q <cmd>clast<cr>
+
+    " Location lists
+    nnoremap [w <cmd>lprev<cr>
+    nnoremap ]w <cmd>lnext<cr>
+    nnoremap [W <cmd>lfirst<cr>
+    nnoremap ]W <cmd>llast<cr>
+
+    " Tabs
+    nnoremap <leader>to :tabnew<space>
+    nnoremap <leader>tq :tabclose<cr>
+    nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
+    nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
+
+    " nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
+
+    nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
+    nnoremap <silent> <leader>vq <cmd>quitall<cr>
+    nnoremap <silent> <leader>vr <cmd>source $MYVIMRC<cr>
+
+    augroup my_autocommands
+      " Remove trailing whitespaces on write
+      au BufWritePre * %s/\s\+$//e
+      " Open help windows vertically splitted
+      au FileType help wincmd L
+    augroup end
+  '';
 in
 {
   imports = [
@@ -73,15 +150,20 @@ in
     ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/onedark.nix
+    ./colorschemes/gruvbox-material.nix
+    # ./plugins/lualine.nix
     ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     ./plugins/todo-comments.nix
   ];
 
-  home.file = {
-    "${config.xdg.configHome}/nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
-  };
+  xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
+
+  xdg.configFile."nvim/init.vim".text = ''
+    ${initVimBefore}
+    ${config.programs.neovim.generatedConfigViml}
+    ${initVimAfter}
+  '';
 
   programs.neovim = {
     enable = true;
@@ -102,82 +184,6 @@ in
       vim-surround
       vim-tmux-navigator
     ];
-
-    extraConfig = ''
-      ${my-noplugin-statusline}
-
-      map <space> \
-
-      set undofile
-      set undolevels=1000
-      set number relativenumber
-      set expandtab tabstop=2 shiftwidth=2
-      set cursorline
-      set termguicolors
-      set colorcolumn=80 " Ruler
-      set nofoldenable
-      set showcmd
-      set ignorecase smartcase
-      set textwidth=80
-      set sessionoptions+=globals
-      set hidden
-      set guifont=JetBrains\ Mono:h12
-      set wildignorecase
-      set linebreak
-      set autoindent
-      set smartindent
-      set splitright
-      set scrolloff=5
-      set lazyredraw
-      set noswapfile
-      set autoread
-      set completeopt=menuone,noselect
-      set pumheight=10 " Max number of items in autocompletion popup
-      set pumwidth=25
-      set updatetime=400
-      " Some plugin is removing `-` from the separators, for now lets just get it back.
-      set iskeyword+=^-
-      " Don't auto line break when inserting text
-      set formatoptions-=t
-
-      noremap Y "+y
-      noremap H ^
-      noremap L $
-      nnoremap Q @@
-      nnoremap <C-q> <C-w>q
-      nnoremap <C-s> <cmd>update<cr>
-
-      " Quickfix lists
-      nnoremap [q <cmd>cprev<cr>
-      nnoremap ]q <cmd>cnext<cr>
-      nnoremap [Q <cmd>cfirst<cr>
-      nnoremap ]Q <cmd>clast<cr>
-
-      " Location lists
-      nnoremap [w <cmd>lprev<cr>
-      nnoremap ]w <cmd>lnext<cr>
-      nnoremap [W <cmd>lfirst<cr>
-      nnoremap ]W <cmd>llast<cr>
-
-      " Tabs
-      nnoremap <leader>to :tabnew<space>
-      nnoremap <leader>tq :tabclose<cr>
-      nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
-      nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
-
-      " nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
-
-      nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
-      nnoremap <silent> <leader>vq <cmd>quitall<cr>
-      nnoremap <silent> <leader>vr <cmd>source $MYVIMRC<cr>
-
-      augroup my_autocommands
-        " Remove trailing whitespaces on write
-        au BufWritePre * %s/\s\+$//e
-        " Open help windows vertically splitted
-        au FileType help wincmd L
-      augroup end
-    '';
   };
 
   programs.bash.shellAliases = aliases;
