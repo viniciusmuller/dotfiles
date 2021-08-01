@@ -28,6 +28,8 @@ let
   '';
 
   initVimAfter = ''
+    ${my-noplugin-statusline}
+
     set undofile
     set undolevels=1000
     set number relativenumber
@@ -126,6 +128,7 @@ in
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/compe.nix
+    ./plugins/which-key.nix
     ./plugins/neorg.nix
     ./plugins/trouble.nix
     ./plugins/autopairs.nix
@@ -152,7 +155,8 @@ in
 
     # Aesthetic
     ./colorschemes/onedark.nix
-    ./plugins/lualine.nix
+    # TODO: Lualine is broken due to the neovim home-manager module.
+    # ./plugins/lualine.nix
     ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     ./plugins/todo-comments.nix
@@ -162,6 +166,7 @@ in
 
   xdg.configFile."nvim/init.vim".text = ''
     ${initVimBefore}
+    ${config.programs.neovim.generatedConfigViml}
     ${initVimAfter}
   '';
 
