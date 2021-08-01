@@ -2,8 +2,6 @@
 
 let
   shellConfig = {
-    initExtra = ". ${./tmux-session-fzf}";
-
     shellAliases = {
       tl = "tmux ls";
       ta = "tmux attach -t";

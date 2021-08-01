@@ -126,6 +126,7 @@ in
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/compe.nix
+    ./plugins/neorg.nix
     ./plugins/trouble.nix
     ./plugins/autopairs.nix
     ./plugins/ultisnips.nix

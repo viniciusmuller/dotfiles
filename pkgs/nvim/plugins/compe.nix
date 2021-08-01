@@ -48,6 +48,7 @@ let
           nvim_lua = true;
           ultisnips = true;
           luasnip = true;
+          neorg = true;
         };
       }
     ''}
