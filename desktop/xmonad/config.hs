@@ -66,9 +66,6 @@ myFocusedBorderColor = "#ff0000"
 myWindowSpacing :: Integer
 myWindowSpacing = 2
 
-dmenuConfig :: String
-dmenuConfig = "-m 0 -fn JetbrainsMono:size=9 -nb '#000000' -nf '#aaaaaa' -sb '#aaaaaa' -sf '#000000'"
-
 screenLockCommand :: String
 screenLockCommand = "betterlockscreen -l 'blur'"
 
@@ -84,10 +81,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_a), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn $ "dmenu_run " ++ dmenuConfig)
+    , ((modm,               xK_p     ), spawn "rofi -show run")
 
-    -- Launch the `utils/scripts/bin/switch` script,
-    , ((modm, xK_s), spawn $ "switch " ++ dmenuConfig)
+    , ((modm, xK_s), spawn "rofi -show window")
 
     -- Picom opacity
     , ((modm,               xK_equal     ), spawn "picom-trans -c +5")

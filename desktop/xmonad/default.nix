@@ -15,7 +15,7 @@
 
   home-manager.users.vini = {
     imports = [
-      ../../pkgs/suckless/dmenu.nix
+      ../../pkgs/rofi.nix # Application launcher and window switcher
       ../../services/dunst.nix # Notification daemon
       ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
@@ -24,7 +24,6 @@
 
     home.packages = with pkgs; [
       flameshot # Screenshots
-      wmctrl # Helper for window managers
       xorg.xmessage # Xmonad uses this to show help
       xmobar # Status bar for xmonad
       nitrogen # Wallpaper setter
