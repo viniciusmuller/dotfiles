@@ -23,9 +23,10 @@
     ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/bat.nix # File previewer
+    ../../pkgs/newsboat.nix # RSS Reader
 
     # GUI
-    ../../pkgs/vscodium # Text editor
+    # ../../pkgs/vscodium # Text editor
     # ../../pkgs/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
@@ -67,10 +68,6 @@
     cataclysm-dda
     nethack
     brogue
-
-    # TODO: required by https://github.com/arcticlimer/helpepper
-    # Turn this repository into a flake and use it here
-    sox
   ];
 
   # TODO: Find a better place for this

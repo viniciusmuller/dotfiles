@@ -38,7 +38,7 @@
   fonts.fonts = with pkgs; [
     # TODO: Create file for fonts #
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    pkgs.emacs-all-the-icons-fonts
+    emacs-all-the-icons-fonts
   ];
 
   home-manager.users.vini = import ./home.nix;

@@ -47,6 +47,7 @@ in
 
     # Language server protocol
     ./plugins/lspconfig.nix
+    ./plugins/lsp-signature.nix
 
     # Utils
     ./plugins/tree-sitter.nix
@@ -63,6 +64,7 @@ in
     ./plugins/vim-test.nix
     ./plugins/vim-quickrun.nix
     ./plugins/togglelist.nix
+    ./plugins/startscreen.nix
     ./plugins/closetag.nix
     ./plugins/visual-multi.nix
 
@@ -157,6 +159,9 @@ in
       nnoremap ]q <cmd>cnext<cr>
       nnoremap [Q <cmd>cfirst<cr>
       nnoremap ]Q <cmd>clast<cr>
+
+      nnoremap ]b <cmd>bnext<cr>
+      nnoremap [b <cmd>bprev<cr>
 
       " Location lists
       nnoremap [w <cmd>lprev<cr>
