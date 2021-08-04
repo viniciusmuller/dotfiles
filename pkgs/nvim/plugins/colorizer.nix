@@ -1,16 +1,6 @@
 { pkgs, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   colorizer = {
     plugin = pkgs.vimPlugins.nvim-colorizer-lua;
     config = ''

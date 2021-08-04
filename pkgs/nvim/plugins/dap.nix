@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   dap = {
     plugin = pkgs.vimPlugins.nvim-dap;
     config = ''
@@ -22,7 +12,7 @@ let
         nnoremap <leader>dl <cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>
         nnoremap <leader>dr <cmd>lua require('dap').repl.open()<cr>
 
-        ${mkLuaCode ''
+        ${prelude.mkLuaCode ''
         -- require('dap.ext.vscode').load_launchjs()
 
         local dap = require('dap')

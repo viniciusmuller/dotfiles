@@ -5,7 +5,7 @@ let
     plugin = pkgs.vimPlugins.fzf-vim;
     config = ''
       let $FZF_DEFAULT_COMMAND = 'fd -H'
-      let $FZF_DEFAULT_OPTS = '--exact --reverse'
+      let $FZF_DEFAULT_OPTS = '--exact --reverse --bind ctrl-a:select-all'
       let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
       " TODO: Create other keybindings like `<leader>;` for very used commands
@@ -16,6 +16,19 @@ let
       nnoremap <leader>fc  <cmd>Commits<cr>
       nnoremap <leader>fh  <cmd>Helptags<cr>
       nnoremap <leader>fm  <cmd>Apropos<cr>
+
+      " CTRL-A CTRL-Q to select all and build quickfix list
+      function! s:build_quickfix_list(lines)
+        call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+        copen
+        cc
+      endfunction
+
+      let g:fzf_action = {
+      \ 'ctrl-q': function('s:build_quickfix_list'),
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
       " Rg with --hidden
       command! -bang -nargs=* Rg

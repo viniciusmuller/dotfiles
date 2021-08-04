@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   compe = {
     plugin = pkgs.vimPlugins.nvim-compe;
     config = ''
@@ -25,7 +15,7 @@ let
         inoremap <silent><expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
         inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-        ${mkLuaCode ''
+        ${prelude.mkLuaCode ''
         require('compe').setup {
           enabled = true;
           autocomplete = true;

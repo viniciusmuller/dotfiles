@@ -1,19 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   neorg = {
     plugin = pkgs.vimPlugins.neorg;
-    config = mkLuaCode ''
+    config = prelude.mkLuaCode ''
         require('neorg').setup {
           -- Tell Neorg what modules to load
           load = {

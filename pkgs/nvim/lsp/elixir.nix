@@ -1,22 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
-with pkgs;
-let
-  mkLuaCode =
-    (code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      '');
-in
 {
   home.packages = [
-    elixir_ls
+    pkgs.elixir_ls
   ];
 
   # TODO: Make a prelude with these helper functions
-  programs.neovim.extraConfig = mkLuaCode ''
+  programs.neovim.extraConfig = prelude.mkLuaCode ''
     require('lspconfig').elixirls.setup{
       on_attach = on_attach,
       cmd = { "elixir-ls" };

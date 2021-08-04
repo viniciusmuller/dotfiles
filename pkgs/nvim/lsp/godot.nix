@@ -1,21 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
-with pkgs;
-let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-in
 {
   # TODO: Make a prelude with these helper functions
   programs.neovim = {
-    extraConfig = mkLuaCode ''
+    extraConfig = prelude.mkLuaCode ''
       require('lspconfig').gdscript.setup{
         on_attach = on_attach,
         flags = {

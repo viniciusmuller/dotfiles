@@ -15,7 +15,6 @@
     ../../pkgs/fzf.nix # Fuzzy finder
     ../../pkgs/exa.nix # ls alternative
     ../../pkgs/trash-cli.nix # Safer rm
-    ../../pkgs/htop.nix # Process viewer
     ../../pkgs/direnv.nix
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
@@ -50,26 +49,25 @@
 
     # GUI
     element-desktop # Matrix client
-    libnotify # notify-send
     # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
     # TODO: Use ../../pkgs/pomotroid.nix #
     gnome.pomodoro # Pomodoro app
-    nyxt # Crazy web browser
+    # nyxt # Crazy web browser
 
     # Unfree
     obsidian
     discord
     spotify
     # teams
-    slack
+    # slack
 
     # Games
-    cataclysm-dda
-    nethack
-    brogue
+    # cataclysm-dda
+    # nethack
+    # brogue
   ];
 
   # TODO: Find a better place for this

@@ -20,6 +20,17 @@
         suckless.overlays
         emacs-overlay.overlay
       ];
+      prelude = {
+        mkLuaCode =
+          (code:
+            ''
+              lua << EOF
+                ${code}
+              EOF
+            '');
+
+        mkShellAlias = (alias: alias);
+      };
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
@@ -35,7 +46,8 @@
           }
         ];
         specialArgs = {
-          inherit inputs system;
+          # We pass prelude here
+          inherit inputs system prelude;
         };
       };
 

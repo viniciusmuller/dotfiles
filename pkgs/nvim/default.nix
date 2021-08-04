@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+# This already uses `prelude`
+{ config, pkgs, prelude, ... }:
 
 with pkgs.vimPlugins;
 let
@@ -45,44 +46,47 @@ in
     # ---- Plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
-    ./plugins/nvim-tree.nix
-    ./plugins/compe.nix
-    # ./plugins/which-key.nix
-    # ./plugins/neorg.nix
-    ./plugins/trouble.nix
-    ./plugins/autopairs.nix
-    ./plugins/ultisnips.nix
+    # ./plugins/tree-sitter.nix
+    # ./plugins/nvim-tree.nix
+    # ./plugins/compe.nix
+    # # ./plugins/which-key.nix
+    # # ./plugins/neorg.nix
+    # ./plugins/trouble.nix
+    # ./plugins/autopairs.nix
+    # ./plugins/ultisnips.nix
     ./plugins/fzf-checkout.nix
     ./plugins/fzf.nix
-    # ./plugins/telescope.nix
-    ./plugins/projectionist.nix
-    ./plugins/vim-test.nix
-    # ./plugins/vim-quickrun.nix
-    ./plugins/togglelist.nix
-    # ./plugins/startscreen.nix
-    ./plugins/closetag.nix
-    ./plugins/visual-multi.nix
-    ./plugins/slash.nix
+    # # ./plugins/telescope.nix
+    # ./plugins/projectionist.nix
+    # ./plugins/vim-test.nix
+    # # ./plugins/vim-quickrun.nix
+    # ./plugins/togglelist.nix
+    # # ./plugins/startscreen.nix
+    # ./plugins/closetag.nix
+    # ./plugins/visual-multi.nix
+    # ./plugins/slash.nix
 
-    ./plugins/conjure.nix
+    # ./plugins/conjure.nix
 
-    # Debugging
-    # ./plugins/dap.nix
-    # ./plugins/dap-ui.nix
+    # # Debugging
+    # # ./plugins/dap.nix
+    # # ./plugins/dap-ui.nix
 
-    # Git
-    ./plugins/gitsigns.nix
-    ./plugins/fugitive.nix
-    ./plugins/git-blame.nix
+    # # Git
+    # ./plugins/gitsigns.nix
+    # ./plugins/fugitive.nix
+    # ./plugins/git-blame.nix
 
-    # Aesthetic
-    ./colorschemes/gruvbox-material.nix
+    # # Aesthetic
+    ./colorschemes/dracula.nix
+
+    # This imports a module which uses `prelude` and gives `attribute prelude missing`
     # ./plugins/lualine.nix
-    # ./plugins/rainbow.nix
-    ./plugins/colorizer.nix
-    # ./plugins/todo-comments.nix
-    ./plugins/indentline.nix
+
+    # # ./plugins/rainbow.nix
+    # ./plugins/colorizer.nix
+    # # ./plugins/todo-comments.nix
+    # ./plugins/indentline.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;

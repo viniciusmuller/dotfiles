@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   dap-ui = {
     plugin = pkgs.vimPlugins.nvim-dap-ui;
     config = ''
@@ -51,7 +41,7 @@ let
           hi default link DapUIBreakpointsLine DapUILineNumber
         endfunction
 
-        ${mkLuaCode ''
+        ${prelude.mkLuaCode ''
         require('dapui').setup({
           icons = {
             expanded = "▾",

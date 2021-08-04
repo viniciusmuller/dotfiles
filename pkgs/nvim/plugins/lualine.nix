@@ -1,21 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
-  # Lualine is currently broken (status bar shows blank even without any other
-  # plugins active)
   lualine = {
     plugin = pkgs.vimPlugins.lualine-nvim;
-    config = mkLuaCode ''
+    config = prelude.mkLuaCode ''
       require('lualine').setup {
         options = {
           icons_enabled = true,

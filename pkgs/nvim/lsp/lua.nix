@@ -1,22 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 with pkgs;
-let
-  mkLuaCode =
-    (code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      '');
-in
 {
   home.packages = [
     sumneko-lua-language-server
   ];
 
   # TODO: Make a prelude with these helper functions
-  programs.neovim.extraConfig = mkLuaCode ''
+  programs.neovim.extraConfig = prelude.mikLuaCode ''
     require('lspconfig').sumneko_lua.setup {
       cmd = {'lua-language-server'};
       on_attach = on_attach,

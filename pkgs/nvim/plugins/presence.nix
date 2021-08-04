@@ -1,19 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   presence = {
     plugin = presence-nvim;
-    config = mkLuaCode ''
+    config = prelude.mkLuaCode ''
       require("presence"):setup({
         -- General options
         auto_update         = true,

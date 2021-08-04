@@ -1,17 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
-
-let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-in
 {
   home.packages = with pkgs; with python39Packages; [
     python39
@@ -23,7 +11,7 @@ in
   ];
 
   # TODO: Make a prelude with these helper functions
-  programs.neovim.extraConfig = mkLuaCode ''
+  programs.neovim.extraConfig = prelude.mkLuaCode ''
     require('lspconfig').pylsp.setup{
       cmd = {'pyls'},
       on_attach = on_attach
