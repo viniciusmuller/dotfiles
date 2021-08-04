@@ -21,38 +21,38 @@
         emacs-overlay.overlay
       ];
     in
-      {
-        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          modules = [
-            { nixpkgs.overlays = overlays; }
-            ./hosts/nixos
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.vini = { ... }: {
-                imports = [ nix-doom-emacs.hmModule ];
-              };
-            }
-          ];
-          specialArgs = {
-            inherit inputs system;
-          };
-        };
-
-        homeConfigurations = {
-          arch = home-manager.lib.homeManagerConfiguration {
-            configuration = ./hosts/arch;
-            system = "x86_64-linux";
-            homeDirectory = "/home/vini";
-            username = "vini";
-          };
-
-          wsl = home-manager.lib.homeManagerConfiguration {
-            configuration = ./hosts/wsl;
-            system = "x86_64-linux";
-            homeDirectory = "/home/vini";
-            username = "vini";
-          };
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules = [
+          { nixpkgs.overlays = overlays; }
+          ./hosts/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.users.vini = { ... }: {
+              imports = [ nix-doom-emacs.hmModule ];
+            };
+          }
+        ];
+        specialArgs = {
+          inherit inputs system;
         };
       };
+
+      homeConfigurations = {
+        arch = home-manager.lib.homeManagerConfiguration {
+          configuration = ./hosts/arch;
+          system = "x86_64-linux";
+          homeDirectory = "/home/vini";
+          username = "vini";
+        };
+
+        wsl = home-manager.lib.homeManagerConfiguration {
+          configuration = ./hosts/wsl;
+          system = "x86_64-linux";
+          homeDirectory = "/home/vini";
+          username = "vini";
+        };
+      };
+    };
 }

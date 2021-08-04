@@ -4,16 +4,16 @@ let
   mkLuaCode =
     (
       code:
-        ''
-          lua << EOF
-            ${code}
-          EOF
-        ''
+      ''
+        lua << EOF
+          ${code}
+        EOF
+      ''
     );
 
-    treesitter = {
-      plugin = pkgs.vimPlugins.nvim-treesitter;
-      config = mkLuaCode ''
+  treesitter = {
+    plugin = pkgs.vimPlugins.nvim-treesitter;
+    config = mkLuaCode ''
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true },
         indent = { enable = true },
@@ -31,8 +31,8 @@ let
           },
         }
       }
-      '';
-    };
+    '';
+  };
 
   ts-textobjects = pkgs.vimPlugins.nvim-treesitter-textobjects;
 in

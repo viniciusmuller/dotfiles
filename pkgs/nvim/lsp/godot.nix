@@ -5,11 +5,11 @@ let
   mkLuaCode =
     (
       code:
-        ''
-          lua << EOF
-            ${code}
-          EOF
-        ''
+      ''
+        lua << EOF
+          ${code}
+        EOF
+      ''
     );
 in
 {

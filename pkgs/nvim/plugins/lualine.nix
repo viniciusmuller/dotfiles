@@ -4,11 +4,11 @@ let
   mkLuaCode =
     (
       code:
-        ''
-          lua << EOF
-            ${code}
-          EOF
-        ''
+      ''
+        lua << EOF
+          ${code}
+        EOF
+      ''
     );
 
   # Lualine is currently broken (status bar shows blank even without any other

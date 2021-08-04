@@ -1,4 +1,4 @@
-{pkgs, home-manager, ...}:
+{ pkgs, home-manager, ... }:
 
 {
   security.wrappers.slock.source = "${pkgs.slock.out}/bin/slock";

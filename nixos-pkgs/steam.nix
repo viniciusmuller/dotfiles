@@ -1,4 +1,4 @@
-{pkgs, home-manager, ...}:
+{ pkgs, home-manager, ... }:
 
 {
   hardware.opengl.driSupport32Bit = true;
