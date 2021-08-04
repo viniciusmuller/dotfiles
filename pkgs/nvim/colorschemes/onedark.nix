@@ -10,5 +10,5 @@ let
   };
 in
 {
-  programs.neovim.plugins = [ pkgs.vimPlugins.lush-nvim onedark ];
+  programs.neovim.plugins = [ onedark ];
 }

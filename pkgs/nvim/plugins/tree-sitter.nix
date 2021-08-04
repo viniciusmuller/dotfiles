@@ -11,9 +11,9 @@ let
         ''
     );
 
-  treesitter = {
-    plugin = pkgs.vimPlugins.nvim-treesitter;
-    config = mkLuaCode ''
+    treesitter = {
+      plugin = pkgs.vimPlugins.nvim-treesitter;
+      config = mkLuaCode ''
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true },
         indent = { enable = true },
@@ -31,15 +31,15 @@ let
           },
         }
       }
-    '';
-  };
+      '';
+    };
 
-  treesitter-textobjects = pkgs.vimPlugins.nvim-treesitter-textobjects;
+  ts-textobjects = pkgs.vimPlugins.nvim-treesitter-textobjects;
 in
 {
   programs.neovim.plugins = [
     treesitter
-    treesitter-textobjects
+    ts-textobjects
   ];
 
   home.packages = with pkgs; [ tree-sitter gcc ];

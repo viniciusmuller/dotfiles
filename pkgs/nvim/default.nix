@@ -21,58 +21,55 @@ let
     v = "nvim";
     nv = "nvim";
   };
-
-  initVimAfter = ''
-  '';
 in
 {
   imports = [
-    # Language specific language server support
-    ./lsp/ccls.nix
-    ./lsp/clojure.nix
-    ./lsp/elixir.nix
-    ./lsp/godot.nix
-    ./lsp/haskell.nix
-    ./lsp/latex.nix
-    ./lsp/lua.nix
-    ./lsp/node.nix
-    ./lsp/python.nix
-    ./lsp/rnix.nix
-    ./lsp/rust.nix
+    # ---- Language server protocol ----
+    # ./plugins/lsp-signature.nix
+    # ./plugins/lspconfig.nix
+    # ./lsp/ccls.nix
+    # ./lsp/clojure.nix
+    # ./lsp/elixir.nix
+    # ./lsp/godot.nix
+    # ./lsp/haskell.nix
+    # ./lsp/latex.nix
+    # ./lsp/lua.nix
+    # ./lsp/node.nix
+    # ./lsp/python.nix
+    # ./lsp/rnix.nix
+    # ./lsp/rust.nix
 
     # Language specific plugins
     ./plugins/lfe.nix
 
     # ---- Plugins ----
 
-    # Language server protocol
-    ./plugins/lspconfig.nix
-    ./plugins/lsp-signature.nix
-
     # Utils
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/compe.nix
-    ./plugins/which-key.nix
-    ./plugins/neorg.nix
+    # ./plugins/which-key.nix
+    # ./plugins/neorg.nix
     ./plugins/trouble.nix
     ./plugins/autopairs.nix
     ./plugins/ultisnips.nix
-    ./plugins/telescope.nix
+    ./plugins/fzf-checkout.nix
+    ./plugins/fzf.nix
+    # ./plugins/telescope.nix
     ./plugins/projectionist.nix
-    ./plugins/indentline.nix
     ./plugins/vim-test.nix
-    ./plugins/vim-quickrun.nix
+    # ./plugins/vim-quickrun.nix
     ./plugins/togglelist.nix
-    ./plugins/startscreen.nix
+    # ./plugins/startscreen.nix
     ./plugins/closetag.nix
     ./plugins/visual-multi.nix
+    ./plugins/slash.nix
 
     ./plugins/conjure.nix
 
     # Debugging
-    ./plugins/dap.nix
-    ./plugins/dap-ui.nix
+    # ./plugins/dap.nix
+    # ./plugins/dap-ui.nix
 
     # Git
     ./plugins/gitsigns.nix
@@ -80,11 +77,12 @@ in
     ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/onedark.nix
-    ./plugins/lualine.nix
-    ./plugins/rainbow.nix
+    ./colorschemes/gruvbox-material.nix
+    # ./plugins/lualine.nix
+    # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
-    ./plugins/todo-comments.nix
+    # ./plugins/todo-comments.nix
+    ./plugins/indentline.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
@@ -98,7 +96,7 @@ in
       # Current elixir tree-sitter parser is very laggy when opening files
       vim-elixir
       # React / ts
-      vim-prettier
+      # vim-prettier
       # Utils
       nvim-web-devicons
       targets-vim
@@ -117,7 +115,7 @@ in
     extraConfig = ''
       set undofile
       set undolevels=1000
-      set number relativenumber
+      set number
       set expandtab tabstop=2 shiftwidth=2
       set cursorline
       set termguicolors
@@ -146,6 +144,9 @@ in
       set iskeyword+=^-
       " Don't auto line break when inserting text
       set formatoptions-=t
+
+      set listchars=tab:»\ ,space:·,eol:¬
+      set list
 
       noremap Y "+y
       noremap H ^

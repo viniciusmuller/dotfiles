@@ -41,6 +41,7 @@
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
+    bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`
     file # Show info about files
@@ -50,12 +51,13 @@
     # GUI
     element-desktop # Matrix client
     libnotify # notify-send
-    neovide # Neovim graphical frontend
+    # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
     # TODO: Use ../../pkgs/pomotroid.nix #
     gnome.pomodoro # Pomodoro app
+    nyxt # Crazy web browser
 
     # Unfree
     obsidian

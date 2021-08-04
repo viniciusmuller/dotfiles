@@ -3,18 +3,32 @@
 {
   programs.newsboat = {
     enable = true;
+    autoReload = true;
     urls = [
       {
         url = "https://hnrss.org/newest";
+        title = "Hacker News";
         tags = [ "linux" "technology" ];
       }
       {
         url = "https://www.reddit.com/r/neovim/.rss";
+        title = "/r/neovim";
         tags = [ "neovim" ];
       }
       {
         url = "https://www.reddit.com/r/linux/.rss";
+        title = "/r/linux";
         tags = [ "linux" ];
+      }
+      {
+        url = "https://www.reddit.com/r/NixOS/.rss";
+        title = "/r/NixOS";
+        tags = [ "linux" "nixos" ];
+      }
+      {
+        url = "https://www.reddit.com/r/elixir/.rss";
+        title = "/r/elixir";
+        tags = [ "programming" "elixir" ];
       }
     ];
     extraConfig = ''
@@ -32,13 +46,13 @@
       bind-key h quit
 
       # colorscheme
-      color listnormal        red black
-      color listnormal_unread red black
-      color listfocus         red black bold reverse
-      color listfocus_unread  red black bold reverse
-      color info              red black reverse bold
-      color background        red black
-      color article           red black
+      color listnormal        white black
+      color listnormal_unread white black
+      color listfocus         white black bold reverse
+      color listfocus_unread  white black bold reverse
+      color info              white black reverse bold
+      color background        white black
+      color article           white black
     '';
   };
 }
