@@ -1,10 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
+let
+  aliases = {rm = "trash-put";};
+in
 {
   home.packages = with pkgs; [
     trash-cli
   ];
 
-  programs.bash.shellAliases = { rm = "trash-put"; };
-  programs.zsh.shellAliases = { rm = "trash-put"; };
+  # inherit (prelude.mkShellAlias {rm = "trash-put";});
+  programs.zsh.shellAliases = aliases;
+  programs.bash.shellAliases = aliases;
+  programs.fish.shellAliases = aliases;
 }

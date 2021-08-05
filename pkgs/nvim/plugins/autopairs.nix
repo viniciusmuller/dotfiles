@@ -1,19 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   autopairs = {
     plugin = pkgs.vimPlugins.nvim-autopairs;
-    config = mkLuaCode ''
+    config = prelude.mkLuaCode ''
       require('nvim-autopairs').setup()
       require("nvim-autopairs.completion.compe").setup({
         map_cr = true, --  map <CR> on insert mode

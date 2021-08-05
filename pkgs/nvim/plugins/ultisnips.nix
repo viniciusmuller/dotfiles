@@ -13,6 +13,5 @@ in
 {
   programs.neovim.plugins = [
     ultisnips
-    pkgs.vimPlugins.vim-snippets
   ];
 }

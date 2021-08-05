@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  # TODO: Create helper function to add settings to all shells #
   aliases = {
     gw = "git worktree";
     gs = "git status";
@@ -9,7 +8,7 @@ let
     gl = "git log";
     gcl = "git clone";
     gco = "git checkout";
-    glog = "git log --oneline";
+    glg = "git log --oneline";
     gd = "git diff";
     gds = "git diff --staged";
     ga = "git add";
@@ -17,12 +16,18 @@ let
     grv = "git remote -v";
     gra = "git remote add";
     gp = "git push";
+    gpl = "git pull";
     gb = "git branch";
     grs = "git restore";
     gsh = "git show";
   };
 in
 {
+  # imports = [(prelude.mkShellAlias aliases)];
+  programs.zsh.shellAliases = aliases;
+  programs.bash.shellAliases = aliases;
+  programs.fish.shellAliases = aliases;
+
   home.packages = with pkgs; [
     pkgs.git-crypt
   ];
@@ -60,7 +65,4 @@ in
       };
     };
   };
-
-  programs.bash.shellAliases = aliases;
-  programs.zsh.shellAliases = aliases;
 }

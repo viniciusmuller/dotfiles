@@ -20,6 +20,7 @@
         suckless.overlays
         emacs-overlay.overlay
       ];
+
       prelude = {
         mkLuaCode =
           (code:
@@ -29,7 +30,11 @@
               EOF
             '');
 
-        mkShellAlias = (alias: alias);
+        mkShellAlias = (alias: {
+          programs.zsh.shellAliases = alias;
+          programs.bash.shellAliases = alias;
+          programs.fish.shellAliases = alias;
+        });
       };
     in
     {
@@ -42,6 +47,9 @@
           {
             home-manager.users.vini = { ... }: {
               imports = [ nix-doom-emacs.hmModule ];
+              _module.args = {
+                inherit prelude;
+              };
             };
           }
         ];

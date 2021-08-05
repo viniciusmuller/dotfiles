@@ -1,5 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, prelude, ... }:
 
+let
+  rebuild-alias = {
+    rb = "sudo nixos-rebuild switch --flake '.#nixos'";
+  };
+in
 {
   imports = [
     ../../profiles/ricing.nix
@@ -70,9 +75,9 @@
     # brogue
   ];
 
-  # TODO: Find a better place for this
-  programs.bash.shellAliases.rb = "sudo nixos-rebuild switch --flake '.#nixos'";
-  programs.zsh.shellAliases.rb = "sudo nixos-rebuild switch --flake '.#nixos'";
+  programs.zsh.shellAliases = rebuild-alias;
+  programs.bash.shellAliases = rebuild-alias;
+  programs.fish.shellAliases = rebuild-alias;
 
   nixpkgs.config.allowUnfree = true;
 

@@ -46,47 +46,47 @@ in
     # ---- Plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
-    # ./plugins/nvim-tree.nix
-    # ./plugins/compe.nix
-    # # ./plugins/which-key.nix
-    # # ./plugins/neorg.nix
-    # ./plugins/trouble.nix
-    # ./plugins/autopairs.nix
-    # ./plugins/ultisnips.nix
+    ./plugins/tree-sitter.nix
+    ./plugins/nvim-tree.nix
+    ./plugins/compe.nix
+    # ./plugins/which-key.nix
+    # ./plugins/neorg.nix
+    ./plugins/trouble.nix
+    ./plugins/autopairs.nix
+    ./plugins/ultisnips.nix
     ./plugins/fzf-checkout.nix
     ./plugins/fzf.nix
-    # # ./plugins/telescope.nix
-    # ./plugins/projectionist.nix
-    # ./plugins/vim-test.nix
-    # # ./plugins/vim-quickrun.nix
-    # ./plugins/togglelist.nix
-    # # ./plugins/startscreen.nix
-    # ./plugins/closetag.nix
-    # ./plugins/visual-multi.nix
-    # ./plugins/slash.nix
+    # ./plugins/telescope.nix
+    ./plugins/projectionist.nix
+    ./plugins/vim-test.nix
+    # ./plugins/vim-quickrun.nix
+    ./plugins/togglelist.nix
+    # ./plugins/startscreen.nix
+    ./plugins/closetag.nix
+    ./plugins/visual-multi.nix
+    ./plugins/slash.nix
 
-    # ./plugins/conjure.nix
+    ./plugins/conjure.nix
 
-    # # Debugging
-    # # ./plugins/dap.nix
-    # # ./plugins/dap-ui.nix
+    # Debugging
+    # ./plugins/dap.nix
+    # ./plugins/dap-ui.nix
 
-    # # Git
-    # ./plugins/gitsigns.nix
-    # ./plugins/fugitive.nix
-    # ./plugins/git-blame.nix
+    # Git
+    ./plugins/gitsigns.nix
+    ./plugins/fugitive.nix
+    ./plugins/git-blame.nix
 
-    # # Aesthetic
+    # Aesthetic
     ./colorschemes/dracula.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
-    # ./plugins/lualine.nix
+    ./plugins/lualine.nix
 
-    # # ./plugins/rainbow.nix
-    # ./plugins/colorizer.nix
-    # # ./plugins/todo-comments.nix
-    # ./plugins/indentline.nix
+    # ./plugins/rainbow.nix
+    ./plugins/colorizer.nix
+    # ./plugins/todo-comments.nix
+    ./plugins/indentline.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
@@ -104,6 +104,7 @@ in
       # Utils
       nvim-web-devicons
       targets-vim
+      vim-snippets
       vim-commentary
       vim-repeat
       vim-sensible
@@ -119,7 +120,7 @@ in
     extraConfig = ''
       set undofile
       set undolevels=1000
-      set number
+      set number relativenumber
       set expandtab tabstop=2 shiftwidth=2
       set cursorline
       set termguicolors
@@ -168,6 +169,12 @@ in
       nnoremap ]b <cmd>bnext<cr>
       nnoremap [b <cmd>bprev<cr>
 
+      " Moving text
+      vnoremap J :m '>1<cr>gv=gv
+      vnoremap K :m '<-2<cr>gv=gv
+      nnoremap ]a <cmd>m-2<cr>
+      nnoremap [a <cmd>m+1<cr>
+
       " Location lists
       nnoremap [w <cmd>lprev<cr>
       nnoremap ]w <cmd>lnext<cr>
@@ -196,6 +203,8 @@ in
 
   };
 
+  # inherit (prelude.mkShellAlias aliases);
   programs.bash.shellAliases = aliases;
   programs.zsh.shellAliases = aliases;
+  programs.fish.shellAliases = aliases;
 }

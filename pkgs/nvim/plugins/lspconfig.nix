@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   lspconfig = {
     plugin = pkgs.vimPlugins.nvim-lspconfig;
     config = ''
@@ -20,7 +10,7 @@ let
       " sign define LspDiagnosticsSignInformation text= texthl=LspDiagnosticsSignInformation linehl= numhl=
       " sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
-      ${mkLuaCode ''
+      ${prelude.mkLuaCode ''
 
         -- Disable virtual text diagnostics
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

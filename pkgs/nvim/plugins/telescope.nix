@@ -1,20 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   telescope = {
     plugin = pkgs.vimPlugins.telescope-nvim;
     config = ''
-        ${mkLuaCode ''
+        ${prelude.mkLuaCode ''
         local actions = require('telescope.actions')
         require('telescope').setup({
           defaults = {

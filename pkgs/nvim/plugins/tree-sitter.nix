@@ -1,19 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
-  mkLuaCode =
-    (
-      code:
-      ''
-        lua << EOF
-          ${code}
-        EOF
-      ''
-    );
-
   treesitter = {
     plugin = pkgs.vimPlugins.nvim-treesitter;
-    config = mkLuaCode ''
+    config = prelude.mkLuaCode ''
       require('nvim-treesitter.configs').setup {
         highlight = { enable = true },
         indent = { enable = true },

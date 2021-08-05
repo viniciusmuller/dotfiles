@@ -17,8 +17,6 @@ home-manager switch --flake ./dotfiles#<configName>
 You can check the Neovim keybindings [here](./pkgs/nvim/README.md)
 
 # Structure
-- `.vim` -> Old dotfiles that will be translated into nix.
-- `.config` -> Old dotfiles that will be translated into nix.
 - `pkgs` -> Packages for home-manager.
 - `nixos-pkgs` -> Packages from the `pkgs` directory wrapped to work with nixos (E.g: Adds the "docker" group to an user)
 - `desktop` -> Wrappers around `pkgs` to build different desktop environments.
