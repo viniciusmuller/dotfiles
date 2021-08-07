@@ -65,6 +65,7 @@
           system = "x86_64-linux";
           homeDirectory = "/home/vini";
           username = "vini";
+          extraSpecialArgs = {inherit prelude;};
         };
 
         wsl = home-manager.lib.homeManagerConfiguration {
@@ -72,6 +73,7 @@
           system = "x86_64-linux";
           homeDirectory = "/home/vini";
           username = "vini";
+          extraSpecialArgs = {inherit prelude;};
         };
       };
     };
