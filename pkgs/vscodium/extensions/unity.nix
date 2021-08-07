@@ -4,7 +4,8 @@
   programs.vscode = {
     extensions = with pkgs.vscode-extensions; [
       ms-dotnettools.csharp
-      ionide.ionide-fsharp
     ];
   };
+
+  home.packages = [ pkgs.dotnet-sdk_5 ];
 }

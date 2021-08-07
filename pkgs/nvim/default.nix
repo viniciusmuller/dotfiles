@@ -26,9 +26,10 @@ in
 {
   imports = [
     # ---- Language server protocol ----
-    # ./plugins/lsp-signature.nix
-    # ./plugins/lspconfig.nix
-    # ./lsp/ccls.nix
+    ./plugins/lsp-signature.nix
+    ./plugins/lspconfig.nix
+    ./lsp/ccls.nix
+    ./lsp/omnisharp.nix
     # ./lsp/clojure.nix
     # ./lsp/elixir.nix
     # ./lsp/godot.nix
@@ -37,7 +38,7 @@ in
     # ./lsp/lua.nix
     # ./lsp/node.nix
     # ./lsp/python.nix
-    # ./lsp/rnix.nix
+    ./lsp/rnix.nix
     # ./lsp/rust.nix
 
     # Language specific plugins
@@ -200,7 +201,6 @@ in
         au FileType help wincmd L
       augroup end
     '';
-
   };
 
   # inherit (prelude.mkShellAlias aliases);

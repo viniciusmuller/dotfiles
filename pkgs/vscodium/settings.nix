@@ -60,7 +60,7 @@ in
   "editor.minimap.enabled" = false;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
-  "editor.formatOnSave" = true;
+  # "editor.formatOnSave" = true;
   "editor.suggest.localityBonus" = true;
 
   # ---- Files ----
@@ -80,7 +80,7 @@ in
   "editor.fontLigatures" = true;
 
   # ---- Aesthetics/workbench ----
-  "workbench.colorTheme" = "One Dark Pro";
+  "workbench.colorTheme" = "GitHub Dark";
   "workbench.iconTheme" = "material-icon-theme";
   "workbench.startupEditor" = "newUntitledFile";
 

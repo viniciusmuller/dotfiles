@@ -30,7 +30,7 @@ in
     ../../pkgs/newsboat.nix # RSS Reader
 
     # GUI
-    # ../../pkgs/vscodium # Text editor
+    ../../pkgs/vscodium # Text editor
     # ../../pkgs/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
@@ -42,6 +42,7 @@ in
 
   home.packages = with pkgs; [
     # CLI
+    neovim-remote
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder

@@ -17,6 +17,7 @@ in
     ./extensions/rust.nix
     ./extensions/elixir.nix
     ./extensions/fsharp.nix
+    ./extensions/unity.nix
     ./extensions/latex.nix
     ./extensions/haskell.nix
     ./extensions/nix.nix
@@ -34,7 +35,9 @@ in
     extensions = with pkgs.vscode-extensions; [
       # Aesthetics
       coenraads.bracket-pair-colorizer-2
-      zhuangtongfa.material-theme
+
+      # zhuangtongfa.material-theme
+      github.github-vscode-theme
       pkief.material-icon-theme
 
       # Utils
