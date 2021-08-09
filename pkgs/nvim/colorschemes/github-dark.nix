@@ -1,24 +1,24 @@
 { pkgs, ... }:
 
 let
-  vim-github-dark = {
+  github-dark = {
     plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "vim-github-dark";
+      name = "github-nvim-theme";
       version = "2021-07-28";
       src = pkgs.fetchFromGitHub {
-        owner = "vv9k";
-        repo = "vim-github-dark";
-        rev = "c3eca592f8f6ed9fb7c0cebe1ad8be6c63775571";
-        sha256 = "1ffyq0pkkr9pbzhwpjf8k5q242mgz9l8zs4i4pgg4nikl5i7j0aw";
+        owner = "projekt0n";
+        repo = "github-nvim-theme";
+        rev = "347b2938906647ee75fe9bacf46f6d5488c250ac";
+        sha256 = "sha256-xZrR8n2Hhqz4HwXtvZuvbR7eI/o4A8TvKLBdEKxIoMA=";
       };
-      meta.homepage = "https://github.com/vv9k/vim-github-dark";
+      meta.homepage = "https://github.com/projekt0n/github-nvim-theme";
+
+      postPatch = "rm Makefile";
     };
 
-    config = ''
-      colorscheme ghdark
-    '';
+    config = "lua require('github-theme').setup()";
   };
 in
 {
-  programs.neovim.plugins = [ vim-github-dark ];
+  programs.neovim.plugins = [ github-dark ];
 }

@@ -31,7 +31,7 @@ in
     ./lsp/ccls.nix
     ./lsp/omnisharp.nix
     # ./lsp/clojure.nix
-    # ./lsp/elixir.nix
+    ./lsp/elixir.nix
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
     # ./lsp/latex.nix
@@ -39,7 +39,7 @@ in
     # ./lsp/node.nix
     # ./lsp/python.nix
     ./lsp/rnix.nix
-    # ./lsp/rust.nix
+    ./lsp/rust.nix
 
     # Language specific plugins
     ./plugins/lfe.nix
@@ -54,7 +54,8 @@ in
     # ./plugins/neorg.nix
     ./plugins/trouble.nix
     ./plugins/autopairs.nix
-    ./plugins/ultisnips.nix
+    # ./plugins/ultisnips.nix
+    # ./plugins/vsnip.nix
     ./plugins/fzf-checkout.nix
     ./plugins/fzf.nix
     # ./plugins/telescope.nix
@@ -79,7 +80,7 @@ in
     ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/dracula.nix
+    ./colorschemes/github-dark.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     ./plugins/lualine.nix
@@ -110,6 +111,8 @@ in
       vim-repeat
       vim-sensible
       vim-surround
+      vim-vsnip
+      friendly-snippets
       vim-tmux-navigator
     ];
 

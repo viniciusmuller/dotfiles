@@ -12,6 +12,7 @@ let
       nnoremap <leader>,   <cmd>Buffers<cr>
       nnoremap <leader>.   <cmd>GFiles<cr>
       nnoremap <leader>;   <cmd>Rg<cr>
+      nnoremap <leader>/   <cmd>Lines<cr>
       nnoremap <leader>ff  <cmd>Files<cr>
       nnoremap <leader>fc  <cmd>Commits<cr>
       nnoremap <leader>fh  <cmd>Helptags<cr>

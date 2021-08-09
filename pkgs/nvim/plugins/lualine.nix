@@ -7,7 +7,7 @@ let
       require('lualine').setup {
         options = {
           icons_enabled = true,
-          theme = 'auto',
+          theme = 'github',
           component_separators = {'', ''},
           section_separators = {'', ''},
           disabled_filetypes = {}
