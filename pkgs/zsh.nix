@@ -79,6 +79,7 @@ in
       b = "cd -";
       se = "sudoedit";
       ns = "nix-shell -p";
+      nq = "nix search nixpkgs";
     };
 
     sessionVariables = {

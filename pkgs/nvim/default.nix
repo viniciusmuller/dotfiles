@@ -1,4 +1,3 @@
-# This already uses `prelude`
 { config, pkgs, prelude, ... }:
 
 with pkgs.vimPlugins;
@@ -10,6 +9,49 @@ let
     set statusline+=%= " Left and right separator
     set statusline+=%y\ " Filetype
     set statusline+=%l:%c\ %p%%\ " Line and column
+  '';
+
+  my-noplugin-directoryexplorer = ''
+    let g:netrw_banner = 0
+    let g:netrw_winsize = 20
+    let g:netrw_liststyle = 3
+    let g:netrw_altv = 1
+    let g:netrw_bufsettings = 'relativenumber'
+
+    let g:NetrwIsOpen=0
+    function! ToggleNetrw()
+        if g:NetrwIsOpen
+            let i = bufnr("$")
+            while (i >= 1)
+                if (getbufvar(i, "&filetype") == "netrw")
+                    silent exe "bwipeout " . i
+                endif
+                let i-=1
+            endwhile
+            let g:NetrwIsOpen=0
+        else
+            let g:NetrwIsOpen=1
+            silent Lexplore
+        endif
+    endfunction
+
+    " Add your own mapping. For example:
+    nnoremap tn <cmd>call ToggleNetrw()<cr>
+
+    augroup netrw_mappings
+      autocmd filetype netrw call NetrwMapping()
+    augroup END
+
+    function! CreateInPreview()
+      let l:filename = input("Please enter filename: ")
+      execute 'vsp ' . b:netrw_curdir.'/'.l:filename
+    endf
+
+    function! NetrwMapping()
+      nnoremap <buffer> tn :call ToggleNetrw()<cr>
+      nnoremap <buffer> % :call CreateInPreview()<cr>
+      nnoremap <buffer> <c-l> <c-w>l
+    endfunction
   '';
 
   nvim-spell-pt = builtins.fetchurl {
@@ -48,7 +90,7 @@ in
 
     # Utils
     ./plugins/tree-sitter.nix
-    ./plugins/nvim-tree.nix
+    # ./plugins/nvim-tree.nix
     ./plugins/compe.nix
     # ./plugins/which-key.nix
     # ./plugins/neorg.nix
@@ -77,13 +119,13 @@ in
     # Git
     ./plugins/gitsigns.nix
     ./plugins/fugitive.nix
-    ./plugins/git-blame.nix
+    # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/github-dark.nix
+    ./colorschemes/gruvbox-material.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
-    ./plugins/lualine.nix
+    # ./plugins/lualine.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
@@ -111,6 +153,7 @@ in
       vim-repeat
       vim-sensible
       vim-surround
+      vim-splitjoin
       vim-vsnip
       friendly-snippets
       vim-tmux-navigator
@@ -122,6 +165,9 @@ in
     '';
 
     extraConfig = ''
+      ${my-noplugin-directoryexplorer}
+      ${my-noplugin-statusline}
+
       set undofile
       set undolevels=1000
       set number relativenumber

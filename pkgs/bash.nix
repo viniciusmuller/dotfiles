@@ -105,6 +105,7 @@ in
       b = "cd -";
       se = "sudoedit";
       ns = "nix-shell -p";
+      nq = "nix search nixpkgs";
     };
 
     # TODO: These don't get loaded when using a display manager.

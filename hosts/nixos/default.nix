@@ -12,7 +12,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ../../nixos-pkgs/virtualbox.nix
-      ../../nixos-pkgs/manpages.nix
+      # ../../nixos-pkgs/manpages.nix
       ../../nixos-pkgs/docker.nix
       # ../../nixos-pkgs/steam.nix
       ../../nixos-pkgs/slock.nix
