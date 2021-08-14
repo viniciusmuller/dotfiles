@@ -26,23 +26,25 @@ in
   programs.zsh = {
     enable = true;
     enableSyntaxHighlighting = true;
+    enableCompletion = false;
     autocd = true;
 
     prezto = {
       enable = true;
+      caseSensitive = false;
 
       pmodules = [
-        "environment"
-        "terminal"
+        # "environment"
+        # "terminal"
         "editor"
         "history"
         "directory"
-        "spectrum"
+        # "spectrum"
         "utility"
         "completion"
         "syntax-highlighting"
         "prompt"
-        "tmux"
+        # "tmux"
         "git"
       ];
 

@@ -76,7 +76,7 @@ in
     ./lsp/elixir.nix
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
-    # ./lsp/latex.nix
+    ./lsp/latex.nix
     # ./lsp/lua.nix
     # ./lsp/node.nix
     # ./lsp/python.nix
@@ -90,7 +90,7 @@ in
 
     # Utils
     ./plugins/tree-sitter.nix
-    # ./plugins/nvim-tree.nix
+    ./plugins/nvim-tree.nix
     ./plugins/compe.nix
     # ./plugins/which-key.nix
     # ./plugins/neorg.nix
@@ -122,7 +122,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/gruvbox-material.nix
+    ./colorschemes/gruvbox.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     # ./plugins/lualine.nix
@@ -130,7 +130,7 @@ in
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/todo-comments.nix
-    ./plugins/indentline.nix
+    # ./plugins/indentline.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
@@ -143,6 +143,7 @@ in
       vim-nix # Used mainly for filetype detection
       # Current elixir tree-sitter parser is very laggy when opening files
       vim-elixir
+      undotree
       # React / ts
       # vim-prettier
       # Utils
@@ -153,7 +154,6 @@ in
       vim-repeat
       vim-sensible
       vim-surround
-      vim-splitjoin
       vim-vsnip
       friendly-snippets
       vim-tmux-navigator
@@ -165,7 +165,6 @@ in
     '';
 
     extraConfig = ''
-      ${my-noplugin-directoryexplorer}
       ${my-noplugin-statusline}
 
       set undofile
@@ -206,7 +205,9 @@ in
       noremap Y "+y
       noremap H ^
       noremap L $
+      noremap M `
       nnoremap Q @@
+
       nnoremap <C-q> <C-w>q
       nnoremap <C-s> <cmd>update<cr>
 
