@@ -68,56 +68,58 @@ in
 {
   imports = [
     # ---- Language server protocol ----
-    ./plugins/lsp-signature.nix
+    # ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    ./lsp/ccls.nix
+    # ./lsp/ccls.nix
     ./lsp/omnisharp.nix
     # ./lsp/clojure.nix
-    ./lsp/elixir.nix
+    # ./lsp/elixir.nix
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
-    ./lsp/latex.nix
+    # ./lsp/latex.nix
     # ./lsp/lua.nix
     # ./lsp/node.nix
     # ./lsp/python.nix
-    ./lsp/rnix.nix
-    ./lsp/rust.nix
+    # ./lsp/rnix.nix
+    # ./lsp/rust.nix
 
     # Language specific plugins
-    ./plugins/lfe.nix
+    # ./plugins/lfe.nix
 
     # ---- Plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
+    # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/compe.nix
     # ./plugins/which-key.nix
     # ./plugins/neorg.nix
-    ./plugins/trouble.nix
+    # ./plugins/trouble.nix
     ./plugins/autopairs.nix
     # ./plugins/ultisnips.nix
-    # ./plugins/vsnip.nix
+    ./plugins/vsnip.nix
     ./plugins/fzf-checkout.nix
+    ./plugins/fzf-session.nix
     ./plugins/fzf.nix
-    # ./plugins/telescope.nix
     ./plugins/projectionist.nix
     ./plugins/vim-test.nix
-    # ./plugins/vim-quickrun.nix
     ./plugins/togglelist.nix
-    # ./plugins/startscreen.nix
     ./plugins/closetag.nix
-    ./plugins/visual-multi.nix
+    # ./plugins/visual-multi.nix
     ./plugins/slash.nix
 
-    ./plugins/conjure.nix
+    # Seems interesting but are currently broken with nix
+    # ./plugins/coq.nix
+    # ./plugins/chadtree.nix
+
+    # ./plugins/conjure.nix
 
     # Debugging
     # ./plugins/dap.nix
     # ./plugins/dap-ui.nix
 
     # Git
-    ./plugins/gitsigns.nix
+    # ./plugins/gitsigns.nix
     ./plugins/fugitive.nix
     # ./plugins/git-blame.nix
 
@@ -143,7 +145,7 @@ in
       vim-nix # Used mainly for filetype detection
       # Current elixir tree-sitter parser is very laggy when opening files
       vim-elixir
-      undotree
+      # undotree
       # React / ts
       # vim-prettier
       # Utils
@@ -185,6 +187,7 @@ in
       set linebreak
       set autoindent
       set smartindent
+      set autowrite
       set splitright
       set scrolloff=5
       set lazyredraw
@@ -205,7 +208,6 @@ in
       noremap Y "+y
       noremap H ^
       noremap L $
-      noremap M `
       nnoremap Q @@
 
       nnoremap <C-q> <C-w>q
@@ -219,12 +221,6 @@ in
 
       nnoremap ]b <cmd>bnext<cr>
       nnoremap [b <cmd>bprev<cr>
-
-      " Moving text
-      vnoremap J :m '>1<cr>gv=gv
-      vnoremap K :m '<-2<cr>gv=gv
-      nnoremap ]a <cmd>m-2<cr>
-      nnoremap [a <cmd>m+1<cr>
 
       " Location lists
       nnoremap [w <cmd>lprev<cr>
