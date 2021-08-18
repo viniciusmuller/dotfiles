@@ -107,6 +107,7 @@ in
     ./plugins/closetag.nix
     # ./plugins/visual-multi.nix
     ./plugins/slash.nix
+    ./plugins/tagalong.nix
 
     # Seems interesting but are currently broken with nix
     # ./plugins/coq.nix
@@ -119,15 +120,15 @@ in
     # ./plugins/dap-ui.nix
 
     # Git
-    # ./plugins/gitsigns.nix
+    ./plugins/gitsigns.nix
     ./plugins/fugitive.nix
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/gruvbox.nix
+    ./colorschemes/gruvbox-material.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
-    # ./plugins/lualine.nix
+    ./plugins/lualine.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
@@ -141,15 +142,10 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      # Language specific
-      vim-nix # Used mainly for filetype detection
-      # Current elixir tree-sitter parser is very laggy when opening files
-      vim-elixir
-      # undotree
-      # React / ts
       # vim-prettier
-      # Utils
+      # undotree
       nvim-web-devicons
+      vim-polyglot
       targets-vim
       vim-snippets
       vim-commentary
@@ -157,6 +153,7 @@ in
       vim-sensible
       vim-surround
       vim-vsnip
+      emmet-vim
       friendly-snippets
       vim-tmux-navigator
     ];
@@ -167,9 +164,8 @@ in
     '';
 
     extraConfig = ''
-      ${my-noplugin-statusline}
-
       set undofile
+      set noshowmode
       set undolevels=1000
       set number relativenumber
       set expandtab tabstop=2 shiftwidth=2
@@ -198,10 +194,10 @@ in
       set pumwidth=25
       set updatetime=400
       " Some plugin is removing `-` from the separators, for now lets just get it back.
-      set iskeyword+=^-
+      set iskeyword-=-
       " Don't auto line break when inserting text
       set formatoptions-=t
-
+      set shortmess+=I
       set listchars=tab:»\ ,space:·,eol:¬
       set list
 
@@ -219,9 +215,6 @@ in
       nnoremap [Q <cmd>cfirst<cr>
       nnoremap ]Q <cmd>clast<cr>
 
-      nnoremap ]b <cmd>bnext<cr>
-      nnoremap [b <cmd>bprev<cr>
-
       " Location lists
       nnoremap [w <cmd>lprev<cr>
       nnoremap ]w <cmd>lnext<cr>
@@ -231,10 +224,8 @@ in
       " Tabs
       nnoremap <leader>to :tabnew<space>
       nnoremap <leader>tq :tabclose<cr>
-      nnoremap <silent><leader>t< :execute "tabmove" tabpagenr() - 2 <CR>
-      nnoremap <silent><leader>t> :execute "tabmove" tabpagenr() + 1 <CR>
-
-      " nnoremap <leader>ot <cmd>vsplit <bar> terminal<cr>
+      nnoremap <silent>g< :tabmove tabpagenr() - 2<cr>
+      nnoremap <silent>g> :tabmove tabpagenr() + 1<cr>
 
       nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
       nnoremap <silent> <leader>vq <cmd>quitall<cr>

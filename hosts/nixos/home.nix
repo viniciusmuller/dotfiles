@@ -35,6 +35,7 @@ in
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
+    ../../pkgs/remnote.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress.nix

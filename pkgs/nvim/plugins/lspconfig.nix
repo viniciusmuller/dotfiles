@@ -55,7 +55,6 @@ let
           buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<cr>', opts)
           buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
           buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-          buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
           buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
           -- This line requires trouble-nvim
@@ -64,6 +63,7 @@ let
           buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
           buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
         end
       ''}
     '';

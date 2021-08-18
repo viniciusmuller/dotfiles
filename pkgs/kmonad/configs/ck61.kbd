@@ -50,12 +50,34 @@
   _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
   _    _    up   _    _    _    _    _    _    _    _    ssrq @pau _
   _    left down rght _    _    _    _    ins  home pgup pgdn _
-  _    _    _    _    _    _    _    _    del  end  _    _
+  _    _    _    _    _    _    _    _    del  end  _    @mat
   _    _    _              _              _    _    @bas
+)
+
+(deflayer math
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @ℚ   _    @≡   @ℝ   _    _    _    @⇒   @∨   @π   _    _    _
+  _    @∧   _    _    @∀   _    _    _    _    @λ   _    _    _
+  _    @ℤ   _    _    _    _    @¬   _    _    _    _    _
+  _    _    _              _              _    _    _
 )
 
 (defalias
   pau pause
   bas (layer-toggle base)
   ext (layer-toggle extra)
+  mat (layer-toggle math)
+
+  ;; Math symbols
+  λ #(ralt l b)
+  ∧ #(ralt a d)
+  ∨ #(ralt o r)
+  ¬ #(ralt n t)
+  ⇒ #(ralt i p)
+  ≡ #(ralt e q)
+  ∀ #(ralt f r)
+  ℤ #(ralt i t)
+  ℚ #(ralt r t)
+  ℝ #(ralt r l)
+  π #(ralt p i)
 )

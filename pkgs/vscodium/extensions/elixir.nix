@@ -10,7 +10,7 @@ let
 in
 {
   programs.vscode.extensions = with vscode-extensions; [
-    jakebecker.elixir-ls
+    elixir-lsp.vscode-elixir-ls
   ] ++ vscode-utils.extensionsFromVscodeMarketplace [
     {
       name = "vscode-elixir-snippets";
