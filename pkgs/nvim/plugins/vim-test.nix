@@ -4,7 +4,7 @@ let
   vim-test = {
     plugin = pkgs.vimPlugins.vim-test;
     config = ''
-      let test#strategy = "neovim"
+      let test#strategy = "make"
 
       nnoremap <leader>ts :TestSuite<cr>
       nnoremap <leader>tn :TestNearest<cr>

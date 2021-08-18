@@ -72,6 +72,7 @@ in
     ./plugins/lspconfig.nix
     # ./lsp/ccls.nix
     ./lsp/omnisharp.nix
+    ./lsp/go.nix
     # ./lsp/clojure.nix
     # ./lsp/elixir.nix
     # ./lsp/godot.nix
@@ -101,7 +102,7 @@ in
     ./plugins/fzf-checkout.nix
     ./plugins/fzf-session.nix
     ./plugins/fzf.nix
-    ./plugins/projectionist.nix
+    # ./plugins/projectionist.nix
     ./plugins/vim-test.nix
     ./plugins/togglelist.nix
     ./plugins/closetag.nix
@@ -121,7 +122,7 @@ in
 
     # Git
     ./plugins/gitsigns.nix
-    ./plugins/fugitive.nix
+    # ./plugins/fugitive.nix
     # ./plugins/git-blame.nix
 
     # Aesthetic
@@ -129,9 +130,11 @@ in
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     ./plugins/lualine.nix
+    ./plugins/vim-go.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
+    ./plugins/orgmode-nvim.nix
     # ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
   ];
@@ -209,15 +212,19 @@ in
       nnoremap <C-q> <C-w>q
       nnoremap <C-s> <cmd>update<cr>
 
-      " Quickfix lists
-      nnoremap [q <cmd>cprev<cr>
-      nnoremap ]q <cmd>cnext<cr>
+      " -- Quickfix/Location lists --
+      command Cnext try | cnext | catch | cfirst | catch | endtry
+      command Cprev try | cprev | catch | clast  | catch | endtry
+      command Lnext try | lnext | catch | lfirst | catch | endtry
+      command Lprev try | lprev | catch | llast  | catch | endtry
+
+      nnoremap [q <cmd>Cprev<cr>
+      nnoremap ]q <cmd>Cnext<cr>
       nnoremap [Q <cmd>cfirst<cr>
       nnoremap ]Q <cmd>clast<cr>
 
-      " Location lists
-      nnoremap [w <cmd>lprev<cr>
-      nnoremap ]w <cmd>lnext<cr>
+      nnoremap [w <cmd>Lprev<cr>
+      nnoremap ]w <cmd>Lnext<cr>
       nnoremap [W <cmd>lfirst<cr>
       nnoremap ]W <cmd>llast<cr>
 

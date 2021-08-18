@@ -49,7 +49,7 @@ in
     delta = {
       enable = true;
       options = {
-        features = "side-by-side line-numbers decorations";
+        features = "line-numbers decorations";
         syntax-theme = "gruvbox-dark";
         plus-style = ''syntax "#003800"'';
         minus-style = ''syntax "#3f0001"'';

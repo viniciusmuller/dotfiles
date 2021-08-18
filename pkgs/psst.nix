@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   # TODO: This boi doesn't work
@@ -13,15 +13,10 @@ let
     deepClone = true;
   };
 
-  # libssl
-  buildInputs = with pkgs; [ dbus gcc glib cairo ];
+  buildInputs = with pkgs; [ dbus gcc glib cairo pango libvorbis vorbis-tools atk gtk3 gdk-pixbuf ];
   nativeBuildInputs = with pkgs; [ pkg-config ];
   cargoSha256 = "sha256-c9813Y4cSEkgTXvGPD4kAHK+lWqFXOePqr786p6DRbg=";
-
-  installPhase = ''
-    git submodule --init --recursive
-  '';
-};
+  };
 in
 {
   home.packages = [ psst ];

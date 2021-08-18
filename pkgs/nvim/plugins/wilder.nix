@@ -2,17 +2,7 @@
 
 let
   wilder = {
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "wilder-nvim";
-      version = "2021-07-31";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "gelguy";
-        repo = "wilder.nvim";
-        rev = "3b8bcae3c3c1ec2c312ed9065935c9fc3940bcb3";
-        sha256 = "sha256-hyK4zQzpu9Buhyie/hh0f37I8L1QfBVD0+uXSgoikLg=";
-      };
-    };
+    plugin = pkgs.vimPlugins.wilder-nvim;
     config = ''
       call wilder#enable_cmdline_enter()
 

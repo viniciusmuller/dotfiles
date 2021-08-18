@@ -3,7 +3,7 @@
 let
   projectionist = {
     plugin = pkgs.vimPlugins.vim-projectionist;
-    config = "nnoremap <silent> <leader>pa :A<cr>";
+    config = "nnoremap <leader>pa <cmd>A<cr>";
   };
 in
 {

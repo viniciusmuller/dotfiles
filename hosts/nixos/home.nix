@@ -18,15 +18,18 @@ in
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer
     ../../pkgs/fzf.nix # Fuzzy finder
+    ../../pkgs/bat.nix # File previewer
     ../../pkgs/exa.nix # ls alternative
+    ../../pkgs/fcp.nix # cp alternative
+    ../../pkgs/newsboat.nix # RSS Reader
     ../../pkgs/trash-cli.nix # Safer rm
+    ../../pkgs/lazygit.nix # Git TUI client
     ../../pkgs/direnv.nix
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
     ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
-    ../../pkgs/bat.nix # File previewer
     ../../pkgs/newsboat.nix # RSS Reader
 
     # GUI
@@ -36,6 +39,7 @@ in
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
     ../../pkgs/remnote.nix
+    ../../pkgs/psst.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress.nix
@@ -43,7 +47,6 @@ in
 
   home.packages = with pkgs; [
     # CLI
-    neovim-remote
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
