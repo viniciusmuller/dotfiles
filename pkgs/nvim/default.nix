@@ -82,10 +82,11 @@ in
     # ./lsp/node.nix
     # ./lsp/python.nix
     # ./lsp/rnix.nix
-    # ./lsp/rust.nix
+    ./lsp/rust.nix
 
     # ---- Language specific ----
     ./languages/vim-go.nix
+    ./languages/rust-vim.nix
 
     # ---- General plugins ----
 
@@ -109,6 +110,7 @@ in
     # ./plugins/visual-multi.nix
     ./plugins/slash.nix
     ./plugins/tagalong.nix
+    ./plugins/neomake.nix
 
     # Seems interesting but are currently broken with nix
     # ./plugins/coq.nix
