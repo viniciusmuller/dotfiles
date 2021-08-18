@@ -7,5 +7,7 @@
 
     nnoremap <leader>pa :GoAlternate<cr>
     nnoremap <leader>pl :GOLINT<cr>
+    nnoremap <leader>pb :GoBuild<cr>
+    nnoremap <leader>pr :GoRun<cr>
   '';
 }

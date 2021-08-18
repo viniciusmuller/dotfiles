@@ -84,10 +84,10 @@ in
     # ./lsp/rnix.nix
     # ./lsp/rust.nix
 
-    # Language specific plugins
-    # ./plugins/lfe.nix
+    # ---- Language specific ----
+    ./languages/vim-go.nix
 
-    # ---- Plugins ----
+    # ---- General plugins ----
 
     # Utils
     # ./plugins/tree-sitter.nix
@@ -130,7 +130,6 @@ in
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     ./plugins/lualine.nix
-    ./plugins/vim-go.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix

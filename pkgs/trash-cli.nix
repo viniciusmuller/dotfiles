@@ -1,7 +1,7 @@
 { pkgs, prelude, ... }:
 
 let
-  aliases = {rm = "trash-put";};
+  aliases = { rm = "trash-put"; };
 in
 {
   home.packages = with pkgs; [
