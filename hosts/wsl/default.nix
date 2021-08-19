@@ -18,7 +18,7 @@ in
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/direnv.nix
     ../../pkgs/zsh.nix
-    ../../pkgs/nvim
+    ../../pkgs/editors/nvim
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer

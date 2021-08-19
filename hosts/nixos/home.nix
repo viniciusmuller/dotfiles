@@ -13,7 +13,7 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
-    ../../pkgs/nvim # Modal text editor
+    ../../pkgs/editors/nvim # Modal text editor
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer
@@ -33,8 +33,8 @@ in
     ../../pkgs/newsboat.nix # RSS Reader
 
     # GUI
-    ../../pkgs/vscodium # Text editor
-    # ../../pkgs/emacs # Another text editor
+    ../../pkgs/editors/vscodium # Text editor
+    # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager

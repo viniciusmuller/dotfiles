@@ -3,7 +3,7 @@
 {
   imports = [
     # Sets up things such as .haskeline and .ghci files
-    ../../ghc
+    # ../../ghc
   ];
 
   programs.vscode.extensions = with pkgs.vscode-extensions; [

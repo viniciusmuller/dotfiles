@@ -70,9 +70,10 @@ in
     # ---- Language server protocol ----
     # ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    # ./lsp/ccls.nix
+
     ./lsp/omnisharp.nix
     ./lsp/go.nix
+    ./lsp/rust.nix
     # ./lsp/clojure.nix
     # ./lsp/elixir.nix
     # ./lsp/godot.nix
@@ -82,7 +83,7 @@ in
     # ./lsp/node.nix
     # ./lsp/python.nix
     # ./lsp/rnix.nix
-    ./lsp/rust.nix
+    # ./lsp/ccls.nix
 
     # ---- Language specific ----
     ./languages/vim-go.nix
@@ -131,11 +132,11 @@ in
     ./colorschemes/gruvbox-material.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
-    ./plugins/lualine.nix
+    # ./plugins/lualine.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
-    ./plugins/orgmode-nvim.nix
+    # ./plugins/orgmode-nvim.nix
     # ./plugins/autosave.nix
     # ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
@@ -152,14 +153,13 @@ in
       nvim-web-devicons
       vim-polyglot
       targets-vim
-      vim-snippets
       vim-commentary
       vim-repeat
       vim-sensible
       vim-surround
       vim-vsnip
-      emmet-vim
       friendly-snippets
+      emmet-vim
       vim-tmux-navigator
     ];
 
@@ -244,12 +244,14 @@ in
         au BufWritePre * %s/\s\+$//e
         " Open help windows vertically splitted
         au FileType help wincmd L
+        " Highlight on yank (nvim only)
+        au TextYankPost * silent! lua vim.highlight.on_yank{higroup="HighlightedYankRegion", timeout=50}
       augroup end
 
       let g:autosave_autostart = 1
       function s:autosave()
         let autosave_blacklist = ['NvimTree', 'help']
-        if index(autosave_blacklist, &ft) < 0 && w:autosave == 1
+        if index(autosave_blacklist, &ft) < 0 && w:autosave == 1 && &modifiable
           silent write
         endif
       endfunction
