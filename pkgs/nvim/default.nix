@@ -136,6 +136,7 @@ in
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     ./plugins/orgmode-nvim.nix
+    # ./plugins/autosave.nix
     # ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
   ];
@@ -187,7 +188,6 @@ in
       set linebreak
       set autoindent
       set smartindent
-      set autowrite
       set splitright
       set scrolloff=5
       set lazyredraw
@@ -211,7 +211,7 @@ in
       nnoremap Q @@
 
       nnoremap <C-q> <C-w>q
-      nnoremap <C-s> <cmd>update<cr>
+      " nnoremap <C-s> <cmd>update<cr>
 
       " -- Quickfix/Location lists --
       command Cnext try | cnext | catch | cfirst | catch | endtry
@@ -245,6 +245,21 @@ in
         " Open help windows vertically splitted
         au FileType help wincmd L
       augroup end
+
+      let g:autosave_autostart = 1
+      function s:autosave()
+        let autosave_blacklist = ['NvimTree', 'help']
+        if index(autosave_blacklist, &ft) < 0 && w:autosave == 1
+          silent write
+        endif
+      endfunction
+
+      augroup myautosave
+        autocmd InsertLeave,TextChanged * call s:autosave()
+        autocmd BufWinEnter * let w:autosave = g:autosave_autostart
+      augroup end
+
+      command ToggleAutoSave let w:autosave = w:autosave ? 0 : 1
     '';
   };
 
