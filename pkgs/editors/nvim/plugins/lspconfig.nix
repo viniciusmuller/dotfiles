@@ -65,4 +65,3 @@ in
 {
   programs.neovim.plugins = [ lspconfig ];
 }
-

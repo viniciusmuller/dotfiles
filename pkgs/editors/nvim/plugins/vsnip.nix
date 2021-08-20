@@ -3,8 +3,6 @@
 let
   vsnip = {
     plugin = pkgs.vimPlugins.vim-vsnip;
-    config = ''
-    '';
   };
 in
 {

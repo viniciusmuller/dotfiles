@@ -30,16 +30,16 @@ in
     ../../pkgs/gpg.nix
     ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
-    ../../pkgs/newsboat.nix # RSS Reader
 
     # GUI
     ../../pkgs/editors/vscodium # Text editor
-    # ../../pkgs/editors/emacs # Another text editor
+    ../../pkgs/pomatez.nix # Pomodoro app
+    ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
-    ../../pkgs/remnote.nix
-    ../../pkgs/psst.nix
+    # ../../pkgs/remnote.nix
+    # ../../pkgs/psst.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress.nix
@@ -58,18 +58,16 @@ in
     gh # GitHub CLI
 
     # GUI
-    element-desktop # Matrix client
+    # element-desktop # Matrix client
     # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
-    # TODO: Use ../../pkgs/pomotroid.nix #
-    gnome.pomodoro # Pomodoro app
     # nyxt # Crazy web browser
 
     # Unfree
     obsidian
-    discord
+    # discord
     spotify
     # teams
     # slack

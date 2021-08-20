@@ -100,7 +100,6 @@ in
     # ./plugins/trouble.nix
     ./plugins/autopairs.nix
     # ./plugins/ultisnips.nix
-    ./plugins/vsnip.nix
     ./plugins/fzf-checkout.nix
     ./plugins/fzf-session.nix
     ./plugins/fzf.nix
@@ -134,7 +133,7 @@ in
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     # ./plugins/lualine.nix
 
-    # ./plugins/rainbow.nix
+    ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/orgmode-nvim.nix
     # ./plugins/autosave.nix

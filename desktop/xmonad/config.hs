@@ -99,7 +99,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_g), spawn screenLockCommand)
 
     -- close focused window
-    , ((modm,               xK_x     ), kill)
+    , ((modm,               xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
