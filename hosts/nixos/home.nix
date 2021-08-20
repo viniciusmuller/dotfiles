@@ -57,6 +57,8 @@ in
     fd # File finder
     gh # GitHub CLI
 
+    vlang
+
     # GUI
     # element-desktop # Matrix client
     # neovide # Neovim graphical frontend

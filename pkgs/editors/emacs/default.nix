@@ -6,7 +6,7 @@
     # TODO: Use this when switch back to upstream HM
     # extraConfig = builtins.readFile ./init.el;
     extraPackages = epkgs: with epkgs; [
-      # Oh yeah vim 
+      # Oh yeah vim
       evil
       evil-leader
       evil-collection
@@ -14,6 +14,8 @@
       evil-commentary
       better-jumper
       undo-tree
+      smartparens
+      git-gutter
 
       # Fuzzy finding
       # helm
@@ -31,6 +33,7 @@
 
       # Aesthetic
       doom-themes
+      rainbow-delimiters
       hl-todo
 
       # lisp lisp lisp

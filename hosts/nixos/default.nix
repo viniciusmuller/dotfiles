@@ -18,6 +18,7 @@
       ../../nixos-pkgs/slock.nix
       ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
+      ../../nixos-pkgs/noisetorch.nix
     ];
 
   nix = {

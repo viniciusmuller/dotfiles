@@ -1,8 +1,14 @@
 ; -- Kinda of builtin emacs things --
 (load-theme 'doom-one t)
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-(setq display-line-numbers 'relative)
+(add-hook 'prog-mode-hook
+  ; TODO: Line numbers not working
+  'display-line-numbers-mode
+  (setq display-line-numbers 'relative)
+  #'smartparens-mode
+  #'rainbow-delimiters-mode)
+
+(require 'smartparens-config)
 
 (set-face-attribute 'default nil :height 100)
 
@@ -44,6 +50,8 @@
 
 (global-undo-tree-mode)
 (setq evil-undo-system 'undo-tree)
+
+(global-git-gutter-mode +1)
 
 ; Projectile
 ; (projectile-mode +1)
