@@ -81,20 +81,21 @@ in
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     # ./lsp/node.nix
-    # ./lsp/python.nix
+    ./lsp/python.nix
     # ./lsp/rnix.nix
     # ./lsp/ccls.nix
 
     # ---- Language specific ----
     ./languages/vim-go.nix
-    ./languages/rust-vim.nix
+    # ./languages/rust-vim.nix
 
     # ---- General plugins ----
 
     # Utils
     # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
-    ./plugins/compe.nix
+    # ./plugins/compe.nix
+    ./plugins/cmp.nix
     # ./plugins/which-key.nix
     # ./plugins/neorg.nix
     # ./plugins/trouble.nix
@@ -128,12 +129,12 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/gruvbox-material.nix
+    ./colorschemes/tokyonight.nix
 
     # This imports a module which uses `prelude` and gives `attribute prelude missing`
     # ./plugins/lualine.nix
 
-    ./plugins/rainbow.nix
+    # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/orgmode-nvim.nix
     # ./plugins/autosave.nix
@@ -201,8 +202,8 @@ in
       " Don't auto line break when inserting text
       set formatoptions-=t
       set shortmess+=I
-      set listchars=tab:»\ ,space:·,eol:¬
-      set list
+      " set listchars=tab:»\ ,space:·,eol:¬
+      " set list
 
       noremap Y "+y
       noremap H ^
@@ -261,6 +262,15 @@ in
       augroup end
 
       command ToggleAutoSave let w:autosave = w:autosave ? 0 : 1
+
+      function! SynStack()
+        if !exists("*synstack")
+          return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+      endfunc
+
+      nnoremap <leader>q :call SynStack()<cr>
     '';
   };
 

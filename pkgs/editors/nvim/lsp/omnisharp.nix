@@ -12,7 +12,8 @@ with pkgs;
 
     require('lspconfig').omnisharp.setup{
       cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
-      on_attach = on_attach
+      on_attach = on_attach,
+      capabilities = capabilities
     }
   '';
 }

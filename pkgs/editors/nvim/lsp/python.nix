@@ -13,7 +13,8 @@
   programs.neovim.extraConfig = prelude.mkLuaCode ''
     require('lspconfig').pylsp.setup{
       cmd = {'pyls'},
-      on_attach = on_attach
+      on_attach = on_attach,
+      capabilities = capabilities
     }
   '';
 }

@@ -9,6 +9,8 @@
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
+      "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly
+      "lokjgaehpcnlmkebpmjiofccpklbmoci" # Toucan
       {
         id = "cjnmckjndlpiamhfimnnjmnckgghkjbl"; # Competitive companion
         version = "2.25.2";

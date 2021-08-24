@@ -57,14 +57,13 @@ in
     fd # File finder
     gh # GitHub CLI
 
-    vlang
-
     # GUI
     # element-desktop # Matrix client
     # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
+    krita # Digital art
     # nyxt # Crazy web browser
 
     # Unfree
