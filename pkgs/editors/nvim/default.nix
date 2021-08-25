@@ -101,9 +101,12 @@ in
     # ./plugins/trouble.nix
     ./plugins/autopairs.nix
     # ./plugins/ultisnips.nix
-    ./plugins/fzf-checkout.nix
-    ./plugins/fzf-session.nix
-    ./plugins/fzf.nix
+
+    # ./plugins/fzf-checkout.nix
+    # ./plugins/fzf-session.nix
+    # ./plugins/fzf.nix
+    ./plugins/telescope.nix
+
     # ./plugins/projectionist.nix
     ./plugins/vim-test.nix
     ./plugins/togglelist.nix
@@ -136,7 +139,6 @@ in
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/orgmode-nvim.nix
-    # ./plugins/autosave.nix
     # ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
   ];

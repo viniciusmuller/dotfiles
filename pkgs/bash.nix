@@ -84,6 +84,9 @@ in
       }
       PROMPT_COMMAND=prompt_command
 
+      # Shorten directories
+      PROMPT_DIRTRIM=1
+
       # Colored man pages
       export LESS_TERMCAP_mb=$'\e[1;32m'
       export LESS_TERMCAP_md=$'\e[1;32m'
