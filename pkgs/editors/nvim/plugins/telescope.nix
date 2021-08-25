@@ -14,8 +14,18 @@ let
                 ["<esc>"] = actions.close,
               },
             },
+            extensions = {
+              fzf = {
+                fuzzy = true,                    -- false will only do exact matching
+                override_generic_sorter = false, -- override the generic sorter
+                override_file_sorter = true,     -- override the file sorter
+                case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+              }
+            }
           },
         })
+
+        require('telescope').load_extension('fzf')
       ''}
 
         nnoremap <leader>,   <cmd>Telescope buffers<cr>
@@ -29,8 +39,11 @@ let
         nnoremap <leader>gb  <cmd>Telescope git_branches<cr>
     '';
   };
+  telescope-extensions = with pkgs.vimPlugins; [
+    telescope-fzf-native-nvim
+  ];
 in
 {
-  programs.neovim.plugins = [ telescope ];
+  programs.neovim.plugins = [ telescope ] ++ telescope-extensions;
   home.packages = with pkgs; [ fd ripgrep ];
 }

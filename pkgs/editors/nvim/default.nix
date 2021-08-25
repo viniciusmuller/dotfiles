@@ -131,10 +131,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/tokyonight.nix
-
-    # This imports a module which uses `prelude` and gives `attribute prelude missing`
-    # ./plugins/lualine.nix
+    ./colorschemes/dracula.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
