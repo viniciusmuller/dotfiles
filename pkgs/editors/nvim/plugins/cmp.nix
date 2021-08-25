@@ -35,7 +35,6 @@ let
 
     config = prelude.mkLuaCode ''
       local cmp = require('cmp')
-      local lspkind = require('lspkind')
 
       cmp.setup {
         -- completion = {
@@ -50,12 +49,6 @@ let
           expand = function(args)
             -- You must install `vim-vsnip` if you use the following as-is.
             vim.fn['vsnip#anonymous'](args.body)
-          end
-        },
-        formatting = {
-          format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            return vim_item
           end
         },
         mapping = {
@@ -104,5 +97,8 @@ let
   ];
 in
 {
-  programs.neovim.plugins = [ cmp pkgs.vimPlugins.lspkind-nvim my-cmp-nvim-lsp ] ++ compe-engines;
+  programs.neovim.plugins = [
+    cmp
+    my-cmp-nvim-lsp
+  ] ++ compe-engines;
 }

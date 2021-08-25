@@ -10,7 +10,7 @@ let
         owner = "arcticlimer";
         repo = "fzf-session.vim";
         rev = "dd6a28753677e9790d16db56b8d38a7bcf7ff979";
-        sha256 = "sha256-wFvjPHUnLlXeZXqaPXPB+5kVG7ZiMOB8YSUkv1525+Y=";
+        sha256 = "sha256-GabgJli7XGFJ2lRi8KWvqoknFX5KaN0GpWLik5M0gpg=";
       };
 
       meta.homepage = "https://github.com/arcticlimer/fzf-session.vim";

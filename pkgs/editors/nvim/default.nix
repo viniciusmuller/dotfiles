@@ -110,8 +110,7 @@ in
     ./plugins/closetag.nix
     # ./plugins/visual-multi.nix
     ./plugins/slash.nix
-    ./plugins/tagalong.nix
-    ./plugins/neomake.nix
+    # ./plugins/neomake.nix
 
     # Seems interesting but are currently broken with nix
     # ./plugins/coq.nix
@@ -153,6 +152,7 @@ in
       nvim-web-devicons
       vim-polyglot
       targets-vim
+      tagalong-vim
       vim-commentary
       vim-repeat
       vim-sensible

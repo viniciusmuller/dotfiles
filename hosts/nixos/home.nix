@@ -28,13 +28,13 @@ in
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
-    ../../pkgs/irssi.nix # IRC Client
+    # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
 
     # GUI
-    ../../pkgs/editors/vscodium # Text editor
+    # ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix # Pomodoro app
-    ../../pkgs/editors/emacs # Another text editor
+    # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
