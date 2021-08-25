@@ -29,33 +29,28 @@ in
     enableCompletion = false;
     autocd = true;
 
+    # oh-my-zsh = {
+    #   enable = true;
+    #   theme = "robbyrussell";
+    # };
+
     prezto = {
       enable = true;
       caseSensitive = false;
 
       pmodules = [
-        # "environment"
-        # "terminal"
-        "editor"
         "history"
-        "directory"
-        # "spectrum"
-        "utility"
-        "completion"
         "syntax-highlighting"
         "prompt"
-        # "tmux"
+        "tmux"
         "git"
       ];
 
-      editor = {
-        dotExpansion = true;
-        keymap = "vi";
-      };
       tmux = {
         autoStartRemote = true;
         defaultSessionName = "default";
       };
+
       syntaxHighlighting = {
         highlighters = [ "main" "brackets" "pattern" "line" "cursor" "root" ];
       };
@@ -73,6 +68,8 @@ in
 
     initExtra = ''
       unsetopt BEEP
+      bindkey -v
+      bindkey '^I' fzf_completion
     '';
 
     # TODO: Make these kind of things common between different shells #
