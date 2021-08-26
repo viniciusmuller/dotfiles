@@ -54,6 +54,18 @@ let
     endfunction
   '';
 
+  myplayground = pkgs.vimUtils.buildVimPlugin {
+    name = "playground";
+    version = "2021-07-27";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "playground";
+      rev = "deb887b3f49d66654d9faa9778e8949fe0d80bc3";
+      sha256 = "sha256-cpSkvRRxEurF5XclAzoDSjdnyPJmxNNcUDrSO7F+VII=";
+    };
+    meta.homepage = "https://github.com/nvim-treesitter/playground/";
+  };
+
   nvim-spell-pt = builtins.fetchurl {
     url =
       "https://github.com/mateusbraga/vim-spell-pt-br/raw/3d7eb3098de77b86c8a880354b442b3d84b18a72/spell/pt.utf-8.spl";
@@ -92,7 +104,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
+    ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     # ./plugins/compe.nix
     ./plugins/cmp.nix
@@ -136,7 +148,7 @@ in
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/orgmode-nvim.nix
-    # ./plugins/todo-comments.nix
+    ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
   ];
 
@@ -146,9 +158,9 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      # vim-prettier
-      # undotree
+      # playground # Treesitter plaground
       nvim-web-devicons
+      myplayground
       vim-polyglot
       targets-vim
       tagalong-vim
@@ -249,9 +261,9 @@ in
 
       let g:autosave_autostart = 1
       function s:autosave()
-        let autosave_blacklist = ['NvimTree', 'help']
+        let autosave_blacklist = ['NvimTree', 'help' ]
         if index(autosave_blacklist, &ft) < 0 && w:autosave == 1 && &modifiable
-          silent write
+          silent update
         endif
       endfunction
 

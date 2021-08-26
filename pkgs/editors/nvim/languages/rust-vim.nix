@@ -1,8 +1,9 @@
 { pkgs, ... }:
 
 {
-  programs.neovim.plugins = [ pkgs.vimPlugins.rust-vim ];
+  # programs.neovim.plugins = [ pkgs.vimPlugins.rust-vim ];
   xdg.configFile."nvim/after/ftplugin/rust.vim".text = ''
-    nnoremap <leader>pr :RustRun<cr>
+    nnoremap <leader>pr !cargo run<cr>
+    nnoremap <leader>pb !cargo build<cr>
   '';
 }

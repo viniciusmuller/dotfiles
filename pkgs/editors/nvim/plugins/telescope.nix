@@ -12,6 +12,10 @@ let
             mappings = {
               i = {
                 ["<esc>"] = actions.close,
+                ["<c-k>"] = "move_selection_previous",
+                ["<c-j>"] = "move_selection_next",
+                ["<c-p>"] = "preview_scrolling_up",
+                ["<c-n>"] = "preview_scrolling_down",
               },
             },
             extensions = {

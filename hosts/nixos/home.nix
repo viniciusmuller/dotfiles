@@ -39,6 +39,7 @@ in
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
+    ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/remnote.nix
     # ../../pkgs/psst.nix
 

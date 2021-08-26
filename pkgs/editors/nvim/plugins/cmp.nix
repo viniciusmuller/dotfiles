@@ -40,11 +40,10 @@ let
         -- completion = {
         --   autocomplete = { ... },
         -- },
-        -- TODO: Figure out how to add snippets to the top
-        sorting = {
-           priority_weight = 2.,
-           comparators = { },
-        },
+        -- sorting = {
+        --   priority_weight = 2.,
+        --   comparators = { },
+        -- },
         snippet = {
           expand = function(args)
             -- You must install `vim-vsnip` if you use the following as-is.
