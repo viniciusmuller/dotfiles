@@ -72,7 +72,6 @@ in
       bindkey '^I' fzf_completion
     '';
 
-    # TODO: Make these kind of things common between different shells #
     shellAliases = {
       c = "clear";
       b = "cd -";

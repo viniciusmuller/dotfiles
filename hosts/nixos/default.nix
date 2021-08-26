@@ -13,9 +13,9 @@
       ./hardware-configuration.nix
       # ../../nixos-pkgs/virtualbox.nix
       # ../../nixos-pkgs/manpages.nix
-      ../../nixos-pkgs/docker.nix
+      # ../../nixos-pkgs/docker.nix
       # ../../nixos-pkgs/steam.nix
-      ../../nixos-pkgs/slock.nix
+      # ../../nixos-pkgs/slock.nix
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
       # ../../nixos-pkgs/noisetorch.nix
@@ -37,7 +37,6 @@
 
   fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs; [
-    # TODO: Create file for fonts #
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     emacs-all-the-icons-fonts
   ];

@@ -11,7 +11,6 @@ let
   };
 in
 {
-  # TODO: Tmux seems to be using bash by default #
   programs.tmux = {
     enable = true;
     extraConfig = builtins.readFile ./tmux.conf;

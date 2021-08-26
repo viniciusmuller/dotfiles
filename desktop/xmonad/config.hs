@@ -215,7 +215,6 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 mySpacing i = spacingRaw False (Border 0 i 0 i) True (Border i 0 i 0) True
 
--- TODO: Try adding gaps between windows --
 myLayout = avoidStruts (smartBorders tiled ||| smartBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes

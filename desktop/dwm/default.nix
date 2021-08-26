@@ -3,7 +3,6 @@
 # Config for the dynamic window manager
 {
   # Enable the X11 windowing system.
-  # TODO: Improve dwm configuration, move its xorg things to one file #
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;

@@ -43,10 +43,6 @@
     file # Shows info about files
     neofetch # Shows system information
     pfetch # Smaller neofetch
-
-    # TODO: required by https://github.com/arcticlimer/helpepper
-    # Turn this repository into a flake and use it here
-    sox
   ];
 
   programs.bash = {

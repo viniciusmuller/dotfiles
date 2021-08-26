@@ -9,6 +9,4 @@
     ".config/blugon/config".source = ./config;
     ".config/blugon/gamma".source = ./gamma;
   };
-
-  # TODO: Enable blugon.service in userland
 }
