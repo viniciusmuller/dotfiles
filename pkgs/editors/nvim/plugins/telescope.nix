@@ -38,6 +38,7 @@ let
         nnoremap <leader>ff  <cmd>Telescope find_files<cr>
         nnoremap <leader>fh  <cmd>Telescope help_tags<cr>
         nnoremap <leader>fm  <cmd>Telescope man_pages<cr>
+        nnoremap <leader>fs  <cmd>Telescope lsp_workspace_symbols<cr>
 
         nnoremap <leader>fc  <cmd>Telescope git_commits<cr>
         nnoremap <leader>gb  <cmd>Telescope git_branches<cr>

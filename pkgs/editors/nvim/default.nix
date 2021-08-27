@@ -99,19 +99,18 @@ in
 
     # ---- Language specific ----
     ./languages/vim-go.nix
-    # ./languages/rust-vim.nix
+    ./languages/rust-vim.nix
 
     # ---- General plugins ----
 
     # Utils
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
-    # ./plugins/compe.nix
     ./plugins/cmp.nix
     # ./plugins/which-key.nix
     # ./plugins/neorg.nix
     # ./plugins/trouble.nix
-    ./plugins/autopairs.nix
+    ./plugins/pears.nix
     # ./plugins/ultisnips.nix
 
     # ./plugins/fzf-checkout.nix
@@ -203,6 +202,7 @@ in
       set scrolloff=5
       set lazyredraw
       set noswapfile
+      set nomodeline
       set autoread
       set completeopt=menuone,noselect
       set pumheight=10 " Max number of items in autocompletion popup

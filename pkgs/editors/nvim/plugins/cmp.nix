@@ -17,6 +17,41 @@ let
       meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp";
     };
 
+  # path = "3.5.54/x86_64-unknown-linux-musl";
+  # tabnine-binaries = pkgs.fetchurl {
+  #   url = "https://update.tabnine.com/bundles/${path}/TabNine.zip";
+  #   sha256 = "sha256-MgvDO1E8gvAPnKtn1095p4I1vt298J87V4+dAp55AKs=";
+  # };
+
+  # cmp-tabnine = pkgs.vimUtils.buildVimPlugin {
+  #     name = "cmp-tabnine";
+  #     version = "2021-07-19";
+
+  #     src = pkgs.fetchFromGitHub {
+  #       owner = "tzachar";
+  #       repo = "cmp-tabnine";
+  #       rev = "906ab3615bb9e9562419193a94e5c87113368d14";
+  #       sha256 = "sha256-TTPvA8QIHIHfMs+TbHrYZQXKIlH8vpXsa3dKELRf4Wk=";
+  #     };
+
+  #     # TODO Make this bad boy work
+  #     patchPhase = ''
+  #       rm install.sh
+  #     '';
+
+  #     buildPhase = ''
+  #       mkdir -p binaries/${path}
+  #       cp ${tabnine-binaries} binaries/${path}/TabNine.zip
+  #       unzip -o binaries/${path}/TabNine.zip -d binaries/${path}
+  #       rm binaries/${path}/TabNine.zip
+  #       chmod +x binaries/${path}/*
+  #     '';
+
+  #     buildInputs = with pkgs; [unzip];
+
+  #     meta.homepage = "https://github.com/tzachar/cmp-tabnine";
+  #   };
+
   cmp = {
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "nvim-cmp";
@@ -37,13 +72,9 @@ let
       local cmp = require('cmp')
 
       cmp.setup {
-        -- completion = {
-        --   autocomplete = { ... },
-        -- },
-        -- sorting = {
-        --   priority_weight = 2.,
-        --   comparators = { },
-        -- },
+        completion = {
+          completeopt = 'menu,menuone,noinsert',
+        },
         snippet = {
           expand = function(args)
             -- You must install `vim-vsnip` if you use the following as-is.
@@ -63,13 +94,12 @@ let
             ['<S-Tab>'] = function(fallback)
               if vim.fn.pumvisible() == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-              elseif luasnip.jumpable(-1) then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), ''')
+              elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-prev)', true, true, true), ''')
               else
                 fallback()
               end
             end,
-
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -81,23 +111,32 @@ let
         },
         sources = {
           { name = 'vsnip', },
+          -- { name = 'cmp_tabnine' },
           { name = 'nvim_lsp' },
           { name = 'buffer' },
           { name = 'path' },
         },
       }
+
+      -- local tabnine = require('cmp_tabnine.config')
+      -- tabnine:setup({
+      --  max_lines = 1000;
+      --  max_num_results = 20;
+      --  sort = true;
+      -- })
     '';
   };
   compe-engines = with pkgs.vimPlugins; [
+    my-cmp-nvim-lsp
     cmp-buffer
     cmp-path
     cmp-vsnip
+    # cmp-tabnine
     # my-cmp-nvim-lsp
   ];
 in
 {
   programs.neovim.plugins = [
     cmp
-    my-cmp-nvim-lsp
   ] ++ compe-engines;
 }

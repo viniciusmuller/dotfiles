@@ -55,6 +55,7 @@ in
     bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`
+    # lynx # TUI Browser
     file # Show info about files
     fd # File finder
     gh # GitHub CLI
