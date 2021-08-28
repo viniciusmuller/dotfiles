@@ -2,10 +2,6 @@
 
 with pkgs;
 {
-  home.packages = [
-    omnisharp-roslyn
-  ];
-
   programs.neovim.extraConfig = prelude.mkLuaCode ''
     local pid = vim.fn.getpid()
     local omnisharp_bin = "${omnisharp-roslyn}/bin/omnisharp"

@@ -1,8 +1,6 @@
 { pkgs, prelude, ... }:
 
 {
-  home.packages = with pkgs; [ gopls ];
-
   programs.neovim = {
     extraConfig = ''
         augroup go_lsp

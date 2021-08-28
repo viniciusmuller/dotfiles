@@ -2,10 +2,6 @@
 
 with pkgs;
 {
-  home.packages = [
-    sumneko-lua-language-server
-  ];
-
   programs.neovim.extraConfig = prelude.mkLuaCode ''
     require('lspconfig').sumneko_lua.setup {
       cmd = {'lua-language-server'};
