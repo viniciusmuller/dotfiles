@@ -82,6 +82,7 @@ in
     # ---- Language server protocol ----
     # ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
+    ./plugins/lsp-extensions.nix
 
     ./lsp/omnisharp.nix
     ./lsp/go.nix
