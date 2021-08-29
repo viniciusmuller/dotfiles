@@ -19,7 +19,7 @@
       # ../../nixos-pkgs/slock.nix
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
-      # ../../nixos-pkgs/noisetorch.nix
+      ../../nixos-pkgs/noisetorch.nix
     ];
 
   nix = {
@@ -42,9 +42,6 @@
     emacs-all-the-icons-fonts
   ];
 
-  home-manager.users.vini = import ./home.nix;
-
-  # Boot
   boot = {
     loader = {
       grub = {
@@ -52,17 +49,6 @@
         useOSProber = true;
         efiSupport = true;
         devices = [ "nodev" ];
-        # If it doesn't get windows automatically, set $FS_UUID to the UUID of the *Windows* EFI partition
-        # extraEntries = ''
-        #   menuentry "Windows" {
-        #     insmod part_gpt
-        #     insmod fat
-        #     insmod search_fs_uuid
-        #     insmod chain
-        #     search --fs-uuid --set=root $FS_UUID
-        #     chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-        #   }
-        # '';
       };
       efi = {
         canTouchEfiVariables = true;
@@ -105,7 +91,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Audio
+  # Audio with pipewire
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -123,20 +109,20 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vini = {
     isNormalUser = true;
-    # Enable ‘sudo’ for the user.
     extraGroups = [ "wheel" ];
-    # TODO: Add default password
+    initialPassword = "changeme";
   };
+
+  home-manager.users.vini = import ./home.nix;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = with pkgs; [
-    wget
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   wget
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

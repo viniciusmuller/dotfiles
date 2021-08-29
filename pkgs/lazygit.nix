@@ -14,4 +14,8 @@
       reporting = "off";
     };
   };
+
+  programs.zsh.shellAliases.lg = "lazygit";
+  programs.bash.shellAliases.lg = "lazygit";
+  programs.fish.shellAliases.lg = "lazygit";
 }

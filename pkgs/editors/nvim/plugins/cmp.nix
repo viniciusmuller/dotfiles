@@ -17,41 +17,6 @@ let
       meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp";
     };
 
-  # path = "3.5.54/x86_64-unknown-linux-musl";
-  # tabnine-binaries = pkgs.fetchurl {
-  #   url = "https://update.tabnine.com/bundles/${path}/TabNine.zip";
-  #   sha256 = "sha256-MgvDO1E8gvAPnKtn1095p4I1vt298J87V4+dAp55AKs=";
-  # };
-
-  # cmp-tabnine = pkgs.vimUtils.buildVimPlugin {
-  #     name = "cmp-tabnine";
-  #     version = "2021-07-19";
-
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "tzachar";
-  #       repo = "cmp-tabnine";
-  #       rev = "906ab3615bb9e9562419193a94e5c87113368d14";
-  #       sha256 = "sha256-TTPvA8QIHIHfMs+TbHrYZQXKIlH8vpXsa3dKELRf4Wk=";
-  #     };
-
-  #     # TODO Make this bad boy work
-  #     patchPhase = ''
-  #       rm install.sh
-  #     '';
-
-  #     buildPhase = ''
-  #       mkdir -p binaries/${path}
-  #       cp ${tabnine-binaries} binaries/${path}/TabNine.zip
-  #       unzip -o binaries/${path}/TabNine.zip -d binaries/${path}
-  #       rm binaries/${path}/TabNine.zip
-  #       chmod +x binaries/${path}/*
-  #     '';
-
-  #     buildInputs = with pkgs; [unzip];
-
-  #     meta.homepage = "https://github.com/tzachar/cmp-tabnine";
-  #   };
-
   cmp = {
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "nvim-cmp";
@@ -71,9 +36,49 @@ let
     config = prelude.mkLuaCode ''
       local cmp = require('cmp')
 
+      local lsp_symbols = {
+        Text = "  (Text) ",
+        Method = "  (Method)",
+        Function = "  (Function)",
+        Constructor = "  (Constructor)",
+        Field = "ﴲ  (Field)",
+        Variable = " (Variable)",
+        Class = "  (Class)",
+        Interface = "ﰮ  (Interface)",
+        Module = "  (Module)",
+        Property = "襁 (Property)",
+        Unit = "  (Unit)",
+        Value = "  (Value)",
+        Enum = "練 (Enum)",
+        Keyword = "  (Keyword)",
+        Snippet = "  (Snippet)",
+        Color = "  (Color)",
+        File = "  (File)",
+        Reference = "  (Reference)",
+        Folder = "  (Folder)",
+        EnumMember = "  (EnumMember)",
+        Constant = " ﲀ  (Constant)",
+        Struct = "ﳤ  (Struct)",
+        Event = "  (Event)",
+        Operator = "  (Operator)",
+        TypeParameter = "  (TypeParameter)",
+      }
+
       cmp.setup {
         completion = {
           completeopt = 'menu,menuone,noinsert',
+        },
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.kind = lsp_symbols[vim_item.kind]
+            vim_item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              vsnip = "[Vsnip]",
+            })[entry.source.name]
+
+            return vim_item
+          end
         },
         snippet = {
           expand = function(args)
@@ -111,19 +116,11 @@ let
         },
         sources = {
           { name = 'vsnip', },
-          -- { name = 'cmp_tabnine' },
           { name = 'nvim_lsp' },
           { name = 'buffer' },
           { name = 'path' },
         },
       }
-
-      -- local tabnine = require('cmp_tabnine.config')
-      -- tabnine:setup({
-      --  max_lines = 1000;
-      --  max_num_results = 20;
-      --  sort = true;
-      -- })
     '';
   };
   compe-engines = with pkgs.vimPlugins; [
@@ -131,8 +128,6 @@ let
     cmp-buffer
     cmp-path
     cmp-vsnip
-    # cmp-tabnine
-    # my-cmp-nvim-lsp
   ];
 in
 {

@@ -94,7 +94,7 @@ in
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     # ./lsp/node.nix
-    ./lsp/python.nix
+    # ./lsp/python.nix
     # ./lsp/rnix.nix
     # ./lsp/ccls.nix
 
