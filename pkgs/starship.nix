@@ -4,6 +4,7 @@
   programs.starship = {
     enable = true;
     settings = {
+      add_newline = false;
       format = lib.concatStrings [
         "$directory"
         "$git_branch"
@@ -13,7 +14,6 @@
         "$status"
         "$character"
       ];
-
       nix_shell = {
         symbol = "❄️ ";
       };
