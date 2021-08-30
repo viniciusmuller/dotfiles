@@ -2,21 +2,6 @@
 
 
 let
-  # TODO: Wait for this to update in nixpkgs upstream
-  my-cmp-nvim-lsp = pkgs.vimUtils.buildVimPlugin {
-      name = "my-cmp-nvim-lsp";
-      version = "2021-07-07";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "hrsh7th";
-        repo = "cmp-nvim-lsp";
-        rev = "6d991d0f7beb2bfd26cb0200ef7bfa6293899f23";
-        sha256 = "sha256-syK4yHYioE58zt0pPDZxLOZKyAkKEPzB3XSNwrkGCHs=";
-      };
-
-      meta.homepage = "https://github.com/hrsh7th/cmp-nvim-lsp";
-    };
-
   cmp = {
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "nvim-cmp";
@@ -124,7 +109,7 @@ let
     '';
   };
   compe-engines = with pkgs.vimPlugins; [
-    my-cmp-nvim-lsp
+    cmp-nvim-lsp
     cmp-buffer
     cmp-path
     cmp-vsnip
