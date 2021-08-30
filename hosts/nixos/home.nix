@@ -12,7 +12,7 @@ in
 
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
-    ../../pkgs/bash.nix # Shell 
+    ../../pkgs/bash.nix # Shell
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
     ../../pkgs/readline # GNU readline input
@@ -29,6 +29,7 @@ in
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
+    ../../pkgs/starship.nix
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
 

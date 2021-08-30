@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   services.dunst = {
@@ -69,4 +69,6 @@
       };
     };
   };
+
+  home.packages = with pkgs; [ libnotify ];
 }
