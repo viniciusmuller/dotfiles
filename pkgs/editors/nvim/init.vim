@@ -31,7 +31,7 @@ set updatetime=400
 set iskeyword-=-
 " Don't auto line break when inserting text
 set formatoptions-=t
-set shortmess+=I
+set shortmess+=Ic
 " set listchars=tab:»\ ,space:·,eol:¬
 " set list
 

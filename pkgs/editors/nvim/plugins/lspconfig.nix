@@ -4,6 +4,8 @@ let
   lspconfig = {
     plugin = pkgs.vimPlugins.nvim-lspconfig;
     config = prelude.mkLuaCode ''
+      require('fzf_lsp').setup()
+
       -- Disable virtual text diagnostics
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
@@ -53,11 +55,10 @@ let
 
         -- buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
 
-        -- This line requires trouble-nvim
-        -- buf_set_keymap('n', '<leader>lq', '<cmd>LspTrouble<cr>', opts)
-        buf_set_keymap('n', '<space>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+        buf_set_keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
         buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+        buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.workspace_symbol("")<cr>', opts)
       end
 
       -- Lsp capabilities
@@ -80,5 +81,8 @@ let
   };
 in
 {
-  programs.neovim.plugins = [ lspconfig ];
+  programs.neovim.plugins = [
+    pkgs.vimPlugins.fzf-lsp-nvim
+    lspconfig
+  ];
 }

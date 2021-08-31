@@ -76,12 +76,12 @@ in
     ./lsp/go.nix
     ./lsp/rust.nix
     # ./lsp/clojure.nix
-    # ./lsp/elixir.nix
+    ./lsp/elixir.nix
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
     # ./lsp/latex.nix
     # ./lsp/lua.nix
-    # ./lsp/node.nix
+    ./lsp/node.nix
     # ./lsp/python.nix
     # ./lsp/rnix.nix
     # ./lsp/ccls.nix
@@ -104,8 +104,8 @@ in
 
     # ./plugins/fzf-checkout.nix
     # ./plugins/fzf-session.nix
-    # ./plugins/fzf.nix
-    ./plugins/telescope.nix
+    ./plugins/fzf.nix
+    # ./plugins/telescope.nix
 
     # ./plugins/projectionist.nix
     ./plugins/vim-test.nix
@@ -159,6 +159,7 @@ in
       friendly-snippets
       emmet-vim
       vim-tmux-navigator
+      vim-prettier
     ];
 
     initExtra = ''
