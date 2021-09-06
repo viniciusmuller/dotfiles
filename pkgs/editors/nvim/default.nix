@@ -131,7 +131,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/dracula.nix
+    ./colorschemes/nord.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
@@ -146,20 +146,16 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      # playground # Treesitter plaground
       nvim-web-devicons
       vim-polyglot
       targets-vim
-      tagalong-vim
       vim-commentary
       vim-repeat
       vim-sensible
       vim-surround
       vim-vsnip
       friendly-snippets
-      emmet-vim
       vim-tmux-navigator
-      vim-prettier
     ];
 
     initExtra = ''

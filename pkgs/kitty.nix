@@ -9,7 +9,7 @@
     font.size = 9;
 
     settings = {
-      window_padding_width = 6;
+      window_padding_width = 5;
       enable_audio_bell = false;
       disable_ligatures = "always";
     };
