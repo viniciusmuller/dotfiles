@@ -131,7 +131,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/nord.nix
+    ./colorschemes/onedark.nix
 
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix

@@ -25,11 +25,12 @@ in
     ../../pkgs/newsboat.nix # RSS Reader
     ../../pkgs/trash-cli.nix # Safer rm
     ../../pkgs/lazygit.nix # Git TUI client
-    ../../pkgs/direnv.nix
+    ../../pkgs/lazydocker.nix # Docker TUI client
+    ../../pkgs/direnv.nix # Manages project environments
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
-    ../../pkgs/starship.nix
+    ../../pkgs/starship.nix # Awesome shell prompt
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
 
@@ -40,7 +41,8 @@ in
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
-    ../../pkgs/obs-studio.nix # Screen recording
+    # ../../pkgs/obs-studio.nix # Screen recording
+    ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/remnote.nix
     # ../../pkgs/psst.nix
 
@@ -56,7 +58,7 @@ in
     bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`
-    lynx # TUI Browser
+    # lynx # TUI Browser
     file # Show info about files
     fd # File finder
     gh # GitHub CLI
