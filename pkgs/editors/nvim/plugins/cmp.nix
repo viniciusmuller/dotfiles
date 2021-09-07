@@ -3,20 +3,7 @@
 
 let
   cmp = {
-    plugin = pkgs.vimUtils.buildVimPlugin {
-      name = "nvim-cmp";
-      version = "2021-07-07";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "hrsh7th";
-        repo = "nvim-cmp";
-        rev = "fe964405ff25ea63a9c12c26e41edf95066dad7c";
-        sha256 = "sha256-900AN1Dt2X8LuIPgmc/2U7uqAnPiOKxyQPOtU1SWK+U=";
-      };
-
-      prePatch = "rm Makefile";
-      meta.homepage = "https://github.com/hrsh7th/nvim-cmp";
-    };
+    plugin = pkgs.vimPlugins.nvim-cmp;
 
     config = prelude.mkLuaCode ''
       local cmp = require('cmp')

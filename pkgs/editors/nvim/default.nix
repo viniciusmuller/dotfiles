@@ -136,7 +136,7 @@ in
     # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
     # ./plugins/orgmode-nvim.nix
-    ./plugins/todo-comments.nix
+    # ./plugins/todo-comments.nix
     # ./plugins/indentline.nix
   ];
 

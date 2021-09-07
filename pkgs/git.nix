@@ -8,7 +8,7 @@ let
     gl = "git log";
     gcl = "git clone";
     gco = "git checkout";
-    glg = "git log --oneline";
+    glg = "git log --graph --oneline";
     gd = "git diff";
     gds = "git diff --staged";
     ga = "git add";
@@ -27,10 +27,6 @@ in
   programs.zsh.shellAliases = aliases;
   programs.bash.shellAliases = aliases;
   programs.fish.shellAliases = aliases;
-
-  home.packages = with pkgs; [
-    pkgs.git-crypt
-  ];
 
   programs.git = {
     enable = true;
