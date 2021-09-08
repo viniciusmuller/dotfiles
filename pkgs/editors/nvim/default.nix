@@ -153,6 +153,7 @@ in
       vim-repeat
       vim-sensible
       vim-surround
+      undotree
       vim-vsnip
       friendly-snippets
       vim-tmux-navigator
