@@ -55,6 +55,7 @@ in
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
+    taskell # TUI Kanban
     bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`

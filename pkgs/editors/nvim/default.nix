@@ -147,7 +147,7 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
-      vim-polyglot
+      # vim-polyglot
       targets-vim
       vim-commentary
       vim-repeat
