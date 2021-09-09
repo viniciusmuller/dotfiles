@@ -58,7 +58,6 @@ in
     bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`
-    taskell # Kanban TUI
     # lynx # TUI Browser
     file # Show info about files
     fd # File finder

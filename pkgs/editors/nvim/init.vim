@@ -76,7 +76,6 @@ augroup my_autocommands
   au FileType help wincmd L
   " Highlight on yank (nvim only)
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="HighlightedYankRegion", timeout=50}
-  au BufEnter *.nix set ft=nix
 augroup end
 
 let g:autosave_autostart = 1

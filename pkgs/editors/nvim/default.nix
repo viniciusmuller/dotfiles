@@ -1,4 +1,4 @@
-{ pkgs, prelude, lib, ... }:
+{ config, pkgs, prelude, ... }:
 
 with pkgs.vimPlugins;
 let
@@ -140,12 +140,14 @@ in
     # ./plugins/indentline.nix
   ];
 
+  xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
+
   programs.neovim = {
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
-      # vim-polyglot
+      vim-polyglot
       targets-vim
       vim-commentary
       vim-repeat
@@ -156,6 +158,11 @@ in
       friendly-snippets
       vim-tmux-navigator
     ];
+
+    initExtra = ''
+      let mapleader = " "
+      let maplocalleader = ","
+    '';
 
     extraConfig = builtins.readFile ./init.vim;
   };
