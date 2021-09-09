@@ -3,7 +3,7 @@
 
   inputs = {
     # home-manager.url = "github:nix-community/home-manager";
-    home-manager.url = "github:arcticlimer/home-manager/add-neovim-initextra";
+    home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # TODO: Fix the flake on the suckless repository and use its package overrides
     suckless.url = "github:arcticlimer/suckless";
