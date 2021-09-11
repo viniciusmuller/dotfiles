@@ -30,6 +30,11 @@
         title = "/r/elixir";
         tags = [ "programming" "elixir" ];
       }
+      {
+        url = "https://www.reddit.com/r/rust/.rss";
+        title = "/r/rust";
+        tags = [ "programming" "rust" ];
+      }
     ];
     extraConfig = ''
       # unbind keys

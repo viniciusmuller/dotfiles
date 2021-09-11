@@ -4,8 +4,8 @@ let
   # TODO: Create a function to make custom suckless packages
   suckless = import ./repository.nix;
   st-overlay = (self: super: {
-    st = prev.st.overrideAttrs (old: rec {
-      buildInputs = old.buildInputs ++ [ prev.harfbuzz ];
+    st = super.st.overrideAttrs (old: rec {
+      buildInputs = old.buildInputs ++ [ super.harfbuzz ];
       src = "${suckless}/st";
     });
   });

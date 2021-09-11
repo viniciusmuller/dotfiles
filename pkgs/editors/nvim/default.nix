@@ -68,7 +68,7 @@ in
 {
   imports = [
     # ---- Language server protocol ----
-    # ./plugins/lsp-signature.nix
+    ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
     ./plugins/lsp-extensions.nix
 
@@ -84,7 +84,7 @@ in
     ./lsp/node.nix
     # ./lsp/python.nix
     # ./lsp/rnix.nix
-    # ./lsp/ccls.nix
+    ./lsp/ccls.nix
 
     # ---- Language specific ----
     ./languages/vim-go.nix
@@ -96,29 +96,17 @@ in
     ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
-    # ./plugins/which-key.nix
-    # ./plugins/neorg.nix
-    # ./plugins/trouble.nix
     ./plugins/pears.nix
-    # ./plugins/ultisnips.nix
 
-    # ./plugins/fzf-checkout.nix
-    # ./plugins/fzf-session.nix
     ./plugins/fzf.nix
-    # ./plugins/telescope.nix
 
-    # ./plugins/projectionist.nix
     ./plugins/vim-test.nix
     ./plugins/togglelist.nix
     ./plugins/closetag.nix
-    # ./plugins/visual-multi.nix
     ./plugins/slash.nix
     # ./plugins/neomake.nix
 
-    # Seems interesting but are currently broken with nix
-    # ./plugins/coq.nix
-    # ./plugins/chadtree.nix
-
+    # Repl
     # ./plugins/conjure.nix
 
     # Debugging
@@ -132,12 +120,8 @@ in
 
     # Aesthetic
     ./colorschemes/onedark.nix
-
-    # ./plugins/rainbow.nix
     ./plugins/colorizer.nix
-    # ./plugins/orgmode-nvim.nix
-    # ./plugins/todo-comments.nix
-    # ./plugins/indentline.nix
+    # ./plugins/rainbow.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
@@ -147,7 +131,6 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
-      # vim-polyglot
       targets-vim
       vim-commentary
       vim-repeat

@@ -69,6 +69,9 @@ nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
 nnoremap <silent> <leader>vq <cmd>quitall<cr>
 nnoremap <silent> <leader>vr <cmd>source $MYVIMRC<cr>
 
+" Allow the . to execute once for each line of a visual selection
+vnoremap . :normal .<cr>
+
 augroup my_autocommands
   " Remove trailing whitespaces on write
   au BufWritePre * %s/\s\+$//e
@@ -76,6 +79,10 @@ augroup my_autocommands
   au FileType help wincmd L
   " Highlight on yank (nvim only)
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="HighlightedYankRegion", timeout=50}
+
+  " Handle nix files
+  au BufEnter *.nix set ft=nix
+  autocmd FileType nix setlocal commentstring=#\ %s
 augroup end
 
 let g:autosave_autostart = 1

@@ -42,12 +42,12 @@ in
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/obs-studio.nix # Screen recording
-    ../../pkgs/mangohud.nix # Performance overlay for games
-    # ../../pkgs/remnote.nix
+    # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress.nix
+    # ../../pkgs/games/unreal-world.nix
   ];
 
   home.packages = with pkgs; [
@@ -56,10 +56,10 @@ in
     tealdeer # TLDR of man pages
     ripgrep # File content finder
     taskell # TUI Kanban
+    gomuks # Matrix TUI client
     bottom # System monitor
     nmap # Network scanner
     ncdu # Curses interface for `du`
-    # lynx # TUI Browser
     file # Show info about files
     fd # File finder
     gh # GitHub CLI
@@ -71,14 +71,11 @@ in
     mupdf # Pdf viewer
     anki # Spaced repetition
     krita # Digital art
-    # nyxt # Crazy web browser
 
     # Unfree
     obsidian
     # discord
     spotify
-    # teams
-    # slack
 
     # Games
     # cataclysm-dda
