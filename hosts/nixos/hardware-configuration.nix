@@ -5,32 +5,22 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/b25605f3-a32c-44b9-aa34-465090db6689";
+    { device = "/dev/disk/by-uuid/21936477-4c8e-4266-8231-7bb2a20ccf24";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/B076-9099";
+    { device = "/dev/disk/by-uuid/6013-BDE3";
       fsType = "vfat";
-    };
-
-  fileSystems."/home/vini/windows_shared" =
-    {
-      device = "/dev/disk/by-uuid/16DA090CDA08E9B7";
-      fsType = "ntfs";
-      options = [ "rw" "uid=1000" ];
     };
 
   swapDevices = [ ];

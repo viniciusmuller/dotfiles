@@ -73,8 +73,8 @@ in
     krita # Digital art
 
     # Unfree
-    obsidian
-    # discord
+    # obsidian
+    discord
     spotify
 
     # Games
