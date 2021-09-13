@@ -98,7 +98,8 @@ in
     ./plugins/cmp.nix
     ./plugins/pears.nix
 
-    ./plugins/fzf.nix
+    ./plugins/telescope.nix
+    # ./plugins/fzf.nix
 
     ./plugins/vim-test.nix
     ./plugins/togglelist.nix
@@ -119,7 +120,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/onedark.nix
+    ./colorschemes/tokyonight.nix
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
   ];

@@ -60,6 +60,7 @@ in
   "editor.minimap.enabled" = false;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
+
   # "editor.formatOnSave" = true;
   "editor.suggest.localityBonus" = true;
 
@@ -74,7 +75,6 @@ in
 
   # ---- Font ----
   "editor.fontFamily" = "Jetbrains Mono";
-  "editor.cursorSmoothCaretAnimation" = true;
   "editor.fontSize" = 15;
   "terminal.integrated.gpuAcceleration" = "off";
   "editor.fontLigatures" = true;
