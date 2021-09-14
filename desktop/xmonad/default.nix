@@ -15,7 +15,7 @@
 
   home-manager.users.vini = {
     imports = [
-      ../../pkgs/rofi.nix # Application launcher and window switcher
+      ../../pkgs/rofi # Application launcher and window switcher
       ../../services/dunst.nix # Notification daemon
       ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal

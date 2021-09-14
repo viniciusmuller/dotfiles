@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    theme = "gruvbox-dark-hard";
+    theme = ./onedark.rasi;
     font = "JetBrains Mono 11";
   };
 }
