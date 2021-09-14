@@ -86,6 +86,10 @@ in
     # ./lsp/rnix.nix
     ./lsp/ccls.nix
 
+
+    # ---- Development profiles ----
+    ./profiles/web.nix
+
     # ---- Language specific ----
     ./languages/vim-go.nix
     ./languages/rust-vim.nix
@@ -98,8 +102,8 @@ in
     ./plugins/cmp.nix
     ./plugins/pears.nix
 
-    ./plugins/telescope.nix
-    # ./plugins/fzf.nix
+    # ./plugins/telescope.nix
+    ./plugins/fzf.nix
 
     ./plugins/vim-test.nix
     ./plugins/togglelist.nix
