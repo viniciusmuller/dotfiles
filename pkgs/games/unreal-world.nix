@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 let unreal-world = pkgs.stdenv.mkDerivation rec {
   pname = "unreal-world";

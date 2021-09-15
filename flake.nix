@@ -29,7 +29,7 @@
       mkPkgs = pkgs: extraOverlays:
         import pkgs { inherit system; };
 
-      pkgs = mkPkgs nixpkgs [];
+      pkgs = mkPkgs nixpkgs [ ];
 
       prelude = {
         mkLuaCode =
