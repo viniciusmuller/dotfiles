@@ -2,10 +2,12 @@
   description = "A very basic flake";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:arcticlimer/home-manager/add-neovim-initextra";
-    # home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:arcticlimer/home-manager/add-neovim-initextra";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: Fix the flake on the suckless repository and use its package overrides
     suckless.url = "github:arcticlimer/suckless";
@@ -22,6 +24,12 @@
         suckless.overlays
         emacs-overlay.overlay
       ];
+
+      system = "x86_64-linux";
+      mkPkgs = pkgs: extraOverlays:
+        import pkgs { inherit system; };
+
+      pkgs = mkPkgs nixpkgs [];
 
       prelude = {
         mkLuaCode =
@@ -77,6 +85,13 @@
           username = "vini";
           extraSpecialArgs = { inherit prelude; };
         };
+      };
+
+      devShell."${system}" = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nixpkgs-fmt
+          rnix-lsp
+        ];
       };
     };
 }

@@ -31,7 +31,7 @@ in
     # ./lsp/lua.nix
     ./lsp/node.nix
     # ./lsp/python.nix
-    # ./lsp/rnix.nix
+    ./lsp/rnix.nix
     ./lsp/ccls.nix
 
     # ---- Development profiles ----
