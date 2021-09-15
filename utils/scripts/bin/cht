@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-languages=`echo "golang lua cpp c typescript elixir rust erlang" | tr ' ' '\n'`
-selected=`echo "$languages" | fzf`
+TMP_FILE=/tmp/cht_sh_options
+
+if [ -f "$TMP_FILE" ]; then
+  options=`<"$TMP_FILE"`
+else
+  options=`curl -s https://cheat.sh/:list`
+  echo "$options" > "$TMP_FILE"
+fi
+
+selected=`echo "$options" | fzf`
 
 # Exit if selected is empty
 [ -z "$selected" ] && exit
 
-read -p "Enter Query: " query
-query=`echo $query | tr ' ' '+'`
-
-curl -s cht.sh/$selected/$query | less
+curl -s cht.sh/"$selected" | less
 
