@@ -15,9 +15,31 @@ let
         }
       )
 
+      -- Diagnostic signs
+      local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+      for type, icon in pairs(signs) do
+        local hl = "LspDiagnosticsSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
+      -- Add borders to lsp hover and signature popups 
+      vim.lsp.handlers["textDocument/hover"] =
+        vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {
+          border = "single"
+        }
+      )
+      vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        {
+          border = "single"
+        }
+      )
+
       vim.cmd[[
         augroup lsp
-          " TODO: Make this autocommand only run in <buffer>
           autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
         augroup end
       ]]
@@ -64,7 +86,6 @@ let
         buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-        buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
         buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
 
         -- buf_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})<cr>', opts)
@@ -73,10 +94,25 @@ let
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
         buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.workspace_symbol("")<cr>', opts)
+        buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
       end
 
       -- Lsp capabilities
       _G.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      capabilities.textDocument.codeAction = {
+          dynamicRegistration = true,
+          codeActionLiteralSupport = {
+              codeActionKind = {
+                  valueSet = (function()
+                      local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
+                      table.sort(res)
+                      return res
+                  end)()
+              }
+          }
+      }
+
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities.textDocument.completion.completionItem.preselectSupport = true
       capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
