@@ -22,9 +22,8 @@ let
         }
       }
 
-      vim.cmd[[highlight link TSError Normal]]
-      vim.cmd[[highlight link TSNote Normal]]
-      vim.cmd[[highlight link TSWarning Normal]]
+      vim.wo.foldmethod = 'expr'
+      vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
     '';
   };
 

@@ -40,6 +40,9 @@ noremap H ^
 noremap L $
 nnoremap Q @@
 
+nnoremap j gj
+nnoremap k gk
+
 nnoremap <C-q> <C-w>q
 " nnoremap <C-s> <cmd>update<cr>
 
@@ -64,6 +67,9 @@ nnoremap <leader>to :tabnew<space>
 nnoremap <leader>tq :tabclose<cr>
 nnoremap <silent>g< :tabmove tabpagenr() - 2<cr>
 nnoremap <silent>g> :tabmove tabpagenr() + 1<cr>
+
+" Buffers
+nnoremap <leader>bd <cmd>bd<cr>
 
 nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
 nnoremap <silent> <leader>vq <cmd>quitall<cr>

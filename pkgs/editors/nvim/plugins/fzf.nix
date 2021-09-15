@@ -8,7 +8,6 @@ let
       let $FZF_DEFAULT_OPTS = '--exact --reverse --bind ctrl-a:select-all'
       let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
-      nnoremap <leader>,   <cmd>Buffers<cr>
       nnoremap <leader>.   <cmd>GFiles<cr>
       nnoremap <leader>;   <cmd>Rg<cr>
       nnoremap <leader>/   <cmd>Lines<cr>

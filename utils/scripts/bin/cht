@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+languages=`echo "golang lua cpp c typescript elixir rust erlang" | tr ' ' '\n'`
+selected=`echo "$languages" | fzf`
+
+# Exit if selected is empty
+[ -z "$selected" ] && exit
+
+read -p "Enter Query: " query
+query=`echo $query | tr ' ' '+'`
+
+curl -s cht.sh/$selected/$query | less
+

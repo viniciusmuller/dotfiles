@@ -19,8 +19,8 @@
       ../../services/dunst.nix # Notification daemon
       ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
-      # ../../pkgs/alacritty.nix # Terminal
       ../../pkgs/blugon # Screen temperature manager
+      ../../pkgs/betterlockscreen.nix # Screen locker
     ];
 
     home.packages = with pkgs; [
@@ -29,7 +29,6 @@
       xmobar # Status bar for xmonad
       nitrogen # Wallpaper setter
       xbanish # Hides the mouse when using the keyboard
-      betterlockscreen # Screen locker
     ];
 
     home.file = {

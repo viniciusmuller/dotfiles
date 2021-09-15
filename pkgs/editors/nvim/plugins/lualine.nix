@@ -2,7 +2,23 @@
 
 let
   lualine = {
-    plugin = pkgs.vimPlugins.lualine-nvim;
+    # TODO: Use upstream lualine once the pr of this repo gets merged
+    plugin = pkgs.vimUtils.buildVimPlugin {
+      pname = "lualine-nvim";
+      version = "2021-07-07";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "shadmansaleh";
+        repo = "lualine.nvim";
+        rev = "62bfe80fb6e0cd51cec6fc9df9e1768f7d37d299";
+        sha256 = "sha256-/634qP+VF+YkLOddJ0rd1L7+x9+/mxqMwDXlHrVvyGg=";
+      };
+
+      prePatch = "rm Makefile";
+
+      meta.homepage = "https://github.com/shadmansaleh/lualine.nvim";
+    };
+
     config = prelude.mkLuaCode ''
       require('lualine').setup {
         options = {
