@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
-TMP_FILE=/tmp/cht_sh_options
+TMP_DIR=/tmp/cht_sh_cache
+TMP_LIST="$TMP_DIR"/cht_sh_list
 
-if [ -f "$TMP_FILE" ]; then
-  options=`<"$TMP_FILE"`
+mkdir -p "$TMP_DIR"
+
+if [ -f "$TMP_LIST" ]; then
+  options=`<"$TMP_LIST"`
 else
+  # Cache cheat sheets list
   options=`curl -s https://cheat.sh/:list`
-  echo "$options" > "$TMP_FILE"
+  echo "$options" > "$TMP_LIST"
 fi
 
 selected=`echo "$options" | fzf`
@@ -14,5 +18,17 @@ selected=`echo "$options" | fzf`
 # Exit if selected is empty
 [ -z "$selected" ] && exit
 
-curl -s cht.sh/"$selected" | less
+data=`curl -s cht.sh/"$selected"`
+
+option_cache_path="$TMP_DIR"/"$selected"
+
+if [ -f "$option_cache_path" ]; then
+  options=`<"$option_cache_path"`
+else
+  # Cache cheat sheet 
+  options=`curl -s https://cheat.sh/"$selected"`
+  echo "$options" > "$option_cache_path"
+fi
+
+echo "$options" | less
 
