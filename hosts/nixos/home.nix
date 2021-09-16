@@ -33,6 +33,7 @@ in
     ../../pkgs/starship.nix # Awesome shell prompt
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
+    ../../pkgs/so.nix # StackExchange TUI
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor
