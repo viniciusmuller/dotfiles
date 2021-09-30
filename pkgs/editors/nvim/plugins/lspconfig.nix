@@ -51,21 +51,6 @@ let
         local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-        -- vim-illuminate
-        require('illuminate').on_attach(client)
-
-        -- vim-illuminate keybindings
-        buf_set_keymap('n',
-          '<c-n>',
-          '<cmd>lua require("illuminate").next_reference{wrap=true}<cr>',
-          {noremap=true}
-        )
-        buf_set_keymap('n',
-          '<c-p>',
-          '<cmd>lua require("illuminate").next_reference{reverse=true,wrap=true}<cr>',
-          {noremap=true}
-        )
-
         vim.wo.signcolumn = 'yes'
 
         -- Mappings.
@@ -132,7 +117,6 @@ let
 in
 {
   programs.neovim.plugins = [
-    pkgs.vimPlugins.vim-illuminate
     lspconfig
   ];
 }

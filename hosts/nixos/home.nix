@@ -31,6 +31,7 @@ in
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
     ../../pkgs/starship.nix # Awesome shell prompt
+    # TODO
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
@@ -53,6 +54,7 @@ in
 
   home.packages = with pkgs; [
     # CLI
+    python39Packages.gigalixir
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder

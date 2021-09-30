@@ -2,7 +2,9 @@
   description = "Personal flake config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # TODO: Use upstream when gigalixir gets merged
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:superherointj/nixpkgs/package-pythonPackages.gigalixir-1.2.3";
     flake-utils.url = "github:numtide/flake-utils";
 
     devshell = {

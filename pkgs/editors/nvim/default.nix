@@ -44,7 +44,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
+    # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
@@ -74,7 +74,7 @@ in
     ./plugins/lualine.nix
     ./plugins/bufferline.nix
     ./plugins/colorizer.nix
-    ./plugins/rainbow.nix
+    # ./plugins/rainbow.nix
   ];
 
   xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
@@ -83,6 +83,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary

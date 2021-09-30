@@ -88,7 +88,7 @@ augroup my_autocommands
 
   " Handle nix files
   au BufEnter *.nix set ft=nix
-  autocmd FileType nix setlocal commentstring=#\ %s
+  autocmd FileType nix,elixir setlocal commentstring=#\ %s
 augroup end
 
 let g:autosave_autostart = 1
