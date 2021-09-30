@@ -68,7 +68,7 @@ in
     gh # GitHub CLI
 
     # GUI
-    # element-desktop # Matrix client
+    element-desktop # Matrix client
     # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer

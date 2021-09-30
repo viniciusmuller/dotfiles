@@ -268,16 +268,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1632430792,
-        "narHash": "sha256-ZrbhvCy0yoOt8rAQQvsR2XJeJ0haRjFv5EnwWwBIbQY=",
-        "owner": "superherointj",
+        "lastModified": 1632962844,
+        "narHash": "sha256-V0uLSlf2Z26Z7Di9remP6UuCDI+FpdQU7mA59MuOQdw=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7d1f8f166579fdf975a4d4d0c36479f63d52af2e",
+        "rev": "d408c22889510d970b06d2840d4a9ba079c25151",
         "type": "github"
       },
       "original": {
-        "owner": "superherointj",
-        "ref": "package-pythonPackages.gigalixir-1.2.3",
+        "owner": "nixos",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
