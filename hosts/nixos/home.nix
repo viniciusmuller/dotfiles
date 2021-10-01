@@ -54,7 +54,7 @@ in
 
   home.packages = with pkgs; [
     # CLI
-    python39Packages.gigalixir
+    # python39Packages.gigalixir
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
