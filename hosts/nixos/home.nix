@@ -35,6 +35,7 @@ in
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
+    ../../pkgs/gdb-dashboard.nix
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor

@@ -40,6 +40,7 @@ in
 
     extraConfig = {
       core.editor = "vim";
+      pull.rebase = true;
     };
 
     delta = {

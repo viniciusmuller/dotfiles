@@ -181,16 +181,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1628027034,
-        "narHash": "sha256-9nOFCQf2UWGU5J5iNPNzmbNgjMugI8hqQQ7VWXAWiG0=",
+        "lastModified": 1633798980,
+        "narHash": "sha256-Tohah6+l6kdM2Fqn9i2gmk3C4Kfe1pJXb5Rb6DLaR5w=",
         "owner": "arcticlimer",
         "repo": "home-manager",
-        "rev": "010f149a44b519c5fe65afc833b451f163ef51f6",
+        "rev": "b7c8473a0804ef4b74f33b8e85915dbaba38e14b",
         "type": "github"
       },
       "original": {
         "owner": "arcticlimer",
-        "ref": "add-neovim-initextra",
+        "ref": "feature-neovim-initextra",
         "repo": "home-manager",
         "type": "github"
       }

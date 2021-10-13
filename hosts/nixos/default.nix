@@ -20,6 +20,7 @@
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
       ../../nixos-pkgs/noisetorch.nix
+      ../../nixos-pkgs/virt-manager.nix
     ];
 
   nix = {
