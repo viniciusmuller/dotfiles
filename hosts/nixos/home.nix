@@ -78,7 +78,7 @@ in
 
     # Unfree
     # obsidian
-    discord
+    # discord
     spotify
 
     # Games

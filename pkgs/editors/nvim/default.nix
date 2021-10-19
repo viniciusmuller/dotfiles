@@ -44,7 +44,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
+    ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
@@ -83,7 +83,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      vim-polyglot
+      # vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary
