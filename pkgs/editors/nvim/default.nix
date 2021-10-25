@@ -72,7 +72,7 @@ in
     # Aesthetic
     ./colorschemes/tokyonight.nix
     ./plugins/lualine.nix
-    ./plugins/bufferline.nix
+    # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
   ];
@@ -91,7 +91,6 @@ in
       vim-sensible
       vim-surround
       undotree
-      vim-vsnip
       friendly-snippets
       vim-tmux-navigator
     ];

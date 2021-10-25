@@ -39,6 +39,7 @@ noremap Y "+y
 noremap H ^
 noremap L $
 nnoremap Q @@
+nnoremap <C-p> <C-^>
 
 nnoremap j gj
 nnoremap k gk
