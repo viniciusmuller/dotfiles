@@ -7,7 +7,6 @@ let
 in
 {
   imports = [
-    ../../profiles/ricing.nix
     ../../utils/scripts
 
     # CLI
@@ -31,8 +30,6 @@ in
     ../../services/gpg-agent.nix
     ../../pkgs/gpg.nix
     ../../pkgs/starship.nix # Awesome shell prompt
-    # TODO
-    # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/gdb-dashboard.nix
@@ -59,10 +56,7 @@ in
     bandwhich # Network inspector
     tealdeer # TLDR of man pages
     ripgrep # File content finder
-    taskell # TUI Kanban
-    gomuks # Matrix TUI client
     bottom # System monitor
-    nmap # Network scanner
     ncdu # Curses interface for `du`
     file # Show info about files
     fd # File finder
@@ -70,14 +64,12 @@ in
 
     # GUI
     element-desktop # Matrix client
-    # neovide # Neovim graphical frontend
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
     krita # Digital art
 
     # Unfree
-    # obsidian
     # discord
     spotify
 

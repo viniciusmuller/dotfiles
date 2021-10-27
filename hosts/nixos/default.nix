@@ -21,6 +21,8 @@
       ../../nixos-pkgs/kmonad
       ../../nixos-pkgs/noisetorch.nix
       ../../nixos-pkgs/virt-manager.nix
+      # ../../hardware/gpu-passthrough.nix
+      ./prime.nix
     ];
 
   nix = {
@@ -88,7 +90,7 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   nixpkgs.config.allowUnfree = true;
 
