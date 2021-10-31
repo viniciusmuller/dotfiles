@@ -3,7 +3,7 @@
 {
   services.xserver = {
     enable = true;
-    displayManager.startx.enable = true;
+    # displayManager.startx.enable = true;
     windowManager.xmonad = {
       enable = true;
       config = ./config.hs;
@@ -18,16 +18,15 @@
       ../../pkgs/rofi # Application launcher and window switcher
       ../../services/dunst.nix # Notification daemon
       ../../services/picom.nix # Compositor
+      ../../services/flameshot.nix # Screenshots
       ../../pkgs/kitty.nix # Terminal
       ../../pkgs/blugon # Screen temperature manager
       ../../pkgs/betterlockscreen.nix # Screen locker
     ];
 
     home.packages = with pkgs; [
-      flameshot # Screenshots
       xorg.xmessage # Xmonad uses this to show help
       xmobar # Status bar for xmonad
-      nitrogen # Wallpaper setter
       xbanish # Hides the mouse when using the keyboard
     ];
 

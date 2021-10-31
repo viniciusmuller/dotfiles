@@ -286,11 +286,12 @@ myLogHook h = dynamicLogWithPP $ def
 -- By default, do nothing.
 myStartupHook = do
   spawnOnce "blugon &"
-  spawnOnce "dunst &"
-  spawnOnce "picom &"
-  spawnOnce "flameshot &"
+  -- TODO: These might be required if Nix is not managing your X session
+  -- spawnOnce "dunst &"
+  -- spawnOnce "picom &"
+  -- spawnOnce "flameshot &"
   spawnOnce "xbanish &"
-  spawnOnce "nitrogen --restore"
+  -- spawnOnce "nitrogen --restore"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

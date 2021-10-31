@@ -22,7 +22,8 @@
       ../../nixos-pkgs/noisetorch.nix
       ../../nixos-pkgs/virt-manager.nix
       # ../../hardware/gpu-passthrough.nix
-      ./prime.nix
+      # ./prime.nix
+      ./gpu-passthrough.nix
     ];
 
   nix = {
@@ -44,6 +45,8 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     emacs-all-the-icons-fonts
   ];
+
+  services.xserver.displayManager.lightdm.enable = true;
 
   boot = {
     loader = {
@@ -95,19 +98,19 @@
   nixpkgs.config.allowUnfree = true;
 
   # Audio with pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
+  #  # If you want to use JACK applications, uncomment this
+  #  #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  #  # use the example session manager (no others are packaged yet so this is enabled by default,
+  #  # no need to redefine it in your config for now)
+  #  #media-session.enable = true;
+  #};
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
