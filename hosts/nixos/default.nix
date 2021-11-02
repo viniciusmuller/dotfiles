@@ -27,8 +27,6 @@
     ];
 
   nix = {
-    # TODO: Find better place for this
-    package = pkgs.nixUnstable;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
 
@@ -62,6 +60,7 @@
       };
     };
     supportedFilesystems = [ "ntfs" ];
+    cleanTmpDir = true;
   };
 
   networking.hostName = "nixos"; # Define your hostname.

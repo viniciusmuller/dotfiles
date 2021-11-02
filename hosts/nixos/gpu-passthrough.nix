@@ -12,6 +12,9 @@ in
       "intel_iommu=on"
       "iommu=pt"
 
+      # https://forums.unraid.net/topic/47345-performance-improvements-in-vms-by-adjusting-cpu-pinning-and-assignment/
+      # "isolcpus=1,5,2,6,3,7,4,0"
+
       "pcie_aspm=off"
     ];
 

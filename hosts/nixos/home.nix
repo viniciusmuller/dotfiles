@@ -12,6 +12,7 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/bash.nix # Shell
+    ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
     ../../pkgs/readline # GNU readline input
