@@ -20,13 +20,13 @@
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
       ../../nixos-pkgs/noisetorch.nix
-      ../../nixos-pkgs/virt-manager.nix
-      # ../../hardware/gpu-passthrough.nix
-      # ./prime.nix
-      ./gpu-passthrough.nix
+      ./prime.nix
+      # ./gpu-passthrough.nix
     ];
 
   nix = {
+    # TODO: Find better place for this
+    package = pkgs.nixFlakes;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
 
@@ -43,8 +43,6 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     emacs-all-the-icons-fonts
   ];
-
-  services.xserver.displayManager.lightdm.enable = true;
 
   boot = {
     loader = {
@@ -81,6 +79,17 @@
     keyMap = "us";
   };
 
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    # TODO: Change greeter
+    # greeters = {
+    #   gtk.enable = false;
+    #   mini.enable = true;
+    # };
+  };
+
+  services.xserver.desktopManager.gnome.enable = true;
+
   # Configure keymap in X11
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -98,6 +107,8 @@
 
   # Audio with pipewire
   #security.rtkit.enable = true;
+  # TODO: Apparently gnome + pipewire doesn't work
+  hardware.pulseaudio.enable = true;
   #services.pipewire = {
   #  enable = true;
   #  alsa.enable = true;
