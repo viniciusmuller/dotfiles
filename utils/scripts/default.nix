@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-  # TODO: sessionPath is not working :(
+# TODO: Use writeShellScript bin here
+
   # home.sessionPath = [ "${./bin}" ];
   programs.bash.initExtra = ''export PATH=${./bin}:$PATH'';
   programs.zsh.initExtra = ''export PATH=${./bin}:$PATH'';

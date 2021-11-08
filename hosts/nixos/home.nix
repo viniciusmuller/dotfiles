@@ -8,6 +8,7 @@ in
 {
   imports = [
     ../../utils/scripts
+    ../../profiles/haskell # ghci customization
 
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
@@ -34,6 +35,7 @@ in
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/gdb-dashboard.nix
+    ../../pkgs/nnn.nix
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor

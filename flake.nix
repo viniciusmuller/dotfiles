@@ -11,7 +11,7 @@
     };
 
     home-manager = {
-      url = "github:arcticlimer/home-manager/feature-neovim-initextra";
+      url = "github:arcticlimer/home-manager/hm-updated-with-nvim-initextra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

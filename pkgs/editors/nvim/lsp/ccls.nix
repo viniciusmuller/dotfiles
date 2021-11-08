@@ -1,6 +1,5 @@
 { pkgs, prelude, ... }:
 
-with pkgs;
 {
   programs.neovim.extraConfig = prelude.mkLuaCode ''
     require('lspconfig').ccls.setup {

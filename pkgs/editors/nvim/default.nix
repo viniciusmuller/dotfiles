@@ -18,9 +18,9 @@ in
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    ./plugins/lsp-extensions.nix
+    # ./plugins/lsp-extensions.nix
 
-    ./lsp/omnisharp.nix
+    # ./lsp/omnisharp.nix
     ./lsp/go.nix
     ./lsp/rust.nix
     # ./lsp/clojure.nix
@@ -38,7 +38,7 @@ in
     ./profiles/web.nix
 
     # ---- Language specific ----
-    ./languages/vim-go.nix
+    # ./languages/vim-go.nix
     ./languages/rust-vim.nix
 
     # ---- General plugins ----
@@ -51,14 +51,14 @@ in
 
     ./plugins/fzf.nix
 
-    ./plugins/vim-test.nix
+    # ./plugins/vim-test.nix
     ./plugins/togglelist.nix
     ./plugins/closetag.nix
     ./plugins/slash.nix
     # ./plugins/neomake.nix
 
     # Repl
-    ./plugins/conjure.nix
+    # ./plugins/conjure.nix
 
     # Debugging
     # ./plugins/dap.nix
@@ -71,7 +71,7 @@ in
 
     # Aesthetic
     ./colorschemes/tokyonight.nix
-    ./plugins/lualine.nix
+    # ./plugins/lualine.nix
     # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
