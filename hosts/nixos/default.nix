@@ -81,11 +81,6 @@
 
   services.xserver.displayManager.lightdm = {
     enable = true;
-    # TODO: Change greeter
-    # greeters = {
-    #   gtk.enable = false;
-    #   mini.enable = true;
-    # };
   };
 
   services.xserver.desktopManager.gnome.enable = true;

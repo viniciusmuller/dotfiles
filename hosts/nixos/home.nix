@@ -35,7 +35,8 @@ in
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/gdb-dashboard.nix
-    ../../pkgs/nnn.nix
+    ../../pkgs/nnn.nix # File manager
+    # ../../pkgs/conserve.nix # Backup tool
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor

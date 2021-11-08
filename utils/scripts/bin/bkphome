@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-tar -zcvpf $HOME/backup-$(date +%d-%m-%Y).tar.gz $HOME
