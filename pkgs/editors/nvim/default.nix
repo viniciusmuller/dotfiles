@@ -26,7 +26,7 @@ in
     # ./lsp/clojure.nix
     ./lsp/elixir.nix
     # ./lsp/godot.nix
-    # ./lsp/haskell.nix
+    ./lsp/haskell.nix
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     ./lsp/node.nix

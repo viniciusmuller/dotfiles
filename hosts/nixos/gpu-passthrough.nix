@@ -6,6 +6,10 @@ let
   username = "vini";
 in
 {
+  imports = [
+    ../../nixos-pkgs/virt-manager.nix
+  ];
+
   boot = {
     kernelParams = [
       # https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Setting_up_IOMMU
@@ -76,12 +80,11 @@ in
     onShutdown = "shutdown";
     qemu = {
       ovmf.enable = true;
-      runAsRoot = false;
+      runAsRoot = true; # TODO: Might need to change
     };
   };
 
   environment.systemPackages = with pkgs; [
-    virt-manager
     looking-glass-client
   ];
 }
