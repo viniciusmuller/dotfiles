@@ -74,7 +74,7 @@ in
     krita # Digital art
 
     # Unfree
-    # discord
+    discord
     spotify
 
     # Games

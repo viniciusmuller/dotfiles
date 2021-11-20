@@ -15,7 +15,17 @@
       bw get item GPG_PUB --session "$key" | jq -r '.notes' > "$public"
 
       bw lock
+
+      gpg --import $public
+      gpg --import $private
+
+      rm $public
+      rm $private
+
+      echo "GPG key imported!"
     '')
     pkgs.jq
+    pkgs.gnupg
+    pkgs.bitwarden-cli
   ];
 }

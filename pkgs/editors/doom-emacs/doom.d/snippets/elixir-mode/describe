@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: describe
-# uuid:
-# key: describe
-# condition: t
-# --
-describe "${1}" do
-  $0
-end
