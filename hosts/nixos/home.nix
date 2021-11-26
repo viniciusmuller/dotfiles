@@ -45,6 +45,7 @@ in
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
+    # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
@@ -81,6 +82,7 @@ in
     # cataclysm-dda
     # nethack
     # brogue
+    osu-lazer
   ];
 
   programs.zsh.shellAliases = rebuild-alias;

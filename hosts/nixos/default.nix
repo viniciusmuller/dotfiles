@@ -20,6 +20,8 @@
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
       ../../nixos-pkgs/noisetorch.nix
+      ../../nixos-pkgs/wine.nix
+      ../../nixos-pkgs/opentabletdriver.nix
       ./prime.nix
       # ./gpu-passthrough.nix
     ];
@@ -59,6 +61,10 @@
     };
     supportedFilesystems = [ "ntfs" ];
     cleanTmpDir = true;
+    kernel.sysctl = {
+      # Wine was suggesting this
+      "dev.i915.perf_stream_paranoid" = 0;
+    };
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -132,9 +138,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  # environment.systemPackages = with pkgs; [
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs; [
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
