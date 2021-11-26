@@ -5,18 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:arcticlimer/home-manager/hm-updated-with-nvim-initextra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, flake-utils, devshell, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, home-manager, ... } @inputs:
     let
       overlays = with inputs; [
         # TODO: Overlays doesn't seem to be working
@@ -94,11 +89,13 @@
             let
               pkgs = import nixpkgs {
                 inherit system;
-                overlays = [ devshell.overlay ];
               };
             in
-            pkgs.devshell.mkShell {
-              imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
+            pkgs.mkShell {
+              buildInputs = with pkgs; [
+                rnix-lsp
+                nixpkgs-fmt
+              ];
             };
         }
       );

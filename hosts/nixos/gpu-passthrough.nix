@@ -52,11 +52,11 @@ in
     ACTION=="add", ATTRS{name}=="KMonad output", SYMLINK+="KMONAD_DEVICE"
   '';
 
-   # Pipewire + pulseaudio support (you can also use just pulseaudio)
-   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-   };
+  # Pipewire + pulseaudio support (you can also use just pulseaudio)
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
   # Scream
   systemd.tmpfiles.rules = [
