@@ -87,9 +87,7 @@
         system: {
           devShell =
             let
-              pkgs = import nixpkgs {
-                inherit system;
-              };
+              pkgs = nixpkgs.legacyPackages.${system};
             in
             pkgs.mkShell {
               buildInputs = with pkgs; [

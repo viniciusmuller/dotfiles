@@ -41,7 +41,6 @@
   fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    emacs-all-the-icons-fonts
   ];
 
   boot = {
@@ -91,16 +90,6 @@
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # TODO: Make gnome-keyring work atleast in nixos #
-  # services.gnome.gnome-keyring.enable = true;
-  # programs.seahorse.enable = true;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # services.xserver.videoDrivers = [ "nvidia" ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -125,9 +114,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   users.users.vini = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -136,24 +122,9 @@
 
   home-manager.users.vini = import ./home.nix;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-
   environment.systemPackages = with pkgs; [
+
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
