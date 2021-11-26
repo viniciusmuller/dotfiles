@@ -19,9 +19,7 @@
       # ../../nixos-pkgs/slock.nix
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
-      ../../nixos-pkgs/noisetorch.nix
       ../../nixos-pkgs/wine.nix
-      ../../nixos-pkgs/opentabletdriver.nix
       ./prime.nix
       # ./gpu-passthrough.nix
     ];
@@ -105,6 +103,9 @@
   # services.xserver.videoDrivers = [ "nvidia" ];
 
   nixpkgs.config.allowUnfree = true;
+
+  hardware.opentabletdriver.enable = true;
+  programs.noisetorch.enable = true;
 
   # TODO: Apparently gnome + pipewire doesn't work
   # hardware.pulseaudio.enable = true;
