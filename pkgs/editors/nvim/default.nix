@@ -15,6 +15,8 @@ let
 in
 {
   imports = [
+    ./map-leader.nix
+
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
@@ -94,11 +96,6 @@ in
       friendly-snippets
       vim-tmux-navigator
     ];
-
-    initExtra = ''
-      let mapleader = " "
-      let maplocalleader = ","
-    '';
 
     extraConfig = builtins.readFile ./init.vim;
   };
