@@ -22,6 +22,10 @@
       ../../nixos-pkgs/wine.nix
       ./prime.nix
       # ./gpu-passthrough.nix
+
+      # Grub
+      ../../nixos-pkgs/grub/themes/fallout.nix
+      ../../nixos-pkgs/grub/os-prober.nix
     ];
 
   nix = {
@@ -44,24 +48,12 @@
   ];
 
   boot = {
-    loader = {
-      grub = {
-        enable = true;
-        useOSProber = true;
-        efiSupport = true;
-        devices = [ "nodev" ];
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-    };
-    supportedFilesystems = [ "ntfs" ];
     cleanTmpDir = true;
     kernel.sysctl = {
       # Wine was suggesting this
       "dev.i915.perf_stream_paranoid" = 0;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
