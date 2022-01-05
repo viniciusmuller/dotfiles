@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
   imports =
@@ -118,7 +118,7 @@
     #media-session.enable = true;
   };
 
-  users.users.vini = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "changeme";

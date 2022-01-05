@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   services.xserver = {
@@ -12,7 +12,7 @@
     };
   };
 
-  home-manager.users.vini = {
+  home-manager.users.${username} = {
     imports = [
       ../../pkgs/rofi # Application launcher and window switcher
       ../../services/dunst.nix # Notification daemon
@@ -29,7 +29,6 @@
     ];
 
     home.file = {
-      # ".xinitrc".source = ./.xinitrc;
       ".xmobarrc".source = ./xmobar.hs;
     };
   };

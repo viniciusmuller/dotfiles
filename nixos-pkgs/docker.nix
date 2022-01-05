@@ -1,8 +1,8 @@
-{ pkgs, home-manager, ... }:
+{ pkgs, home-manager, username, ... }:
 
 {
   virtualisation.docker.enable = true;
-  users.users.vini.extraGroups = [ "docker" ];
+  users.users.${username}.extraGroups = [ "docker" ];
 
-  home-manager.users.vini = import ../pkgs/docker.nix;
+  home-manager.users.${username} = import ../pkgs/docker.nix;
 }

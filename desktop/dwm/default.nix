@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 # Config for the dynamic window manager
 {
@@ -9,7 +9,7 @@
     windowManager.dwm.enable = true;
   };
 
-  home-manager.users.vini = {
+  home-manager.users.${username} = {
     imports = [
       ../../pkgs/suckless/slstatus.nix # dwm statusbar
       ../../pkgs/suckless/dmenu.nix # Launcher

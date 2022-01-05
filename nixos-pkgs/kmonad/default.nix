@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 let
   kmonad = (import ../../pkgs/kmonad/derivation.nix) pkgs;
@@ -19,7 +19,7 @@ in
     layout = "us";
   };
 
-  users.extraUsers.vini = {
+  users.extraUsers.${username} = {
     extraGroups = [ "input" "uinput" ];
   };
 }

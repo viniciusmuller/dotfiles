@@ -23,7 +23,7 @@ rec {
       inherit system;
 
       specialArgs = {
-        inherit pkgs inputs;
+        inherit pkgs inputs username;
       };
 
       modules = [
