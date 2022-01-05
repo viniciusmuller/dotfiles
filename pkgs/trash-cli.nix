@@ -8,7 +8,6 @@ in
     trash-cli
   ];
 
-  # inherit (prelude.mkShellAlias {rm = "trash-put";});
   programs.zsh.shellAliases = aliases;
   programs.bash.shellAliases = aliases;
   programs.fish.shellAliases = aliases;

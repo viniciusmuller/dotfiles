@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    bitwarden
+    # bitwarden
     bitwarden-cli
   ];
 }

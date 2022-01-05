@@ -8,6 +8,7 @@
   imports =
     [
       ../../desktop/xmonad
+      # ../../desktop/kde
 
       # TODO: Try to use a specific partition schema and use the autoFormat
       # option inside hardware-configuration instead of hardcoding partuuids.
@@ -22,6 +23,8 @@
       ../../nixos-pkgs/wine.nix
       ./prime.nix
       # ./gpu-passthrough.nix
+
+      ../../nixos-services/noisetorch.nix
 
       # Grub
       ../../nixos-pkgs/grub/themes/fallout.nix
@@ -56,6 +59,12 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  # TODO: Move this to sway module
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -78,15 +87,18 @@
     enable = true;
   };
 
+  # services.xserver.displayManager.gdm = {
+  #   enable = true;
+  #   nvidiaWayland = true;
+  # };
+  # hardware.nvidia.modesetting.enable = true;
+
   # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";
 
-  nixpkgs.config.allowUnfree = true;
-
   hardware.opentabletdriver.enable = true;
-  programs.noisetorch.enable = true;
 
   # TODO: Apparently gnome + pipewire doesn't work
   # hardware.pulseaudio.enable = true;
@@ -111,8 +123,6 @@
     extraGroups = [ "wheel" ];
     initialPassword = "changeme";
   };
-
-  home-manager.users.vini = import ./home.nix;
 
   environment.systemPackages = with pkgs; [
 

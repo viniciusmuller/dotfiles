@@ -26,7 +26,7 @@
     # GUI
     ../../pkgs/chromium.nix # Web browser
     ../../pkgs/bitwarden.nix # Password manager
-    ../../pkgs/blugon # Screen temperature manager
+    # ../../pkgs/blugon # Screen temperature manager
   ];
 
   home.packages = with pkgs; [

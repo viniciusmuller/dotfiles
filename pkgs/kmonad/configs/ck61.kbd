@@ -43,7 +43,7 @@
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   esc   _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _
-  lmet  lctl _              _              lalt rctl @ext
+  _     _    _              _              lalt @ext _
 )
 
 (deflayer extra

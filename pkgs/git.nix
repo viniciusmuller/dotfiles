@@ -23,7 +23,6 @@ let
   };
 in
 {
-  # imports = [(prelude.mkShellAlias aliases)];
   programs.zsh.shellAliases = aliases;
   programs.bash.shellAliases = aliases;
   programs.fish.shellAliases = aliases;

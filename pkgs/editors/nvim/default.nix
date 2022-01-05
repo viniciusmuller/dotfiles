@@ -72,7 +72,8 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/tokyonight.nix
+    ./colorschemes/dracula.nix
+
     # ./plugins/lualine.nix
     # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
@@ -100,7 +101,6 @@ in
     extraConfig = builtins.readFile ./init.vim;
   };
 
-  # inherit (prelude.mkShellAlias aliases);
   programs.bash.shellAliases = aliases;
   programs.zsh.shellAliases = aliases;
   programs.fish.shellAliases = aliases;

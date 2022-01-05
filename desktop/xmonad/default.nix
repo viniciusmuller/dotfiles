@@ -3,7 +3,6 @@
 {
   services.xserver = {
     enable = true;
-    # displayManager.startx.enable = true;
     windowManager.xmonad = {
       enable = true;
       config = ./config.hs;
@@ -20,7 +19,6 @@
       ../../services/picom.nix # Compositor
       ../../services/flameshot.nix # Screenshots
       ../../pkgs/kitty.nix # Terminal
-      ../../pkgs/blugon # Screen temperature manager
       ../../pkgs/betterlockscreen.nix # Screen locker
     ];
 
@@ -31,7 +29,7 @@
     ];
 
     home.file = {
-      ".xinitrc".source = ./.xinitrc;
+      # ".xinitrc".source = ./.xinitrc;
       ".xmobarrc".source = ./xmobar.hs;
     };
   };

@@ -2,85 +2,46 @@
   description = "Personal flake config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, flake-utils, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, ... } @inputs:
     let
-      overlays = with inputs; [
-        # TODO: Overlays doesn't seem to be working
-      ];
-
-      system = "x86_64-linux";
-      mkPkgs = pkgs: extraOverlays:
-        import pkgs { inherit system; };
-
-      pkgs = mkPkgs nixpkgs [ ];
-      lib = nixpkgs.lib;
-
-      prelude = {
-        mkLuaCode =
-          (
-            code:
-            ''
-              lua << EOF
-                ${code}
-              EOF
-            ''
-          );
-
-        mkShellAlias = (
-          alias: {
-            programs.zsh.shellAliases = alias;
-            programs.bash.shellAliases = alias;
-            programs.fish.shellAliases = alias;
-          }
-        );
-      };
+      # TODO: Figure out how to apply overlays with this new config structure
+      # (if I ever # need them).
+      overlays = with inputs; [];
+      lib = import ./lib inputs;
     in
     {
-      nixosConfigurations.nixos = lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          { nixpkgs.overlays = overlays; }
-          ./hosts/nixos
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.users.vini = { ... }: {
-              _module.args = {
-                inherit prelude;
-              };
-            };
-          }
-        ];
-        specialArgs = {
-          inherit inputs system prelude;
+      nixosConfigurations = {
+        nixos = lib.mkHost {
+          host = "nixos";
+          system = "x86_64-linux";
+          username = "vini";
         };
       };
 
-      homeConfigurations = {
-        arch = home-manager.lib.homeManagerConfiguration {
-          configuration = ./hosts/arch;
+      homeConfigurations =
+        let
           system = "x86_64-linux";
-          homeDirectory = "/home/vini";
           username = "vini";
-          extraSpecialArgs = { inherit prelude; };
+        in
+        {
+          arch = lib.mkHome {
+            inherit system username;
+            name = "arch";
+          };
+          wsl = lib.mkHome {
+            inherit system username;
+            name = "wsl";
+          };
         };
-
-        wsl = home-manager.lib.homeManagerConfiguration {
-          configuration = ./hosts/wsl;
-          system = "x86_64-linux";
-          homeDirectory = "/home/vini";
-          username = "vini";
-          extraSpecialArgs = { inherit prelude; };
-        };
-      };
       # Devshell
     } // flake-utils.lib.eachDefaultSystem
       (
@@ -91,8 +52,15 @@
             in
             pkgs.mkShell {
               buildInputs = with pkgs; [
+                # Nix development dependencies
                 rnix-lsp
                 nixpkgs-fmt
+
+                # Sway IPC scripts
+                rustc
+                cargo
+                rust-analyzer
+                rustfmt
               ];
             };
         }

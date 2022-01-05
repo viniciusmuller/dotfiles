@@ -285,7 +285,7 @@ myLogHook h = dynamicLogWithPP $ def
 --
 -- By default, do nothing.
 myStartupHook = do
-  spawnOnce "blugon &"
+  -- spawnOnce "blugon &"
   -- TODO: These might be required if Nix is not managing your X session
   -- spawnOnce "dunst &"
   -- spawnOnce "picom &"

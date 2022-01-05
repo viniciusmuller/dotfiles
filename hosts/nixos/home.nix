@@ -1,4 +1,4 @@
-{ config, pkgs, prelude, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   rebuild-alias = {
@@ -11,7 +11,7 @@ in
     ../../profiles/haskell # ghci customization
 
     # CLI
-    ../../pkgs/base16-shell.nix # Different shell themes
+    # ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/bash.nix # Shell
     ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
@@ -26,34 +26,37 @@ in
     ../../pkgs/newsboat.nix # RSS Reader
     ../../pkgs/trash-cli.nix # Safer rm
     ../../pkgs/lazygit.nix # Git TUI client
-    ../../pkgs/lazydocker.nix # Docker TUI client
+    # ../../pkgs/lazydocker.nix # Docker TUI client
     ../../pkgs/direnv.nix # Manages project environments
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
+    ../../services/gammastep.nix
     ../../pkgs/gpg.nix
     ../../pkgs/starship.nix # Awesome shell prompt
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/gdb-dashboard.nix
     ../../pkgs/nnn.nix # File manager
-    # ../../pkgs/conserve.nix # Backup tool
+    ../../pkgs/bitwarden.nix # Password manager
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor
-    ../../pkgs/pomatez.nix # Pomodoro app
+    # ../../pkgs/pomatez.nix # Pomodoro app
     # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
-    ../../pkgs/bitwarden.nix # Password manager
     ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
 
-    # Games
-    # ../../pkgs/games/dwarf-fortress.nix
-    # ../../pkgs/games/unreal-world.nix
+    ../../desktop/sway
+
+    # Theming
+    inputs.nix-colors.homeManagerModule
   ];
+
+  colorscheme = inputs.nix-colors.colorSchemes.dracula;
 
   home.packages = with pkgs; [
     # CLI
@@ -65,24 +68,19 @@ in
     ncdu # Curses interface for `du`
     file # Show info about files
     fd # File finder
-    gh # GitHub CLI
+    neofetch # I use NixOS btw
 
     # GUI
-    element-desktop # Matrix client
+    # element-desktop # Matrix client
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
-    krita # Digital art
+    # krita # Digital art
+    obsidian
 
     # Unfree
     discord
     spotify
-
-    # Games
-    # cataclysm-dda
-    # nethack
-    # brogue
-    osu-lazer
   ];
 
   programs.zsh.shellAliases = rebuild-alias;
@@ -91,10 +89,11 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  home.sessionVariables = {
-    GTK_IM_MODULE = "cedilla";
-    QT_IM_MODULE = "cedilla";
-  };
+  # TODO: Make this work again
+  # home.sessionVariables = {
+  # GTK_IM_MODULE = "cedilla";
+  # QT_IM_MODULE = "cedilla";
+  # };
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
