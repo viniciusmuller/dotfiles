@@ -277,11 +277,6 @@ in
 
   home.packages = with pkgs; [
     wl-clipboard
-
-    # notify-send
     libnotify
-
-    # TODO: Remove from here
-    switcher
   ];
 }

@@ -52,7 +52,7 @@ rec {
     in
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit system username homeDirectory pkgs;
-      configuration = (../hosts + "/${name} " + ./home.nix);
+      configuration = (../home-configurations + "/${name}");
       extraSpecialArgs = {
         inherit inputs system username prelude;
       };
