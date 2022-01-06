@@ -40,7 +40,7 @@ let
 
       vim.cmd[[
         augroup lsp
-          autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+          autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})
         augroup end
       ]]
 

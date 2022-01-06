@@ -4,6 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/nur";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,11 +12,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, flake-utils, nixpkgs, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nur, ... } @inputs:
     let
-      # TODO: Figure out how to apply overlays with this new config structure
-      # (if I ever # need them).
-      overlays = with inputs; [];
       lib = import ./lib inputs;
     in
     {
@@ -24,6 +22,7 @@
           host = "nixos";
           system = "x86_64-linux";
           username = "vini";
+          overlays = [ nur.overlay ];
         };
       };
 
@@ -55,12 +54,6 @@
                 # Nix development dependencies
                 rnix-lsp
                 nixpkgs-fmt
-
-                # Sway IPC scripts
-                rustc
-                cargo
-                rust-analyzer
-                rustfmt
               ];
             };
         }

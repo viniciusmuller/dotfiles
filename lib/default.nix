@@ -4,20 +4,21 @@ let
   prelude = import ./prelude.nix;
 in
 rec {
-  mkNixpkgs = { system, allowUnfree ? true }:
+  mkNixpkgs = { system, allowUnfree ? true, overlays ? [ ] }:
     import inputs.nixpkgs {
-      inherit system;
+      inherit system overlays;
       config.allowUnfree = allowUnfree;
-      # overlays =
-      #   (import ../overlays).nixpkgs.overlays
-      #   ++ [
-      #     inputs.nur.overlay
-      #   ];
     };
 
-  mkHost = { host, system ? "x86_64-linux", username, allowUnfree ? true }:
+  mkHost =
+    { host
+    , username
+    , system ? "x86_64-linux"
+    , allowUnfree ? true
+    , overlays ? [ ]
+    }:
     let
-      pkgs = mkNixpkgs { inherit allowUnfree system; };
+      pkgs = mkNixpkgs { inherit allowUnfree system overlays; };
     in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
@@ -27,10 +28,7 @@ rec {
       };
 
       modules = [
-        # host configuration
         (../hosts + "/${host}")
-
-        # home manager
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -45,9 +43,15 @@ rec {
       ];
     };
 
-  mkHome = { name, username, system ? "x86_64-linux", allowUnfree ? true }:
+  mkHome =
+    { name
+    , username
+    , system ? "x86_64-linux"
+    , allowUnfree ? true
+    , overlays ? [ ]
+    }:
     let
-      pkgs = mkNixpkgs { inherit allowUnfree system; };
+      pkgs = mkNixpkgs { inherit allowUnfree system overlays; };
       homeDirectory = "/home/${username}";
     in
     inputs.home-manager.lib.homeManagerConfiguration {

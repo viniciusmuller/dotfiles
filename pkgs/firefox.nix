@@ -1,18 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   programs.firefox = {
     enable = true;
-    profiles.arcticlimer = {
+    profiles.${username} = {
       settings = {
         "ui.key.menuAccessKeyFocuses" = false;
       };
     };
-    # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    #   ublock-origin
-    #   bitwarden
-    #   # dark-reader
-    #   # vimium-ff
-    # ];
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      ublock-origin
+      bitwarden
+      darkreader
+      vimium
+      privacy-badger
+    ];
   };
 }

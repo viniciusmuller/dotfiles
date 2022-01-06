@@ -13,7 +13,8 @@ let
   swaybg = "${pkgs.swaybg}/bin/swaybg";
   # swayfader = "${pkgs.nur.repos.misterio.swayfader}/bin/swayfader";
   swayidle = "${pkgs.swayidle}/bin/swayidle";
-  swaylock = "${pkgs.swaylock-effects}/bin/swaylock";
+  # TODO: Make swaylock-effects work
+  swaylock = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5";
   waybar = "${pkgs.waybar}/bin/waybar";
   wofi = "${pkgs.wofi}/bin/wofi";
 
@@ -100,8 +101,9 @@ in
         "${modifier}+s" = "exec ${switcher}/bin/window-switcher";
         "${modifier}+c" = "kill";
         "${modifier}+control+l" = "exec ${swaylock}";
-        # "${modifier}+tab" = "exec ${focus-back-and-forth-client}";
         "${modifier}+tab" = "workspace back_and_forth";
+        "${modifier}+minus" = "opacity minus 0.1";
+        "${modifier}+equal" = "opacity plus 0.1";
       };
     };
     extraConfig = ''

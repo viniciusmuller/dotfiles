@@ -72,7 +72,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/dracula.nix
+    ./colorschemes/nix-colors.nix
 
     # ./plugins/lualine.nix
     # ./plugins/bufferline.nix

@@ -44,6 +44,7 @@ in
     # ../../pkgs/pomatez.nix # Pomodoro app
     # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
+    ../../pkgs/firefox.nix # Browser
     ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
@@ -56,7 +57,7 @@ in
     inputs.nix-colors.homeManagerModule
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-hard;
+  colorscheme = inputs.nix-colors.colorSchemes.ayu-dark;
 
   home.packages = with pkgs; [
     # CLI
