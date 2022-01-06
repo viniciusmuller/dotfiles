@@ -11,10 +11,19 @@ let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 
   swaybg = "${pkgs.swaybg}/bin/swaybg";
-  # swayfader = "${pkgs.nur.repos.misterio.swayfader}/bin/swayfader";
   swayidle = "${pkgs.swayidle}/bin/swayidle";
-  # TODO: Make swaylock-effects work
-  swaylock = "${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --effect-blur 7x5";
+  swaylock = lib.concatStringsSep " " [
+    # TODO: Tweak these colors
+    "${pkgs.swaylock}/bin/swaylock"
+    "--color ${colorscheme.base00}"
+    "--ring-color ${colorscheme.base01}"
+    "--inside-color ${colorscheme.base02}"
+    "--key-hl-color ${colorscheme.base08}"
+    "--ring-ver-color ${colorscheme.base0B}"
+    "--inside-ver-color ${colorscheme.base0C}"
+    "--ring-wrong-color ${colorscheme.base09}"
+    "--inside-wrong-color ${colorscheme.base0A}"
+  ];
   waybar = "${pkgs.waybar}/bin/waybar";
   wofi = "${pkgs.wofi}/bin/wofi";
 
@@ -51,10 +60,10 @@ in
       "--unsupported-gpu"
     ];
     config = rec {
-      modifier = "Mod1";
+      modifier = "Mod1"; # Alt
       terminal = "${kitty}";
       menu =
-        "${wofi} -D run-always_parse_args=true -k /dev/null -i -e -S run -t ${terminal}";
+        "${wofi} -D run-always_parse_args=true -i -M fuzzy -S run -t ${terminal}";
       colors = {
         focused = {
           border = "${colorscheme.base0C}";

@@ -51,7 +51,8 @@ in
     ./plugins/cmp.nix
     ./plugins/pears.nix
 
-    ./plugins/fzf.nix
+    # ./plugins/fzf.nix
+    ./plugins/telescope.nix
 
     # ./plugins/vim-test.nix
     ./plugins/togglelist.nix

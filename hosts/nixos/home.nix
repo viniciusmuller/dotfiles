@@ -57,7 +57,7 @@ in
     inputs.nix-colors.homeManagerModule
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.ayu-dark;
+  colorscheme = inputs.nix-colors.colorSchemes.dracula;
 
   home.packages = with pkgs; [
     # CLI
