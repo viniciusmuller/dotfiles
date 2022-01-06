@@ -56,7 +56,7 @@ in
     inputs.nix-colors.homeManagerModule
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.dracula;
+  colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-hard;
 
   home.packages = with pkgs; [
     # CLI
@@ -100,8 +100,9 @@ in
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "vini";
-  home.homeDirectory = "/home/vini";
+  # This is not needed. We set these through the HM module inside the flake.
+  # home.username = "vini";
+  # home.homeDirectory = "/home/vini";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

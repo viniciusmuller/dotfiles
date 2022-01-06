@@ -98,6 +98,7 @@ in
         "${modifier}+p" = "exec ${menu}";
         "${modifier}+a" = "exec ${terminal}";
         "${modifier}+s" = "exec ${switcher}/bin/window-switcher";
+        "${modifier}+c" = "kill";
         "${modifier}+control+l" = "exec ${swaylock}";
         # "${modifier}+tab" = "exec ${focus-back-and-forth-client}";
         "${modifier}+tab" = "workspace back_and_forth";
