@@ -87,7 +87,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      vim-polyglot
+      # vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary

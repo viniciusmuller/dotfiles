@@ -95,6 +95,19 @@ in
         };
       };
       bars = [ ];
+      window = {
+        border = 2;
+        commands = [
+          # {
+          #   command = "move scratchpad";
+          #   criteria = { title = "Wine System Tray"; };
+          # }
+          {
+            command = "move scratchpad";
+            criteria = { title = "Firefox — Sharing Indicator"; };
+          }
+        ];
+      };
       startup = [
         { command = "${swaybg} -i ${wallpaper} -m fill"; }
         { command = "${swayidle} -w"; }

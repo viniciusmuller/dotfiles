@@ -31,6 +31,17 @@
       ../../nixos-pkgs/grub/os-prober.nix
     ];
 
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+      gtkUsePortal = true;
+    };
+  };
+
   nix = {
     # TODO: Find better place for this
     package = pkgs.nixFlakes;
@@ -44,6 +55,19 @@
 
     autoOptimiseStore = true;
   };
+
+  hardware.ckb-next.enable = true;
+  # TODO: Use upstream when this gets merged
+  hardware.ckb-next.package = pkgs.ckb-next.overrideAttrs (_:
+    {
+      src = pkgs.fetchFromGitHub {
+        owner = "arcticlimer";
+        repo = "ckb-next";
+        rev = "d403b2b947422c417d283154f3700c9a83ab4d0c";
+        sha256 = "sha256-KMKk5XHTVge4IQ4SFdzXo7l6RZy+/rGkM0nGZ6tIqfg=";
+      };
+    }
+  );
 
   fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs; [
@@ -125,7 +149,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-
+    usbutils
   ];
 
   # Open ports in the firewall.

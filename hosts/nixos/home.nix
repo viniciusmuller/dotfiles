@@ -38,6 +38,8 @@ in
     ../../pkgs/gdb-dashboard.nix
     ../../pkgs/nnn.nix # File manager
     ../../pkgs/bitwarden.nix # Password manager
+    ../../pkgs/irssi.nix # IRC Client
+    ../../pkgs/hexchat.nix # IRC Client
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor
@@ -57,7 +59,7 @@ in
     inputs.nix-colors.homeManagerModule
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.dracula;
+  colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
 
   home.packages = with pkgs; [
     # CLI
