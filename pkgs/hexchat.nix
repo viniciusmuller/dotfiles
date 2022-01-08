@@ -2,7 +2,6 @@
 
 {
   programs.hexchat = {
-    # TODO: Improve this config
     enable = true;
     channels =
       {
@@ -10,17 +9,16 @@
           autojoin = [
             "#home-manager"
             "#linux"
-            "#nixos"
+            "#nixos-chat"
+            "#neovim"
           ];
           charset = "UTF-8 (Unicode)";
-          commands = [
-            # "ECHO Buzz Lightyear sent you a message: 'To Infinity... and Beyond!'"
-          ];
+          commands = [ ];
           loginMethod = "sasl";
-          nickname = "my_nickname";
+          nickname = "arcticlimer";
           options = {
             acceptInvalidSSLCertificates = false;
-            autoconnect = true;
+            # autoconnect = true;
             bypassProxy = true;
             connectToSelectedServerOnly = true;
             useGlobalUserInformation = false;
