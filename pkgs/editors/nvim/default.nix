@@ -50,6 +50,8 @@ in
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
+    ./plugins/neovim-session-manager.nix
+    # ./plugins/alpha.nix
 
     # ./plugins/fzf.nix
     ./plugins/telescope.nix

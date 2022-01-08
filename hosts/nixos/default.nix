@@ -56,6 +56,9 @@
     autoOptimiseStore = true;
   };
 
+  # TODO: Figure out how to set dark theme to this prompt.
+  programs.ssh.askPassword = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
+
   hardware.ckb-next.enable = true;
   # TODO: Use upstream when this gets merged
   hardware.ckb-next.package = pkgs.ckb-next.overrideAttrs (_:

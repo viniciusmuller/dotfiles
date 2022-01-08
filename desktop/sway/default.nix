@@ -10,7 +10,48 @@ let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 
-  swaybg = "${pkgs.swaybg}/bin/swaybg";
+  wayab-pkg = pkgs.stdenv.mkDerivation {
+    pname = "wayab";
+    version = "unknown";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "chux0519";
+      repo = "0.1.0";
+      rev = "6d12681e501d171a819fea1cefdcd65aea5feeb5";
+      sha256 = "sha256-TxuT/xNUqZdLbMmoxD1a7CwmH3HeT7iJV8uWjPJXiNU=";
+    };
+
+    buildInputs = with pkgs; [
+      egl-wayland
+      wayland-protocols
+      wayland
+      cairo
+    ];
+
+    nativeBuildInputs = with pkgs; [
+      cmake
+      pkg-config
+    ];
+
+    buildPhase = ''
+      cmake .
+      make
+    '';
+
+    installPhase = ''
+      mkdir -p $out/bin
+      cp wayab $out/bin
+    '';
+  };
+
+  oguri = "${pkgs.oguri}/bin/oguri";
+
+  background-gif = pkgs.fetchurl {
+    url = "https://64.media.tumblr.com/f6395bca7a86e8efa6807271b64fb7f4/tumblr_p4jpsnKZQu1qze3hdo1_500.gifv";
+    sha256 = "sha256-826ZtA5g+GHlvmLxRkvUDTNAU5vJ1TU4yy9Fads5hxQ=";
+  };
+
+  # swaybg = "${pkgs.swaybg}/bin/swaybg";
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   swaylock = lib.concatStringsSep " " [
     # TODO: Tweak these colors
@@ -51,6 +92,14 @@ in
   imports = [
     ../../pkgs/mako.nix
   ];
+
+  xdg.configFile."oguri/config".text = ''
+    [output HDMI-A-1]
+    image=${background-gif}
+    filter=nearest
+    scaling-mode=fill
+    anchor=center
+  '';
 
   wayland.windowManager.sway = {
     enable = true;
@@ -109,7 +158,8 @@ in
         ];
       };
       startup = [
-        { command = "${swaybg} -i ${wallpaper} -m fill"; }
+        # { command = "${swaybg} -i ${wallpaper} -m fill"; }
+        { command = "${oguri}"; }
         { command = "${swayidle} -w"; }
         { command = "${waybar}"; }
         { command = "${mako}"; }
@@ -132,6 +182,8 @@ in
       set $opacity 0.9
       for_window [class=".*"] opacity $opacity
       for_window [app_id=".*"] opacity $opacity
+
+      hide_edge_borders --i3 smart
     '';
   };
 

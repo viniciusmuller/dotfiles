@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 let
   rebuild-alias = {
@@ -52,6 +52,8 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
+    ../../pkgs/gtk.nix
+    ../../pkgs/qt.nix
 
     ../../desktop/sway
 
@@ -74,7 +76,7 @@ in
     neofetch # I use NixOS btw
 
     # GUI
-    # element-desktop # Matrix client
+    element-desktop # Matrix client
     insomnia # Request testing
     mupdf # Pdf viewer
     anki # Spaced repetition
@@ -103,9 +105,8 @@ in
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  # This is not needed. We set these through the HM module inside the flake.
-  # home.username = "vini";
-  # home.homeDirectory = "/home/vini";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

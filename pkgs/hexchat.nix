@@ -29,5 +29,13 @@
           ];
         };
       };
+    # settings = {
+    #   text_font = "Jetbrains Mono 9";
+    # };
+    theme = pkgs.fetchzip {
+      url = "https://dl.hexchat.net/themes/Monokai.hct#Monokai.zip";
+      sha256 = "sha256-WCdgEr8PwKSZvBMs0fN7E2gOjNM0c2DscZGSKSmdID0=";
+      stripRoot = false;
+    };
   };
 }

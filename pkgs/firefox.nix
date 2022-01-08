@@ -23,6 +23,7 @@
       };
     };
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      multi-account-containers
       ublock-origin
       bitwarden
       darkreader
