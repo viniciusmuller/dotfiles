@@ -10,5 +10,6 @@
     ./backup_home.nix
     ./termbin.nix
     ./sprunge.nix
+    ./makeflake.nix
   ];
 }
