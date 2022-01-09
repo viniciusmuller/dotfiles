@@ -7,7 +7,7 @@
 {
   imports =
     [
-      ../../desktop/xmonad
+      # ../../desktop/xmonad
       # ../../desktop/kde
 
       # TODO: Try to use a specific partition schema and use the autoFormat
@@ -16,11 +16,11 @@
       # ../../nixos-pkgs/virtualbox.nix
       # ../../nixos-pkgs/manpages.nix
       ../../nixos-pkgs/docker.nix
-      ../../nixos-pkgs/steam.nix
+      # ../../nixos-pkgs/steam.nix
       # ../../nixos-pkgs/slock.nix
       # ../../nixos-pkgs/zsh.nix
       ../../nixos-pkgs/kmonad
-      ../../nixos-pkgs/wine.nix
+      # ../../nixos-pkgs/wine.nix
       ./prime.nix
       # ./gpu-passthrough.nix
 
@@ -113,22 +113,10 @@
   services.xserver.displayManager.lightdm = {
     enable = true;
   };
-
-  # services.xserver.displayManager.gdm = {
-  #   enable = true;
-  #   nvidiaWayland = true;
-  # };
-  # hardware.nvidia.modesetting.enable = true;
-
-  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-
-  hardware.opentabletdriver.enable = true;
-
-  # TODO: Apparently gnome + pipewire doesn't work
-  # hardware.pulseaudio.enable = true;
 
   # Audio with pipewire
   security.rtkit.enable = true;
@@ -151,9 +139,7 @@
     initialPassword = "changeme";
   };
 
-  environment.systemPackages = with pkgs; [
-    usbutils
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

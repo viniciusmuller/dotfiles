@@ -91,6 +91,7 @@ in
 {
   imports = [
     ../../pkgs/mako.nix
+    ../../pkgs/kitty.nix
   ];
 
   xdg.configFile."oguri/config".text = ''
