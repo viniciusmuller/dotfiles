@@ -112,11 +112,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1627573853,
-        "narHash": "sha256-f5e+pMJHwdMrbkrn6ZDwRjzXHTUCNzXNs5MeLl4jANg=",
+        "lastModified": 1641749483,
+        "narHash": "sha256-zNWudFxjtJG/4PlQ0/cleoCxCmtPVAQ9Yqp2DR6yZ6w=",
         "owner": "arcticlimer",
         "repo": "suckless",
-        "rev": "410fd9f1b02c831f60949a89ab413aa31183d397",
+        "rev": "f03161997f1b1c5f349260350852b81710ddb779",
         "type": "github"
       },
       "original": {

@@ -32,14 +32,16 @@ in
   };
 
   # TODO: Make this reload when the colorscheme changes
-  # systemd.user.services.ckb-nix-colors = {
-  #   after = [ "ckb-next.target" ];
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     ExecStart = "${pkgs.bash}/bin/sh -c '${pkgs.coreutils}/bin/echo rgb ${colors.base0C}ff > /tmp/ckbpipe000'";
-  #     Restart = "on-failure";
-  #     RestartSec = 5;
-  #   };
-  #   # reloadIfChanged = true;
-  # };
+  systemd.user.services.ckb-nix-colors = {
+    enable = false;
+    after = [ "ckb-next.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.bash}/bin/sh -c '${pkgs.coreutils}/bin/echo rgb ${colors.base0C}ff > /tmp/ckbpipe000'";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    # Doesn't work as expected
+    # reloadIfChanged = true;
+  };
 }

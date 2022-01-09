@@ -175,7 +175,7 @@ in
         "${modifier}+a" = "exec ${terminal}";
         "${modifier}+s" = "exec ${switcher}/bin/window-switcher";
         "${modifier}+c" = "kill";
-        "${modifier}+control+l" = "exec ${swaylock}";
+        "${modifier}+shift+g" = "exec ${swaylock}";
         "${modifier}+tab" = "workspace back_and_forth";
         "${modifier}+minus" = "opacity minus 0.1";
         "${modifier}+equal" = "opacity plus 0.1";
