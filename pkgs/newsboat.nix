@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-  # w3m = "${pkgs.firefox}/bin/w3m";
   mpv = "${pkgs.mpv}/bin/mpv";
 in
 {
@@ -141,7 +140,7 @@ in
       color article           white black
 
       # macros
-      macro v set browser "${mpv} %u" ; open-in-browser ; set browser "open %u" -- "Open video on mpv"
+      macro v set browser "${mpv} %u" ; open-in-browser ; set browser "firefox %u" -- "Open video on mpv"
     '';
   };
 }

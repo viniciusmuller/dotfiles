@@ -9,7 +9,6 @@
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.noisetorch}/bin/noisetorch -i";
-      # ExecStop = "${pkgs.noisetorch}/bin/noisetorch -u";
       Restart = "on-failure";
       RestartSec = 5;
     };

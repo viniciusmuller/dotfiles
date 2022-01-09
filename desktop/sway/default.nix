@@ -46,9 +46,10 @@ let
 
   oguri = "${pkgs.oguri}/bin/oguri";
 
+  # Great GIFs here: https://1041uuu.tumblr.com/page/3
   background-gif = pkgs.fetchurl {
-    url = "https://64.media.tumblr.com/f6395bca7a86e8efa6807271b64fb7f4/tumblr_p4jpsnKZQu1qze3hdo1_500.gifv";
-    sha256 = "sha256-826ZtA5g+GHlvmLxRkvUDTNAU5vJ1TU4yy9Fads5hxQ=";
+    url = "https://64.media.tumblr.com/2b0ec5e7d4763b0cc6aaba6982be379c/tumblr_inline_p46bi1Mmeq1qzc0ri_500.gifv";
+    sha256 = "sha256-PiSyyBF5XQERvvUGGV8hkucSei6QPe9GElo9X8tjxOU=";
   };
 
   # swaybg = "${pkgs.swaybg}/bin/swaybg";

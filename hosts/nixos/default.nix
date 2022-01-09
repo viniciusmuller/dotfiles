@@ -25,6 +25,7 @@
       # ./gpu-passthrough.nix
 
       ../../nixos-services/noisetorch.nix
+      ../../nixos-services/ckb-next.nix
 
       # Grub
       ../../nixos-pkgs/grub/themes/fallout.nix
@@ -58,19 +59,6 @@
 
   # TODO: Figure out how to set dark theme to this prompt.
   programs.ssh.askPassword = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
-
-  hardware.ckb-next.enable = true;
-  # TODO: Use upstream when this gets merged
-  hardware.ckb-next.package = pkgs.ckb-next.overrideAttrs (_:
-    {
-      src = pkgs.fetchFromGitHub {
-        owner = "arcticlimer";
-        repo = "ckb-next";
-        rev = "d403b2b947422c417d283154f3700c9a83ab4d0c";
-        sha256 = "sha256-KMKk5XHTVge4IQ4SFdzXo7l6RZy+/rGkM0nGZ6tIqfg=";
-      };
-    }
-  );
 
   fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs; [
