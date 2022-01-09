@@ -1,7 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, colorscheme, lib, ... }:
 
 let
-  colorscheme = config.colorscheme.colors;
+  colorScheme = colorscheme.colors;
 
   kitty = "${pkgs.kitty}/bin/kitty";
 
@@ -44,6 +44,7 @@ let
     '';
   };
 
+  # swaybg = "${pkgs.swaybg}/bin/swaybg";
   oguri = "${pkgs.oguri}/bin/oguri";
 
   # Great GIFs here: https://1041uuu.tumblr.com/page/3
@@ -52,19 +53,18 @@ let
     sha256 = "sha256-PiSyyBF5XQERvvUGGV8hkucSei6QPe9GElo9X8tjxOU=";
   };
 
-  # swaybg = "${pkgs.swaybg}/bin/swaybg";
   swayidle = "${pkgs.swayidle}/bin/swayidle";
   swaylock = lib.concatStringsSep " " [
     # TODO: Tweak these colors
     "${pkgs.swaylock}/bin/swaylock"
-    "--color ${colorscheme.base00}"
-    "--ring-color ${colorscheme.base01}"
-    "--inside-color ${colorscheme.base02}"
-    "--key-hl-color ${colorscheme.base08}"
-    "--ring-ver-color ${colorscheme.base0B}"
-    "--inside-ver-color ${colorscheme.base0C}"
-    "--ring-wrong-color ${colorscheme.base09}"
-    "--inside-wrong-color ${colorscheme.base0A}"
+    "--color ${colorScheme.base00}"
+    "--ring-color ${colorScheme.base01}"
+    "--inside-color ${colorScheme.base02}"
+    "--key-hl-color ${colorScheme.base08}"
+    "--ring-ver-color ${colorScheme.base0B}"
+    "--inside-ver-color ${colorScheme.base0C}"
+    "--ring-wrong-color ${colorScheme.base09}"
+    "--inside-wrong-color ${colorScheme.base0A}"
   ];
   waybar = "${pkgs.waybar}/bin/waybar";
   wofi = "${pkgs.wofi}/bin/wofi";
@@ -117,32 +117,32 @@ in
         "${wofi} -D run-always_parse_args=true -i -M fuzzy -S run -t ${terminal}";
       colors = {
         focused = {
-          border = "${colorscheme.base0C}";
-          background = "${colorscheme.base00}";
-          text = "${colorscheme.base05}";
-          indicator = "${colorscheme.base09}";
-          childBorder = "${colorscheme.base0C}";
+          border = "${colorScheme.base0C}";
+          background = "${colorScheme.base00}";
+          text = "${colorScheme.base05}";
+          indicator = "${colorScheme.base09}";
+          childBorder = "${colorScheme.base0C}";
         };
         focusedInactive = {
-          border = "${colorscheme.base03}";
-          background = "${colorscheme.base00}";
-          text = "${colorscheme.base04}";
-          indicator = "${colorscheme.base03}";
-          childBorder = "${colorscheme.base03}";
+          border = "${colorScheme.base03}";
+          background = "${colorScheme.base00}";
+          text = "${colorScheme.base04}";
+          indicator = "${colorScheme.base03}";
+          childBorder = "${colorScheme.base03}";
         };
         unfocused = {
-          border = "${colorscheme.base02}";
-          background = "${colorscheme.base00}";
-          text = "${colorscheme.base03}";
-          indicator = "${colorscheme.base02}";
-          childBorder = "${colorscheme.base02}";
+          border = "${colorScheme.base02}";
+          background = "${colorScheme.base00}";
+          text = "${colorScheme.base03}";
+          indicator = "${colorScheme.base02}";
+          childBorder = "${colorScheme.base02}";
         };
         urgent = {
-          border = "${colorscheme.base09}";
-          background = "${colorscheme.base00}";
-          text = "${colorscheme.base03}";
-          indicator = "${colorscheme.base09}";
-          childBorder = "${colorscheme.base09}";
+          border = "${colorScheme.base09}";
+          background = "${colorScheme.base00}";
+          text = "${colorScheme.base03}";
+          indicator = "${colorScheme.base09}";
+          childBorder = "${colorScheme.base09}";
         };
       };
       bars = [ ];
@@ -154,15 +154,16 @@ in
           #   criteria = { title = "Wine System Tray"; };
           # }
           {
-            command = "move scratchpad";
+            # command = "move scratchpad";
+            command = "kill";
             criteria = { title = "Firefox — Sharing Indicator"; };
           }
         ];
       };
       startup = [
         # { command = "${swaybg} -i ${wallpaper} -m fill"; }
+        # { command = "${swayidle} -w"; }
         { command = "${oguri}"; }
-        { command = "${swayidle} -w"; }
         { command = "${waybar}"; }
         { command = "${mako}"; }
       ];
@@ -259,27 +260,27 @@ in
         padding: 0 3px;
       }
       window#waybar {
-        color: #${colorscheme.base05};
-        background-color: #${colorscheme.base00};
-        border-bottom: 2px solid #${colorscheme.base0C};
+        color: #${colorScheme.base05};
+        background-color: #${colorScheme.base00};
+        border-bottom: 2px solid #${colorScheme.base0C};
       }
       #workspaces button {
         margin: 0;
       }
       #workspaces button.visible,
       #workspaces button.focused {
-        background-color: #${colorscheme.base01};
-        color: #${colorscheme.base04};
+        background-color: #${colorScheme.base01};
+        color: #${colorScheme.base04};
       }
       #workspaces button.focused {
-        color: #${colorscheme.base0A};
+        color: #${colorScheme.base0A};
       }
       #pulseaudio {
         padding: 0 8px;
       }
       #clock {
-        background-color: #${colorscheme.base0C};
-        color: #${colorscheme.base00};
+        background-color: #${colorScheme.base0C};
+        color: #${colorScheme.base00};
         margin: 0;
         padding: 0 12px;
       }
@@ -298,47 +299,47 @@ in
     indicator-radius=40
     indicator-idle-visible
     indicator-y-position=1000
-    ring-color=#${colorscheme.base02}
-    inside-wrong-color=#${colorscheme.base08}
-    ring-wrong-color=#${colorscheme.base08}
-    key-hl-color=#${colorscheme.base0B}
-    bs-hl-color=#${colorscheme.base08}
-    ring-ver-color=#${colorscheme.base09}
-    inside-ver-color=#${colorscheme.base09}
-    inside-color=#${colorscheme.base01}
-    text-color=#${colorscheme.base07}
-    text-clear-color=#${colorscheme.base01}
-    text-ver-color=#${colorscheme.base01}
-    text-wrong-color=#${colorscheme.base01}
-    text-caps-lock-color=#${colorscheme.base07}
-    inside-clear-color=#${colorscheme.base0C}
-    ring-clear-color=#${colorscheme.base0C}
-    inside-caps-lock-color=#${colorscheme.base09}
-    ring-caps-lock-color=#${colorscheme.base02}
-    separator-color=#${colorscheme.base02}
+    ring-color=#${colorScheme.base02}
+    inside-wrong-color=#${colorScheme.base08}
+    ring-wrong-color=#${colorScheme.base08}
+    key-hl-color=#${colorScheme.base0B}
+    bs-hl-color=#${colorScheme.base08}
+    ring-ver-color=#${colorScheme.base09}
+    inside-ver-color=#${colorScheme.base09}
+    inside-color=#${colorScheme.base01}
+    text-color=#${colorScheme.base07}
+    text-clear-color=#${colorScheme.base01}
+    text-ver-color=#${colorScheme.base01}
+    text-wrong-color=#${colorScheme.base01}
+    text-caps-lock-color=#${colorScheme.base07}
+    inside-clear-color=#${colorScheme.base0C}
+    ring-clear-color=#${colorScheme.base0C}
+    inside-caps-lock-color=#${colorScheme.base09}
+    ring-caps-lock-color=#${colorScheme.base02}
+    separator-color=#${colorScheme.base02}
   '';
 
   xdg.configFile."wofi/style.css".text = ''
     window {
       margin: 0px;
-      border: 1px solid #${colorscheme.base0C};
-      background-color: #${colorscheme.base00};
+      border: 1px solid #${colorScheme.base0C};
+      background-color: #${colorScheme.base00};
     }
     #input {
       margin: 5px;
       border: none;
-      color: #${colorscheme.base05};
-      background-color: #${colorscheme.base02};
+      color: #${colorScheme.base05};
+      background-color: #${colorScheme.base02};
     }
     #inner-box {
       margin: 5px;
       border: none;
-      background-color: #${colorscheme.base00};
+      background-color: #${colorScheme.base00};
     }
     #outer-box {
       margin: 5px;
       border: none;
-      background-color: #${colorscheme.base00};
+      background-color: #${colorScheme.base00};
     }
     #scroll {
       margin: 0px;
@@ -347,10 +348,10 @@ in
     #text {
       margin: 5px;
       border: none;
-      color: #${colorscheme.base05};
+      color: #${colorScheme.base05};
     }
     #entry:selected {
-      background-color: #${colorscheme.base02};
+      background-color: #${colorScheme.base02};
     }
   '';
 

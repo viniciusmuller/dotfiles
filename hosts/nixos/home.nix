@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, username, ... }:
+{ config, pkgs, inputs, username, colorscheme, ... }:
 
 let
   rebuild-alias = {

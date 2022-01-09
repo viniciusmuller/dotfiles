@@ -1,11 +1,11 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, inputs, colorscheme, ... }:
 
 with inputs.nix-colors.lib { inherit pkgs; };
 {
   programs.neovim.plugins = [
     {
-      plugin = vimThemeFromScheme { scheme = config.colorscheme; };
-      config = "colorscheme nix-${config.colorscheme.slug}";
+      plugin = vimThemeFromScheme { scheme = colorscheme; };
+      config = "colorscheme nix-${colorscheme.slug}";
     }
   ];
 

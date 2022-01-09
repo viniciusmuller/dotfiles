@@ -12,7 +12,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nur, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nur, nix-colors, ... } @inputs:
     let
       lib = import ./lib inputs;
     in
@@ -23,6 +23,7 @@
           system = "x86_64-linux";
           username = "vini";
           overlays = [ nur.overlay ];
+          colorscheme = nix-colors.colorSchemes.uwunicorn;
         };
       };
 

@@ -77,7 +77,7 @@ in
     # Aesthetic
     ./colorschemes/nix-colors.nix
 
-    # ./plugins/lualine.nix
+    ./plugins/lualine.nix
     # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
@@ -89,7 +89,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      # vim-polyglot
+      vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary
@@ -104,6 +104,7 @@ in
     extraConfig = builtins.readFile ./init.vim;
   };
 
+  # TODO: Make a function to reduce this boilerplate
   programs.bash.shellAliases = aliases;
   programs.zsh.shellAliases = aliases;
   programs.fish.shellAliases = aliases;

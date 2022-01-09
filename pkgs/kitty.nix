@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, colorscheme, ... }:
 
 let
-  colors = config.colorscheme.colors;
+  colors = colorscheme.colors;
 in
 {
   programs.kitty = {

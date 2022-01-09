@@ -7,7 +7,7 @@
 {
   imports =
     [
-      # ../../desktop/xmonad
+      ../../desktop/xmonad
       # ../../desktop/kde
 
       # TODO: Try to use a specific partition schema and use the autoFormat
@@ -30,6 +30,8 @@
       # Grub
       ../../nixos-pkgs/grub/themes/fallout.nix
       ../../nixos-pkgs/grub/os-prober.nix
+
+      ../../nixos-pkgs/display-managers/sddm
     ];
 
   xdg = {
@@ -97,11 +99,6 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-
-  services.xserver.displayManager.lightdm = {
-    enable = true;
-  };
-  services.xserver.enable = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";

@@ -4,7 +4,11 @@ let
   prelude = import ./prelude.nix;
 in
 rec {
-  mkNixpkgs = { system, allowUnfree ? true, overlays ? [ ] }:
+  mkNixpkgs =
+    { system
+    , allowUnfree ? true
+    , overlays ? [ ]
+    }:
     import inputs.nixpkgs {
       inherit system overlays;
       config.allowUnfree = allowUnfree;
@@ -16,6 +20,7 @@ rec {
     , system ? "x86_64-linux"
     , allowUnfree ? true
     , overlays ? [ ]
+    , colorscheme ? inputs.nix-colors.colorSchemes.tokyonight
     }:
     let
       pkgs = mkNixpkgs { inherit allowUnfree system overlays; };
@@ -24,7 +29,7 @@ rec {
       inherit system;
 
       specialArgs = {
-        inherit pkgs inputs username;
+        inherit pkgs inputs username colorscheme;
       };
 
       modules = [
@@ -32,11 +37,9 @@ rec {
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
-            # TODO What this does exactly?
-            # useUserPackages = true;
             users."${username}" = import (../hosts + "/${host}" + "/home.nix");
             extraSpecialArgs = {
-              inherit inputs username pkgs prelude;
+              inherit inputs username pkgs prelude colorscheme;
             };
           };
         }
@@ -49,6 +52,7 @@ rec {
     , system ? "x86_64-linux"
     , allowUnfree ? true
     , overlays ? [ ]
+    , colorscheme ? inputs.nix-colors.colorSchemes.tokyonight
     }:
     let
       pkgs = mkNixpkgs { inherit allowUnfree system overlays; };
@@ -58,7 +62,7 @@ rec {
       inherit system username homeDirectory pkgs;
       configuration = (../home-configurations + "/${name}");
       extraSpecialArgs = {
-        inherit inputs system username prelude;
+        inherit inputs system username prelude colorscheme;
       };
     };
 }
