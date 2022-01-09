@@ -8,6 +8,7 @@
   imports =
     [
       ../../desktop/xmonad
+      ../../desktop/dwm
       # ../../desktop/kde
 
       # TODO: Try to use a specific partition schema and use the autoFormat

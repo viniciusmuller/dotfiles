@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors.url = "github:misterio77/nix-colors";
+    suckless.url = "github:arcticlimer/suckless";
   };
 
   outputs = { self, flake-utils, nixpkgs, nur, nix-colors, ... } @inputs:
@@ -22,7 +23,7 @@
           host = "nixos";
           system = "x86_64-linux";
           username = "vini";
-          overlays = [ nur.overlay ];
+          overlays = [ nur.overlay inputs.suckless.overlays ];
           colorscheme = nix-colors.colorSchemes.uwunicorn;
         };
       };

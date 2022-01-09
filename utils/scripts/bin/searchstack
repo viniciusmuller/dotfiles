@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# https://github.com/samtay/so
-read -p "howto> " query
-so $query
