@@ -46,6 +46,8 @@
     };
   };
 
+  hardware.opengl.setLdLibraryPath = true;
+
   nix = {
     # TODO: Find better place for this
     package = pkgs.nixFlakes;

@@ -2,6 +2,8 @@
 
 let
   mpv = "${pkgs.mpv}/bin/mpv";
+  glow = "${pkgs.glow}/bin/glow";
+  pandoc = "${pkgs.pandoc}/bin/pandoc";
 in
 {
   imports = [ ./mpv.nix ];
@@ -138,6 +140,9 @@ in
       color info              white black reverse bold
       color background        white black
       color article           white black
+
+      html-renderer "${pandoc} --from=html -t markdown_github-raw_html"
+      pager "${glow} --pager --width 72"
 
       # macros
       macro v set browser "${mpv} %u" ; open-in-browser ; set browser "firefox %u" -- "Open video on mpv"

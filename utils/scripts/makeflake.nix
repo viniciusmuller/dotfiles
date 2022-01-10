@@ -29,6 +29,8 @@ let
       }
     EOT
     fi
+
+    echo .direnv/ >> .gitignore
   '';
 in
 {
