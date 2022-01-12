@@ -2,12 +2,6 @@
 
 with pkgs.vimPlugins;
 let
-  nvim-spell-pt = builtins.fetchurl {
-    url =
-      "https://github.com/mateusbraga/vim-spell-pt-br/raw/3d7eb3098de77b86c8a880354b442b3d84b18a72/spell/pt.utf-8.spl";
-    sha256 = "01zqss1fsc2rhaqhi10364qxyc64n2ndkn9d6rql20j3jvzbrlmd";
-  };
-
   aliases = {
     v = "nvim";
     nv = "nvim";
@@ -82,8 +76,6 @@ in
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
   ];
-
-  xdg.configFile."nvim/spell/pt.utf-8.spl".source = nvim-spell-pt;
 
   programs.neovim = {
     enable = true;

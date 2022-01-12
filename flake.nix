@@ -34,9 +34,9 @@
           username = "vini";
         in
         {
-          arch = lib.mkHome {
+          manjaro = lib.mkHome {
             inherit system username;
-            name = "arch";
+            name = "manjaro";
           };
           wsl = lib.mkHome {
             inherit system username;
