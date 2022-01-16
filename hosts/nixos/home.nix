@@ -38,11 +38,11 @@ in
     ../../pkgs/gdb-dashboard.nix
     ../../pkgs/nnn.nix # File manager
     ../../pkgs/bitwarden.nix # Password manager
-    ../../pkgs/irssi.nix # IRC Client
+    # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/hexchat.nix # IRC Client
 
     # GUI
-    # ../../pkgs/editors/vscodium # Text editor
+    ../../pkgs/editors/vscodium # Text editor
     # ../../pkgs/pomatez.nix # Pomodoro app
     # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser

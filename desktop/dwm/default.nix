@@ -52,9 +52,6 @@ in
       st
     ];
 
-    home.file = {
-      ".config/dwm/autostart.sh".source = ./autostart.sh;
-      ".xinitrc".source = ./.xinitrc;
-    };
+    home.file.".config/dwm/autostart.sh".source = ./autostart.sh;
   };
 }

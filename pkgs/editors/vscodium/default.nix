@@ -12,19 +12,19 @@ let
 in
 {
   imports = [
-    ./extensions/bash.nix
-    ./extensions/cpp.nix
-    ./extensions/rust.nix
-    ./extensions/elixir.nix
-    ./extensions/fsharp.nix
-    ./extensions/unity.nix
-    ./extensions/latex.nix
-    ./extensions/haskell.nix
-    ./extensions/nix.nix
-    ./extensions/markdown.nix
-    ./extensions/toml.nix
-    ./extensions/liveshare.nix
-    ./extensions/vspacecode
+    # ./extensions/bash.nix
+    # ./extensions/cpp.nix
+    # ./extensions/rust.nix
+    # ./extensions/elixir.nix
+    # ./extensions/fsharp.nix
+    # ./extensions/unity.nix
+    # ./extensions/latex.nix
+    # ./extensions/haskell.nix
+    # ./extensions/nix.nix
+    # ./extensions/markdown.nix
+    # ./extensions/toml.nix
+    # ./extensions/liveshare.nix
+    # ./extensions/vspacecode
   ];
 
   programs.vscode = {
@@ -44,7 +44,6 @@ in
       gruntfuggly.todo-tree
       usernamehw.errorlens
       eamodio.gitlens
-
     ] ++ extensions;
   };
 }

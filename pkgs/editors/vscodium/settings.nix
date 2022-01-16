@@ -131,4 +131,6 @@ in
   "vim.visualModeKeyBindings" = [
     multiCursor
   ];
+
+  "platformio-ide.useBuiltinPIOCore" = false;
 }
