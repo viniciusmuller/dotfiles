@@ -5,35 +5,39 @@
 { config, lib, pkgs, username, ... }:
 
 {
-  imports =
-    [
-      ../../desktop/xmonad
-      ../../desktop/dwm
-      # ../../desktop/kde
+  imports = [
+    ../../desktop/xmonad
+    ../../desktop/dwm
+    # ../../desktop/kde
 
-      # TODO: Try to use a specific partition schema and use the autoFormat
-      # option inside hardware-configuration instead of hardcoding partuuids.
-      ./hardware-configuration.nix
-      # ../../nixos-pkgs/virtualbox.nix
-      # ../../nixos-pkgs/manpages.nix
-      ../../nixos-pkgs/docker.nix
-      # ../../nixos-pkgs/steam.nix
-      # ../../nixos-pkgs/slock.nix
-      # ../../nixos-pkgs/zsh.nix
-      ../../nixos-pkgs/kmonad
-      # ../../nixos-pkgs/wine.nix
-      ./prime.nix
-      # ./gpu-passthrough.nix
+    # TODO: Try to use a specific partition schema and use the autoFormat
+    # option inside hardware-configuration instead of hardcoding partuuids.
+    ./hardware-configuration.nix
+    # ../../nixos-pkgs/virtualbox.nix
+    # ../../nixos-pkgs/manpages.nix
+    ../../nixos-pkgs/docker.nix
+    # ../../nixos-pkgs/steam.nix
+    # ../../nixos-pkgs/slock.nix
+    # ../../nixos-pkgs/zsh.nix
+    ../../nixos-pkgs/kmonad
+    # ../../nixos-pkgs/wine.nix
+    ./prime.nix
+    # ./gpu-passthrough.nix
 
-      ../../nixos-services/noisetorch.nix
-      ../../nixos-services/ckb-next.nix
+    ../../nixos-services/noisetorch.nix
+    ../../nixos-services/ckb-next.nix
 
-      # Grub
-      ../../nixos-pkgs/grub/themes/fallout.nix
-      ../../nixos-pkgs/grub/os-prober.nix
+    # Grub
+    ../../nixos-pkgs/grub/themes/fallout.nix
+    ../../nixos-pkgs/grub/os-prober.nix
 
-      ../../nixos-pkgs/display-managers/sddm
-    ];
+    ../../nixos-pkgs/display-managers/sddm
+  ];
+
+  environment.variables = {
+    GTK_IM_MODULE = "cedilla";
+    QT_IM_MODULE = "cedilla";
+  };
 
   xdg = {
     portal = {

@@ -96,8 +96,8 @@ in
 
   # TODO: Make this work again
   # home.sessionVariables = {
-  # GTK_IM_MODULE = "cedilla";
-  # QT_IM_MODULE = "cedilla";
+  #   GTK_IM_MODULE = "cedilla";
+  #   QT_IM_MODULE = "cedilla";
   # };
 
   # Let Home Manager install and manage itself.
