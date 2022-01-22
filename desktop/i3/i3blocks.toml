@@ -1,0 +1,20 @@
+# Guess the weather
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=600
+color=#A4C2F4
+
+[disk]
+# TODO: Improve this
+command=df -h / | awk '/\//{ printf(" 💾 %4s/%s \n", $4, $2) }'
+interval=2
+color=#C9E3DB
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf(" 🐏 %5s/%s \n", $3, $2) }'
+interval=1
+color=#FEC925
+
+[time_date]
+command=date +" %a, %d %b - %H:%M:%S"
+interval=1

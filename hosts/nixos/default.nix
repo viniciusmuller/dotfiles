@@ -8,13 +8,14 @@
   imports = [
     ../../desktop/xmonad
     ../../desktop/dwm
+    ../../desktop/i3
     # ../../desktop/kde
 
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
-    # ../../nixos-pkgs/virtualbox.nix
     # ../../nixos-pkgs/manpages.nix
+    ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/docker.nix
     # ../../nixos-pkgs/steam.nix
     # ../../nixos-pkgs/slock.nix
