@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, username, colorscheme, ... }:
+{ config, pkgs, inputs, lib, username, colorscheme, ... }:
 
 let
   rebuild-alias = {
@@ -63,7 +63,13 @@ in
 
   colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
 
+  # TODO: Apparently ghosts are trying to set my fontconfig.enable to false
+  fonts.fontconfig.enable = lib.mkForce true;
+
   home.packages = with pkgs; [
+    # Fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
     # CLI
     # python39Packages.gigalixir
     bandwhich # Network inspector

@@ -70,11 +70,6 @@
   # TODO: Figure out how to set dark theme to this prompt.
   programs.ssh.askPassword = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
 
-  fonts.fontconfig.enable = true;
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
-
   boot = {
     cleanTmpDir = true;
     kernel.sysctl = {
