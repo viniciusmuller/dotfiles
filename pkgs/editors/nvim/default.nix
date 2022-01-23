@@ -30,6 +30,9 @@ in
     ./lsp/rnix.nix
     ./lsp/ccls.nix
 
+    # ---- Linting ----
+    ./plugins/nvim-lint.nix
+
     # ---- Development profiles ----
     ./profiles/web.nix
 
@@ -89,7 +92,6 @@ in
       vim-sensible
       vim-surround
       undotree
-      friendly-snippets
       vim-tmux-navigator
     ];
 

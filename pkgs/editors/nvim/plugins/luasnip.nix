@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
   luasnip = {
     plugin = pkgs.vimPlugins.luasnip;
-    config = "lua require('luasnip').setup()";
+    config = prelude.mkLuaCode ''
+      require('luasnip.loaders.from_vscode').load()
+    '';
   };
 in
 {
-  programs.neovim.plugins = [ luasnip ];
+  programs.neovim.plugins = [
+    luasnip
+    pkgs.vimPlugins.friendly-snippets
+  ];
 }

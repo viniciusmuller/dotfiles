@@ -65,10 +65,10 @@ let
         },
         mapping = {
           ['<Tab>'] = function(fallback)
-            -- if luasnip.expand_or_jumpable() then
-            --   luasnip.expand_or_jump()
             if cmp.visible() then
               cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             elseif has_words_before() then
               cmp.complete()
             else
@@ -78,8 +78,8 @@ let
           ['<S-Tab>'] = function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
-            -- elseif luasnip.jumpable(-1) then
-            --   luasnip.jump(-1)
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
               fallback()
             end
@@ -93,12 +93,12 @@ let
             select = true,
           })
         },
-        sources = {
-          { name = 'luasnip', },
+        sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
-        },
+        })
       })
     '';
   };
@@ -106,14 +106,13 @@ let
     cmp-nvim-lsp
     cmp-buffer
     cmp-path
-    # cmp-vsnip
-  ];
-  cmp-dependencies = with pkgs.vimPlugins; [
-    luasnip
+    cmp_luasnip
   ];
 in
 {
+  imports = [ ./luasnip.nix ];
+
   programs.neovim.plugins = [
     cmp
-  ] ++ cmp-engines ++ cmp-dependencies;
+  ] ++ cmp-engines;
 }
