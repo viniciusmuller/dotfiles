@@ -60,6 +60,7 @@ in
   "editor.minimap.enabled" = false;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
+  "editor.bracketPairColorization.enabled" = true;
 
   # "editor.formatOnSave" = true;
   "editor.suggest.localityBonus" = true;
@@ -131,6 +132,4 @@ in
   "vim.visualModeKeyBindings" = [
     multiCursor
   ];
-
-  "platformio-ide.useBuiltinPIOCore" = false;
 }

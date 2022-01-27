@@ -23,8 +23,9 @@ in
     # ./extensions/nix.nix
     # ./extensions/markdown.nix
     # ./extensions/toml.nix
-    # ./extensions/liveshare.nix
     # ./extensions/vspacecode
+    ./extensions/go.nix
+    ./extensions/liveshare.nix
   ];
 
   programs.vscode = {
@@ -34,7 +35,7 @@ in
     keybindings = import ./keybindings.nix;
     extensions = with pkgs.vscode-extensions; [
       # Aesthetics
-      coenraads.bracket-pair-colorizer-2
+      # coenraads.bracket-pair-colorizer-2
 
       # zhuangtongfa.material-theme
       github.github-vscode-theme

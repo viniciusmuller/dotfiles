@@ -41,6 +41,8 @@ in
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/hexchat.nix # IRC Client
 
+    ../../pkgs/games/dwarf-fortress
+
     # GUI
     ../../pkgs/editors/vscodium # Text editor
     # ../../pkgs/pomatez.nix # Pomodoro app
