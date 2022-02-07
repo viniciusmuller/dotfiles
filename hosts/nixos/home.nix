@@ -32,7 +32,7 @@ in
     ../../services/gpg-agent.nix
     ../../services/gammastep.nix
     ../../pkgs/gpg.nix
-    ../../pkgs/starship.nix # Awesome shell prompt
+    # ../../pkgs/starship.nix # Awesome shell prompt
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/gdb-dashboard.nix
@@ -45,7 +45,7 @@ in
 
     # GUI
     ../../pkgs/editors/vscodium # Text editor
-    # ../../pkgs/pomatez.nix # Pomodoro app
+    ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/firefox.nix # Browser
@@ -62,8 +62,6 @@ in
     # Theming
     inputs.nix-colors.homeManagerModule
   ];
-
-  colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
 
   # TODO: Apparently ghosts are trying to set my fontconfig.enable to false
   fonts.fontconfig.enable = lib.mkForce true;
@@ -94,6 +92,9 @@ in
     # Unfree
     discord
     spotify
+
+    # ---- Games ----
+    openttd
   ];
 
   programs.zsh.shellAliases = rebuild-alias;

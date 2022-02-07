@@ -257,8 +257,8 @@ enable \
  zone \
  stocks \
  autochop \
- stockpiles \
- autolabor
+ stockpiles
+
 #end a line with a backslash to make it continue to the next line. The \ is deleted for the final command.
 # Multiline commands are ONLY supported for scripts like dfhack.init. You cannot do multiline command manually on the DFHack console.
 # You cannot extend a commented line.

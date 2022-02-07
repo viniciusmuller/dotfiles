@@ -1,20 +1,19 @@
 { pkgs, prelude, ... }:
 
 {
-  # home.packages = with pkgs; with python39Packages; [
-  #   python39
-  #   python38Packages.python-language-server
-  #   rope
-  #   pyflakes
-  #   pycodestyle # Style linter
-  #   yapf # Formatter
-  # ];
-
   programs.neovim.extraConfig = prelude.mkLuaCode ''
-    require('lspconfig').pylsp.setup{
-      cmd = {'pyls'},
+    -- require('lspconfig').pylsp.setup{
+      -- cmd = {'pyls'},
+      -- on_attach = on_attach,
+      -- capabilities = capabilities
+    -- }
+
+    require('lspconfig').jedi_language_server.setup{
       on_attach = on_attach,
-      capabilities = capabilities
+      capabilities = capabilities,
+      flags = {
+        debounce_text_changes = 150
+      }
     }
   '';
 }

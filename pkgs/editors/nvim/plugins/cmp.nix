@@ -6,7 +6,21 @@ let
     plugin = pkgs.vimPlugins.nvim-cmp;
 
     config = prelude.mkLuaCode ''
+      -- local tabnine = require('cmp_tabnine.config')
+      -- tabnine:setup({
+        -- max_lines = 1000;
+        -- max_num_results = 20;
+        -- sort = true;
+        -- run_on_every_keystroke = true;
+        -- snippet_placeholder = '..';
+        -- ignored_file_types = { -- default is not to ignore
+          -- -- uncomment to ignore in lua:
+          -- -- lua = true
+        -- };
+      -- })
+
       local cmp = require('cmp')
+      local compare = require('cmp.config.compare')
       local luasnip = require('luasnip')
 
       local has_words_before = function()
@@ -53,6 +67,7 @@ let
               buffer = "[Buffer]",
               nvim_lsp = "[LSP]",
               luasnip = "[LuaSnip]",
+              -- cmp_tabnine = "[TN]",
             })[entry.source.name]
 
             return vim_item
@@ -93,7 +108,22 @@ let
             select = true,
           })
         },
+         -- sorting = {
+           -- priority_weight = 2,
+           -- comparators = {
+             -- require('cmp_tabnine.compare'),
+             -- compare.offset,
+             -- compare.exact,
+             -- compare.score,
+             -- compare.recently_used,
+             -- compare.kind,
+             -- compare.sort_text,
+             -- compare.length,
+             -- compare.order,
+           -- }
+         -- },
         sources = cmp.config.sources({
+          -- { name = 'cmp_tabnine' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'buffer' },
@@ -107,6 +137,7 @@ let
     cmp-buffer
     cmp-path
     cmp_luasnip
+    # cmp-tabnine
   ];
 in
 {

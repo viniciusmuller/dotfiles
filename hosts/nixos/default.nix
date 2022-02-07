@@ -6,10 +6,8 @@
 
 {
   imports = [
-    ../../desktop/xmonad
     ../../desktop/dwm
     ../../desktop/i3
-    # ../../desktop/kde
 
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
@@ -17,13 +15,12 @@
     # ../../nixos-pkgs/manpages.nix
     ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/docker.nix
-    # ../../nixos-pkgs/steam.nix
+    ../../nixos-pkgs/steam.nix
+    ../../nixos-pkgs/thunar.nix
     # ../../nixos-pkgs/slock.nix
     # ../../nixos-pkgs/zsh.nix
     ../../nixos-pkgs/kmonad
     # ../../nixos-pkgs/wine.nix
-    ./prime.nix
-    # ./gpu-passthrough.nix
 
     ../../nixos-services/noisetorch.nix
     ../../nixos-services/ckb-next.nix
@@ -34,6 +31,8 @@
 
     ../../nixos-pkgs/display-managers/sddm
   ];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.variables = {
     GTK_IM_MODULE = "cedilla";
@@ -53,8 +52,30 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
+  networking = {
+    interfaces.enp0s31f6.macAddress = "AA:AA:AA:AA:AA:AA";
+    nameservers = lib.mkForce [ "1.1.1.3" ];
+    hostName = "nixos";
+    networkmanager.enable = true;
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    firewall.enable = false;
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
+
+  # Swap monitors
+  services.xserver.displayManager.setupCommands = ''
+    LEFT='DP-5'
+    RIGHT='HDMI-0'
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT
+  '';
+
   nix = {
-    # TODO: Find better place for this
     package = pkgs.nixFlakes;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
@@ -64,7 +85,7 @@
       options = "--delete-older-than 2d";
     };
 
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
   };
 
   # TODO: Figure out how to set dark theme to this prompt.
@@ -77,7 +98,10 @@
       "dev.i915.perf_stream_paranoid" = 0;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "ntfs" ];
   };
+
+
 
   # TODO: Move this to sway module
   programs.sway = {
@@ -85,16 +109,8 @@
     wrapperFeatures.gtk = true;
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -128,12 +144,6 @@
   };
 
   environment.systemPackages = with pkgs; [ ];
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

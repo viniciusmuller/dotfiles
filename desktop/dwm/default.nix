@@ -34,7 +34,7 @@ in
   home-manager.users.${username} = {
     imports = [
       ../../services/dunst.nix # Notification daemon
-      ../../services/picom.nix # Compositor
+      # ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
       ../../services/gammastep.nix # Screen temperature manager
     ];

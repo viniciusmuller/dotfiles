@@ -15,6 +15,9 @@
         brightness-day = 1.0;
         brightness-night = 0.6;
       };
+      # randr = {
+      #   screen = 0;
+      # };
     };
   };
 }

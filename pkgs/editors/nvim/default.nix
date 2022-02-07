@@ -26,7 +26,7 @@ in
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     ./lsp/node.nix
-    # ./lsp/python.nix
+    ./lsp/python.nix
     ./lsp/rnix.nix
     ./lsp/ccls.nix
 
@@ -75,6 +75,7 @@ in
     ./colorschemes/nix-colors.nix
 
     ./plugins/lualine.nix
+    ./plugins/todo-comments.nix
     # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
     # ./plugins/rainbow.nix

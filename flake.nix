@@ -24,7 +24,7 @@
           system = "x86_64-linux";
           username = "vini";
           overlays = [ nur.overlay inputs.suckless.overlays ];
-          colorscheme = nix-colors.colorSchemes.uwunicorn;
+          colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
         };
       };
 
