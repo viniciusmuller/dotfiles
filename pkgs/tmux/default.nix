@@ -16,12 +16,15 @@ in
     extraConfig = builtins.readFile ./tmux.conf;
     prefix = "C-a";
     plugins = with pkgs; [
+      # tmuxPlugins.tmux-fzf # TODO: Wait until these 2 get fixed upstream
+      # tmuxPlugins.vim-tmux-navigator
+
+      tmuxPlugins.yank
+      tmuxPlugins.sensible
       tmuxPlugins.resurrect
     ];
   };
 
   programs.bash = shellConfig;
   programs.zsh = shellConfig;
-
-  home.packages = with pkgs; [ xsel ];
 }

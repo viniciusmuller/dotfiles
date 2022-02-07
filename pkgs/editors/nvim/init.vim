@@ -106,3 +106,8 @@ augroup myautosave
 augroup end
 
 command ToggleAutoSave let w:autosave = w:autosave ? 0 : 1
+
+augroup numbertoggle
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup end
