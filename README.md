@@ -11,10 +11,8 @@ sudo nixos-rebuild switch --flake ./dotfiles#<configName>
 ```bash
 # Note: It requires nixUnstable and `experimental-features = nix-command flakes`
 git clone https://github.com/arcticlimer/dotfiles
-home-manager switch --flake ./dotfiles#<configName>
+nix build ".#homeConfigurations.<configName>.activationPackage" && ./result/activate
 ```
-
-<!-- You can check the Neovim keybindings [here](./pkgs/nvim/README.md) -->
 
 # Structure
 - `pkgs` -> Packages for home-manager.

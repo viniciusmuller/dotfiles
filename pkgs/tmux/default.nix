@@ -19,6 +19,7 @@ in
       # tmuxPlugins.tmux-fzf # TODO: Wait until these 2 get fixed upstream
       # tmuxPlugins.vim-tmux-navigator
 
+      tmuxPlugins.open
       tmuxPlugins.yank
       tmuxPlugins.sensible
       tmuxPlugins.resurrect

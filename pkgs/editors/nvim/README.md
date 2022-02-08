@@ -25,8 +25,8 @@
 - `Q`: Same as `@@`, repeats last macro
 - `<C-q>`: Same as <C-w>q
 - `<C-s>`: `:update` buffer
-- `<C-g>`: Same as ``` ``
-- `<C-g><C-g>`: Same as `` `" ``, jumps to last position in file.
+<!-- - `<C-g>`: Same as ``` `` -->
+<!-- - `<C-g><C-g>`: Same as `` `" ``, jumps to last position in file. -->
 
 
 ## Language server keybindings
