@@ -3,9 +3,9 @@
 let
   shellConfig = {
     # Source nix
-    initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
+    # initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = {
-      rb = "home-manager switch --flake '.#wsl'";
+      rb = "nix build .#homeConfigurations.wsl.activationPackage && result/activate";
     };
   };
 in

@@ -7,7 +7,6 @@
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
-    ../../pkgs/starship.nix
     ../../pkgs/bash.nix
     ../../pkgs/editors/nvim
     ../../pkgs/readline # GNU readline input
@@ -25,7 +24,7 @@
 
     # Services
     ../../services/gpg-agent.nix
-    ../../services/dunst.nix
+    # ../../services/dunst.nix
 
     # GUI
     # ../../pkgs/kitty.nix
@@ -47,11 +46,9 @@
 
   programs.bash = {
     # Source nix
-    initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
+    # initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = {
-      pacs = "sudo pacman -S";
-      pacr = "sudo pacman -Rns";
-      rb = "home-manager switch --flake .#manjaro";
+      rb = "nix build .#homeConfigurations.arch.activationPackage && result/activate";
     };
   };
 

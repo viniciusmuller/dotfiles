@@ -9,9 +9,9 @@
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
       "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
-      "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly
-      "lokjgaehpcnlmkebpmjiofccpklbmoci" # Toucan
-      "hoombieeljmmljlkjmnheibnpciblicm" # Language Reactor
+      # "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly
+      # "lokjgaehpcnlmkebpmjiofccpklbmoci" # Toucan
+      # "hoombieeljmmljlkjmnheibnpciblicm" # Language Reactor
       # {
       #   id = "cjnmckjndlpiamhfimnnjmnckgghkjbl"; # Competitive companion
       #   version = "2.25.2";
