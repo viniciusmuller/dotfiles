@@ -35,29 +35,27 @@ in
     # ../../pkgs/starship.nix # Awesome shell prompt
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
-    ../../pkgs/gdb-dashboard.nix
+    # ../../pkgs/gdb-dashboard.nix
     ../../pkgs/nnn.nix # File manager
     ../../pkgs/bitwarden.nix # Password manager
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/hexchat.nix # IRC Client
 
-    ../../pkgs/games/dwarf-fortress
+    # ../../pkgs/games/dwarf-fortress
 
     # GUI
-    ../../pkgs/editors/vscodium # Text editor
+    # ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
     ../../pkgs/chromium.nix # Browser
     ../../pkgs/firefox.nix # Browser
-    ../../pkgs/beekeeper-studio.nix # Database manager
+    # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
     ../../pkgs/gtk.nix
     ../../pkgs/qt.nix
-
-    ../../desktop/sway
 
     # Theming
     inputs.nix-colors.homeManagerModule
@@ -88,13 +86,14 @@ in
     anki # Spaced repetition
     # krita # Digital art
     obsidian
+    calibre # PDF/EPUB manager
 
     # Unfree
     discord
     spotify
 
     # ---- Games ----
-    openttd
+    # openttd
   ];
 
   programs.zsh.shellAliases = rebuild-alias;

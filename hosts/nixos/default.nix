@@ -53,19 +53,32 @@
   hardware.opengl.setLdLibraryPath = true;
 
   networking = {
-    interfaces.enp0s31f6.macAddress = "AA:AA:AA:AA:AA:AA";
-    nameservers = lib.mkForce [ "1.1.1.3" ];
     hostName = "nixos";
-    networkmanager.enable = true;
+
+    # DNS
+    networkmanager = {
+      enable = true;
+      dns = "none";
+      ethernet.macAddress = "random";
+    };
+
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
-    firewall.enable = false;
+    firewall.enable = true;
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
+
+
+  # Resolvconf is automatically picking up unwanted ISP's dns server ip and
+  # giving it higher priority than `networking.nameservers`, so we just don't
+  # use it and manually manage DNS.
+  environment.etc = {
+    "resolv.conf".text = "nameserver 1.1.1.3\n";
   };
 
   # Swap monitors
@@ -104,10 +117,10 @@
 
 
   # TODO: Move this to sway module
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";

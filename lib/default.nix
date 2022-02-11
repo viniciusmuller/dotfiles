@@ -12,6 +12,10 @@ rec {
     import inputs.nixpkgs {
       inherit system overlays;
       config.allowUnfree = allowUnfree;
+      # TODO: Find out which package is using this electron version
+      config.permittedInsecurePackages = [
+        "electron-13.6.9"
+      ];
     };
 
   mkHost =

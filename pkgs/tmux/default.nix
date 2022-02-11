@@ -16,9 +16,9 @@ in
     extraConfig = builtins.readFile ./tmux.conf;
     prefix = "C-a";
     plugins = with pkgs; [
-      # tmuxPlugins.tmux-fzf # TODO: Wait until these 2 get fixed upstream
-      # tmuxPlugins.vim-tmux-navigator
-
+      tmuxPlugins.vim-tmux-navigator
+      # tmuxPlugins.cpu # Plugin values only show at startup
+      # tmuxPlugins.tmux-fzf 
       tmuxPlugins.open
       tmuxPlugins.yank
       tmuxPlugins.sensible
