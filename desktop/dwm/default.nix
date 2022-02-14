@@ -36,11 +36,10 @@ in
       ../../services/dunst.nix # Notification daemon
       # ../../services/picom.nix # Compositor
       ../../pkgs/kitty.nix # Terminal
-      ../../services/gammastep.nix # Screen temperature manager
+      ../../services/flameshot.nix
     ];
 
     home.packages = with pkgs; [
-      flameshot # Screenshots
       wmctrl # Helper for window managers
       xbanish # Hides the mouse when using the keyboard
       switch

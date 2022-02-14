@@ -30,7 +30,7 @@ in
     ../../pkgs/direnv.nix # Manages project environments
     ../../pkgs/keychain.nix
     ../../services/gpg-agent.nix
-    ../../services/gammastep.nix
+    ../../services/gammastep.nix # Screen temperature manager
     ../../pkgs/gpg.nix
     # ../../pkgs/starship.nix # Awesome shell prompt
     ../../pkgs/jq.nix # Work with json
@@ -41,7 +41,7 @@ in
     # ../../pkgs/irssi.nix # IRC Client
     ../../pkgs/hexchat.nix # IRC Client
 
-    # ../../pkgs/games/dwarf-fortress
+    ../../pkgs/games/dwarf-fortress
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor
