@@ -24,3 +24,4 @@ nix build ".#homeConfigurations.<configName>.activationPackage" && ./result/acti
 - `hosts` -> My configurations for different machines
 - `home-configurations` -> Home-manager configurations.
 - `utils` -> Useful scripts.
+- `templates` -> Template flakes for different kinds of projects.
