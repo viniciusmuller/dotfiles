@@ -7,8 +7,8 @@
     duskTime = "18:35-20:15";
     temperature = {
       # Lower = Hotter
-      day = 3500;
-      night = 2500;
+      day = 3000;
+      night = 2000;
     };
     settings = {
       general = {

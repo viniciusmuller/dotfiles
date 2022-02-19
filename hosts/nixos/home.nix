@@ -87,6 +87,7 @@ in
     # krita # Digital art
     obsidian
     calibre # PDF/EPUB manager
+    neovide # nvim graphical frontend
 
     # Unfree
     discord
