@@ -16,6 +16,21 @@
   outputs = { self, flake-utils, nixpkgs, nur, nix-colors, ... } @inputs:
     let
       lib = import ./lib inputs;
+      devShells = flake-utils.lib.eachDefaultSystem (
+        system: {
+          devShell =
+            let
+              pkgs = nixpkgs.legacyPackages.${system};
+            in
+            pkgs.mkShell {
+              buildInputs = with pkgs; [
+                # Nix development dependencies
+                rnix-lsp
+                nixpkgs-fmt
+              ];
+            };
+        }
+      );
     in
     {
       nixosConfigurations = {
@@ -43,21 +58,6 @@
             name = "wsl";
           };
         };
-      # Devshell
-    } // flake-utils.lib.eachDefaultSystem
-      (
-        system: {
-          devShell =
-            let
-              pkgs = nixpkgs.legacyPackages.${system};
-            in
-            pkgs.mkShell {
-              buildInputs = with pkgs; [
-                # Nix development dependencies
-                rnix-lsp
-                nixpkgs-fmt
-              ];
-            };
-        }
-      );
+      templates = import ./templates;
+    } // devShells;
 }
