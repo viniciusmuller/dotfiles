@@ -7,16 +7,15 @@
 {
   imports = [
     ../../desktop/dwm
-    ../../desktop/i3
 
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     # ../../nixos-pkgs/manpages.nix
-    ../../nixos-pkgs/virt-manager.nix
+    # ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/docker.nix
     ../../nixos-pkgs/steam.nix
-    ../../nixos-pkgs/thunar.nix
+    # ../../nixos-pkgs/thunar.nix
     # ../../nixos-pkgs/slock.nix
     # ../../nixos-pkgs/zsh.nix
     ../../nixos-pkgs/kmonad
@@ -26,7 +25,7 @@
     ../../nixos-services/ckb-next.nix
 
     # Grub
-    ../../nixos-pkgs/grub/themes/fallout.nix
+    # ../../nixos-pkgs/grub/themes/fallout.nix
     ../../nixos-pkgs/grub/os-prober.nix
 
     ../../nixos-pkgs/display-managers/sddm
@@ -37,17 +36,6 @@
   environment.variables = {
     GTK_IM_MODULE = "cedilla";
     QT_IM_MODULE = "cedilla";
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-      gtkUsePortal = true;
-    };
   };
 
   hardware.opengl.setLdLibraryPath = true;
@@ -115,12 +103,23 @@
   };
 
 
-
   # TODO: Move this to sway module
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;
   # };
+
+  # xdg = {
+  #   portal = {
+  #     enable = true;
+  #     extraPortals = with pkgs; [
+  #       xdg-desktop-portal-wlr
+  #       xdg-desktop-portal-gtk
+  #     ];
+  #     gtkUsePortal = true;
+  #   };
+  # };
+
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";

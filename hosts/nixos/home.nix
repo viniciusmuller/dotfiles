@@ -22,33 +22,25 @@ in
     ../../pkgs/fzf.nix # Fuzzy finder
     ../../pkgs/bat.nix # File previewer
     ../../pkgs/exa.nix # ls alternative
-    ../../pkgs/fcp.nix # cp alternative
     ../../pkgs/newsboat.nix # RSS Reader
     ../../pkgs/trash-cli.nix # Safer rm
     ../../pkgs/lazygit.nix # Git TUI client
-    # ../../pkgs/lazydocker.nix # Docker TUI client
     ../../pkgs/direnv.nix # Manages project environments
     ../../pkgs/keychain.nix
-    ../../services/gpg-agent.nix
-    ../../services/gammastep.nix # Screen temperature manager
     ../../pkgs/gpg.nix
-    # ../../pkgs/starship.nix # Awesome shell prompt
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/so.nix # StackExchange TUI
-    # ../../pkgs/gdb-dashboard.nix
     ../../pkgs/nnn.nix # File manager
-    ../../pkgs/bitwarden.nix # Password manager
-    # ../../pkgs/irssi.nix # IRC Client
-    ../../pkgs/hexchat.nix # IRC Client
+    ../../pkgs/tiny.nix # IRC Client
+    ../../services/gpg-agent.nix
+    ../../services/gammastep.nix # Screen temperature manager
 
-    ../../pkgs/games/dwarf-fortress
+    # ../../pkgs/games/dwarf-fortress
 
     # GUI
     # ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
-    ../../pkgs/chromium.nix # Browser
-    ../../pkgs/firefox.nix # Browser
     # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
@@ -69,9 +61,8 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     # CLI
-    # python39Packages.gigalixir
-    bandwhich # Network inspector
-    tealdeer # TLDR of man pages
+    # bandwhich # Network inspector
+    # tealdeer # TLDR of man pages
     ripgrep # File content finder
     bottom # System monitor
     ncdu # Curses interface for `du`
@@ -80,21 +71,18 @@ in
     neofetch # I use NixOS btw
 
     # GUI
-    element-desktop # Matrix client
+    # element-desktop # Matrix client
     insomnia # Request testing
-    mupdf # Pdf viewer
+    # mupdf # Pdf viewer
     anki # Spaced repetition
     # krita # Digital art
     obsidian
     calibre # PDF/EPUB manager
-    neovide # nvim graphical frontend
+    firefox # Request testing
 
     # Unfree
     discord
     spotify
-
-    # ---- Games ----
-    # openttd
   ];
 
   programs.zsh.shellAliases = rebuild-alias;
@@ -102,12 +90,6 @@ in
   programs.fish.shellAliases = rebuild-alias;
 
   nixpkgs.config.allowUnfree = true;
-
-  # TODO: Make this work again
-  # home.sessionVariables = {
-  #   GTK_IM_MODULE = "cedilla";
-  #   QT_IM_MODULE = "cedilla";
-  # };
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;

@@ -4,7 +4,6 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/nur";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +12,7 @@
     suckless.url = "github:arcticlimer/suckless";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nur, nix-colors, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nix-colors, ... } @inputs:
     let
       lib = import ./lib inputs;
       devShells = flake-utils.lib.eachDefaultSystem (
@@ -38,7 +37,7 @@
           host = "nixos";
           system = "x86_64-linux";
           username = "vini";
-          overlays = [ nur.overlay inputs.suckless.overlays ];
+          overlays = [ inputs.suckless.overlays ];
           colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
         };
       };
