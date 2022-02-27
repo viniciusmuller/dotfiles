@@ -30,6 +30,7 @@ in
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/bat.nix # File previewer
     ../../pkgs/newsboat.nix # News reader
+    ../../pkgs/tiny.nix # TUI IRC client
 
     ../../services/gpg-agent.nix
   ];
