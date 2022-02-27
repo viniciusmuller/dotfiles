@@ -24,6 +24,8 @@ rec {
     , system ? "x86_64-linux"
     , allowUnfree ? true
     , overlays ? [ ]
+    , nixosModules ? [ ]
+    , homeModules ? [ ]
     , colorscheme ? inputs.nix-colors.colorSchemes.tokyonight
     }:
     let
@@ -36,12 +38,15 @@ rec {
         inherit pkgs inputs username colorscheme;
       };
 
-      modules = [
+      modules = nixosModules ++ [
         (../hosts + "/${host}")
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
-            users."${username}" = import (../hosts + "/${host}" + "/home.nix");
+            users."${username}" = inputs.nixpkgs.lib.mkMerge [
+              (import (../hosts + "/${host}" + "/home.nix"))
+              { imports = homeModules; }
+            ];
             extraSpecialArgs = {
               inherit inputs username pkgs prelude colorscheme;
             };
@@ -56,6 +61,7 @@ rec {
     , system ? "x86_64-linux"
     , allowUnfree ? true
     , overlays ? [ ]
+    , modules ? [ ]
     , colorscheme ? inputs.nix-colors.colorSchemes.tokyonight
     }:
     let
@@ -65,6 +71,7 @@ rec {
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit system username homeDirectory pkgs;
       configuration = (../home-configurations + "/${name}");
+      imports = modules;
       extraSpecialArgs = {
         inherit inputs system username prelude colorscheme;
       };

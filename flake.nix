@@ -2,14 +2,24 @@
   description = "Personal flake config";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    # Core
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = "github:misterio77/nix-colors";
+
+    # Misc
     suckless.url = "github:arcticlimer/suckless";
+    nix-colors.url = "github:misterio77/nix-colors";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    # Emacs
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nix-doom-emacs = {
+      inputs.doom-emacs.url = "github:hlissner/doom-emacs";
+      url = "github:nix-community/nix-doom-emacs";
+    };
   };
 
   outputs = { self, flake-utils, nixpkgs, nix-colors, ... } @inputs:
@@ -37,7 +47,14 @@
           host = "nixos";
           system = "x86_64-linux";
           username = "vini";
-          overlays = [ inputs.suckless.overlays ];
+          overlays = [
+            inputs.emacs-overlay.overlay
+            inputs.suckless.overlays
+          ];
+          homeModules = [
+            inputs.nix-doom-emacs.hmModule
+            inputs.nix-colors.homeManagerModule
+          ];
           colorscheme = inputs.nix-colors.colorSchemes.tokyonight;
         };
       };
