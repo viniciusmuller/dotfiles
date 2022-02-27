@@ -2,8 +2,7 @@
 
 let
   shellConfig = {
-    # Source nix
-    # initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
+    initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = {
       rb = "nix build .#homeConfigurations.wsl.activationPackage && result/activate";
     };
@@ -17,7 +16,7 @@ in
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/direnv.nix
-    ../../pkgs/zsh.nix
+    ../../pkgs/bash.nix # Shell
     ../../pkgs/editors/nvim
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
@@ -30,6 +29,7 @@ in
     ../../pkgs/gpg.nix
     ../../pkgs/jq.nix # Work with json
     ../../pkgs/bat.nix # File previewer
+    ../../pkgs/newsboat.nix # News reader
 
     ../../services/gpg-agent.nix
   ];
@@ -44,13 +44,9 @@ in
     file # Shows info about files
     neofetch # Shows system information
     pfetch # Smaller neofetch
-    bitwarden-cli
   ];
 
   programs.bash = shellConfig;
-  # Currently using zsh installed via apt
-  programs.zsh = lib.mkMerge [ shellConfig { sessionVariables.SHELL = "/bin/zsh"; } ];
-
   nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
