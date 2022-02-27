@@ -8,6 +8,7 @@ in
 {
   home.packages = [
     (pkgs.writeShellScriptBin "loadgpg" ''
+      ${bw} login --apikey
       key=$(${bw} unlock --raw)
 
       private=~/private.gpg

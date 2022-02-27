@@ -7,6 +7,7 @@ in
 {
   home.packages = [
     (pkgs.writeShellScriptBin "loadssh" ''
+      ${bw} login --apikey
       key=$(${bw} unlock --raw)
       private=~/.ssh/id_ed25519
       public=~/.ssh/id_ed25519.pub
