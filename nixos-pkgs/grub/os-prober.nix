@@ -15,4 +15,5 @@
       };
     };
   };
+  time.hardwareClockInLocalTime = true;
 }

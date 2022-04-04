@@ -47,12 +47,19 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
-    ../../pkgs/gtk.nix
-    ../../pkgs/qt.nix
+    # ../../pkgs/gtk.nix
+    # ../../pkgs/qt.nix
   ];
 
   # TODO: Apparently ghosts are trying to set my fontconfig.enable to false
   fonts.fontconfig.enable = lib.mkForce true;
+
+  dconf.settings = {
+    "org/gnome/desktop/peripherals/trackball" = {
+      "middle-click-emulation" = true;
+      "scroll-wheel-emulation-button" = 8;
+    };
+  };
 
   home.packages = with pkgs; [
     # Fonts
@@ -67,6 +74,7 @@ in
     file # Show info about files
     fd # File finder
     neofetch # I use NixOS btw
+    glow # Markdown renderer
 
     # GUI
     # element-desktop # Matrix client
@@ -77,6 +85,7 @@ in
     obsidian
     calibre # PDF/EPUB manager
     firefox # Request testing
+    sxiv # Image viewer
 
     # Unfree
     discord

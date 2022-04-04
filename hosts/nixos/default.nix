@@ -18,7 +18,7 @@
     # ../../nixos-pkgs/thunar.nix
     # ../../nixos-pkgs/slock.nix
     # ../../nixos-pkgs/zsh.nix
-    ../../nixos-pkgs/kmonad
+    # ../../nixos-pkgs/kmonad
     # ../../nixos-pkgs/wine.nix
 
     ../../nixos-services/noisetorch.nix
@@ -39,6 +39,14 @@
   };
 
   hardware.opengl.setLdLibraryPath = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  services.xserver.desktopManager.gnome.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  services.dbus.packages = with pkgs; [ dconf ];
+  programs.dconf.enable = true;
 
   networking = {
     hostName = "nixos";
@@ -100,9 +108,6 @@
     };
   };
 
-  # TODO: Figure out how to set dark theme to this prompt.
-  programs.ssh.askPassword = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
-
   boot = {
     cleanTmpDir = true;
     kernel.sysctl = {
@@ -120,12 +125,13 @@
   #   wrapperFeatures.gtk = true;
   # };
 
+  # Enable screen sharing in wayland
   # xdg = {
   #   portal = {
   #     enable = true;
   #     extraPortals = with pkgs; [
-  #       xdg-desktop-portal-wlr
-  #       xdg-desktop-portal-gtk
+  #       xdg-desktop-portal-wlr # Sway (wslroots)
+  #       xdg-desktop-portal-gtk # Gnome
   #     ];
   #     gtkUsePortal = true;
   #   };
@@ -146,20 +152,20 @@
   services.xserver.layout = "us";
 
   # Audio with pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
 
-    # Wireplumber
-    wireplumber.enable = true;
-    media-session.enable = false;
+  #  # Wireplumber
+  #  wireplumber.enable = true;
+  #  media-session.enable = false;
 
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
+  #  # If you want to use JACK applications, uncomment this
+  #  #jack.enable = true;
+  #};
 
   users.users.${username} = {
     isNormalUser = true;
