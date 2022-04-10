@@ -12,9 +12,20 @@ in
     enable = true;
     autoReload = true;
     urls = [
+      # Aggregators
       {
-        url = "https://hnrss.org/newest";
-        title = "Hacker News";
+        title = "Lobste.rs - Nix/Go";
+        url = "https://lobste.rs/t/nix,go.rss";
+        tags = [ "tech" "go" "nix" ];
+      }
+      {
+        title = "Lobste.rs - Frontpage";
+        url = "https://lobste.rs/rss";
+        tags = [ "tech" ];
+      }
+      {
+        title = "Hacker News - Frontpage";
+        url = "https://news.ycombinator.com/rss";
         tags = [ "tech" ];
       }
 
@@ -38,6 +49,11 @@ in
         title = "Dashbit Blog";
         url = "https://dashbit.co/feed";
         tags = [ "tech" "elixir" ];
+      }
+      {
+        title = "uses this";
+        url = "https://usesthis.com/feed.atom";
+        tags = [ "tech" "entertainment" ];
       }
 
       # Reddit
