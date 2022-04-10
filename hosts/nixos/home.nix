@@ -16,7 +16,7 @@ in
     ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
-    ../../pkgs/editors/doom
+    # ../../pkgs/editors/doom
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer
@@ -47,7 +47,7 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
-    # ../../pkgs/gtk.nix
+    ../../pkgs/gtk.nix
     # ../../pkgs/qt.nix
   ];
 
@@ -58,6 +58,9 @@ in
     "org/gnome/desktop/peripherals/trackball" = {
       "middle-click-emulation" = true;
       "scroll-wheel-emulation-button" = 8;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      "button-layout" = ":minimize,maximize,close";
     };
   };
 
