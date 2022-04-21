@@ -43,24 +43,33 @@
   services.blueman.enable = true;
 
   services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = [
-    pkgs.gnome.cheese
-    pkgs.gnome-photos
-    pkgs.gnome.gnome-music
-    pkgs.gnome.gedit
-    pkgs.epiphany
-    pkgs.evince
-    pkgs.gnome.gnome-characters
-    pkgs.gnome.totem
-    pkgs.gnome.tali
-    pkgs.gnome.iagno
-    pkgs.gnome.hitori
-    pkgs.gnome.atomix
-    pkgs.gnome-tour
-    pkgs.gnome.geary
-    pkgs.gnome-text-editor
+  environment.gnome.excludePackages = with pkgs; [
+    gnome.cheese
+    gnome-photos
+    gnome.gnome-music
+    gnome.gedit
+    epiphany
+    evince
+    gnome.gnome-characters
+    gnome.totem
+    gnome.tali
+    gnome.iagno
+    gnome.hitori
+    gnome.atomix
+    gnome-tour
+    gnome.geary
+    gnome-text-editor
   ];
   hardware.pulseaudio.enable = true;
+  environment.systemPackages = with pkgs; [
+    gnome.gnome-tweaks
+    gnomeExtensions.vitals
+
+    # These (doesn't work on current Gnome 42)
+    # gnomeExtensions.impatience
+    # gnomeExtensions.sermon
+    # gnomeExtensions.forge
+  ];
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
@@ -79,7 +88,11 @@
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
-    firewall.enable = true;
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [ 33333 ];
+      allowedUDPPorts = [ 33333 ];
+    };
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -189,8 +202,6 @@
     extraGroups = [ "wheel" ];
     initialPassword = "changeme";
   };
-
-  environment.systemPackages = with pkgs; [ ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

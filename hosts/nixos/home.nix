@@ -47,7 +47,7 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix
-    ../../pkgs/gtk.nix
+    # ../../pkgs/gtk.nix
     # ../../pkgs/qt.nix
   ];
 
@@ -69,8 +69,7 @@ in
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     # CLI
-    # bandwhich # Network inspector
-    # tealdeer # TLDR of man pages
+    bandwhich # Network inspector
     ripgrep # File content finder
     bottom # System monitor
     ncdu # Curses interface for `du`
@@ -78,6 +77,9 @@ in
     fd # File finder
     neofetch # I use NixOS btw
     glow # Markdown renderer
+    unzip # Easily unzip files
+    commitlint # Better commits
+    convco # Better commits
 
     # GUI
     # element-desktop # Matrix client
@@ -85,14 +87,15 @@ in
     # mupdf # Pdf viewer
     anki # Spaced repetition
     # krita # Digital art
-    obsidian
-    calibre # PDF/EPUB manager
+    # calibre # PDF/EPUB manager (TODO: Calibre is broken)
     firefox # Request testing
     sxiv # Image viewer
+    polymc # Minecraft launcher
+    spot # Open source spotify client
 
     # Unfree
     discord
-    spotify
+    obsidian
   ];
 
   programs.zsh.shellAliases = rebuild-alias;

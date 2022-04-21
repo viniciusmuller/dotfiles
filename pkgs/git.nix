@@ -40,7 +40,16 @@ in
     extraConfig = {
       core.editor = "vim";
       pull.rebase = true;
+      merge.conflictstyle = "diff3";
     };
+
+    # difftastic = {
+    #   enable = true;
+    #   background = "dark";
+    # };
+
+    # Global ignores
+    ignores = [ "*~" "*.swp" ];
 
     delta = {
       enable = true;

@@ -4,8 +4,6 @@
   virtualisation.docker.enable = true;
   users.users.${username}.extraGroups = [ "docker" ];
 
-  home-manager.users.${username} = import ../pkgs/docker.nix;
-
   # https://github.com/containerd/containerd/issues/5502
   systemd.services = {
     kill-all-docker-containers = {
