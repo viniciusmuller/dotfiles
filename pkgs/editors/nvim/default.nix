@@ -43,7 +43,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
+    ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
@@ -72,9 +72,10 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    ./colorschemes/nix-colors.nix
+    # ./colorschemes/nix-colors.nix
+    ./colorschemes/github-dark.nix
 
-    ./plugins/lualine.nix
+    # ./plugins/lualine.nix
     ./plugins/todo-comments.nix
     # ./plugins/bufferline.nix
     ./plugins/colorizer.nix
@@ -85,7 +86,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      vim-polyglot
+      # vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary

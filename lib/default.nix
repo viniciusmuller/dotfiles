@@ -43,10 +43,9 @@ rec {
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
-            users."${username}" = inputs.nixpkgs.lib.mkMerge [
-              (import (../hosts + "/${host}" + "/home.nix"))
-              { imports = homeModules; }
-            ];
+            users."${username}" = {
+              imports = [ (../hosts + "/${host}" + "/home.nix") ] + homeModules;
+            };
             extraSpecialArgs = {
               inherit inputs username pkgs prelude colorscheme;
             };
@@ -70,8 +69,9 @@ rec {
     in
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit system username homeDirectory pkgs;
-      configuration = (../home-configurations + "/${name}");
-      imports = modules;
+      configuration = {
+        imports = [ (../home-configurations + "/${name}") ] ++ modules;
+      };
       extraSpecialArgs = {
         inherit inputs system username prelude colorscheme;
       };

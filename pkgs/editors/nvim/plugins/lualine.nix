@@ -2,7 +2,6 @@
 
 let
   lualine = {
-    # TODO: Use upstream lualine once the pr of this repo gets merged
     plugin = pkgs.vimPlugins.lualine-nvim;
     config = prelude.mkLuaCode ''
       require('lualine').setup {
