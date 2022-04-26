@@ -44,7 +44,7 @@ rec {
         {
           home-manager = {
             users."${username}" = {
-              imports = [ (../hosts + "/${host}" + "/home.nix") ] + homeModules;
+              imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
             };
             extraSpecialArgs = {
               inherit inputs username pkgs prelude colorscheme;
