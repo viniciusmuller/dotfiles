@@ -6,7 +6,7 @@
 
 {
   imports = [
-    ../../desktop/dwm
+    ../../desktop/xmonad
 
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
@@ -149,7 +149,7 @@
   };
 
 
-  # TODO: Move this to sway module
+  # # TODO: Move this to sway module
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;

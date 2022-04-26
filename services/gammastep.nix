@@ -13,7 +13,7 @@
     settings = {
       general = {
         brightness-day = 1.0;
-        brightness-night = 0.6;
+        brightness-night = 0.7;
       };
       # randr = {
       #   screen = 0;

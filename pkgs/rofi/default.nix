@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    theme = ./onedark.rasi;
+    theme = "dmenu";
     font = "JetBrains Mono 11";
   };
 }

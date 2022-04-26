@@ -26,7 +26,7 @@ in
     ../../pkgs/newsboat.nix # RSS Reader
     ../../pkgs/trash-cli.nix # Safer rm
     ../../pkgs/lazygit.nix # Git TUI client
-    ../../pkgs/direnv.nix # Manages project environments
+    # ../../pkgs/direnv.nix # Manages project environments
     ../../pkgs/keychain.nix
     ../../pkgs/gpg.nix
     ../../pkgs/jq.nix # Work with json

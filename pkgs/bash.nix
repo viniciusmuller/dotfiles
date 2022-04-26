@@ -9,6 +9,11 @@ let
     url = "https://github.com/lincheney/fzf-tab-completion";
     rev = "53eb325f573265a6105c9bd0aa56cd865c4e14b7";
   };
+  ble-sh = pkgs.fetchFromGitHub {
+    author = "akinomyoga";
+    repo = "ble.sh";
+    rev = "e5d8d00cf52bb899af0ecab563be12dfc11451ba";
+  };
 in
 {
   programs.bash = {

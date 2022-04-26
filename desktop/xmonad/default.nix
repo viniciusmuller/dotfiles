@@ -18,6 +18,7 @@
       ../../services/dunst.nix # Notification daemon
       ../../services/picom.nix # Compositor
       ../../services/flameshot.nix # Screenshots
+      ../../services/polybar.nix
       ../../pkgs/kitty.nix # Terminal
       ../../pkgs/betterlockscreen.nix # Screen locker
     ];
