@@ -11,6 +11,12 @@
     path = ./go;
   };
 
+  # nix flake init -t github:arcticlimer/dotfiles#templates.elixir
+  elixir = {
+    description = "Elixir Project Template";
+    path = ./elixir;
+  };
+
   # nix flake init -t github:arcticlimer/dotfiles#templates.basic
   basic = {
     description = "A very basic flake";
