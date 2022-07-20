@@ -92,21 +92,6 @@ augroup my_autocommands
   autocmd FileType nix,elixir setlocal commentstring=#\ %s
 augroup end
 
-let g:autosave_autostart = 1
-function s:autosave()
-  let autosave_blacklist = ['NvimTree', 'help' ]
-  if index(autosave_blacklist, &ft) < 0 && w:autosave == 1 && &modifiable
-    silent update
-  endif
-endfunction
-
-augroup myautosave
-  autocmd InsertLeave,TextChanged * call s:autosave()
-  autocmd BufWinEnter * let w:autosave = g:autosave_autostart
-augroup end
-
-command ToggleAutoSave let w:autosave = w:autosave ? 0 : 1
-
 augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber

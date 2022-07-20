@@ -39,7 +39,7 @@ in
     # ../../pkgs/games/dwarf-fortress
 
     # GUI
-    # ../../pkgs/editors/vscodium # Text editor
+    ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
@@ -76,10 +76,7 @@ in
     file # Show info about files
     fd # File finder
     neofetch # I use NixOS btw
-    glow # Markdown renderer
     unzip # Easily unzip files
-    commitlint # Better commits
-    convco # Better commits
 
     # GUI
     # element-desktop # Matrix client
@@ -89,13 +86,15 @@ in
     # krita # Digital art
     # calibre # PDF/EPUB manager (TODO: Calibre is broken)
     firefox # Request testing
-    sxiv # Image viewer
     polymc # Minecraft launcher
-    spot # Open source spotify client
+
+    # yuzu-ea # Switch emulator
+    # cemu # Wii U
 
     # Unfree
     discord
     obsidian
+    spotify
   ];
 
   programs.zsh.shellAliases = rebuild-alias;

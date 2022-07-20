@@ -11,21 +11,12 @@
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
-    # ../../nixos-pkgs/manpages.nix
-    # ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/docker.nix
     ../../nixos-pkgs/steam.nix
-    # ../../nixos-pkgs/thunar.nix
-    # ../../nixos-pkgs/slock.nix
-    # ../../nixos-pkgs/zsh.nix
-    # ../../nixos-pkgs/kmonad
-    # ../../nixos-pkgs/wine.nix
 
     ../../nixos-services/noisetorch.nix
-    ../../nixos-services/ckb-next.nix
 
     # Grub
-    # ../../nixos-pkgs/grub/themes/fallout.nix
     ../../nixos-pkgs/grub/os-prober.nix
 
     ../../nixos-pkgs/display-managers/sddm
@@ -39,8 +30,12 @@
   };
 
   hardware.opengl.setLdLibraryPath = true;
+
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  hardware.enableAllFirmware = true;
+  nixpkgs.config.allowUnfree = true;
 
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = with pkgs; [
@@ -81,7 +76,7 @@
     networkmanager = {
       enable = true;
       dns = "none";
-      ethernet.macAddress = "random";
+      # ethernet.macAddress = "random";
     };
 
     # Open ports in the firewall.
@@ -140,10 +135,10 @@
 
   boot = {
     cleanTmpDir = true;
-    kernel.sysctl = {
-      # Wine was suggesting this
-      "dev.i915.perf_stream_paranoid" = 0;
-    };
+    # kernel.sysctl = {
+    #   # Wine was suggesting this
+    #   "dev.i915.perf_stream_paranoid" = 0;
+    # };
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "ntfs" ];
   };

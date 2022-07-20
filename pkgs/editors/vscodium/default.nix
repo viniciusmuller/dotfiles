@@ -24,27 +24,21 @@ in
     # ./extensions/markdown.nix
     # ./extensions/toml.nix
     # ./extensions/vspacecode
-    ./extensions/go.nix
-    ./extensions/liveshare.nix
+    # ./extensions/go.nix
+    # ./extensions/liveshare.nix
   ];
 
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    userSettings = import ./settings.nix;
-    keybindings = import ./keybindings.nix;
+    # userSettings = import ./settings.nix;
+    # keybindings = import ./keybindings.nix;
     extensions = with pkgs.vscode-extensions; [
-      # Aesthetics
-      # coenraads.bracket-pair-colorizer-2
-
-      # zhuangtongfa.material-theme
       github.github-vscode-theme
       pkief.material-icon-theme
-
-      # Utils
-      gruntfuggly.todo-tree
       usernamehw.errorlens
       eamodio.gitlens
+      vscodevim.vim
     ] ++ extensions;
   };
 }
