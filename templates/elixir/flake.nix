@@ -16,6 +16,9 @@
           buildInputs = [
             elixir
             elixir_ls
+            inotify-tools
+
+            rnix-lsp
           ];
         };
       });
