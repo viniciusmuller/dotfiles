@@ -17,6 +17,12 @@
     path = ./elixir;
   };
 
+  # nix flake init -t github:arcticlimer/dotfiles#templates.fsharp
+  basic = {
+    description = "Fsharp Project Template";
+    path = ./fsharp;
+  };
+
   # nix flake init -t github:arcticlimer/dotfiles#templates.basic
   basic = {
     description = "A very basic flake";
