@@ -18,7 +18,7 @@
   };
 
   # nix flake init -t github:arcticlimer/dotfiles#templates.fsharp
-  basic = {
+  fsharp = {
     description = "Fsharp Project Template";
     path = ./fsharp;
   };
