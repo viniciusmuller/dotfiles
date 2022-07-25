@@ -16,7 +16,7 @@ in
     # ./extensions/cpp.nix
     # ./extensions/rust.nix
     # ./extensions/elixir.nix
-    # ./extensions/fsharp.nix
+    ./extensions/fsharp.nix
     # ./extensions/unity.nix
     # ./extensions/latex.nix
     # ./extensions/haskell.nix

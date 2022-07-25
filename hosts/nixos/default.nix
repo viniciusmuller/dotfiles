@@ -12,7 +12,6 @@
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     ../../nixos-pkgs/docker.nix
-    ../../nixos-pkgs/steam.nix
 
     ../../nixos-services/noisetorch.nix
 
@@ -55,7 +54,6 @@
     gnome.geary
     gnome-text-editor
   ];
-  hardware.pulseaudio.enable = true;
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
     gnomeExtensions.vitals
@@ -65,6 +63,7 @@
     # gnomeExtensions.sermon
     # gnomeExtensions.forge
   ];
+  hardware.pulseaudio.enable = true;
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;

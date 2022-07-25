@@ -87,9 +87,7 @@ in
     # calibre # PDF/EPUB manager (TODO: Calibre is broken)
     firefox # Request testing
     polymc # Minecraft launcher
-
-    # yuzu-ea # Switch emulator
-    # cemu # Wii U
+    calibre # Ebook manager
 
     # Unfree
     discord
