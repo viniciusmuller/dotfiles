@@ -64,6 +64,10 @@ in
     };
   };
 
+  programs.bash.initExtra = ''
+    export PATH="$PATH:/home/vini/.dotnet/tools"
+  '';
+
   home.packages = with pkgs; [
     # Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })

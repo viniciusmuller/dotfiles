@@ -12,7 +12,7 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-       devShell = mkShell {
+       devShell = with pkgs; mkShell {
           buildInputs = [
             dotnet-sdk_6
             icu

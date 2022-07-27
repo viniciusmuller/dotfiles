@@ -14,10 +14,11 @@ in
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    # ./plugins/lsp-extensions.nix
+    ./plugins/lsp-extensions.nix
 
     # ./lsp/omnisharp.nix
     ./lsp/go.nix
+    ./lsp/fsharp.nix
     ./lsp/rust.nix
     # ./lsp/clojure.nix
     ./lsp/elixir.nix
@@ -87,7 +88,7 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      # vim-polyglot
+      vim-polyglot
       nvim-web-devicons
       targets-vim
       vim-commentary
