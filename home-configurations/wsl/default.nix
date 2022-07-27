@@ -2,7 +2,12 @@
 
 let
   shellConfig = {
-    initExtra = ". ~/.nix-profile/etc/profile.d/nix.sh";
+    initExtra = "
+      . ~/.nix-profile/etc/profile.d/nix.sh
+
+      # Export display using VcXsrv
+      export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+    ";
     shellAliases = {
       rb = "nix build .#homeConfigurations.wsl.activationPackage && result/activate";
     };
@@ -15,7 +20,6 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/zoxide.nix # Jump directories
-    ../../pkgs/direnv.nix
     ../../pkgs/bash.nix # Shell
     ../../pkgs/editors/nvim
     ../../pkgs/readline # GNU readline input

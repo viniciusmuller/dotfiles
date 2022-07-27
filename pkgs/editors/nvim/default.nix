@@ -26,6 +26,7 @@ in
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     ./lsp/node.nix
+    ./lsp/fsharp.nix
     ./lsp/python.nix
     ./lsp/rnix.nix
     ./lsp/ccls.nix
@@ -93,7 +94,6 @@ in
       vim-repeat
       vim-sensible
       vim-surround
-      undotree
       vim-tmux-navigator
     ];
 

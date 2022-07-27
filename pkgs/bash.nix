@@ -84,6 +84,7 @@ in
       ns = "nix-shell -p";
       nd = "nix develop";
       nq = "nix search nixpkgs";
+      nd = "nix develop";
       cvi = "convco commit --interactive";
     };
   };

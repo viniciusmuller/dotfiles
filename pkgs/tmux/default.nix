@@ -18,7 +18,7 @@ in
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       # tmuxPlugins.cpu # Plugin values only show at startup
-      # tmuxPlugins.tmux-fzf 
+      # tmuxPlugins.tmux-fzf
       tmuxPlugins.open
       tmuxPlugins.yank
       tmuxPlugins.sensible
