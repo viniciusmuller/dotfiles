@@ -38,12 +38,6 @@ let
         }
       )
 
-      vim.cmd[[
-        augroup lsp
-          autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})
-        augroup end
-      ]]
-
       -- This function needs to be global, so that other lsp configs inside
       -- ./lsp will be able to reference it in their setup.
       _G.on_attach = function(client, bufnr)
@@ -79,7 +73,7 @@ let
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
         buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
         buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.workspace_symbol("")<cr>', opts)
-        buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        buf_set_keymap('n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
       end
 
       -- Lsp capabilities

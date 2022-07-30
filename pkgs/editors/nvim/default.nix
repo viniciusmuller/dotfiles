@@ -14,7 +14,7 @@ in
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    # ./plugins/lsp-extensions.nix
+    ./plugins/lsp_lines.nix
 
     # ./lsp/omnisharp.nix
     ./lsp/go.nix

@@ -33,8 +33,6 @@
 
       set cursorline
       set termguicolors
-
-      nnoremap <space>ff :Files<cr>
     '';
   };
 }

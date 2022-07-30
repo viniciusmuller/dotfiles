@@ -76,6 +76,8 @@ nnoremap <silent> <leader>vQ <cmd>quitall!<cr>
 nnoremap <silent> <leader>vq <cmd>quitall<cr>
 nnoremap <silent> <leader>vr <cmd>source $MYVIMRC<cr>
 
+nnoremap <C-s> :w<cr>
+
 " Allow the . to execute once for each line of a visual selection
 vnoremap . :normal .<cr>
 
@@ -90,6 +92,9 @@ augroup my_autocommands
   " Handle nix files
   au BufEnter *.nix set ft=nix
   autocmd FileType nix,elixir setlocal commentstring=#\ %s
+
+  au BufEnter *.fs,*.fsi set ft=fsharp
+  autocmd FileType fsharp setlocal commentstring=//\ %s
 augroup end
 
 augroup numbertoggle

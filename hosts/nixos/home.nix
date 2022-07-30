@@ -93,6 +93,8 @@ in
     polymc # Minecraft launcher
     calibre # Ebook manager
 
+    jetbrains.rider
+
     # Unfree
     discord
     obsidian

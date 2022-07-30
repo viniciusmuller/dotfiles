@@ -35,7 +35,6 @@ let
         nnoremap <leader>,   <cmd>Telescope buffers<cr>
         nnoremap <leader>.   <cmd>Telescope git_files theme=ivy<cr>
         nnoremap <leader>;   <cmd>Telescope live_grep theme=ivy<cr>
-        nnoremap <leader>ff  <cmd>Telescope find_files<cr>
         nnoremap <leader>fh  <cmd>Telescope help_tags<cr>
         nnoremap <leader>fm  <cmd>Telescope man_pages<cr>
         nnoremap <leader>fs  <cmd>Telescope lsp_workspace_symbols<cr>
