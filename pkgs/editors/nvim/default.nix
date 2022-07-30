@@ -9,12 +9,12 @@ let
 in
 {
   imports = [
-    ./map-leader.nix
+    ./map-leader.nix # TODO: windows
 
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    ./plugins/lsp-extensions.nix
+    # ./plugins/lsp-extensions.nix
 
     # ./lsp/omnisharp.nix
     ./lsp/go.nix
@@ -27,37 +27,36 @@ in
     # ./lsp/latex.nix
     # ./lsp/lua.nix
     ./lsp/node.nix
-    ./lsp/fsharp.nix
     ./lsp/python.nix
     ./lsp/rnix.nix
     ./lsp/ccls.nix
 
     # ---- Linting ----
-    ./plugins/nvim-lint.nix
+    # ./plugins/nvim-lint.nix
 
     # ---- Development profiles ----
-    ./profiles/web.nix
+    # ./profiles/web.nix
 
     # ---- Language specific ----
     # ./languages/vim-go.nix
-    ./languages/rust-vim.nix
+    # ./languages/rust-vim.nix
 
     # ---- General plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
+    # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
-    ./plugins/neovim-session-manager.nix
+    # ./plugins/neovim-session-manager.nix
     # ./plugins/alpha.nix
 
     # ./plugins/fzf.nix
     ./plugins/telescope.nix
 
     # ./plugins/vim-test.nix
-    ./plugins/togglelist.nix
-    ./plugins/closetag.nix
+    # ./plugins/togglelist.nix
+    # ./plugins/closetag.nix
     ./plugins/slash.nix
     # ./plugins/neomake.nix
 
@@ -75,12 +74,12 @@ in
 
     # Aesthetic
     # ./colorschemes/nix-colors.nix
-    ./colorschemes/github-dark.nix
+    ./colorschemes/tokyonight.nix
 
     # ./plugins/lualine.nix
     ./plugins/todo-comments.nix
     # ./plugins/bufferline.nix
-    ./plugins/colorizer.nix
+    # ./plugins/colorizer.nix
     # ./plugins/rainbow.nix
   ];
 
@@ -89,7 +88,6 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       vim-polyglot
-      nvim-web-devicons
       targets-vim
       vim-commentary
       vim-repeat

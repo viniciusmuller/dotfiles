@@ -41,13 +41,15 @@ rec {
       modules = nixosModules ++ [
         (../hosts + "/${host}")
         inputs.home-manager.nixosModules.home-manager
+        # {
+        # home-manager = {
+        # };
+        # }
         {
-          home-manager = {
+          home = {
+            inherit inputs username pkgs prelude colorscheme;
             users."${username}" = {
               imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
-            };
-            extraSpecialArgs = {
-              inherit inputs username pkgs prelude colorscheme;
             };
           };
         }
@@ -58,6 +60,7 @@ rec {
     { name
     , username
     , system ? "x86_64-linux"
+    , stateVersion ? "21.11"
     , allowUnfree ? true
     , overlays ? [ ]
     , modules ? [ ]
@@ -68,10 +71,17 @@ rec {
       homeDirectory = "/home/${username}";
     in
     inputs.home-manager.lib.homeManagerConfiguration {
-      inherit system username homeDirectory pkgs;
-      configuration = {
-        imports = [ (../home-configurations + "/${name}") ] ++ modules;
-      };
+      # inherit system username homeDirectory pkgs;
+      inherit pkgs;
+
+      modules = [
+        {
+          home = {
+            inherit username homeDirectory stateVersion;
+          };
+        }
+        (../home-configurations + "/${name}")
+      ] ++ modules;
       extraSpecialArgs = {
         inherit inputs system username prelude colorscheme;
       };
