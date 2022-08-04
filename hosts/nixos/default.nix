@@ -18,7 +18,7 @@
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
 
-    ../../nixos-pkgs/display-managers/sddm
+    ../../nixos-pkgs/display-managers/lightdm.nix
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -109,6 +109,7 @@
   '';
 
   nix = {
+    # registry.nixpkgs.flake = nixpkgs;
     package = pkgs.nixFlakes;
     extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";

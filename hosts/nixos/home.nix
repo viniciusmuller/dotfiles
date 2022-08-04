@@ -82,18 +82,20 @@ in
     neofetch # I use NixOS btw
     unzip # Easily unzip files
 
+    neovide
+
     # GUI
     # element-desktop # Matrix client
     insomnia # Request testing
     # mupdf # Pdf viewer
-    anki # Spaced repetition
+    anki-bin # Spaced repetition
     # krita # Digital art
     # calibre # PDF/EPUB manager (TODO: Calibre is broken)
     firefox # Request testing
     polymc # Minecraft launcher
     calibre # Ebook manager
 
-    jetbrains.rider
+    # jetbrains.rider
 
     # Unfree
     discord

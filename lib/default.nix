@@ -41,15 +41,13 @@ rec {
       modules = nixosModules ++ [
         (../hosts + "/${host}")
         inputs.home-manager.nixosModules.home-manager
-        # {
-        # home-manager = {
-        # };
-        # }
         {
-          home = {
-            inherit inputs username pkgs prelude colorscheme;
+          home-manager = {
             users."${username}" = {
               imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
+            };
+            extraSpecialArgs = {
+              inherit inputs username pkgs prelude colorscheme;
             };
           };
         }

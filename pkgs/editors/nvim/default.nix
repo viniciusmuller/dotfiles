@@ -14,7 +14,7 @@ in
     # ---- Language server protocol ----
     ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
-    ./plugins/lsp_lines.nix
+    # ./plugins/lsp_lines.nix
 
     # ./lsp/omnisharp.nix
     ./lsp/go.nix
@@ -51,8 +51,8 @@ in
     # ./plugins/neovim-session-manager.nix
     # ./plugins/alpha.nix
 
-    # ./plugins/fzf.nix
-    ./plugins/telescope.nix
+    ./plugins/fzf.nix
+    # ./plugins/telescope.nix
 
     # ./plugins/vim-test.nix
     # ./plugins/togglelist.nix

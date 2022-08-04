@@ -55,38 +55,43 @@ in
         url = "https://usesthis.com/feed.atom";
         tags = [ "tech" "entertainment" ];
       }
+      {
+        title = "Julia Evans";
+        url = "https://jvns.ca/atom.xml";
+        tags = [ "tech" ];
+      }
 
       # Reddit
-      {
-        url = "https://www.reddit.com/r/neovim/.rss";
-        title = "/r/neovim";
-        tags = [ "neovim" "reddit" ];
-      }
-      {
-        url = "https://www.reddit.com/r/linux/.rss";
-        title = "/r/linux";
-        tags = [ "linux" "reddit" ];
-      }
-      {
-        url = "https://www.reddit.com/r/NixOS/.rss";
-        title = "/r/NixOS";
-        tags = [ "linux" "nixos" "reddit" ];
-      }
-      {
-        url = "https://www.reddit.com/r/elixir/.rss";
-        title = "/r/elixir";
-        tags = [ "programming" "elixir" "reddit" ];
-      }
-      {
-        url = "https://www.reddit.com/r/rust/.rss";
-        title = "/r/rust";
-        tags = [ "programming" "rust" "reddit" ];
-      }
-      {
-        url = "https://www.reddit.com/r/golang/.rss";
-        title = "/r/golang";
-        tags = [ "programming" "go" "reddit" ];
-      }
+      # {
+      #   url = "https://www.reddit.com/r/neovim/.rss";
+      #   title = "/r/neovim";
+      #   tags = [ "neovim" "reddit" ];
+      # }
+      # {
+      #   url = "https://www.reddit.com/r/linux/.rss";
+      #   title = "/r/linux";
+      #   tags = [ "linux" "reddit" ];
+      # }
+      # {
+      #   url = "https://www.reddit.com/r/NixOS/.rss";
+      #   title = "/r/NixOS";
+      #   tags = [ "linux" "nixos" "reddit" ];
+      # }
+      # {
+      #   url = "https://www.reddit.com/r/elixir/.rss";
+      #   title = "/r/elixir";
+      #   tags = [ "programming" "elixir" "reddit" ];
+      # }
+      # {
+      #   url = "https://www.reddit.com/r/rust/.rss";
+      #   title = "/r/rust";
+      #   tags = [ "programming" "rust" "reddit" ];
+      # }
+      # {
+      #   url = "https://www.reddit.com/r/golang/.rss";
+      #   title = "/r/golang";
+      #   tags = [ "programming" "go" "reddit" ];
+      # }
 
       # Youtube
       {

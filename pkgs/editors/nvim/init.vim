@@ -12,7 +12,7 @@ set ignorecase smartcase
 set textwidth=80
 set sessionoptions+=globals
 set hidden
-set guifont=JetBrains\ Mono:h9
+set guifont=JetBrains\ Mono:h11
 set wildignorecase
 set linebreak
 set autoindent
