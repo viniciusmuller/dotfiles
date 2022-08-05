@@ -12,12 +12,12 @@ in
     enable = true;
     autoReload = true;
     urls = [
+      # {
+      #   title = "Lobste.rs - Nix/Go";
+      #   url = "https://lobste.rs/t/nix,go.rss";
+      #   tags = [ "tech" "go" "nix" ];
+      # }
       # Aggregators
-      {
-        title = "Lobste.rs - Nix/Go";
-        url = "https://lobste.rs/t/nix,go.rss";
-        tags = [ "tech" "go" "nix" ];
-      }
       {
         title = "Lobste.rs - Frontpage";
         url = "https://lobste.rs/rss";
@@ -58,6 +58,16 @@ in
       {
         title = "Julia Evans";
         url = "https://jvns.ca/atom.xml";
+        tags = [ "tech" ];
+      }
+      {
+        title = "Existential Type";
+        url = "https://existentialtype.wordpress.com/feed/";
+        tags = [ "tech" ];
+      }
+      {
+        title = "research!rsc";
+        url = "https://research.swtch.com/feed.atom";
         tags = [ "tech" ];
       }
 
