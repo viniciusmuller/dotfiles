@@ -18,6 +18,7 @@ in
 
     # ./lsp/omnisharp.nix
     ./lsp/go.nix
+    ./lsp/erlang.nix
     ./lsp/fsharp.nix
     ./lsp/rust.nix
     # ./lsp/clojure.nix
@@ -61,7 +62,7 @@ in
     # ./plugins/neomake.nix
 
     # Repl
-    # ./plugins/conjure.nix
+    ./plugins/conjure.nix
 
     # Debugging
     # ./plugins/dap.nix
@@ -69,7 +70,7 @@ in
 
     # Git
     ./plugins/gitsigns.nix
-    # ./plugins/fugitive.nix
+    ./plugins/fugitive.nix
     # ./plugins/git-blame.nix
 
     # Aesthetic

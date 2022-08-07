@@ -55,10 +55,10 @@ in
   fonts.fontconfig.enable = lib.mkForce true;
 
   dconf.settings = {
-    "org/gnome/desktop/peripherals/trackball" = {
-      "middle-click-emulation" = true;
-      "scroll-wheel-emulation-button" = 8;
-    };
+    # "org/gnome/desktop/peripherals/trackball" = {
+    #   "middle-click-emulation" = true;
+    #   "scroll-wheel-emulation-button" = 8;
+    # };
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
     };
@@ -83,6 +83,7 @@ in
     unzip # Easily unzip files
 
     neovide
+    (nethack.override { qtMode = true; })
 
     # GUI
     # element-desktop # Matrix client
@@ -94,6 +95,7 @@ in
     firefox # Request testing
     polymc # Minecraft launcher
     calibre # Ebook manager
+    krita
 
     # jetbrains.rider
 
