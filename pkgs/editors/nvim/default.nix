@@ -97,6 +97,10 @@ in
       vim-tmux-navigator
     ];
 
+    extraPackages = with pkgs; [
+      xclip
+    ];
+
     extraConfig = builtins.readFile ./init.vim;
   };
 
