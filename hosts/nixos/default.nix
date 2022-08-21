@@ -14,6 +14,7 @@
     ../../nixos-pkgs/docker.nix
 
     ../../nixos-services/noisetorch.nix
+    ../../nixos-pkgs/steam.nix
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix

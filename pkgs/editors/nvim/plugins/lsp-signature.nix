@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
   lsp-signature = {
     plugin = pkgs.vimPlugins.lsp_signature-nvim;
-    config = "lua require('lsp_signature').setup()";
+    config = prelude.mkLuaCode "require('lsp_signature').setup()";
   };
 in
 {

@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, prelude, ... }:
 
 let
   pears = {
     plugin = pkgs.vimPlugins.pears-nvim;
-    config = "lua require('pears').setup()";
+    config = prelude.mkLuaCode "require('pears').setup()";
   };
 in
 {

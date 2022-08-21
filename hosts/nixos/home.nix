@@ -98,11 +98,6 @@ in
     krita
 
     # jetbrains.rider
-
-    # Unfree
-    discord
-    obsidian
-    spotify
   ];
 
   programs.zsh.shellAliases = rebuild-alias;
