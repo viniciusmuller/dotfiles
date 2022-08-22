@@ -4,6 +4,36 @@ let
   rebuild-alias = {
     rb = "sudo nixos-rebuild switch --flake '.#nixos'";
   };
+  fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+  cli = with pkgs; [
+    bandwhich # Network inspector
+    ripgrep # File content finder
+    bottom # System monitor
+    ncdu # Curses interface for `du`
+    file # Show info about files
+    fd # File finder
+    neofetch # I use NixOS btw
+    unzip # Easily unzip files
+  ];
+  gui = with pkgs; [
+    insomnia # Request testing
+    # mupdf # Pdf viewer
+    anki-bin # Spaced repetition
+    krita # Digital art
+    firefox # Request testing
+    polymc # Minecraft launcher
+    calibre # Ebook manager
+    element-desktop # Matrix client
+    mupdf # PDF reader
+  ];
+  games = with pkgs; [
+    (nethack.override { qtMode = true; })
+  ];
+  proprietary = with pkgs; [
+    discord
+  ];
 in
 {
   imports = [
@@ -11,8 +41,9 @@ in
     ../../profiles/haskell # ghci customization
 
     # CLI
-    # ../../pkgs/base16-shell.nix # Different shell themes
+    ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/bash.nix # Shell
+    ../../pkgs/starship.nix # Shell prompt
     ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
@@ -55,50 +86,27 @@ in
   fonts.fontconfig.enable = lib.mkForce true;
 
   dconf.settings = {
-    # "org/gnome/desktop/peripherals/trackball" = {
-    #   "middle-click-emulation" = true;
-    #   "scroll-wheel-emulation-button" = 8;
-    # };
+    "org/gnome/desktop/peripherals/trackball" = {
+      "middle-click-emulation" = true;
+      "scroll-wheel-emulation-button" = 8;
+    };
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
     };
+  };
+
+  programs.gnome-terminal.profile.vini = {
+    allowBold = true;
+    audibleBell = false;
+    default = true;
+    font = "Jetbrains Mono";
   };
 
   programs.bash.initExtra = ''
     export PATH="$PATH:/home/vini/.dotnet/tools"
   '';
 
-  home.packages = with pkgs; [
-    # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-
-    # CLI
-    bandwhich # Network inspector
-    ripgrep # File content finder
-    bottom # System monitor
-    ncdu # Curses interface for `du`
-    file # Show info about files
-    fd # File finder
-    neofetch # I use NixOS btw
-    unzip # Easily unzip files
-
-    neovide
-    (nethack.override { qtMode = true; })
-
-    # GUI
-    # element-desktop # Matrix client
-    insomnia # Request testing
-    # mupdf # Pdf viewer
-    anki-bin # Spaced repetition
-    # krita # Digital art
-    # calibre # PDF/EPUB manager (TODO: Calibre is broken)
-    firefox # Request testing
-    polymc # Minecraft launcher
-    calibre # Ebook manager
-    krita
-
-    # jetbrains.rider
-  ];
+  home.packages = cli ++ gui ++ games ++ proprietary;
 
   programs.zsh.shellAliases = rebuild-alias;
   programs.bash.shellAliases = rebuild-alias;

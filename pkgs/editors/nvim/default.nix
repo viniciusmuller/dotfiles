@@ -74,8 +74,7 @@ in
     # ./plugins/git-blame.nix
 
     # Aesthetic
-    # ./colorschemes/nix-colors.nix
-    ./colorschemes/tokyonight.nix
+    ./colorschemes/neosolarized.nix
 
     # ./plugins/lualine.nix
     ./plugins/todo-comments.nix

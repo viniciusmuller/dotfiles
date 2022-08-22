@@ -6,8 +6,6 @@
 
 {
   imports = [
-    ../../desktop/xmonad
-
     # TODO: Try to use a specific partition schema and use the autoFormat
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
@@ -37,6 +35,7 @@
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
+  services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = with pkgs; [
     gnome.cheese
