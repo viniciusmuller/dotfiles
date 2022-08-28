@@ -70,6 +70,8 @@ in
     # ../../pkgs/games/dwarf-fortress
 
     # GUI
+    # ../../pkgs/wayst.nix # terminal emulator
+    ../../pkgs/kitty.nix
     ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
@@ -77,7 +79,7 @@ in
     # ../../pkgs/lutris.nix
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
-    # ../../pkgs/psst.nix
+    # ../../pkgs/psst.nix # Spotify client (currently broken)
     # ../../pkgs/gtk.nix
     # ../../pkgs/qt.nix
   ];
@@ -95,11 +97,15 @@ in
     };
   };
 
-  programs.gnome-terminal.profile.vini = {
-    allowBold = true;
-    audibleBell = false;
-    default = true;
-    font = "Jetbrains Mono";
+  programs.gnome-terminal = {
+    enable = true;
+    profile.vini = {
+      allowBold = true;
+      audibleBell = false;
+      default = true;
+      font = "DejaVu Sans Mono";
+      visibleName = "vini";
+    };
   };
 
   programs.bash.initExtra = ''

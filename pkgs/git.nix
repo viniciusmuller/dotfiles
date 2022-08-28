@@ -41,6 +41,7 @@ in
       core.editor = "vim";
       pull.rebase = true;
       merge.conflictstyle = "diff3";
+      init.defaultBranch = "main";
     };
 
     # difftastic = {

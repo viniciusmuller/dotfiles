@@ -6,9 +6,17 @@ let
     config = ''
       ${prelude.mkLuaCode ''
         require('nvim-tree').setup {
-          disable_netrw       = true,
-          hijack_netrw        = true,
           open_on_setup       = false,
+          renderer = {
+            icons = {
+              show = {
+                file = false,
+                folder = false,
+                folder_arrow = false,
+                git = false,
+              }
+            }
+          },
           ignore_ft_on_setup  = {},
           hijack_directories  = {
             enable = true,
@@ -17,15 +25,6 @@ let
           open_on_tab         = false,
           hijack_cursor       = false,
           update_cwd          = false,
-          diagnostics         = {
-            enable = false,
-            icons = {
-              hint = "",
-              info = "",
-              warning = "",
-              error = "",
-            }
-          },
           update_focused_file = {
             enable      = true,
             update_cwd  = false,

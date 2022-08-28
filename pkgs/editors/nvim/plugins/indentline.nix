@@ -3,7 +3,9 @@
 let
   indentline = {
     plugin = pkgs.vimPlugins.indent-blankline-nvim;
-    config = "let g:indent_blankline_char = '│'";
+    config = ''
+      let g:indent_blankline_char = '│'
+     '';
   };
 in
 {

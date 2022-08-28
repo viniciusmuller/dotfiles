@@ -1,6 +1,6 @@
 { ... }:
 
 {
-  # Currently used by thunar 
+  # Currently used by thunar
   services.tumbler.enable = true;
 }

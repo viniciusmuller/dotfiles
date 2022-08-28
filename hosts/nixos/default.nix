@@ -53,6 +53,7 @@
     gnome-tour
     gnome.geary
     gnome-text-editor
+    gnome-console
   ];
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks

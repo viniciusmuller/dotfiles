@@ -32,8 +32,8 @@ set iskeyword-=-
 " Don't auto line break when inserting text
 set formatoptions-=t
 set shortmess+=cI
-" set listchars=tab:»\ ,space:·,eol:¬
-" set list
+set listchars=extends:›,precedes:‹,nbsp:·,trail:·,eol:¬
+set list
 
 noremap Y "+y
 noremap H ^
