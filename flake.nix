@@ -64,6 +64,11 @@
             inherit system username;
             name = "wsl";
           };
+          box = lib.mkHome {
+            inherit username;
+            system = "aarch64-linux";
+            name = "box";
+          };
         };
       templates = import ./templates;
     } // devShells;
