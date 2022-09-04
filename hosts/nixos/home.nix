@@ -26,10 +26,13 @@ let
     polymc # Minecraft launcher
     calibre # Ebook manager
     element-desktop # Matrix client
+    logseq # Note taking app
     mupdf # PDF reader
+    rofi # Application launcher
   ];
   games = with pkgs; [
-    (nethack.override { qtMode = true; })
+    nethack
+    cataclysm-dda
   ];
   proprietary = with pkgs; [
     discord

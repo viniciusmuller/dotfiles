@@ -10,17 +10,17 @@
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     ../../nixos-pkgs/docker.nix
+    ./qmk-support.nix
 
     ../../nixos-services/noisetorch.nix
     ../../nixos-pkgs/steam.nix
+    ../../desktop/xmonad
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
 
     ../../nixos-pkgs/display-managers/lightdm.nix
   ];
-
-  services.xserver.videoDrivers = [ "nvidia" ];
 
   environment.variables = {
     GTK_IM_MODULE = "cedilla";
@@ -35,36 +35,45 @@
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
-  services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs; [
-    gnome.cheese
-    gnome-photos
-    gnome.gnome-music
-    gnome.gedit
-    epiphany
-    evince
-    gnome.gnome-characters
-    gnome.totem
-    gnome.tali
-    gnome.iagno
-    gnome.hitori
-    gnome.atomix
-    gnome-tour
-    gnome.geary
-    gnome-text-editor
-    gnome-console
-  ];
-  environment.systemPackages = with pkgs; [
-    gnome.gnome-tweaks
-    gnomeExtensions.vitals
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      # gnome.enable = true;
+    };
+    displayManager = {
+      setupCommands = ''
+        LEFT='DP-5'
+        RIGHT='HDMI-0'
+        ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT
+      '';
+    };
+    videoDrivers = [ "nvidia" ];
+    layout = "us";
+  };
 
-    # These (doesn't work on current Gnome 42)
-    # gnomeExtensions.impatience
-    # gnomeExtensions.sermon
-    # gnomeExtensions.forge
+  environment.systemPackages = with pkgs; [
+    faba-icon-theme
   ];
-  hardware.pulseaudio.enable = true;
+
+  # environment.gnome.excludePackages = with pkgs; [
+  #   gnome.cheese
+  #   gnome-photos
+  #   gnome.gnome-music
+  #   gnome.gedit
+  #   epiphany
+  #   evince
+  #   gnome.gnome-characters
+  #   gnome.totem
+  #   gnome.tali
+  #   gnome.iagno
+  #   gnome.hitori
+  #   gnome.atomix
+  #   gnome-tour
+  #   gnome.geary
+  #   gnome-text-editor
+  #   gnome-console
+  # ];
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
@@ -84,9 +93,7 @@
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     firewall = {
-      enable = false;
-      allowedTCPPorts = [ 33333 ];
-      allowedUDPPorts = [ 33333 ];
+      enable = true;
     };
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # Configure network proxy if necessary
@@ -101,13 +108,6 @@
   environment.etc = {
     "resolv.conf".text = "nameserver 1.1.1.3\n";
   };
-
-  # Swap monitors
-  services.xserver.displayManager.setupCommands = ''
-    LEFT='DP-5'
-    RIGHT='HDMI-0'
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT
-  '';
 
   nix = {
     # registry.nixpkgs.flake = nixpkgs;
@@ -136,14 +136,9 @@
 
   boot = {
     cleanTmpDir = true;
-    # kernel.sysctl = {
-    #   # Wine was suggesting this
-    #   "dev.i915.perf_stream_paranoid" = 0;
-    # };
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "ntfs" ];
   };
-
 
   # # TODO: Move this to sway module
   # programs.sway = {
@@ -174,24 +169,21 @@
     keyMap = "us";
   };
 
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-
   # Audio with pipewire
-  #security.rtkit.enable = true;
-  #services.pipewire = {
-  #  enable = true;
-  #  alsa.enable = true;
-  #  alsa.support32Bit = true;
-  #  pulse.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
 
-  #  # Wireplumber
-  #  wireplumber.enable = true;
-  #  media-session.enable = false;
+    # Wireplumber
+    wireplumber.enable = true;
+    media-session.enable = false;
 
-  #  # If you want to use JACK applications, uncomment this
-  #  #jack.enable = true;
-  #};
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   users.users.${username} = {
     isNormalUser = true;

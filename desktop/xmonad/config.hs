@@ -81,13 +81,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm,               xK_a), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "rofi -show run")
+    , ((modm,               xK_p     ), spawn "rofi -show run -show-icons")
 
-    , ((modm, xK_s), spawn "rofi -show window")
+    , ((modm, xK_s), spawn "rofi -show window -show-icons")
 
     -- Picom opacity
-    , ((modm,               xK_equal     ), spawn "picom-trans -c +5")
-    , ((modm,               xK_minus     ), spawn "picom-trans -c -5")
+    -- , ((modm,               xK_equal     ), spawn "picom-trans -c +5")
+    -- , ((modm,               xK_minus     ), spawn "picom-trans -c -5")
 
     -- Launch screenshotter
     , ((modm,               xK_d), spawn screenshotCommand)

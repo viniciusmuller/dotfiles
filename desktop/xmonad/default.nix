@@ -16,9 +16,9 @@
     imports = [
       ../../pkgs/rofi # Application launcher and window switcher
       ../../services/dunst.nix # Notification daemon
-      ../../services/picom.nix # Compositor
+      # ../../services/picom.nix # Compositor
       ../../services/flameshot.nix # Screenshots
-      ../../services/polybar.nix
+      # ../../services/polybar.nix
       ../../pkgs/betterlockscreen.nix # Screen locker
     ];
 
