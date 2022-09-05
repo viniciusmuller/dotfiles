@@ -83,8 +83,11 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix # Spotify client (currently broken)
-    # ../../pkgs/gtk.nix
-    # ../../pkgs/qt.nix
+    ../../pkgs/gtk.nix
+    ../../pkgs/qt.nix
+
+    # Games
+    ../../pkgs/games/dwarf-fortress
   ];
 
   # TODO: Apparently ghosts are trying to set my fontconfig.enable to false

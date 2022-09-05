@@ -63,13 +63,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#ff0000"
 
-myWindowSpacing :: Integer
 myWindowSpacing = 2
-
-screenLockCommand :: String
 screenLockCommand = "betterlockscreen -l 'blur'"
-
-screenshotCommand :: String
 screenshotCommand = "flameshot gui"
 
 ------------------------------------------------------------------------

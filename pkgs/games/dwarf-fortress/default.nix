@@ -5,13 +5,14 @@ let
     dwarf-fortress-full.override
       (_oldAttrs: rec {
         enableSound = false;
+        enableSoundSense = false;
         enableIntro = false;
         enableTWBT = true;
         enableFPS = true;
         # Apparently cool tilesets that can't be enabled right now:
         # Nagidal's classic 24x24
         # Taywee Hack Square 64x64
-        theme = "gemset";
+        # theme = "gemset";
       });
   # Maybe enable someday: autohauler stockflow workflow dwarfvet
 
