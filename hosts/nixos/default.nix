@@ -29,14 +29,18 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.1.135/samba";
+    fsType = "cifs";
+    options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  };
+
   services.devmon.enable = true;
-  services.gvfs.enable = true;
   services.udisks2.enable = true;
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
 
   services.xserver = {
@@ -55,29 +59,6 @@
     videoDrivers = [ "nvidia" ];
     layout = "us";
   };
-
-  environment.systemPackages = with pkgs; [
-    faba-icon-theme
-  ];
-
-  # environment.gnome.excludePackages = with pkgs; [
-  #   gnome.cheese
-  #   gnome-photos
-  #   gnome.gnome-music
-  #   gnome.gedit
-  #   epiphany
-  #   evince
-  #   gnome.gnome-characters
-  #   gnome.totem
-  #   gnome.tali
-  #   gnome.iagno
-  #   gnome.hitori
-  #   gnome.atomix
-  #   gnome-tour
-  #   gnome.geary
-  #   gnome-text-editor
-  #   gnome-console
-  # ];
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;

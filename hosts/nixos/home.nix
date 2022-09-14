@@ -18,6 +18,7 @@ let
     unzip # Easily unzip files
   ];
   gui = with pkgs; [
+    thunderbird # email client
     insomnia # Request testing
     # mupdf # Pdf viewer
     anki-bin # Spaced repetition
