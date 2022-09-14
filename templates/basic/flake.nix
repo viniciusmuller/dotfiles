@@ -7,7 +7,7 @@
   };
 
   outputs = { self, nixpkgs, utils }:
-    { } // utils.lib.eachDefaultSystem (system:
+    utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
