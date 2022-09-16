@@ -15,8 +15,8 @@ in
     # ./extensions/bash.nix
     # ./extensions/cpp.nix
     # ./extensions/rust.nix
-    # ./extensions/elixir.nix
-    ./extensions/fsharp.nix
+    ./extensions/elixir.nix
+    # ./extensions/fsharp.nix
     # ./extensions/unity.nix
     # ./extensions/latex.nix
     # ./extensions/haskell.nix
@@ -31,7 +31,7 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    # userSettings = import ./settings.nix;
+    userSettings = import ./settings.nix;
     # keybindings = import ./keybindings.nix;
     extensions = with pkgs.vscode-extensions; [
       ms-vsliveshare.vsliveshare

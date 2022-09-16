@@ -47,7 +47,7 @@
     enable = true;
     desktopManager = {
       xterm.enable = false;
-      # gnome.enable = true;
+      gnome.enable = true;
     };
     displayManager = {
       setupCommands = ''
@@ -155,20 +155,20 @@
   };
 
   # Audio with pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
 
-    # Wireplumber
-    wireplumber.enable = true;
-    media-session.enable = false;
+  #  # Wireplumber
+  #  wireplumber.enable = true;
+  #  media-session.enable = false;
 
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
+  #  # If you want to use JACK applications, uncomment this
+  #  #jack.enable = true;
+  #};
 
   users.users.${username} = {
     isNormalUser = true;

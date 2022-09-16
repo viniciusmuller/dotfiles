@@ -77,7 +77,7 @@ in
     # ../../pkgs/wayst.nix # terminal emulator
     ../../pkgs/kitty.nix
     ../../pkgs/editors/vscodium # Text editor
-    ../../pkgs/pomatez.nix
+    # ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix

@@ -1,19 +1,19 @@
 let
-  multiCursor =
-    {
-      "before" = [ "<c-n>" ];
-      "after" = [ "g" "b" ];
-    };
-  lineStart =
-    {
-      "before" = [ "L" ];
-      "after" = [ "$" ];
-    };
-  lineEnd =
-    {
-      "before" = [ "H" ];
-      "after" = [ "^" ];
-    };
+  # multiCursor =
+  #   {
+  #     "before" = [ "<c-n>" ];
+  #     "after" = [ "g" "b" ];
+  #   };
+  # lineStart =
+  #   {
+  #     "before" = [ "L" ];
+  #     "after" = [ "$" ];
+  #   };
+  # lineEnd =
+  #   {
+  #     "before" = [ "H" ];
+  #     "after" = [ "^" ];
+  #   };
   hover =
     {
       "before" = [ "K" ];
@@ -57,7 +57,7 @@ in
 {
   "editor.rulers" = [ 80 120 ];
   "editor.wordWrap" = "on";
-  "editor.minimap.enabled" = false;
+  "editor.minimap.enabled" = true;
   "editor.tabSize" = 2;
   "editor.insertSpaces" = true;
   "editor.bracketPairColorization.enabled" = true;
@@ -85,28 +85,6 @@ in
   "workbench.iconTheme" = "material-icon-theme";
   "workbench.startupEditor" = "newUntitledFile";
 
-  # ---- TODO Tree ----
-  "todo-tree.customHighlight" = {
-    "TODO" = {
-      "foreground" = "magenta";
-    };
-    "FIXME" = {
-      "foreground" = "red";
-    };
-    "TEST" = {
-      "foreground" = "cyan";
-    };
-    ">" = {
-      "foreground" = "yellow";
-    };
-    ">>" = {
-      "foreground" = "blue";
-    };
-    ">>>" = {
-      "foreground" = "grey";
-    };
-  };
-
   # ---- VsVim ----
   # TODO: Move this to vspacecode directory #
   "editor.cursorSurroundingLines" = 5;
@@ -121,15 +99,7 @@ in
   ];
 
   "vim.normalModeKeyBindings" = [
-    # CodeAction quickfix = <c-.>
-    multiCursor
     closeSplit
-    lineStart
-    lineEnd
     hover
   ] ++ switchSplits;
-
-  "vim.visualModeKeyBindings" = [
-    multiCursor
-  ];
 }
