@@ -35,13 +35,6 @@ in
     # ---- Linting ----
     # ./plugins/nvim-lint.nix
 
-    # ---- Development profiles ----
-    # ./profiles/web.nix
-
-    # ---- Language specific ----
-    # ./languages/vim-go.nix
-    # ./languages/rust-vim.nix
-
     # ---- General plugins ----
 
     # Utils
@@ -49,17 +42,15 @@ in
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
-    # ./plugins/neovim-session-manager.nix
-    # ./plugins/alpha.nix
 
     ./plugins/fzf.nix
-    # ./plugins/telescope.nix
 
-    # ./plugins/vim-test.nix
     # ./plugins/togglelist.nix
     # ./plugins/closetag.nix
-    ./plugins/slash.nix
     # ./plugins/neomake.nix
+    ./plugins/slash.nix
+    ./plugins/vim-test.nix
+    ./plugins/vim-slime.nix
 
     # Repl
     ./plugins/conjure.nix
@@ -71,16 +62,10 @@ in
     # Git
     ./plugins/gitsigns.nix
     ./plugins/fugitive.nix
-    # ./plugins/git-blame.nix
 
     # Aesthetic
     ./colorschemes/onedark.nix
-
-    # ./plugins/lualine.nix
     ./plugins/todo-comments.nix
-    # ./plugins/bufferline.nix
-    # ./plugins/colorizer.nix
-    # ./plugins/rainbow.nix
   ];
 
   programs.neovim = {
@@ -94,6 +79,7 @@ in
       vim-sensible
       vim-surround
       vim-tmux-navigator
+      vim-slime
     ];
 
     extraPackages = with pkgs; [
