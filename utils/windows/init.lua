@@ -93,6 +93,7 @@ augroup my_autocommands
   " Handle nix files
   au BufEnter *.nix set ft=nix
   autocmd FileType nix,elixir setlocal commentstring=#\ %s
+  autocmd FileType heex setlocal commentstring=<%#\ %s \%>
 augroup end
 
 augroup numbertoggle

@@ -8,7 +8,5 @@ in
     trash-cli
   ];
 
-  programs.zsh.shellAliases = aliases;
   programs.bash.shellAliases = aliases;
-  programs.fish.shellAliases = aliases;
 }

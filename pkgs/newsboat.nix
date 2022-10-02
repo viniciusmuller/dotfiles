@@ -70,6 +70,11 @@ in
         url = "https://research.swtch.com/feed.atom";
         tags = [ "tech" ];
       }
+      {
+        title = "The Pragmatic Engineer";
+        url = "http://feeds.feedburner.com/ThePragmaticEngineer";
+        tags = [ "tech" ];
+      }
 
       # Reddit
       # {

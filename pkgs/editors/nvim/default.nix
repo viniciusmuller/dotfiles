@@ -38,7 +38,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
+    ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
@@ -50,10 +50,10 @@ in
     # ./plugins/neomake.nix
     ./plugins/slash.nix
     ./plugins/vim-test.nix
-    ./plugins/vim-slime.nix
+    # ./plugins/vim-slime.nix
 
     # Repl
-    ./plugins/conjure.nix
+    # ./plugins/conjure.nix
 
     # Debugging
     # ./plugins/dap.nix
@@ -72,14 +72,14 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      vim-polyglot
+      editorconfig-vim
+      # vim-polyglot
       targets-vim
       vim-commentary
       vim-repeat
       vim-sensible
       vim-surround
       vim-tmux-navigator
-      vim-slime
     ];
 
     extraPackages = with pkgs; [
@@ -89,8 +89,5 @@ in
     extraConfig = builtins.readFile ./init.vim;
   };
 
-  # TODO: Make a function to reduce this boilerplate
   programs.bash.shellAliases = aliases;
-  programs.zsh.shellAliases = aliases;
-  programs.fish.shellAliases = aliases;
 }

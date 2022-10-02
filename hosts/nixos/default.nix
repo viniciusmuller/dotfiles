@@ -95,11 +95,6 @@
   };
 
   nix = {
-    # registry.nixpkgs.flake = nixpkgs;
-    package = pkgs.nixFlakes;
-    extraOptions = lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes";
-
     gc = {
       automatic = true;
       options = "--delete-older-than 2d";

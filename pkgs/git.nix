@@ -23,9 +23,7 @@ let
   };
 in
 {
-  programs.zsh.shellAliases = aliases;
   programs.bash.shellAliases = aliases;
-  programs.fish.shellAliases = aliases;
 
   programs.git = {
     enable = true;

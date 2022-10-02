@@ -38,7 +38,6 @@ in
       github.github-vscode-theme
       pkief.material-icon-theme
       usernamehw.errorlens
-      eamodio.gitlens
       vscodevim.vim
     ] ++ extensions;
   };

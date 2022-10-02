@@ -15,7 +15,18 @@ let
                 folder_arrow = false,
                 git = false,
               }
-            }
+            },
+            indent_markers = {
+              enable = true,
+              inline_arrows = true,
+              icons = {
+                corner = "└",
+                edge = "│",
+                item = "│",
+                bottom = "─",
+                none = " ",
+              },
+            },
           },
           ignore_ft_on_setup  = {},
           hijack_directories  = {
@@ -35,8 +46,8 @@ let
             args = {}
           },
           view = {
+            adaptive_size = true,
             width = 30,
-            height = 30,
             side = 'left',
             mappings = {
               custom_only = false,

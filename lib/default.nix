@@ -6,11 +6,15 @@ in
 rec {
   mkNixpkgs =
     { system
+    , nixpkgs ? inputs.nixpkgs
     , allowUnfree ? true
     , overlays ? [ ]
     }:
-    import inputs.nixpkgs {
-      inherit system overlays;
+    import nixpkgs {
+      inherit system;
+      overlays = [
+        (import ../overlay { inherit inputs; })
+      ] ++ overlays;
       config.allowUnfree = allowUnfree;
     };
 

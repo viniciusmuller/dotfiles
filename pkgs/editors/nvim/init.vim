@@ -83,7 +83,7 @@ vnoremap . :normal .<cr>
 
 augroup my_autocommands
   " Remove trailing whitespaces on write
-  au BufWritePre * %s/\s\+$//e
+  " au BufWritePre * %s/\s\+$//e
   " Open help windows vertically splitted
   au FileType help wincmd L
   " Highlight on yank (nvim only)

@@ -14,30 +14,31 @@ let
     ncdu # Curses interface for `du`
     file # Show info about files
     fd # File finder
-    neofetch # I use NixOS btw
     unzip # Easily unzip files
+    pfetch # lightweight neofetch
+    git-imerge
+    helix # text editor
   ];
   gui = with pkgs; [
-    thunderbird # email client
+    # thunderbird # email client
     insomnia # Request testing
+    beekeeper-studio # database client
     # mupdf # Pdf viewer
     anki-bin # Spaced repetition
-    krita # Digital art
-    firefox # Request testing
-    polymc # Minecraft launcher
+    # krita # Digital art
+    firefox
     calibre # Ebook manager
     element-desktop # Matrix client
     logseq # Note taking app
     mupdf # PDF reader
-    rofi # Application launcher
+    lapce
   ];
   games = with pkgs; [
     nethack
-    cataclysm-dda
+    polymc # Minecraft launcher
+    # cataclysm-dda
   ];
-  proprietary = with pkgs; [
-    discord
-  ];
+  proprietary = with pkgs; [ discord ];
 in
 {
   imports = [
@@ -71,13 +72,11 @@ in
     ../../services/gpg-agent.nix
     ../../services/gammastep.nix # Screen temperature manager
 
-    # ../../pkgs/games/dwarf-fortress
-
     # GUI
     # ../../pkgs/wayst.nix # terminal emulator
     ../../pkgs/kitty.nix
     ../../pkgs/editors/vscodium # Text editor
-    # ../../pkgs/pomatez.nix
+    ../../pkgs/pomatez.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix
@@ -88,7 +87,7 @@ in
     ../../pkgs/qt.nix
 
     # Games
-    ../../pkgs/games/dwarf-fortress
+    # ../../pkgs/games/dwarf-fortress
   ];
 
   # TODO: Apparently ghosts are trying to set my fontconfig.enable to false
@@ -104,26 +103,13 @@ in
     };
   };
 
-  programs.gnome-terminal = {
-    enable = true;
-    profile.vini = {
-      allowBold = true;
-      audibleBell = false;
-      default = true;
-      font = "DejaVu Sans Mono";
-      visibleName = "vini";
-    };
-  };
-
   programs.bash.initExtra = ''
     export PATH="$PATH:/home/vini/.dotnet/tools"
   '';
 
   home.packages = cli ++ gui ++ games ++ proprietary;
 
-  programs.zsh.shellAliases = rebuild-alias;
   programs.bash.shellAliases = rebuild-alias;
-  programs.fish.shellAliases = rebuild-alias;
 
   nixpkgs.config.allowUnfree = true;
 
