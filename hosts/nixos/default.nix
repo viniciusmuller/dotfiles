@@ -10,6 +10,7 @@
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     ../../nixos-pkgs/docker.nix
+    ../../nixos-pkgs/manpages.nix
     ./qmk-support.nix
 
     ../../nixos-services/noisetorch.nix
@@ -116,7 +117,6 @@
 
   boot = {
     cleanTmpDir = true;
-    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = [ "ntfs" ];
   };
 
