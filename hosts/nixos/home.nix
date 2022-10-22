@@ -31,10 +31,11 @@ let
     element-desktop # Matrix client
     logseq # Note taking app
     mupdf # PDF reader
-    lapce
+    lapce # graphical text editor
+    godot # Game engine
   ];
   games = with pkgs; [
-    nethack
+    # nethack
     polymc # Minecraft launcher
     # cataclysm-dda
   ];

@@ -42,13 +42,13 @@ in
       init.defaultBranch = "main";
     };
 
-    # difftastic = {
-    #   enable = true;
-    #   background = "dark";
-    # };
-
     # Global ignores
-    ignores = [ "*~" "*.swp" ];
+    ignores = [
+      "*~" 
+      "*.swp"
+      ".envrc"
+      ".direnv"
+    ];
 
     delta = {
       enable = true;
