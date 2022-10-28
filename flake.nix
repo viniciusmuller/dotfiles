@@ -4,6 +4,7 @@
   inputs = {
     # Core
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +16,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nix-colors, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, ... } @inputs:
     let
       lib = import ./lib inputs;
       devShells = flake-utils.lib.eachDefaultSystem (
@@ -36,12 +37,22 @@
     in
     {
       nixosConfigurations = {
-        nixos = lib.mkHost {
-          host = "nixos";
+        nixos = let 
           system = "x86_64-linux";
+          pkgs-master = lib.mkNixpkgs {
+            inherit system;
+            nixpkgs = nixpkgs-master;
+          };
+          discord-overlay = final: prev: {
+            discord = pkgs-master.discord;
+          };
+        in lib.mkHost {
+          inherit system;
+          host = "nixos";
           username = "vini";
           overlays = [
             inputs.suckless.overlays
+            discord-overlay
           ];
           homeModules = [
             inputs.nix-colors.homeManagerModule

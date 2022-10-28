@@ -33,10 +33,10 @@ let
     mupdf # PDF reader
     lapce # graphical text editor
     godot # Game engine
+    spotify
   ];
   games = with pkgs; [
     # nethack
-    polymc # Minecraft launcher
     # cataclysm-dda
   ];
   proprietary = with pkgs; [ discord ];
