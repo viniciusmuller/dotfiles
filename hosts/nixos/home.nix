@@ -27,12 +27,13 @@ let
     anki-bin # Spaced repetition
     # krita # Digital art
     firefox
+    jellyfin-media-player
     calibre # Ebook manager
     element-desktop # Matrix client
     logseq # Note taking app
     mupdf # PDF reader
     lapce # graphical text editor
-    godot # Game engine
+    godot_4 # Game engine
     spotify
   ];
   games = with pkgs; [
