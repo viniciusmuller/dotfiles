@@ -17,7 +17,6 @@ let
     unzip # Easily unzip files
     pfetch # lightweight neofetch
     git-imerge
-    helix # text editor
   ];
   gui = with pkgs; [
     # thunderbird # email client
@@ -32,15 +31,18 @@ let
     element-desktop # Matrix client
     logseq # Note taking app
     mupdf # PDF reader
-    lapce # graphical text editor
     godot_4 # Game engine
-    spotify
+    libresprite # pixel art editor
+    antimicroX
   ];
   games = with pkgs; [
     # nethack
     # cataclysm-dda
   ];
-  proprietary = with pkgs; [ discord ];
+  proprietary = with pkgs; [
+    discord 
+    spotify
+  ];
 in
 {
   imports = [
@@ -79,6 +81,7 @@ in
     ../../pkgs/kitty.nix
     ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
+    ../../pkgs/mangohud.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix

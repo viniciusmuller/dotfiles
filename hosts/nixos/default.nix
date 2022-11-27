@@ -15,7 +15,7 @@
 
     ../../nixos-services/noisetorch.nix
     ../../nixos-pkgs/steam.nix
-    ../../desktop/xmonad
+    # ../../desktop/xmonad
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -30,11 +30,11 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
-  fileSystems."/mnt/nas" = {
-    device = "//192.168.1.135/samba";
-    fsType = "cifs";
-    options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
-  };
+  # fileSystems."/mnt/nas" = {
+  #   device = "//192.168.2.101/samba";
+  #   fsType = "cifs";
+  #   options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  # };
 
   services.devmon.enable = true;
   services.udisks2.enable = true;
@@ -47,9 +47,11 @@
   services.xserver = {
     enable = true;
     desktopManager = {
-      xterm.enable = false;
-      gnome.enable = true;
+      # xterm.enable = false;
+      # gnome.enable = true;
+      xfce.enable = true;
     };
+    libinput.enable = true;
     displayManager = {
       setupCommands = ''
         LEFT='DP-5'
