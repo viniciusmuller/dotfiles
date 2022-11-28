@@ -34,6 +34,7 @@ let
     godot_4 # Game engine
     libresprite # pixel art editor
     antimicroX
+    sioyek # technical pdfs reader
   ];
   games = with pkgs; [
     # nethack

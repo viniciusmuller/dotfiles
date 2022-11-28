@@ -10,7 +10,6 @@
     # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     ../../nixos-pkgs/docker.nix
-    ../../nixos-pkgs/manpages.nix
     ./qmk-support.nix
 
     ../../nixos-services/noisetorch.nix
@@ -39,6 +38,7 @@
   services.devmon.enable = true;
   services.udisks2.enable = true;
 
+  hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
