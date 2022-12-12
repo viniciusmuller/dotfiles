@@ -14,9 +14,13 @@
     suckless.url = "github:arcticlimer/suckless";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
+
+    # Emacs
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nix-doom-emacs, ... } @inputs:
     let
       lib = import ./lib inputs;
       devShells = flake-utils.lib.eachDefaultSystem (
@@ -55,7 +59,8 @@
             discord-overlay
           ];
           homeModules = [
-            inputs.nix-colors.homeManagerModule
+            nix-colors.homeManagerModule
+            nix-doom-emacs.hmModule
           ];
           colorscheme = inputs.nix-colors.colorSchemes.nord;
         };
