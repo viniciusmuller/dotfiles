@@ -35,6 +35,7 @@ let
     libresprite # pixel art editor
     antimicroX
     sioyek # technical pdfs reader
+    easyeffects
   ];
   games = with pkgs; [
     # nethack
@@ -42,7 +43,7 @@ let
   ];
   proprietary = with pkgs; [
     discord 
-    spotify
+    # spotify
   ];
 in
 {
@@ -57,7 +58,8 @@ in
     ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
-    # ../../pkgs/editors/doom
+    ../../pkgs/editors/doom
+    ../../pkgs/editors/emacs
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer

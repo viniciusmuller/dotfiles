@@ -18,6 +18,11 @@
     # Emacs
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
+
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    magueta-emacs.url = "sourcehut:~mmagueta/magemacs";
   };
 
   outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nix-doom-emacs, ... } @inputs:
@@ -57,6 +62,7 @@
           overlays = [
             inputs.suckless.overlays
             discord-overlay
+            inputs.emacs-overlay.overlay
           ];
           homeModules = [
             nix-colors.homeManagerModule
