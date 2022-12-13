@@ -92,25 +92,42 @@
   (global-set-key (kbd "\C-s") 'swiper))
 
 (use-package corfu
-  :init (global-corfu-mode t))
+  :init
+  (setq tab-always-indent 'complete
+    completion-cycle-threshold nil)
+
+  :custom
+  (corfu-auto t)
+  (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.25)
+  (corfu-popupinfo-delay corfu-auto-delay)
+  (corfu-min-width 40)
+  (corfu-max-width 80)
+  (corfu-count 14)
+  (corfu-scroll-margin 4)
+  (corfu-cycle t)
+  (corfu-quit-at-boundary nil)
+  (corfu-preselect-first t)
+  (corfu-popupinfo-mode)
+  :hook
+  ((prog-mode . corfu-mode)
+   (shell-mode . corfu-mode)
+   (eshell-mode . corfu-mode))
+
+  :config
+  (global-corfu-mode)
+  (corfu-popupinfo-mode))
 
 (use-package magit
   :init
   (global-set-key (kbd "C-x g") 'magit-status))
-
-(use-package helm
-  :init
-  (helm-mode 1)
-  :config
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x b") 'helm-buffers-list))
-
 
 (use-package multiple-cursors
   :config
   (global-set-key (kbd "C-d") 'mc/mark-next-like-this-word)
   (global-set-key (kbd "C-c m c") 'mc/edit-lines))
 
+(setq initial-major-mode 'org-mode)
 
 (use-package org
   :config
@@ -165,7 +182,7 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-center-content t)
-  ; (setq dashboard-set-file-icons t)
+  (setq dashboard-set-file-icons t)
   ; (setq dashboard-startup-banner "~/Projects/MageMacs/sources/emacs.svg")
   (setq dashboard-banner-logo-title "emacscool")
   (setq dashboard-items 
@@ -175,10 +192,50 @@
   (setq dashboard-center-content t)
   (setq dashboard-footer-messages '("editr good")))
 
-; (require 'evil)
 (evil-mode 1)
 
-(use-package linum-relative)
+(use-package display-line-numbers
+  :custom (display-line-numbers 'relative)
+  :hook ((prog-mode . display-line-numbers-mode)))
+
+(use-package consult
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :init
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
+  
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  :bind
+  (("C-s" . consult-line))
+  
+  :config
+  (consult-customize
+   consult-theme :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-file-register
+   consult--source-recent-file consult--source-project-recent-file
+   ;; :preview-key (kbd "M-.")
+   :preview-key '(:debounce 0.4 any))
+
+  (setq consult-narrow-key "<"))
+
+(use-package vertico
+  :init
+  (vertico-mode))
+
+(use-package marginalia
+  :defer t
+  :bind
+  (("M-A" . marginalia-cycle)
+   :map minibuffer-local-map
+   ("M-A" . marginalia-cycle))
+  
+  :init
+  (marginalia-mode))
 
 ; (require 'theme)
 (load-file "~/.emacs.d/theme.el")

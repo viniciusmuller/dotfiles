@@ -2,31 +2,31 @@
 
 let
   emacsPackaging = pkgs.emacsPackagesNg;
-  my-emacs-with-packages = (pkgs.emacsPackagesFor pkgs.emacsGit).emacsWithPackages
-    (epkgs: [
-      (emacsPackaging.trivialBuild {
-        pname = "emacscool";
-        version = "1970-01-01";
+  # my-emacs-with-packages = (pkgs.emacsPackagesFor pkgs.emacsGit).emacsWithPackages
+  #   (epkgs: [
+  #     (emacsPackaging.trivialBuild {
+  #       pname = "emacscool";
+  #       version = "1970-01-01";
 
-        src = ./.;
-        packageRequires = (with epkgs.melpaPackages; [
-          use-package
+  #       src = ./.;
+  #       packageRequires = (with epkgs.melpaPackages; [
+  #         use-package
 
-          # Usability
-          linum-relative
+  #         # Usability
+  #         linum-relative
 
-          # Aesthetic
-          dashboard
-          all-the-icons
+  #         # Aesthetic
+  #         dashboard
+  #         all-the-icons
 
-          # Org
-          # org-roam
-          org-bullets
+  #         # Org
+  #         # org-roam
+  #         org-bullets
 
-          evil
-        ]);
-      })
-    ]);
+  #         evil
+  #       ]);
+  #     })
+  #   ]);
 in
 {
   home.packages = [
@@ -34,11 +34,13 @@ in
       use-package
 
       # Usability
-      helm
+      vterm
+      marginalia
+      vertico
+      consult
       corfu
       multiple-cursors
       transpose-frame
-      linum-relative
       projectile
       swiper
       perspective
@@ -50,6 +52,8 @@ in
       flycheck
       flycheck-elsa
       flymake-flycheck
+      vertico
+      marginalia
 
       # Modes
       nix-mode
