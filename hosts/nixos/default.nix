@@ -12,9 +12,9 @@
     ../../nixos-pkgs/docker.nix
     ./qmk-support.nix
 
-    ../../nixos-services/noisetorch.nix
+    ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
-    # ../../desktop/xmonad
+    # ../../desktop/xmona
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -49,22 +49,28 @@
     desktopManager = {
       # xterm.enable = false;
       # gnome.enable = true;
+      cinnamon.enable = true;
       xfce.enable = true;
     };
     libinput.enable = true;
+
     displayManager = {
+      lightdm.enable = true;
+      defaultSession =  "cinnamon";
       setupCommands = ''
         LEFT='DP-5'
         RIGHT='HDMI-0'
         ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT
       '';
     };
+
     videoDrivers = [ "nvidia" ];
     layout = "us";
   };
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
+  programs.noisetorch.enable = true;
 
   networking = {
     hostName = "nixos";
@@ -151,7 +157,7 @@
     keyMap = "us";
   };
 
-  # Audio with pipewire
+   # Audio with pipewire
   #security.rtkit.enable = true;
   #services.pipewire = {
   #  enable = true;
