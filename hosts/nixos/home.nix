@@ -35,7 +35,6 @@ let
     libresprite # pixel art editor
     antimicroX
     sioyek # technical pdfs reader
-    easyeffects
   ];
   games = with pkgs; [
     # nethack
@@ -59,7 +58,7 @@ in
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
     ../../pkgs/editors/doom
-    ../../pkgs/editors/emacs
+    # ../../pkgs/editors/emacs
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer
