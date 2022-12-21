@@ -1,4 +1,4 @@
-(load-theme 'gruvbox t)
+(load-theme 'adwaita t)
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1))

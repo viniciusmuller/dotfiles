@@ -18,14 +18,14 @@
   (use-package yasnippet-classic-snippets)
   (yas-reload-all))
 
-; (use-package elsa
-;   :hook
-;   (emacs-lisp-mode . (lambda () (flycheck-elsa-setup)))
-;   :config
-;   (use-package flycheck-elsa
-;     :hook
-;     ((emacs-lisp-mode . (lambda () (flycheck-mode)))
-;      (emacs-lisp-mode . (lambda () (flymake-mode))))))
+;(use-package elsa
+;  :hook
+;  (emacs-lisp-mode . (lambda () (flycheck-elsa-setup)))
+;  :config
+;  (use-package flycheck-elsa
+;    :hook
+;    ((emacs-lisp-mode . (lambda () (flycheck-mode)))
+;     (emacs-lisp-mode . (lambda () (flymake-mode))))))
 
 (use-package flycheck
   :config
@@ -63,11 +63,16 @@
   :bind
   (("s-?" . 'magueta/lsp-ui-doc-toggle)))
 
-
 (use-package rainbow-delimiters
   :hook
   ; (lisp-mode . rainbow-delimiters-mode)
   (emacs-lisp-mode . rainbow-delimiters-mode))
+
+(use-package elixir-mode)
+
+(use-package smartparens
+  :config
+  (add-hook 'prog-mode #'smartparens-mode))
 
 (use-package nix-mode
   :init
@@ -163,7 +168,9 @@
 (use-package perspective
   :bind (("C-x x k" . persp-kill-buffer*)
 	 ("C-x C-b" . persp-list-buffers))
-  :init (persp-mode))
+  :init
+  (setq-default persp-mode-prefix-key (kbd "C-c w"))
+  (persp-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -194,6 +201,13 @@
 
 (evil-mode 1)
 
+; (use-package evil-org
+  ; :after org
+  ; :hook (org-mode . (lambda () evil-org-mode))
+  ; :config
+  ; (require 'evil-org-agenda)
+  ; (evil-org-agenda-set-keys))
+
 (use-package display-line-numbers
   :custom (display-line-numbers 'relative)
   :hook ((prog-mode . display-line-numbers-mode)))
@@ -223,9 +237,18 @@
 
   (setq consult-narrow-key "<"))
 
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
 (use-package vertico
   :init
   (vertico-mode))
+
+(use-package ace-window
+  :init
+  (global-set-key (kbd "M-p") 'ace-window))
 
 (use-package marginalia
   :defer t
