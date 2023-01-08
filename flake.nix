@@ -70,6 +70,14 @@
           ];
           colorscheme = inputs.nix-colors.colorSchemes.nord;
         };
+        chad = lib.mkHost {
+          host = "chad";
+          system = "x86_64-linux";
+          username = "vini";
+          homeModules = [
+            inputs.nix-colors.homeManagerModule
+          ];
+        };
       };
 
       homeConfigurations =
