@@ -38,8 +38,16 @@
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
-  virtualisation.docker = {
-    enable = true;
+  virtualisation =  {
+    containerd = {
+      args = {
+        "--storage-opt" = "dm.basesize=20G";
+      };
+    };
+    docker = {
+      enable = true;
+      storageDriver = "devicemapper";
+    };
   };
 
   # Enable the OpenSSH daemon.

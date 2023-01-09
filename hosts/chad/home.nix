@@ -5,6 +5,7 @@ let
     rb = "sudo nixos-rebuild switch --flake '.#chad'";
   };
   cli = with pkgs; [
+    neofetch
     pfetch
     bandwhich # Network inspector
     ripgrep # File content finder
