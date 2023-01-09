@@ -15,17 +15,21 @@ let
     file # Show info about files
     fd # File finder
     unzip # Easily unzip files
+    neofetch
     pfetch # lightweight neofetch
     git-imerge
+    kubectl
+    minikube
   ];
   gui = with pkgs; [
-    # thunderbird # email client
+    okular # ebook reader
+    thunderbird # email client
     insomnia # Request testing
     beekeeper-studio # database client
-    # mupdf # Pdf viewer
+    gnome-solanum # pomodoro timer
     anki-bin # Spaced repetition
     # krita # Digital art
-    firefox
+    firefox # browser
     jellyfin-media-player
     calibre # Ebook manager
     element-desktop # Matrix client
@@ -33,15 +37,15 @@ let
     mupdf # PDF reader
     godot_4 # Game engine
     libresprite # pixel art editor
-    antimicroX
-    sioyek # technical pdfs reader
+    antimicroX # convert joystick input to keyboard input
+    sioyek # technical paper reader
   ];
   games = with pkgs; [
     # nethack
     # cataclysm-dda
   ];
   proprietary = with pkgs; [
-    discord 
+    discord
     # spotify
   ];
 in
@@ -53,12 +57,9 @@ in
     # CLI
     ../../pkgs/base16-shell.nix # Different shell themes
     ../../pkgs/bash.nix # Shell
-    ../../pkgs/starship.nix # Shell prompt
     ../../pkgs/nix-index.nix # Show nixpkgs' packages of uninstalled binaries
     ../../pkgs/zoxide.nix # Jump directories
     ../../pkgs/editors/nvim # Modal text editor
-    ../../pkgs/editors/doom
-    # ../../pkgs/editors/emacs
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
     ../../pkgs/tmux # Terminal multiplexer
@@ -72,7 +73,6 @@ in
     ../../pkgs/keychain.nix
     ../../pkgs/gpg.nix
     ../../pkgs/jq.nix # Work with json
-    ../../pkgs/so.nix # StackExchange TUI
     ../../pkgs/nnn.nix # File manager
     ../../pkgs/tiny.nix # IRC Client
     ../../services/gpg-agent.nix
@@ -90,8 +90,8 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix # Spotify client (currently broken)
-    ../../pkgs/gtk.nix
-    ../../pkgs/qt.nix
+    # ../../pkgs/gtk.nix
+    # ../../pkgs/qt.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress

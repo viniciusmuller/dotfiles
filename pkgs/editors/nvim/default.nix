@@ -38,7 +38,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
+    # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix

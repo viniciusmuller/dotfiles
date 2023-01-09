@@ -6,15 +6,13 @@
 
 {
   imports = [
-    # TODO: Try to use a specific partition schema and use the autoFormat
-    # option inside hardware-configuration instead of hardcoding partuuids.
     ./hardware-configuration.nix
     ../../nixos-pkgs/docker.nix
     ./qmk-support.nix
 
     ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
-    # ../../desktop/xmona
+    ../../desktop/i3
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -29,11 +27,11 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
-  # fileSystems."/mnt/nas" = {
-  #   device = "//192.168.2.101/samba";
-  #   fsType = "cifs";
-  #   options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
-  # };
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.2.101/samba";
+    fsType = "cifs";
+    options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  };
 
   services.devmon.enable = true;
   services.udisks2.enable = true;
@@ -47,16 +45,13 @@
   services.xserver = {
     enable = true;
     desktopManager = {
-      # xterm.enable = false;
-      # gnome.enable = true;
       cinnamon.enable = true;
-      xfce.enable = true;
     };
     libinput.enable = true;
 
     displayManager = {
       lightdm.enable = true;
-      defaultSession =  "cinnamon";
+      defaultSession = "cinnamon";
       setupCommands = ''
         LEFT='DP-5'
         RIGHT='HDMI-0'
@@ -157,7 +152,7 @@
     keyMap = "us";
   };
 
-   # Audio with pipewire
+  # Audio with pipewire
   #security.rtkit.enable = true;
   #services.pipewire = {
   #  enable = true;

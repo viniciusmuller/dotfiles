@@ -57,6 +57,7 @@ in
         syntax-theme = "gruvbox-dark";
         plus-style = ''syntax "#003800"'';
         minus-style = ''syntax "#3f0001"'';
+        side-by-side = true;
         decorations = {
           commit-decoration-style = "bold yellow box ul";
           file-style = "bold yellow ul";
