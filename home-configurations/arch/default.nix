@@ -19,7 +19,6 @@
     ../../pkgs/htop.nix # Process viewer
     ../../pkgs/keychain.nix
     ../../pkgs/gpg.nix
-    ../../pkgs/hexchat.nix
     ../../pkgs/bat.nix # File previewer
 
     # Services

@@ -28,9 +28,15 @@
   hardware.opengl.setLdLibraryPath = true;
 
   fileSystems."/mnt/nas" = {
-    device = "//192.168.2.101/samba";
+    device = "//192.168.2.100/samba";
     fsType = "cifs";
-    options = ["credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    options = [
+      "credentials=/etc/nixos/smb-secrets"
+      "x-systemd.automount"
+      "noauto"
+      "uid=1000"
+      "gid=100"
+    ];
   };
 
   services.devmon.enable = true;

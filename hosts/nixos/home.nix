@@ -10,7 +10,7 @@ let
   cli = with pkgs; [
     bandwhich # Network inspector
     ripgrep # File content finder
-    bottom # System monitor
+    htop # System monitor
     ncdu # Curses interface for `du`
     file # Show info about files
     fd # File finder
@@ -22,19 +22,21 @@ let
     minikube
   ];
   gui = with pkgs; [
+    retroarch
+    jetbrains.rider # code editor
+    lapce # code editor
     okular # ebook reader
     thunderbird # email client
     insomnia # Request testing
     beekeeper-studio # database client
     gnome-solanum # pomodoro timer
+    gnome.gnome-calendar # calendar
     anki-bin # Spaced repetition
     # krita # Digital art
     firefox # browser
-    jellyfin-media-player
     calibre # Ebook manager
     element-desktop # Matrix client
     logseq # Note taking app
-    mupdf # PDF reader
     godot_4 # Game engine
     libresprite # pixel art editor
     antimicroX # convert joystick input to keyboard input
@@ -46,6 +48,7 @@ let
   ];
   proprietary = with pkgs; [
     discord
+    zoom-us
     # spotify
   ];
 in

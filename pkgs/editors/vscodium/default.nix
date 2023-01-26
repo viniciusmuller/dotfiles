@@ -34,6 +34,7 @@ in
     userSettings = import ./settings.nix;
     # keybindings = import ./keybindings.nix;
     extensions = with pkgs.vscode-extensions; [
+      ionide.ionide-fsharp
       ms-vsliveshare.vsliveshare
       github.github-vscode-theme
       pkief.material-icon-theme
