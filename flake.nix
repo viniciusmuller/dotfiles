@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixgl.url = "github:guibou/nixGL";
+
     # Misc
     suckless.url = "github:arcticlimer/suckless";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -25,7 +27,7 @@
     magueta-emacs.url = "sourcehut:~mmagueta/magemacs";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nix-doom-emacs, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nix-doom-emacs, nixgl, ... } @inputs:
     let
       lib = import ./lib inputs;
       devShells = flake-utils.lib.eachDefaultSystem (
@@ -86,6 +88,15 @@
           username = "vini";
         in
         {
+          debian = lib.mkHome {
+            inherit system username;
+            name = "debian";
+            overlays = [
+              nixgl.overlay
+              inputs.suckless.overlays
+            ];
+            colorscheme = inputs.nix-colors.colorSchemes.nord;
+          };
           arch = lib.mkHome {
             inherit system username;
             name = "arch";
