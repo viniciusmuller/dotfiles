@@ -10,14 +10,12 @@
     ../../nixos-pkgs/docker.nix
     ./qmk-support.nix
 
-    ../../nixos-pkgs/virt-manager.nix
+    # ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
-    ../../desktop/i3
+    # ../../desktop/i3
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
-
-    ../../nixos-pkgs/display-managers/lightdm.nix
   ];
 
   environment.variables = {
@@ -27,22 +25,21 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
-  fileSystems."/mnt/nas" = {
-    device = "//192.168.2.100/samba";
-    fsType = "cifs";
-    options = [
-      "credentials=/etc/nixos/smb-secrets"
-      "x-systemd.automount"
-      "noauto"
-      "uid=1000"
-      "gid=100"
-    ];
-  };
+  # fileSystems."/mnt/nas" = {
+  #   device = "//192.168.2.100/samba";
+  #   fsType = "cifs";
+  #   options = [
+  #     "credentials=/etc/nixos/smb-secrets"
+  #     "x-systemd.automount"
+  #     "noauto"
+  #     "uid=1000"
+  #     "gid=100"
+  #   ];
+  # };
 
   services.devmon.enable = true;
   services.udisks2.enable = true;
 
-  hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
@@ -50,23 +47,14 @@
 
   services.xserver = {
     enable = true;
-    desktopManager = {
-      cinnamon.enable = true;
-    };
+    # desktopManager.cinnamon.enable = true;
+    displayManager.gdm.enable = true;
     libinput.enable = true;
-
-    displayManager = {
-      lightdm.enable = true;
-      defaultSession = "cinnamon";
-      setupCommands = ''
-        LEFT='DP-5'
-        RIGHT='HDMI-0'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $LEFT --left-of $RIGHT
-      '';
-    };
-
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
     layout = "us";
+  };
+  programs.hyprland = {
+    enable = true;
   };
 
   services.dbus.packages = with pkgs; [ dconf ];
@@ -101,7 +89,7 @@
   # giving it higher priority than `networking.nameservers`, so we just don't
   # use it and manually manage DNS.
   environment.etc = {
-    "resolv.conf".text = "nameserver 1.1.1.3\n";
+    "resolv.conf".text = "nameserver 192.168.2.1\n";
   };
 
   nix = {
@@ -127,26 +115,8 @@
   boot = {
     cleanTmpDir = true;
     supportedFilesystems = [ "ntfs" ];
+    initrd.kernelModules = [ "amdgpu" ];
   };
-
-  # # TODO: Move this to sway module
-  # programs.sway = {
-  #   enable = true;
-  #   wrapperFeatures.gtk = true;
-  # };
-
-  # Enable screen sharing in wayland
-  # xdg = {
-  #   portal = {
-  #     enable = true;
-  #     extraPortals = with pkgs; [
-  #       xdg-desktop-portal-wlr # Sway (wslroots)
-  #       xdg-desktop-portal-gtk # Gnome
-  #     ];
-  #     gtkUsePortal = true;
-  #   };
-  # };
-
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -160,19 +130,19 @@
 
   # Audio with pipewire
   #security.rtkit.enable = true;
-  #services.pipewire = {
-  #  enable = true;
-  #  alsa.enable = true;
-  #  alsa.support32Bit = true;
-  #  pulse.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
 
-  #  # Wireplumber
-  #  wireplumber.enable = true;
-  #  media-session.enable = false;
+    # Wireplumber
+    wireplumber.enable = true;
+    media-session.enable = false;
 
-  #  # If you want to use JACK applications, uncomment this
-  #  #jack.enable = true;
-  #};
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   users.users.${username} = {
     isNormalUser = true;

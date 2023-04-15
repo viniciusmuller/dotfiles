@@ -17,17 +17,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Emacs
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
-
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
-    magueta-emacs.url = "sourcehut:~mmagueta/magemacs";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nix-doom-emacs, nixgl, ... } @inputs:
+  outputs = { self, flake-utils, nixpkgs, nix-colors, nixpkgs-master, nixgl, hyprland, ... } @inputs:
     let
       lib = import ./lib inputs;
       devShells = flake-utils.lib.eachDefaultSystem (
@@ -64,11 +57,13 @@
           overlays = [
             inputs.suckless.overlays
             discord-overlay
-            inputs.emacs-overlay.overlay
           ];
           homeModules = [
             nix-colors.homeManagerModule
-            nix-doom-emacs.hmModule
+            hyprland.homeManagerModules.default
+          ];
+          nixosModules = [
+            hyprland.nixosModules.default
           ];
           colorscheme = inputs.nix-colors.colorSchemes.nord;
         };
