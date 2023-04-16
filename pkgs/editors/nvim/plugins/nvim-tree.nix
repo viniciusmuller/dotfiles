@@ -6,7 +6,6 @@ let
     config = ''
       ${prelude.mkLuaCode ''
         require('nvim-tree').setup {
-          open_on_setup       = false,
           renderer = {
             icons = {
               show = {
@@ -28,7 +27,6 @@ let
               },
             },
           },
-          ignore_ft_on_setup  = {},
           hijack_directories  = {
             enable = true,
             auto_open = true,

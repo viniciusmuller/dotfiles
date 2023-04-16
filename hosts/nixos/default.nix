@@ -25,17 +25,24 @@
 
   hardware.opengl.setLdLibraryPath = true;
 
-  # fileSystems."/mnt/nas" = {
-  #   device = "//192.168.2.100/samba";
-  #   fsType = "cifs";
-  #   options = [
-  #     "credentials=/etc/nixos/smb-secrets"
-  #     "x-systemd.automount"
-  #     "noauto"
-  #     "uid=1000"
-  #     "gid=100"
-  #   ];
-  # };
+  # https://github.com/swaywm/sway/issues/2773#issuecomment-427570877
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
+  fileSystems."/mnt/nas-personal" = {
+    device = "nas:/personal";
+    fsType = "nfs";
+    options = [
+      # Lazy mounting
+      "x-systemd.automount"
+      "noauto"
+      # disconnects after 10 minutes (i.e. 600 seconds)
+      "x-systemd.idle-timeout=600"
+    ];
+  };
 
   services.devmon.enable = true;
   services.udisks2.enable = true;
@@ -47,15 +54,12 @@
 
   services.xserver = {
     enable = true;
-    # desktopManager.cinnamon.enable = true;
     displayManager.gdm.enable = true;
     libinput.enable = true;
     videoDrivers = [ "amdgpu" ];
     layout = "us";
   };
-  programs.hyprland = {
-    enable = true;
-  };
+  programs.hyprland.enable = true;
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
@@ -113,7 +117,7 @@
   };
 
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     supportedFilesystems = [ "ntfs" ];
     initrd.kernelModules = [ "amdgpu" ];
   };
@@ -138,7 +142,6 @@
 
     # Wireplumber
     wireplumber.enable = true;
-    media-session.enable = false;
 
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;

@@ -14,6 +14,7 @@ in
     settings = {
       window_padding_width = 5;
       enable_audio_bell = false;
+      confirm_os_window_close = 0;
       disable_ligatures = "always";
       foreground = "#${colors.base05}";
       background = "#${colors.base00}";
