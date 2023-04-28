@@ -101,3 +101,25 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end
+
+let g:journal_dir = expand('~/.journal')
+
+function! OpenJournal()
+  let today = strftime('%d-%m-%Y')
+
+  let dir = g:journal_dir
+  if !isdirectory(dir)
+    call mkdir(dir, 'p')
+  endif
+
+  let filename = dir . '/' . today . '.journal'
+  if !filereadable(filename)
+    call writefile([], filename)
+  endif
+
+  execute 'edit ' . filename
+  set filetype=journal
+endfunction
+
+nnoremap <leader>oj :call OpenJournal()<CR>
+nnoremap <leader>od :edit <C-R>=g:journal_dir<CR><CR>

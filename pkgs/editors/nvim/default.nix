@@ -42,6 +42,8 @@ in
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
+    ./plugins/splitjoin.nix
+    ./plugins/vim-journal.nix
 
     ./plugins/fzf.nix
 
@@ -72,6 +74,8 @@ in
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
+      undotree
+      tagalong-vim
       editorconfig-vim
       vim-polyglot
       targets-vim
@@ -84,6 +88,7 @@ in
 
     extraPackages = with pkgs; [
       xclip
+      wl-clipboard
     ];
 
     extraConfig = builtins.readFile ./init.vim;

@@ -9,7 +9,7 @@ in
 
     font.package = pkgs.jetbrains-mono;
     font.name = "Jetbrains Mono";
-    font.size = 10;
+    font.size = 12;
 
     settings = {
       window_padding_width = 5;

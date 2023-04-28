@@ -21,6 +21,8 @@ let
     git-imerge
     kubectl
     minikube
+    restic # backups
+    lm_sensors
   ];
   gui = with pkgs; [
     retroarch
@@ -42,15 +44,17 @@ let
     libresprite # pixel art editor
     antimicroX # convert joystick input to keyboard input
     sioyek # technical paper reader
+    ludusavi # game save backup
   ];
   games = with pkgs; [
+    prismlauncher
     # nethack
     # cataclysm-dda
   ];
   proprietary = with pkgs; [
     discord
     # zoom-us
-    # spotify
+    spotify
   ];
 in
 {
@@ -613,7 +617,8 @@ in
       bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
 
       bind = SUPER, c, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area
-      
+      bind = SUPER SHIFT, c, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot save area /tmp/latest-screenshot.png
+
       # Move focus with mainMod + arrow keys
       bind = $mainMod, h, movefocus, l
       bind = $mainMod, l, movefocus, r

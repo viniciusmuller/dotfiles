@@ -8,7 +8,7 @@
     temperature = {
       # Lower = Hotter
       day = 3000;
-      night = 2000;
+      night = 3000;
     };
     settings = {
       general = {

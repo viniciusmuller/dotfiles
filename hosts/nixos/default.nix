@@ -12,7 +12,7 @@
 
     # ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
-    # ../../desktop/i3
+    ../../desktop/xmonad
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
