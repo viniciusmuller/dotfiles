@@ -75,6 +75,11 @@ in
         url = "http://feeds.feedburner.com/ThePragmaticEngineer";
         tags = [ "tech" ];
       }
+      {
+        title = "Glorified Gluer";
+        url = "https://gluer.org/blog/atom.xml";
+        tags = [ "tech" ];
+      }
 
       # Reddit
       # {

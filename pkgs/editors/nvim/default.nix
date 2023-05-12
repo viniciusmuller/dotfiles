@@ -43,7 +43,6 @@ in
     ./plugins/cmp.nix
     ./plugins/pears.nix
     ./plugins/splitjoin.nix
-    ./plugins/vim-journal.nix
 
     ./plugins/fzf.nix
 

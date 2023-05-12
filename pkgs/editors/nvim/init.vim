@@ -112,13 +112,13 @@ function! OpenJournal()
     call mkdir(dir, 'p')
   endif
 
-  let filename = dir . '/' . today . '.journal'
+  let filename = dir . '/' . today . '.md'
   if !filereadable(filename)
     call writefile([], filename)
   endif
 
   execute 'edit ' . filename
-  set filetype=journal
+  set filetype=markdown
 endfunction
 
 nnoremap <leader>oj :call OpenJournal()<CR>

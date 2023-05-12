@@ -11,8 +11,9 @@
     ./qmk-support.nix
 
     # ../../nixos-pkgs/virt-manager.nix
-    ../../nixos-pkgs/steam.nix
+    # ../../nixos-pkgs/steam.nix
     ../../desktop/xmonad
+    ../../desktop/hyprland
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -59,7 +60,6 @@
     videoDrivers = [ "amdgpu" ];
     layout = "us";
   };
-  programs.hyprland.enable = true;
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
@@ -79,9 +79,8 @@
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
-    firewall = {
-      enable = false;
-    };
+    firewall.enable = true;
+
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
