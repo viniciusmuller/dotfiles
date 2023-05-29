@@ -23,8 +23,10 @@ let
     minikube
     restic # backups
     lm_sensors
+    wget
   ];
   gui = with pkgs; [
+    mupdf
     retroarch
     jetbrains.rider # code editor
     lapce # code editor
@@ -35,16 +37,16 @@ let
     gnome-solanum # pomodoro timer
     gnome.gnome-calendar # calendar
     anki-bin # Spaced repetition
-    # krita # Digital art
+    krita # Digital art
     firefox # browser
     calibre # Ebook manager
     element-desktop # Matrix client
     logseq # Note taking app
     godot_4 # Game engine
     libresprite # pixel art editor
-    antimicroX # convert joystick input to keyboard input
     sioyek # technical paper reader
     ludusavi # game save backup
+    chromium
   ];
   games = with pkgs; [
     prismlauncher
@@ -53,8 +55,8 @@ let
   ];
   proprietary = with pkgs; [
     discord
-    # zoom-us
     spotify
+    # jetbrains.idea-ultimate
   ];
 in
 {
@@ -83,15 +85,15 @@ in
     ../../pkgs/nnn.nix # File manager
     ../../pkgs/tiny.nix # IRC Client
     ../../services/gpg-agent.nix
-    ../../services/gammastep.nix # Screen temperature manager
+    # ../../services/gammastep.nix # Screen temperature manager
     ../../services/dunst.nix # notification daeomn
 
     # GUI
     # ../../pkgs/wayst.nix # terminal emulator
     ../../pkgs/kitty.nix
-    ../../pkgs/editors/vscodium # Text editor
+    # ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
-    ../../pkgs/mangohud.nix
+    # ../../pkgs/mangohud.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
     # ../../pkgs/lutris.nix

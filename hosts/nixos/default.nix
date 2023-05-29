@@ -10,10 +10,10 @@
     ../../nixos-pkgs/docker.nix
     ./qmk-support.nix
 
-    # ../../nixos-pkgs/virt-manager.nix
+    ../../nixos-pkgs/virt-manager.nix
     # ../../nixos-pkgs/steam.nix
     ../../desktop/xmonad
-    ../../desktop/hyprland
+    # ../../desktop/hyprland
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -45,6 +45,15 @@
     ];
   };
 
+  # k3s
+  # networking.firewall.allowedTCPPorts = [ 6443 ];
+  # services.k3s.enable = true;
+  # services.k3s.role = "server";
+  # services.k3s.extraFlags = toString [
+  #   # "--kubelet-arg=v=4" # Optionally add additional args to k3s
+  # ];
+
+
   services.devmon.enable = true;
   services.udisks2.enable = true;
 
@@ -55,11 +64,14 @@
 
   services.xserver = {
     enable = true;
+    desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     libinput.enable = true;
     videoDrivers = [ "amdgpu" ];
     layout = "us";
   };
+
+  hardware.pulseaudio.enable = false;
 
   services.dbus.packages = with pkgs; [ dconf ];
   programs.dconf.enable = true;
@@ -79,7 +91,7 @@
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
-    firewall.enable = true;
+    firewall.enable = false;
 
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     # Configure network proxy if necessary
