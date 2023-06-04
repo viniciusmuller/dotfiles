@@ -35,7 +35,7 @@
             pkgs.mkShell {
               buildInputs = with pkgs; [
                 # Nix development dependencies
-                rnix-lsp
+                nil
                 nixpkgs-fmt
               ];
             };

@@ -50,6 +50,8 @@ let
   ];
   games = with pkgs; [
     prismlauncher
+    shattered-pixel-dungeon
+    airshipper
     # nethack
     # cataclysm-dda
   ];

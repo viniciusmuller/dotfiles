@@ -94,7 +94,7 @@ let
             select = true,
           })
         },
-         -- sorting = {
+        -- sorting = {
            -- priority_weight = 2,
            -- comparators = {
              -- compare.offset,
@@ -108,7 +108,7 @@ let
            -- }
          -- },
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
+          { name = 'nvim_lsp', priority = 8 },
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },

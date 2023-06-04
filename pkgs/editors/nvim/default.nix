@@ -9,28 +9,33 @@ let
 in
 {
   imports = [
-    ./map-leader.nix # TODO: windows
+    ./map-leader.nix
 
     # ---- Language server protocol ----
-    ./plugins/lsp-signature.nix
+    ./plugins/fidget-nvim.nix
+    # ./plugins/lsp-signature.nix
     ./plugins/lspconfig.nix
     # ./plugins/lsp_lines.nix
 
     # ./lsp/omnisharp.nix
-    ./lsp/go.nix
-    ./lsp/erlang.nix
-    ./lsp/fsharp.nix
-    ./lsp/rust.nix
+    # ./lsp/go.nix
+    # ./lsp/erlang.nix
+    # ./lsp/fsharp.nix
+    # ./lsp/rust.nix
     # ./lsp/clojure.nix
-    ./lsp/elixir.nix
+
+    # ./lsp/elixir-ls.nix
+    ./lsp/lexical.nix
+
     # ./lsp/godot.nix
-    ./lsp/haskell.nix
+    # ./lsp/haskell.nix
     # ./lsp/latex.nix
     # ./lsp/lua.nix
-    ./lsp/node.nix
-    ./lsp/python.nix
-    ./lsp/rnix.nix
-    ./lsp/ccls.nix
+    # ./lsp/node.nix
+    # ./lsp/python.nix
+    # ./lsp/rnix.nix
+    ./lsp/nil.nix
+    # ./lsp/ccls.nix
 
     # ---- Linting ----
     # ./plugins/nvim-lint.nix
@@ -74,8 +79,6 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       undotree
-      tagalong-vim
-      editorconfig-vim
       vim-polyglot
       targets-vim
       vim-commentary
