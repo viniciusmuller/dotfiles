@@ -47,6 +47,7 @@ let
     sioyek # technical paper reader
     ludusavi # game save backup
     chromium
+    libreoffice
   ];
   games = with pkgs; [
     prismlauncher

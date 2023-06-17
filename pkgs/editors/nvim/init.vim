@@ -32,8 +32,6 @@ set iskeyword-=-
 " Don't auto line break when inserting text
 set formatoptions-=t
 set shortmess+=cI
-" set listchars=extends:›,precedes:‹,nbsp:·,trail:·,eol:¬
-" set list
 
 noremap Y "+y
 noremap H ^
@@ -80,6 +78,11 @@ nnoremap <C-s> :w<cr>
 
 " Allow the . to execute once for each line of a visual selection
 vnoremap . :normal .<cr>
+
+" Highlight trailing whitespaces only in normal mode
+autocmd InsertEnter * match None
+autocmd InsertLeave * match TrailingWhitespace /\s\+$/
+highlight TrailingWhitespace ctermbg=red guibg=red
 
 augroup my_autocommands
   " Remove trailing whitespaces on write

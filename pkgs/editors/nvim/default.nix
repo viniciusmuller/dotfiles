@@ -21,7 +21,7 @@ in
     # ./lsp/go.nix
     # ./lsp/erlang.nix
     # ./lsp/fsharp.nix
-    # ./lsp/rust.nix
+    ./lsp/rust.nix
     # ./lsp/clojure.nix
 
     # ./lsp/elixir-ls.nix
@@ -86,6 +86,7 @@ in
       vim-sensible
       vim-surround
       vim-tmux-navigator
+      vim-visual-multi
     ];
 
     extraPackages = with pkgs; [
