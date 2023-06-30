@@ -32,6 +32,8 @@ in
     userEmail = "vinigm.nho@gmail.com";
     package = pkgs.gitFull;
 
+    lfs.enable = true;
+
     signing.key = "0x297A9768C8CA96AB";
     signing.signByDefault = true;
 
