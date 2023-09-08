@@ -48,6 +48,7 @@ let
     ludusavi # game save backup
     chromium
     libreoffice
+    vlc
   ];
   games = with pkgs; [
     prismlauncher
@@ -94,7 +95,7 @@ in
     # GUI
     # ../../pkgs/wayst.nix # terminal emulator
     ../../pkgs/kitty.nix
-    # ../../pkgs/editors/vscodium # Text editor
+    ../../pkgs/editors/vscodium # Text editor
     ../../pkgs/pomatez.nix
     # ../../pkgs/mangohud.nix
     # ../../pkgs/editors/emacs # Another text editor

@@ -45,6 +45,19 @@
     ];
   };
 
+  fileSystems."/mnt/autoscape" = {
+    device = "nas:/autoscape";
+    fsType = "nfs";
+    options = [
+      # Lazy mounting
+      "x-systemd.automount"
+      "noauto"
+      # disconnects after 10 minutes (i.e. 600 seconds)
+      "x-systemd.idle-timeout=600"
+    ];
+  };
+
+
   # k3s
   # networking.firewall.allowedTCPPorts = [ 6443 ];
   # services.k3s.enable = true;
@@ -70,6 +83,10 @@
     videoDrivers = [ "amdgpu" ];
     layout = "us";
   };
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  ];
 
   hardware.pulseaudio.enable = false;
 

@@ -14,7 +14,7 @@ in
   imports = [
     # ./extensions/bash.nix
     # ./extensions/cpp.nix
-    # ./extensions/rust.nix
+    ./extensions/rust.nix
     # ./extensions/elixir.nix
     # ./extensions/fsharp.nix
     # ./extensions/unity.nix
@@ -24,7 +24,7 @@ in
     # ./extensions/markdown.nix
     # ./extensions/toml.nix
     # ./extensions/vspacecode
-    ./extensions/go.nix
+    # ./extensions/go.nix
     # ./extensions/liveshare.nix
   ];
 
