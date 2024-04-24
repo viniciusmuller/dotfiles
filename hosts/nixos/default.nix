@@ -11,17 +11,28 @@
     ./qmk-support.nix
 
     ../../nixos-pkgs/virt-manager.nix
-    # ../../nixos-pkgs/steam.nix
-    ../../desktop/xmonad
+    ../../nixos-pkgs/steam.nix
+    # ../../desktop/xmonad
     # ../../desktop/hyprland
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
   ];
 
-  environment.variables = {
-    GTK_IM_MODULE = "cedilla";
-    QT_IM_MODULE = "cedilla";
+  # environment.variables = {
+  #   GTK_IM_MODULE = "cedilla";
+  #   QT_IM_MODULE = "cedilla";
+  # };
+
+  virtualisation.lxd = {
+    enable = true;
+    zfsSupport = true;
+    recommendedSysctlSettings = true;
+  };
+
+  virtualisation.lxc = {
+    enable = true;
+    lxcfs.enable = true;
   };
 
   hardware.opengl.setLdLibraryPath = true;
@@ -66,6 +77,7 @@
   #   # "--kubelet-arg=v=4" # Optionally add additional args to k3s
   # ];
 
+  documentation.dev.enable = true;
 
   services.devmon.enable = true;
   services.udisks2.enable = true;
@@ -77,15 +89,16 @@
 
   services.xserver = {
     enable = true;
-    desktopManager.gnome.enable = true;
+    # desktopManager.gnome.enable = true;
+    desktopManager.cinnamon.enable = true;
     displayManager.gdm.enable = true;
     libinput.enable = true;
     videoDrivers = [ "amdgpu" ];
-    layout = "us";
+    xkb.layout = "us";
   };
 
   systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
   ];
 
   hardware.pulseaudio.enable = false;
@@ -155,6 +168,21 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  ###############################
+  ## Input Method Editor (IME) ##
+  ###############################
+
+  # i18n.inputMethod.enabled = "ibus";
+  # i18n.inputMethod.ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+
+  # This enables "fcitx" as your IME.  This is an easy-to-use IME.  It supports many different input methods.
+  i18n.inputMethod.enabled = "fcitx5";
+
+  # This enables "mozc" as an input method in "fcitx".  This has a relatively
+  # complete dictionary.  I recommend it for Japanese input.
+  # i18n.inputMethod.fcitx5.engines = with pkgs; [ fcitx5 ];
+
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

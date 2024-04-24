@@ -7,6 +7,7 @@ let
   fonts = with pkgs; [
     # (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     font-awesome
+    noto-fonts-cjk
   ];
   cli = with pkgs; [
     bandwhich # Network inspector
@@ -26,26 +27,21 @@ let
     wget
   ];
   gui = with pkgs; [
+    insomnia
     mupdf
     retroarch
-    jetbrains.rider # code editor
-    lapce # code editor
     okular # ebook reader
     thunderbird # email client
-    insomnia # Request testing
     beekeeper-studio # database client
     gnome-solanum # pomodoro timer
     gnome.gnome-calendar # calendar
+    mpv # anki uses MPV to play audio
     anki-bin # Spaced repetition
-    krita # Digital art
     firefox # browser
     calibre # Ebook manager
-    element-desktop # Matrix client
-    logseq # Note taking app
     godot_4 # Game engine
     libresprite # pixel art editor
     sioyek # technical paper reader
-    ludusavi # game save backup
     chromium
     libreoffice
     vlc
@@ -53,12 +49,10 @@ let
   games = with pkgs; [
     prismlauncher
     shattered-pixel-dungeon
-    airshipper
     # nethack
     # cataclysm-dda
   ];
   proprietary = with pkgs; [
-    discord
     spotify
     # jetbrains.idea-ultimate
   ];
@@ -110,6 +104,14 @@ in
     # Games
     # ../../pkgs/games/dwarf-fortress
   ];
+
+  services.redshift = {
+    enable = true;
+    dawnTime = "6:00-7:45";
+    duskTime = "18:35-20:15";
+    temperature.day = 4500;
+    temperature.night = 2800;
+  };
 
   fonts.fontconfig.enable = true;
 

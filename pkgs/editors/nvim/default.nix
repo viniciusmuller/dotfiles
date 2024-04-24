@@ -1,4 +1,4 @@
-{ config, pkgs, prelude, ... }:
+{ pkgs, ... }:
 
 with pkgs.vimPlugins;
 let
@@ -18,7 +18,9 @@ in
     # ./plugins/lsp_lines.nix
 
     # ./lsp/omnisharp.nix
-    # ./lsp/go.nix
+    ./lsp/go.nix
+    ./lsp/zig.nix
+    ./lsp/clangd.nix
     # ./lsp/erlang.nix
     # ./lsp/fsharp.nix
     ./lsp/rust.nix
@@ -43,7 +45,7 @@ in
     # ---- General plugins ----
 
     # Utils
-    # ./plugins/tree-sitter.nix
+    ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
@@ -70,7 +72,7 @@ in
     ./plugins/fugitive.nix
 
     # Aesthetic
-    ./colorschemes/onedark.nix
+    ./colorschemes/tokyonight.nix
     ./plugins/todo-comments.nix
   ];
 
@@ -79,7 +81,7 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       undotree
-      vim-polyglot
+      # vim-polyglot
       targets-vim
       vim-commentary
       vim-repeat
