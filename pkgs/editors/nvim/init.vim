@@ -39,6 +39,82 @@ noremap L $
 nnoremap Q @@
 nnoremap <C-p> <C-^>
 
+function! SendToTerminal(cmd)
+  " Salva o buffer atual
+  let l:current_buffer = bufnr('%')
+
+  " Busca um buffer de terminal
+  let l:terminal_buffer = -1
+  for buf in getbufinfo({'bufloaded': 1})
+    if getbufvar(buf.bufnr, '&buftype') ==# 'terminal'
+      let l:terminal_buffer = buf.bufnr
+      break
+    endif
+  endfor
+
+  " Se nenhum buffer de terminal for encontrado, retorna
+  if l:terminal_buffer == -1
+    echo "No terminal buffer found"
+    return
+  endif
+
+  " Obter o ID do job do terminal
+  let l:job_id = getbufvar(l:terminal_buffer, 'terminal_job_id', -1)
+  if l:job_id == -1
+    echo "No job found for terminal buffer"
+    return
+  endif
+
+  " Envia o comando ao terminal
+  call jobsend(l:job_id, a:cmd . "\n")
+
+  " Retorna ao buffer original
+  exec 'buffer ' . l:current_buffer
+endfunction
+
+function! OpenOrReuseTerminal()
+  " Save the current buffer
+  let l:current_buffer = bufnr('%')
+
+  " Find an existing terminal buffer
+  let l:terminal_buffer = -1
+  for buf in getbufinfo({'bufloaded': 1})
+    if getbufvar(buf.bufnr, '&buftype') ==# 'terminal'
+      let l:terminal_buffer = buf.bufnr
+      break
+    endif
+  endfor
+
+  if l:terminal_buffer == -1
+    " No terminal found, open a new one
+    exec 'vsplit | term'
+    let l:terminal_buffer = bufnr('%')
+  else
+    " Terminal found, switch to it
+    exec 'buffer ' . l:terminal_buffer
+  endif
+
+  " Enter insert mode to interact with the terminal
+  startinsert
+
+  " Send the 'ls' command to the terminal
+  let l:job_id = getbufvar(l:terminal_buffer, 'terminal_job_id', -1)
+  if l:job_id != -1
+    call jobsend(l:job_id, "ls\n")
+  endif
+
+  " Switch back to the original buffer
+  exec 'buffer ' . l:current_buffer
+endfunction
+
+" Set the key mapping
+" Terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-[> <Esc>
+nnoremap <C-w>S :call SendToTerminal('echo "hello world!"')<CR>
+nnoremap <C-w>V :call OpenOrReuseTerminal()<CR>
+
+
 nnoremap j gj
 nnoremap k gk
 
@@ -46,10 +122,10 @@ nnoremap <C-q> <C-w>q
 " nnoremap <C-s> <cmd>update<cr>
 
 " -- Quickfix/Location lists --
-command Cnext try | cnext | catch | cfirst | catch | endtry
-command Cprev try | cprev | catch | clast  | catch | endtry
-command Lnext try | lnext | catch | lfirst | catch | endtry
-command Lprev try | lprev | catch | llast  | catch | endtry
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast  | catch | endtry
+command! Lnext try | lnext | catch | lfirst | catch | endtry
+command! Lprev try | lprev | catch | llast  | catch | endtry
 
 nnoremap [q <cmd>Cprev<cr>
 nnoremap ]q <cmd>Cnext<cr>

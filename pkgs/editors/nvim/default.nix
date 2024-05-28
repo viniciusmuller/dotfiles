@@ -83,6 +83,7 @@ in
       undotree
       # vim-polyglot
       targets-vim
+      nvim-unception
       vim-commentary
       vim-repeat
       vim-sensible

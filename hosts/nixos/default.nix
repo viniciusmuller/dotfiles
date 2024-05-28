@@ -17,6 +17,7 @@
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
+    ../../nixos-pkgs/grub/themes/fallout.nix
   ];
 
   # environment.variables = {
@@ -91,7 +92,7 @@
     enable = true;
     # desktopManager.gnome.enable = true;
     desktopManager.cinnamon.enable = true;
-    displayManager.gdm.enable = true;
+    displayManager.lightdm.enable = true;
     libinput.enable = true;
     videoDrivers = [ "amdgpu" ];
     xkb.layout = "us";

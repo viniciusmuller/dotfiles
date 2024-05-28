@@ -38,7 +38,7 @@ in
     signing.signByDefault = true;
 
     extraConfig = {
-      core.editor = "vim";
+      core.editor = "nvim --cmd 'let g:unception_block_while_host_edits=1'";
       pull.rebase = true;
       merge.conflictstyle = "diff3";
       init.defaultBranch = "main";

@@ -45,6 +45,7 @@ let
     chromium
     libreoffice
     vlc
+    logseq
   ];
   games = with pkgs; [
     prismlauncher
@@ -53,6 +54,7 @@ let
     # cataclysm-dda
   ];
   proprietary = with pkgs; [
+    discord
     spotify
     # jetbrains.idea-ultimate
   ];
@@ -105,6 +107,8 @@ in
     # ../../pkgs/games/dwarf-fortress
   ];
 
+  services.kdeconnect.enable = true;
+
   services.redshift = {
     enable = true;
     dawnTime = "6:00-7:45";
@@ -118,6 +122,9 @@ in
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
+    };
+    "org/cinnamon/desktop/wm/preferences" = {
+      "mouse-button-modifier" = "<Super>";
     };
   };
 
