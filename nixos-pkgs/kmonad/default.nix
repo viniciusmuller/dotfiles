@@ -10,7 +10,7 @@ in
 
   services.kmonad = {
     enable = true;
-    configfiles = [ ../../pkgs/kmonad/configs/ck61.kbd ];
+    # configfiles = [ ../../pkgs/kmonad/configs/ck61.kbd ];
     package = kmonad;
   };
 

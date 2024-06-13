@@ -27,32 +27,18 @@ let
     wget
   ];
   gui = with pkgs; [
-    insomnia
-    mupdf
-    retroarch
-    okular # ebook reader
-    thunderbird # email client
+    zathura
     beekeeper-studio # database client
-    gnome-solanum # pomodoro timer
-    gnome.gnome-calendar # calendar
     mpv # anki uses MPV to play audio
     anki-bin # Spaced repetition
     firefox # browser
     calibre # Ebook manager
-    godot_4 # Game engine
-    libresprite # pixel art editor
     sioyek # technical paper reader
-    chromium
-    libreoffice
     vlc
     logseq
+    ollama
   ];
-  games = with pkgs; [
-    prismlauncher
-    shattered-pixel-dungeon
-    # nethack
-    # cataclysm-dda
-  ];
+  games = [ ];
   proprietary = with pkgs; [
     discord
     spotify

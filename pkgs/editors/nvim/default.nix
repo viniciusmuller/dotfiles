@@ -45,13 +45,15 @@ in
     # ---- General plugins ----
 
     # Utils
-    ./plugins/tree-sitter.nix
+    # ./plugins/tree-sitter.nix
     ./plugins/nvim-tree.nix
+    ./plugins/projectionist.nix
     ./plugins/cmp.nix
     ./plugins/pears.nix
-    ./plugins/splitjoin.nix
+    # ./plugins/splitjoin.nix
 
-    ./plugins/fzf.nix
+    # ./plugins/fzf.nix
+    ./plugins/telescope.nix
 
     # ./plugins/togglelist.nix
     # ./plugins/closetag.nix
@@ -81,9 +83,9 @@ in
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
       undotree
-      # vim-polyglot
+      vim-polyglot
       targets-vim
-      nvim-unception
+      # nvim-unception
       vim-commentary
       vim-repeat
       vim-sensible

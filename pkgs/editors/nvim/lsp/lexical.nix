@@ -5,13 +5,7 @@
     local lspconfig = require("lspconfig")
     local configs = require("lspconfig.configs")
 
-    local cmd = "/home/vini/projects/elixir/open-source/lexical/_build/dev/package/lexical/bin/start_lexical.sh"
-
-    -- if vim.fn.getcwd() == "/home/vini/projects/elixir/open-source/lexical" then
-      -- cmd = "/home/vini/projects/elixir/open-source/lexical/_build/dev/package/lexical/bin/start_lexical.sh"
-    -- else
-      -- cmd = "/home/vini/projects/elixir/open-source/lexical/_build/prod/package/lexical/bin/start_lexical.sh"
-    -- end
+    local cmd = "lexical"
 
     local lexical = {
       cmd = { cmd },

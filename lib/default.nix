@@ -47,7 +47,11 @@ rec {
               imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
             };
             extraSpecialArgs = {
-              inherit inputs username pkgs prelude colorscheme;
+              inherit inputs username pkgs prelude;
+
+              colorscheme = {
+                colors = colorscheme.palette;
+              };
             };
           };
         }
@@ -81,7 +85,11 @@ rec {
         (../home-configurations + "/${name}")
       ] ++ modules;
       extraSpecialArgs = {
-        inherit inputs system username prelude colorscheme;
+        inherit inputs system username prelude;
+
+        colorscheme = {
+          colors = colorscheme.palette;
+        };
       };
     };
 }

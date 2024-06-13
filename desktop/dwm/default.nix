@@ -43,6 +43,7 @@ in
       wmctrl # Helper for window managers
       xbanish # Hides the mouse when using the keyboard
       switch
+      alsa-utils
 
       # Overlays from https://github.com/arcticlimer/suckless
       slock

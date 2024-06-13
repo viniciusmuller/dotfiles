@@ -13,7 +13,8 @@
     ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
     # ../../desktop/xmonad
-    # ../../desktop/hyprland
+    ../../desktop/dwm
+    # ../../desktop/hyprland # hyprland is broken
 
     # Grub
     ../../nixos-pkgs/grub/os-prober.nix
@@ -93,10 +94,11 @@
     # desktopManager.gnome.enable = true;
     desktopManager.cinnamon.enable = true;
     displayManager.lightdm.enable = true;
-    libinput.enable = true;
     videoDrivers = [ "amdgpu" ];
     xkb.layout = "us";
   };
+
+  services.libinput.enable = true;
 
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
@@ -178,7 +180,7 @@
   # i18n.inputMethod.ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
 
   # This enables "fcitx" as your IME.  This is an easy-to-use IME.  It supports many different input methods.
-  i18n.inputMethod.enabled = "fcitx5";
+  # i18n.inputMethod.enabled = "fcitx5";
 
   # This enables "mozc" as an input method in "fcitx".  This has a relatively
   # complete dictionary.  I recommend it for Japanese input.
