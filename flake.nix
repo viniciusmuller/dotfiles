@@ -57,6 +57,7 @@
           inherit system;
           host = "nixos";
           username = "vini";
+          extraUsers = ["gamer"];
           overlays = [
             inputs.suckless.overlays
             discord-overlay

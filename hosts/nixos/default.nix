@@ -99,11 +99,6 @@
   };
 
   services.libinput.enable = true;
-
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
-
   hardware.pulseaudio.enable = false;
 
   services.dbus.packages = with pkgs; [ dconf ];
@@ -207,6 +202,12 @@
   };
 
   users.users.${username} = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    initialPassword = "changeme";
+  };
+
+  users.users.gamer = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "changeme";

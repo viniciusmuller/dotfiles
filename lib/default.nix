@@ -21,6 +21,7 @@ rec {
   mkHost =
     { host
     , username
+    , extraUsers ? [ ]
     , system ? "x86_64-linux"
     , allowUnfree ? true
     , overlays ? [ ]
@@ -30,6 +31,11 @@ rec {
     }:
     let
       pkgs = mkNixpkgs { inherit allowUnfree system overlays; };
+      extraUserConfigs = builtins.foldl' (acc: extraUser: acc // {
+              ${extraUser} = {
+                imports = [ (../hosts + "/${host}/${extraUser}.nix") ] ++ homeModules;
+              };
+            }) {} extraUsers;
     in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
@@ -43,9 +49,12 @@ rec {
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
-            users."${username}" = {
-              imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
+            users = extraUserConfigs // {
+              ${username} = {
+                imports = [ (../hosts + "/${host}/home.nix") ] ++ homeModules;
+              };
             };
+
             extraSpecialArgs = {
               inherit inputs username pkgs prelude;
 

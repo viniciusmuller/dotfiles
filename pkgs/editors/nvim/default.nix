@@ -27,7 +27,8 @@ in
     # ./lsp/clojure.nix
 
     # ./lsp/elixir-ls.nix
-    ./lsp/lexical.nix
+    # ./lsp/lexical.nix
+    ./lsp/test-ls.nix
 
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
@@ -52,8 +53,8 @@ in
     ./plugins/pears.nix
     # ./plugins/splitjoin.nix
 
-    # ./plugins/fzf.nix
-    ./plugins/telescope.nix
+    ./plugins/fzf.nix
+    # ./plugins/telescope.nix
 
     # ./plugins/togglelist.nix
     # ./plugins/closetag.nix

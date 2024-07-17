@@ -17,7 +17,7 @@ let
     file # Show info about files
     fd # File finder
     unzip # Easily unzip files
-    neofetch
+    fastfetch
     pfetch # lightweight neofetch
     git-imerge
     kubectl
@@ -25,8 +25,12 @@ let
     restic # backups
     lm_sensors
     wget
+    ollama
   ];
   gui = with pkgs; [
+    easyeffects
+    gnomeExtensions.easyeffects-preset-selector
+
     zathura
     beekeeper-studio # database client
     mpv # anki uses MPV to play audio
@@ -36,11 +40,10 @@ let
     sioyek # technical paper reader
     vlc
     logseq
-    ollama
+    joplin-desktop
   ];
-  games = [ ];
+  games = with pkgs; [ heroic ludusavi ];
   proprietary = with pkgs; [
-    discord
     spotify
     # jetbrains.idea-ultimate
   ];
@@ -86,8 +89,8 @@ in
     # ../../pkgs/obs-studio.nix # Screen recording
     # ../../pkgs/mangohud.nix # Performance overlay for games
     # ../../pkgs/psst.nix # Spotify client (currently broken)
-    ../../pkgs/gtk.nix
-    ../../pkgs/qt.nix
+    # ../../pkgs/gtk.nix
+    # ../../pkgs/qt.nix
 
     # Games
     # ../../pkgs/games/dwarf-fortress
