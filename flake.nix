@@ -102,6 +102,10 @@
             inherit system username;
             name = "arch";
           };
+          shigoto = lib.mkHome {
+            inherit system username;
+            name = "shigoto";
+          };
           wsl = lib.mkHome {
             inherit system username;
             name = "wsl";
