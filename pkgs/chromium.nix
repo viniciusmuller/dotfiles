@@ -3,23 +3,11 @@
 {
   programs.chromium = {
     enable = true;
+    package = pkgs.ungoogled-chromium;
     extensions = [
       "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy badger
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock origin
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark reader
-      "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
-      "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
-      # "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly
-      # "lokjgaehpcnlmkebpmjiofccpklbmoci" # Toucan
-      # "hoombieeljmmljlkjmnheibnpciblicm" # Language Reactor
-      # {
-      #   id = "cjnmckjndlpiamhfimnnjmnckgghkjbl"; # Competitive companion
-      #   version = "2.25.2";
-      # }
-      {
-        id = "miljekjnhkpkelpomeehcbhlanppjegn"; # Material dark theme
-        version = "1.0";
-      }
     ];
   };
 }

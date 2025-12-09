@@ -44,14 +44,16 @@
     in
     {
       nixosConfigurations = {
-        nixos = let 
+        nixos = let
           system = "x86_64-linux";
           pkgs-master = lib.mkNixpkgs {
             inherit system;
             nixpkgs = nixpkgs-master;
           };
-          discord-overlay = final: prev: {
+          master-overlay = final: prev: {
             discord = pkgs-master.discord;
+            ungoogled-chromium = (prev.ungoogled-chromium.override { enableWideVine = true; });
+            # logseq = pkgs-master.logseq;
           };
         in lib.mkHost {
           inherit system;
@@ -60,7 +62,7 @@
           extraUsers = ["gamer"];
           overlays = [
             inputs.suckless.overlays
-            discord-overlay
+            master-overlay
           ];
           homeModules = [
             nix-colors.homeManagerModule

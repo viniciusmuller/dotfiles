@@ -4,7 +4,7 @@ let
   fonts = with pkgs; [
     # (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     font-awesome
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
   ];
   cli = with pkgs; [
     bandwhich # Network inspector

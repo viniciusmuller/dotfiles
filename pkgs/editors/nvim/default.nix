@@ -18,17 +18,17 @@ in
     # ./plugins/lsp_lines.nix
 
     # ./lsp/omnisharp.nix
-    ./lsp/go.nix
-    ./lsp/zig.nix
-    ./lsp/clangd.nix
+    # ./lsp/go.nix
+    # ./lsp/zig.nix
+    # ./lsp/clangd.nix
     # ./lsp/erlang.nix
     # ./lsp/fsharp.nix
-    ./lsp/rust.nix
+    # ./lsp/rust.nix
     # ./lsp/clojure.nix
 
-    # ./lsp/elixir-ls.nix
+    ./lsp/elixir-ls.nix
     # ./lsp/lexical.nix
-    ./lsp/test-ls.nix
+    # ./lsp/test-ls.nix
 
     # ./lsp/godot.nix
     # ./lsp/haskell.nix
@@ -38,6 +38,7 @@ in
     # ./lsp/python.nix
     # ./lsp/rnix.nix
     ./lsp/nil.nix
+    # ./lsp/typescript.nix
     # ./lsp/ccls.nix
 
     # ---- Linting ----

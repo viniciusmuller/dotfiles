@@ -7,9 +7,12 @@ let
   fonts = with pkgs; [
     # (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     font-awesome
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
+    takao
   ];
   cli = with pkgs; [
+    opencode
+    claude-code
     bandwhich # Network inspector
     ripgrep # File content finder
     htop # System monitor
@@ -20,33 +23,23 @@ let
     fastfetch
     pfetch # lightweight neofetch
     git-imerge
-    kubectl
-    minikube
-    restic # backups
     lm_sensors
     wget
-    ollama
   ];
   gui = with pkgs; [
-    easyeffects
-    gnomeExtensions.easyeffects-preset-selector
-
-    zathura
-    beekeeper-studio # database client
+    gimp
+    inkscape
+    logseq
     mpv # anki uses MPV to play audio
     anki-bin # Spaced repetition
     firefox # browser
+    ungoogled-chromium
     calibre # Ebook manager
     sioyek # technical paper reader
     vlc
-    logseq
-    joplin-desktop
   ];
-  games = with pkgs; [ heroic ludusavi ];
-  proprietary = with pkgs; [
-    spotify
-    # jetbrains.idea-ultimate
-  ];
+  games = [ ];
+  proprietary = with pkgs; [ ];
 in
 {
   imports = [
@@ -61,6 +54,7 @@ in
     ../../pkgs/editors/nvim # Modal text editor
     ../../pkgs/readline # GNU readline input
     ../../pkgs/git.nix
+    ../../pkgs/chromium.nix
     ../../pkgs/tmux # Terminal multiplexer
     ../../pkgs/fzf.nix # Fuzzy finder
     ../../pkgs/bat.nix # File previewer
@@ -76,12 +70,14 @@ in
     ../../services/gpg-agent.nix
     # ../../services/gammastep.nix # Screen temperature manager
     ../../services/dunst.nix # notification daeomn
+    # ../../services/flameshot.nix # screenshots
 
     # GUI
     # ../../pkgs/wayst.nix # terminal emulator
+    # ../../pkgs/yomininja.nix
     ../../pkgs/kitty.nix
-    ../../pkgs/editors/vscodium # Text editor
-    ../../pkgs/pomatez.nix
+    # ../../pkgs/editors/vscodium # Text editor
+    # ../../pkgs/pomatez.nix
     # ../../pkgs/mangohud.nix
     # ../../pkgs/editors/emacs # Another text editor
     # ../../pkgs/beekeeper-studio.nix # Database manager
@@ -121,7 +117,7 @@ in
 
   programs.bash.shellAliases = rebuild-alias;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree =  true;
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;

@@ -11,7 +11,7 @@
     defaultCacheTtlSsh = 5 * 60 * 60;
   };
 
-  home.packages = with pkgs; [
-    pinentry
-  ];
+#   home.packages = with pkgs; [
+#     pinentry
+#   ];
 }

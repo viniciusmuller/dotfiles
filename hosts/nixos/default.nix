@@ -13,7 +13,7 @@
     ../../nixos-pkgs/virt-manager.nix
     ../../nixos-pkgs/steam.nix
     # ../../desktop/xmonad
-    ../../desktop/dwm
+    # ../../desktop/dwm
     # ../../desktop/hyprland # hyprland is broken
 
     # Grub
@@ -26,18 +26,29 @@
   #   QT_IM_MODULE = "cedilla";
   # };
 
-  virtualisation.lxd = {
-    enable = true;
-    zfsSupport = true;
-    recommendedSysctlSettings = true;
-  };
-
   virtualisation.lxc = {
     enable = true;
     lxcfs.enable = true;
   };
 
-  hardware.opengl.setLdLibraryPath = true;
+  # hardware.opengl.setLdLibraryPath = true;
+
+  hardware.amdgpu.opencl.enable = true;
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "rocm";
+  #   rocmOverrideGfx = "10.3.0";
+  # };
+
+  services.tailscale.enable = true;
+
+  # services.syncthing = {
+  #   enable = true;
+  #   user = "vini";
+  #   dataDir = "/home/vini/Documents/syncthing/";
+  #   configDir = "/home/vini/Documents/.config/syncthing";
+  #   openDefaultPorts = true;
+  # };
 
   # https://github.com/swaywm/sway/issues/2773#issuecomment-427570877
   security.pam.services.swaylock = {
@@ -46,29 +57,29 @@
     '';
   };
 
-  fileSystems."/mnt/nas-personal" = {
-    device = "nas:/personal";
-    fsType = "nfs";
-    options = [
-      # Lazy mounting
-      "x-systemd.automount"
-      "noauto"
-      # disconnects after 10 minutes (i.e. 600 seconds)
-      "x-systemd.idle-timeout=600"
-    ];
-  };
+  # fileSystems."/mnt/nas-personal" = {
+  #   device = "nas:/personal";
+  #   fsType = "nfs";
+  #   options = [
+  #     # Lazy mounting
+  #     "x-systemd.automount"
+  #     "noauto"
+  #     # disconnects after 10 minutes (i.e. 600 seconds)
+  #     "x-systemd.idle-timeout=600"
+  #   ];
+  # };
 
-  fileSystems."/mnt/autoscape" = {
-    device = "nas:/autoscape";
-    fsType = "nfs";
-    options = [
-      # Lazy mounting
-      "x-systemd.automount"
-      "noauto"
-      # disconnects after 10 minutes (i.e. 600 seconds)
-      "x-systemd.idle-timeout=600"
-    ];
-  };
+  # fileSystems."/mnt/autoscape" = {
+  #   device = "nas:/autoscape";
+  #   fsType = "nfs";
+  #   options = [
+  #     # Lazy mounting
+  #     "x-systemd.automount"
+  #     "noauto"
+  #     # disconnects after 10 minutes (i.e. 600 seconds)
+  #     "x-systemd.idle-timeout=600"
+  #   ];
+  # };
 
 
   # k3s
@@ -91,8 +102,8 @@
 
   services.xserver = {
     enable = true;
-    # desktopManager.gnome.enable = true;
-    desktopManager.cinnamon.enable = true;
+    desktopManager.gnome.enable = true;
+    # desktopManager.cinnamon.enable = true;
     displayManager.lightdm.enable = true;
     videoDrivers = [ "amdgpu" ];
     xkb.layout = "us";
@@ -166,6 +177,21 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+    ];
+    ibus.engines = with pkgs.ibus-engines; [ anthy ];
+  };
+
+  services.gvfs.enable = true;
+
+  # Would normally set this to fcitx, but kitty only supports ibus, and fcitx
+  # provides an ibus interface. Can't use ibus for e.g. QT_IM_MODULE though,
+  # because that at least breaks mumble
+  environment.variables.GLFW_IM_MODULE = "ibus";
 
   ###############################
   ## Input Method Editor (IME) ##

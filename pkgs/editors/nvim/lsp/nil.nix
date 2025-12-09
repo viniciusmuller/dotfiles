@@ -2,9 +2,9 @@
 
 {
   programs.neovim.extraConfig = prelude.mkLuaCode ''
-    require('lspconfig').nil_ls.setup{
+    vim.lsp.config('nil_ls', {
       on_attach = on_attach,
       capabilities = capabilities
-    }
+    })
   '';
 }
